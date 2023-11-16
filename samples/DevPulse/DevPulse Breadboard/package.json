@@ -1,0 +1,7 @@
+{
+	"dependencies": {
+		"@google-labs/breadboard": "^0.5.0"
+	},
+	"name": "dev-pulse-breadboard",
+	"packageManager": "yarn@4.0.2"
+}
