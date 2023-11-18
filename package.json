@@ -10,4 +10,9 @@
 		"node": ">=19"
 	},
 	"engineStrict": true,
+	"name": "breadboard-samples",
+	"private": true,
+	"workspaces": [
+		"./samples/*"
+	]
 }
