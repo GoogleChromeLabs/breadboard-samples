@@ -41,6 +41,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"hello-multiple-inputs@workspace:samples/demos/Hello Multiple Inputs":
+  version: 0.0.0-use.local
+  resolution: "hello-multiple-inputs@workspace:samples/demos/Hello Multiple Inputs"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.5.0"
+    "@types/node": "npm:^20.9.1"
+    typescript: "npm:^5.2.2"
+  languageName: unknown
+  linkType: soft
+
 "typescript@npm:5.2.2, typescript@npm:^5.2.2":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"

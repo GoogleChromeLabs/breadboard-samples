@@ -11,7 +11,10 @@ jobs:
       matrix:
         package-manager: [yarn, npm]
         node-version: [19.x, 20.x, 21.x]
-        directory: ["samples/Hello World"]
+        directory: [
+            "samples/demos/Hello World",
+            "samples/demos/Hello Multiple Inputs",
+          ]
     defaults:
       run:
         working-directory: ${{ matrix.directory }}
