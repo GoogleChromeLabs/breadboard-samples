@@ -9,10 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        demo: [
+        demo:
+          [
             "Hello World",
             "Hello Multiple Inputs",
-            "Hello Multiple Outputs"
+            "Hello Multiple Outputs",
+            "Specific Outputs",
+            "Nodes by ID",
           ]
         node-version: [19.x, 20.x, 21.x]
         package-manager: [yarn, npm]

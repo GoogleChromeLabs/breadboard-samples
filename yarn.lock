@@ -61,6 +61,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"nodes-by-id@workspace:samples/demos/Nodes by ID":
+  version: 0.0.0-use.local
+  resolution: "nodes-by-id@workspace:samples/demos/Nodes by ID"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.5.0"
+    "@types/node": "npm:^20.9.1"
+    typescript: "npm:^5.2.2"
+  languageName: unknown
+  linkType: soft
+
+"specific-outputs@workspace:samples/demos/Specific Outputs":
+  version: 0.0.0-use.local
+  resolution: "specific-outputs@workspace:samples/demos/Specific Outputs"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.5.0"
+    "@types/node": "npm:^20.9.1"
+    typescript: "npm:^5.2.2"
+  languageName: unknown
+  linkType: soft
+
 "typescript@npm:5.2.2, typescript@npm:^5.2.2":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"
