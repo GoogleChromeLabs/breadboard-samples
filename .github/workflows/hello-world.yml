@@ -21,5 +21,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm install
-      - run: chmod +x ./index.ts
-      - run: ./index.ts
+      - run: npm run start
