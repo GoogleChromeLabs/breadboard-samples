@@ -1,4 +1,4 @@
-name: Run Demos
+name: Run Each Demo
 on:
   push:
   pull_request:
@@ -12,8 +12,8 @@ jobs:
         demo:
           [
             "Hello World",
-            "Hello Multiple Inputs",
-            "Hello Multiple Outputs",
+            "Multiple Inputs",
+            "Multiple Outputs",
             "Specific Outputs",
             "Nodes by ID",
           ]
