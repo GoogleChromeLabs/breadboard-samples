@@ -9,12 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package-manager: [yarn, npm]
-        node-version: [19.x, 20.x, 21.x]
-        directory: [
+        directory:
+          [
             "samples/demos/Hello World",
             "samples/demos/Hello Multiple Inputs",
+            "samples/demos/Hello Multiple Outputs",
           ]
+        node-version: [19.x, 20.x, 21.x]
+        package-manager: [yarn, npm]
     defaults:
       run:
         working-directory: ${{ matrix.directory }}
