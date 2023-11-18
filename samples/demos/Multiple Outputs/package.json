@@ -10,7 +10,7 @@
     "node": ">=19"
   },
   "engineStrict": true,
-  "name": "hello-multiple-outputs",
+  "name": "multiple-outputs",
   "scripts": {
     "start": "npx -y tsx index.ts watch"
   },

@@ -1,0 +1,30 @@
+name: Run all demos
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [19.x, 20.x, 21.x]
+        package-manager: [yarn, npm]
+    name: Node ${{ matrix.node-version }} ${{ matrix.package-manager }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "${{ matrix.package-manager }}"
+      - run: ${{ matrix.package-manager }} install
+      - run: |
+          if [ "${{ matrix.package-manager }}" = "yarn" ]; then
+            yarn workspaces foreach -A run start
+          else
+            npm run start --workspaces --if-present
+          fi

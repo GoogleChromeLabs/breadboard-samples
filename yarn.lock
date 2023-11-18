@@ -41,9 +41,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"hello-multiple-inputs@workspace:samples/demos/Hello Multiple Inputs":
+"multiple-inputs@workspace:samples/demos/Multiple Inputs":
   version: 0.0.0-use.local
-  resolution: "hello-multiple-inputs@workspace:samples/demos/Hello Multiple Inputs"
+  resolution: "multiple-inputs@workspace:samples/demos/Multiple Inputs"
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.0"
     "@types/node": "npm:^20.9.1"
@@ -51,9 +51,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"hello-multiple-outputs@workspace:samples/demos/Hello Multiple Outputs":
+"multiple-outputs@workspace:samples/demos/Multiple Outputs":
   version: 0.0.0-use.local
-  resolution: "hello-multiple-outputs@workspace:samples/demos/Hello Multiple Outputs"
+  resolution: "multiple-outputs@workspace:samples/demos/Multiple Outputs"
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.0"
     "@types/node": "npm:^20.9.1"
