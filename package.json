@@ -14,5 +14,6 @@
 	"private": true,
 	"workspaces": [
 		"./samples/*"
-	]
+	],
+	"repository": "https://github.com/GoogleChromeLabs/breadboard-samples"
 }
