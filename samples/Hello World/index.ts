@@ -1,5 +1,3 @@
-#!/usr/bin/env npx -y tsx watch
-
 import { Board } from "@google-labs/breadboard";
 
 const board = new Board();
