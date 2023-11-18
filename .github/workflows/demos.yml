@@ -9,17 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        directory:
-          [
-            "samples/demos/Hello World",
-            "samples/demos/Hello Multiple Inputs",
-            "samples/demos/Hello Multiple Outputs",
+        demo: [
+            "Hello World",
+            "Hello Multiple Inputs",
+            "Hello Multiple Outputs"
           ]
         node-version: [19.x, 20.x, 21.x]
         package-manager: [yarn, npm]
     defaults:
       run:
-        working-directory: ${{ matrix.directory }}
+        working-directory: samples/demos/${{ matrix.demo }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
