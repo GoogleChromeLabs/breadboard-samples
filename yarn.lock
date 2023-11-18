@@ -31,9 +31,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"hello-breadboard@workspace:samples/Hello World":
+"hello-breadboard@workspace:samples/demos/Hello World":
   version: 0.0.0-use.local
-  resolution: "hello-breadboard@workspace:samples/Hello World"
+  resolution: "hello-breadboard@workspace:samples/demos/Hello World"
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.0"
     "@types/node": "npm:^20.9.1"

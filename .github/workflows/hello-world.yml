@@ -13,7 +13,7 @@ jobs:
         node-version: [19.x, 20.x, 21.x]
     defaults:
       run:
-        working-directory: "samples/Hello World"
+        working-directory: "samples/demos/Hello World"
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
