@@ -15,5 +15,6 @@
 	"workspaces": [
 		"./samples/*"
 	],
-	"repository": "https://github.com/GoogleChromeLabs/breadboard-samples"
+	"repository": "https://github.com/GoogleChromeLabs/breadboard-samples",
+	"packageManager": "yarn@4.0.2"
 }
