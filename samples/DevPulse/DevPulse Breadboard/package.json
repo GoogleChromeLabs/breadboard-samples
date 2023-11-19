@@ -1,7 +1,23 @@
 {
 	"dependencies": {
-		"@google-labs/breadboard": "^0.5.0"
+		"@exadev/breadboard-kits": "^0.3.45",
+		"@google-labs/breadboard": "^0.5.1",
+		"@google-labs/core-kit": "^0.0.1",
+		"@google-labs/llm-starter": "^0.1.0",
+		"@paulkinlan/claude-breadboard-kit": "^2.2.2",
+		"dotenv": "^16.3.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20.9.0",
+		"ts-node": "^10.9.1",
+		"tsm": "^2.3.0",
+		"tsx": "^4.1.4",
+		"typescript": "^5.2.2"
 	},
 	"name": "dev-pulse-breadboard",
-	"packageManager": "yarn@4.0.2"
+	"scripts": {
+		"start": "tsx src/index.ts",
+		"watch": "tsx watch ./src/index.ts"
+	},
+	"type": "module"
 }
