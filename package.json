@@ -15,6 +15,10 @@
 	"workspaces": [
 		"./samples/**/*"
 	],
+	"scripts": {
+		"start": "yarn workspaces foreach -A run start",
+		"start": "yarn workspaces foreach -A run watch"
+	},
 	"repository": "https://github.com/GoogleChromeLabs/breadboard-samples",
 	"packageManager": "yarn@4.0.2"
 }
