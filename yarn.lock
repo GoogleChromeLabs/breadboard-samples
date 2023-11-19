@@ -159,10 +159,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-labs/breadboard@npm:^0.5.1":
+"@exadev/breadboard-kits@npm:^0.3.38":
+  version: 0.3.38
+  resolution: "@exadev/breadboard-kits@npm:0.3.38"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.5.0"
+    "@google-labs/core-kit": "npm:^0.0.1"
+    "@google-labs/llm-starter": "npm:^0.2.1"
+    jsonschema: "npm:^1.4.1"
+  checksum: 48c6ff870841b28526f57fbe8ae7d78c576bf305011666fc64d92721a42287a0ec0d6eb13408fd5364b19bd9460cb005f03a1eea63934887b83a2d653d7507aa
+  languageName: node
+  linkType: hard
+
+"@google-labs/breadboard@npm:^0.5.0, @google-labs/breadboard@npm:^0.5.1":
   version: 0.5.1
   resolution: "@google-labs/breadboard@npm:0.5.1"
   checksum: 335735132f25ac6f46e4f4e6e1b51de4b95f21dbffdf5c521162863c7d20248837694dd775fd64fc3bd627be9f5dc0e4907890ac30855ae7fea42f83ac2c725c
+  languageName: node
+  linkType: hard
+
+"@google-labs/core-kit@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@google-labs/core-kit@npm:0.0.1"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.5.0"
+  checksum: 4b59ec435c6068843c17f3f68707c8a853f36e6fd1f9d1055901c2bfa8016658f6b54f9238cfcf6a9ef7dcd7a0a27795218783617a2b435b82229312042f67b7
+  languageName: node
+  linkType: hard
+
+"@google-labs/llm-starter@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "@google-labs/llm-starter@npm:0.2.1"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.5.0"
+    "@google-labs/palm-lite": "npm:^0.0.2"
+    "@rgrove/parse-xml": "npm:^4.1.0"
+    jsonata: "npm:^2.0.3"
+    url-template: "npm:^3.1.0"
+  checksum: 6d5daaad4ab58472d2fae042b94d55a7b035f89752346fc7d134c472611f3833a864058543d2d43d5be9180c6ffd2b14079449fd56a688ad8eb9864fc96b8adb
+  languageName: node
+  linkType: hard
+
+"@google-labs/palm-lite@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "@google-labs/palm-lite@npm:0.0.2"
+  checksum: 9ae07e647038969756d11a3cf34cd2673ab6f59cd4f69c7fae239514b202c92e329118a1d3f1e2709ee45bd4143d051fea3893de839f777357466c1f9b303b2f
   languageName: node
   linkType: hard
 
@@ -206,6 +247,13 @@ __metadata:
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
   checksum: 115e8ceeec6bc69dff2048b35c0ab4f8bbee12d8bb6c1f4af758604586d802b6e669dcb02dda61d078de42c2b4ddce41b3d9e726d7daa6b4b850f4adbf7333ff
+  languageName: node
+  linkType: hard
+
+"@rgrove/parse-xml@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@rgrove/parse-xml@npm:4.1.0"
+  checksum: 30a4edb1dabd17431db438f918a465f1119258dba42285eeef3cc22154fcd91fea721cc184d297e07cb375ac83f3542ecbfaf2a3edd0eb31f7d4f5de18312e0b
   languageName: node
   linkType: hard
 
@@ -355,6 +403,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "breadboard-walkthrough@workspace:samples/Breadboard Walkthrough"
   dependencies:
+    "@exadev/breadboard-kits": "npm:^0.3.38"
     "@google-labs/breadboard": "npm:^0.5.1"
     "@types/node": "npm:^20.9.2"
     npm-run-all: "npm:^4.1.5"
@@ -1204,6 +1253,20 @@ __metadata:
   version: 1.0.2
   resolution: "json-parse-better-errors@npm:1.0.2"
   checksum: 5553232045359b767b0f2039a6777fede1a8d7dca1a0ffb1f9ef73a7519489ae7f566b2e040f2b4c38edb8e35e37ae07af7f0a52420902f869ee0dbf5dc6c784
+  languageName: node
+  linkType: hard
+
+"jsonata@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "jsonata@npm:2.0.3"
+  checksum: d1f070d82ae3aaf8c49aa8a75e3aac1d7cfa8eb76b3012e53a71eb75e370b84a92a7e636cfdd21af716459bafd87426586e1b633f9782db3d8fd898cb44aa5cd
+  languageName: node
+  linkType: hard
+
+"jsonschema@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "jsonschema@npm:1.4.1"
+  checksum: d7a188da7a3100a2caa362b80e98666d46607b7a7153aac405b8e758132961911c6df02d444d4700691330874e21a62639f550e856b21ddd28423690751ca9c6
   languageName: node
   linkType: hard
 
@@ -2094,6 +2157,13 @@ __metadata:
   dependencies:
     imurmurhash: "npm:^0.1.4"
   checksum: 40912a8963fc02fb8b600cf50197df4a275c602c60de4cac4f75879d3c48558cfac48de08a25cc10df8112161f7180b3bbb4d662aadb711568602f9eddee54f0
+  languageName: node
+  linkType: hard
+
+"url-template@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "url-template@npm:3.1.0"
+  checksum: 76be0c33b216ff0189a9965972b3ef9f895654c9f834c0c325e8b610059ec9dc75222e92ffbcf3f52fb47b8d93bb24600ec322a471abea155b44d0181fd3e35e
   languageName: node
   linkType: hard
 
