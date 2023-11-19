@@ -1,17 +1,24 @@
 {
 	"dependencies": {
-		"@google-labs/breadboard": "^0.5.0"
+		"@google-labs/breadboard": "^0.5.1"
 	},
 	"devDependencies": {
-		"typescript": "^5.2.2"
+		"@types/node": "20.9.2",
+		"typescript": "5.2.2"
 	},
 	"engines": {
-		"node": ">=19.0.0"
+		"node": ">=19"
 	},
 	"engineStrict": true,
 	"name": "breadboard-samples",
-	"packageManager": "yarn@4.0.2",
+	"private": true,
 	"workspaces": [
-		"samples/DevPulse/DevPulse Breadboard"
-	]
+		"./samples/**/*"
+	],
+	"scripts": {
+		"start": "yarn workspaces foreach -A run start",
+		"watch": "yarn workspaces foreach -A run watch"
+	},
+	"repository": "https://github.com/GoogleChromeLabs/breadboard-samples",
+	"packageManager": "yarn@4.0.2"
 }

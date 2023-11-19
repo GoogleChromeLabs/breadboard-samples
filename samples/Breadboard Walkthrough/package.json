@@ -1,0 +1,36 @@
+{
+	"dependencies": {
+		"@exadev/breadboard-kits": "^0.3.38",
+		"@google-labs/breadboard": "^0.5.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20.9.2",
+		"npm-run-all": "^4.1.5",
+		"tsx": "^4.1.4",
+		"typescript": "^5.2.2"
+	},
+	"engines": {
+		"node": ">=19"
+	},
+	"engineStrict": true,
+	"name": "breadboard-walkthrough",
+	"scripts": {
+		"start": "npm-run-all --print-name --serial 'run-*'",
+		"watch": "npm-run-all --print-name --parallel 'watch-*'",
+		"run-hello-world": "tsx src/hello-world.ts",
+		"watch-hello-world": "tsx watch src/hello-world.ts",
+		"run-multiple-inputs": "tsx src/multiple-inputs.ts",
+		"watch-multiple-inputs": "tsx watch src/multiple-inputs.ts",
+		"run-multiple-outputs": "tsx src/multiple-outputs.ts",
+		"watch-multiple-outputs": "tsx watch src/multiple-outputs.ts",
+		"run-specific-outputs": "tsx src/specific-outputs.ts",
+		"watch-specific-outputs": "tsx watch src/specific-outputs.ts",
+		"run-nodes-by-id": "tsx src/nodes-by-id.ts",
+		"watch-nodes-by-id": "tsx watch src/nodes-by-id.ts",
+		"run-one-input-multiple-outputs": "tsx src/one-input-multiple-outputs.ts",
+		"watch-one-input-multiple-outputs": "tsx watch src/one-input-multiple-outputs.ts",
+		"run-multiple-inputs-one-output": "tsx src/multiple-inputs-one-output.ts",
+		"watch-multiple-inputs-one-output": "tsx watch src/multiple-inputs-one-output.ts"
+	},
+	"type": "module"
+}
