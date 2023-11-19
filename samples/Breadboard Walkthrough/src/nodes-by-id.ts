@@ -33,4 +33,4 @@ input.wire("message", output);
 	}
 })();
 
-exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "src");
+exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");

@@ -15,4 +15,4 @@ const board = new Board({
 	);
 })();
 
-exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "src");
+exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");

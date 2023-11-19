@@ -26,4 +26,4 @@ input.wire("partTwo", outputTwo);
 	}
 })();
 
-exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "src");
+exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");

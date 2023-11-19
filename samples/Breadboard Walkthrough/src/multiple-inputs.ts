@@ -28,4 +28,4 @@ let counter = 1;
 	}
 })();
 
-exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "src");
+exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");
