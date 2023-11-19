@@ -1,6 +1,10 @@
 import { Board } from "@google-labs/breadboard";
+import exadev from "@exadev/breadboard-kits";
+import path from "path";
 
-const board = new Board();
+const board = new Board({
+	title: path.basename(new URL(import.meta.url).pathname),
+});
 
 const output = board.output();
 
@@ -23,3 +27,5 @@ let counter = 1;
 		}
 	}
 })();
+
+exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "src");
