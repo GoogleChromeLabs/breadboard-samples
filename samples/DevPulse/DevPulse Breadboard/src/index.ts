@@ -1,13 +1,15 @@
 #!/usr/bin/env npx -y tsx watch
-import exadev, {
+import {
 	ConfigKit,
 	HackerNewsAlgoliaKit,
 	HackerNewsFirebaseKit,
 	JsonKit,
 	ListKit,
 	ObjectKit,
-	StringKit
+	StringKit,
+	util
 } from "@exadev/breadboard-kits";
+import { MarkdownContentType } from "@exadev/breadboard-kits/dist/types/markdown.js";
 import { Board } from "@google-labs/breadboard";
 import Core from "@google-labs/core-kit";
 import { ClaudeKit } from "@paulkinlan/claude-breadboard-kit";
@@ -209,12 +211,16 @@ commentData.wire("*",
 
 //////////////////////////////////////////////////
 
-exadev.util.files.generateAndWriteCombinedMarkdown({
+util.files.makeMarkdown({
 	board,
 	filename: "README",
+	title: "Hacker News",
 	dir: ".",
-});
-
+	markdownConfig: [
+		MarkdownContentType.mermaid,
+		MarkdownContentType.json
+	]
+})
 
 const suppressedOutputIds = [
 	"commentOutput",

@@ -1,6 +1,6 @@
 # Hacker News
 
-# Hacker News
+## Mermaid
 ```mermaid
 %%{init: 'themeVariables': { 'fontFamily': 'Fira Code, monospace' }}%%
 graph TD;
@@ -54,6 +54,7 @@ classDef secrets stroke:#db4437,fill:#f4cccc,color:#000
 classDef slotted stroke:#a64d79
 ```
 
+## JSON
 ```json
 {
 	"title": "Hacker News",
