@@ -209,7 +209,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@exadev/breadboard-kits@npm:^0.3.38, @exadev/breadboard-kits@npm:^0.3.45":
+"@exadev/breadboard-kits@npm:^0.3.38":
   version: 0.3.45
   resolution: "@exadev/breadboard-kits@npm:0.3.45"
   dependencies:
@@ -218,6 +218,19 @@ __metadata:
     "@google-labs/llm-starter": "npm:^0.2.1"
     jsonschema: "npm:^1.4.1"
   checksum: 9bdad0ab5b9ac3bb7be0249ad8bb7bd7ed9f0f13ac0113a2a4c5eca0917f5f90cc06aad31cc95de6757f25f5ed2b831799ea67f3abe560a9fbcefa842812fa0f
+  languageName: node
+  linkType: hard
+
+"@exadev/breadboard-kits@npm:^0.4.4":
+  version: 0.4.4
+  resolution: "@exadev/breadboard-kits@npm:0.4.4"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.5.1"
+    "@google-labs/core-kit": "npm:^0.0.1"
+    "@google-labs/llm-starter": "npm:^0.2.1"
+    dotenv: "npm:^16.3.1"
+    jsonschema: "npm:^1.4.1"
+  checksum: 27dbee264c64ff4566fb6d9ca1b69bfe9512c256ffe397c90813da1205febf326c11345024bcfddc3e0e8444834580b3a6eaab1c65d9c0b847baeebd0a58caf8
   languageName: node
   linkType: hard
 
@@ -829,7 +842,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dev-pulse-breadboard@workspace:samples/DevPulse/DevPulse Breadboard"
   dependencies:
-    "@exadev/breadboard-kits": "npm:^0.3.45"
+    "@exadev/breadboard-kits": "npm:^0.4.4"
     "@google-labs/breadboard": "npm:^0.5.1"
     "@google-labs/core-kit": "npm:^0.0.1"
     "@google-labs/llm-starter": "npm:^0.1.0"
