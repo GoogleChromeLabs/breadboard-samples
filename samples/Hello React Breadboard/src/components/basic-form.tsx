@@ -11,13 +11,33 @@ const BasicForm = (): React.JSX.Element => {
 	});
 
 	const onSubmit = async (values: FieldType) => {
-		console.log(values.id);
-		board.input().wire("*", board.output());
+		/* console.log(values.id);
+		const input = board.input().wire("*", board.output());
+		input.wire(values.id, board.output());
+
+		const runOutput = await board.runOnce({
+			input: "Hello world!",
+		})
 		console.log(
-			await board.runOnce({
-				message: "Hello Breadboard!",
-			})
-		);
+			runOutput
+		); */
+		console.log(values.id);
+
+		const output = board.output();
+
+		const inputOne = board.input();
+		inputOne.wire("message", output);
+
+		for await (const run of board.run()) {
+			if (run.type === "input") {
+				run.inputs = {
+					message: `The post ID is ${values.id}!`,
+				};
+			} else if (run.type === "output") {
+				console.log(run.outputs);
+			}
+		}
+
 	};
 
 	return (
