@@ -5,10 +5,10 @@ import BasicForm from './components/basic-form';
 
 function App() {
 
-
-
 	return (
-		<BasicForm />
+		<main className="appContainer">
+			<BasicForm />
+		</main>
 	);
 }
 

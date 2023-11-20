@@ -3,6 +3,7 @@
 	margin: 0 auto;
 	padding: 2rem;
 	text-align: center;
+	flex: 1;
 }
 
 .logo {
@@ -41,4 +42,9 @@
 
 .read-the-docs {
 	color: #888;
+}
+
+.appContainer {
+	display: flex;
+	justify-content: space-around;
 }
