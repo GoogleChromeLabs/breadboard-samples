@@ -207,7 +207,12 @@ commentData.wire("*",
 
 //////////////////////////////////////////////////
 
-exadev.util.files.generateAndWriteCombinedMarkdown(board);
+exadev.util.files.generateAndWriteCombinedMarkdown({
+	board,
+	filename: "README",
+	dir: ".",
+});
+
 
 const suppressedOutputIds = [
 	"commentOutput",
