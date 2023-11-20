@@ -21,21 +21,23 @@ type FieldType = {
 // 	name: "partTwo",
 // };
 
-const wireAttribute = "message";
+const inputAttribute = "message";
 
 const BasicForm = (): React.JSX.Element => {
 	// const [nodeState, setNodeOutput] = useState<OutputCardProps>({ key: wireAttribute, output: {} });
-	const [nodeState, setNodeOutput] = useState<OutputCardProps>({ attribute: wireAttribute, output: {} });
-	console.log("nodeOutput", `${JSON.stringify(nodeState, null, 2)}`);
+	const [nodeState, setNodeState] = useState<OutputCardProps>({
+		nodeData: {},
+	});
+	console.log("nodeOutput", JSON.stringify(nodeState, null, 2));
 	const board = new Board({
 		title: "new board",
 	});
 
 	const onSubmit = async (values: FieldType) => {
-		const input = board.input()
+		const input = board.input();
 		const output = board.output();
 
-		input.wire(wireAttribute, output);
+		input.wire(inputAttribute, output);
 
 		// const inputOne = board.input({
 		// 	$id: inputNodeOne.id,
@@ -51,7 +53,7 @@ const BasicForm = (): React.JSX.Element => {
 			// console.log("run");
 			if (run.type === "input") {
 				run.inputs = {
-					[wireAttribute]: values.input,
+					[inputAttribute]: values.input,
 				};
 				// if (run.node.id == inputNodeOne.id) {
 				// 	run.inputs = {
@@ -68,9 +70,12 @@ const BasicForm = (): React.JSX.Element => {
 				// };
 			} else if (run.type === "output") {
 				// setNodeOutput(JSON.stringify(run.outputs, null, 2));
-				setNodeOutput({
-					attribute: wireAttribute,
-					output: run.outputs,
+				setNodeState({
+					nodeData: {
+						node: run.node,
+						outputs: run.outputs,
+						inputs: run.inputs,
+					},
 				});
 			}
 		}
@@ -113,12 +118,7 @@ const BasicForm = (): React.JSX.Element => {
 					</Form.Item>
 				</Form>
 			</Card>
-			{nodeState && (
-				<OutputCard
-					output={nodeState.output}
-					attribute={nodeState.attribute}
-				/>
-			)}
+			{nodeState && <OutputCard nodeData={nodeState.nodeData} />}
 		</>
 	);
 };

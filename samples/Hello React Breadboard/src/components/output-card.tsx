@@ -2,18 +2,18 @@ import { Card } from "antd";
 import { OutputValues } from "@google-labs/breadboard";
 
 export type OutputCardProps = {
-	output: OutputValues;
-	attribute: string;
+	nodeData: OutputValues;
+	// attribute: string;
 };
 
-const OutputCard = ({ output, attribute }: OutputCardProps): React.JSX.Element => {
+const OutputCard = ({ nodeData }: OutputCardProps): React.JSX.Element => {
 	// const parsedOutput = JSON.parse(output);
-	const outputString = JSON.stringify(output, null, 2);
+	const outputString = JSON.stringify(nodeData, null, 2);
 	console.log(outputString);
-	console.log("key", attribute);
-	console.log("output", output);
-	const builtString = `${attribute}: ${output[attribute]}`;
-	console.log("builtString", builtString);
+	// console.log("key", attribute);
+	// console.log("output", output);
+	// const builtString = `${attribute}: ${output[attribute]}`;
+	// console.log("builtString", builtString);
 	// console.log(JSON.stringify(output, null, 2));
 
 	return (
@@ -23,7 +23,7 @@ const OutputCard = ({ output, attribute }: OutputCardProps): React.JSX.Element =
 				width: "300px",
 			}}
 		>
-			{`${attribute}: ${output[attribute]}`}
+			{outputString}
 		</Card>
 	);
 };
