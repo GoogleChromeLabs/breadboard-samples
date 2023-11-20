@@ -160,14 +160,14 @@ __metadata:
   linkType: hard
 
 "@exadev/breadboard-kits@npm:^0.3.38":
-  version: 0.3.38
-  resolution: "@exadev/breadboard-kits@npm:0.3.38"
+  version: 0.3.45
+  resolution: "@exadev/breadboard-kits@npm:0.3.45"
   dependencies:
-    "@google-labs/breadboard": "npm:^0.5.0"
+    "@google-labs/breadboard": "npm:^0.5.1"
     "@google-labs/core-kit": "npm:^0.0.1"
     "@google-labs/llm-starter": "npm:^0.2.1"
     jsonschema: "npm:^1.4.1"
-  checksum: 48c6ff870841b28526f57fbe8ae7d78c576bf305011666fc64d92721a42287a0ec0d6eb13408fd5364b19bd9460cb005f03a1eea63934887b83a2d653d7507aa
+  checksum: 9bdad0ab5b9ac3bb7be0249ad8bb7bd7ed9f0f13ac0113a2a4c5eca0917f5f90cc06aad31cc95de6757f25f5ed2b831799ea67f3abe560a9fbcefa842812fa0f
   languageName: node
   linkType: hard
 
@@ -257,7 +257,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.9.2, @types/node@npm:^20.9.2":
+"@types/node@npm:^20.9.2":
   version: 20.9.2
   resolution: "@types/node@npm:20.9.2"
   dependencies:
@@ -394,8 +394,8 @@ __metadata:
   resolution: "breadboard-samples@workspace:."
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.1"
-    "@types/node": "npm:20.9.2"
-    typescript: "npm:5.2.2"
+    "@types/node": "npm:^20.9.2"
+    typescript: "npm:^5.2.2"
   languageName: unknown
   linkType: soft
 
@@ -2103,7 +2103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.2.2, typescript@npm:^5.2.2":
+"typescript@npm:^5.2.2":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"
   bin:
@@ -2113,7 +2113,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>":
   version: 5.2.2
   resolution: "typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"
   bin:

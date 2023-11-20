@@ -3,8 +3,8 @@
 		"@google-labs/breadboard": "^0.5.1"
 	},
 	"devDependencies": {
-		"@types/node": "20.9.2",
-		"typescript": "5.2.2"
+		"@types/node": "^20.9.2",
+		"typescript": "^5.2.2"
 	},
 	"engines": {
 		"node": ">=19"
