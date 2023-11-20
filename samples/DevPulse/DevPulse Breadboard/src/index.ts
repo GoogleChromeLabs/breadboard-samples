@@ -1,19 +1,21 @@
 #!/usr/bin/env npx -y tsx watch
-import exadev, {
+import {
+	ConfigKit,
 	HackerNewsAlgoliaKit,
 	HackerNewsFirebaseKit,
 	JsonKit,
 	ListKit,
 	ObjectKit,
-	StringKit
+	StringKit,
+	util
 } from "@exadev/breadboard-kits";
+import { MarkdownContentType } from "@exadev/breadboard-kits/dist/types/markdown.js";
 import { Board } from "@google-labs/breadboard";
 import Core from "@google-labs/core-kit";
 import { ClaudeKit } from "@paulkinlan/claude-breadboard-kit";
-import * as dotenv from "dotenv";
 
 const board = new Board({
-	title: "Hacker News Board"
+	title: "Hacker News"
 });
 const firebase = board.addKit(HackerNewsFirebaseKit);
 const algolia = board.addKit(HackerNewsAlgoliaKit);
@@ -75,14 +77,13 @@ storyData.wire("*", storyOutput);
 ////////////////////////////////////////////////////////////////////////////////
 
 const claude = board.addKit(ClaudeKit);
+const config = board.addKit(ConfigKit);
 
-dotenv.config();
-
-const {CLAUDE_API_KEY} = process.env;
-
-const completion = claude.generateCompletion({
-	CLAUDE_API_KEY,
+const claudeApiKey = config.readEnvVar({
+	key: "CLAUDE_API_KEY",
 });
+const completion = claude.generateCompletion();
+claudeApiKey.wire("CLAUDE_API_KEY", completion);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -161,8 +162,9 @@ postContentTemplate.wire(
 
 const postContentCompletion = claude.generateCompletion({
 	$id: "claudePostContentCompletion",
-	CLAUDE_API_KEY,
 });
+claudeApiKey.wire("CLAUDE_API_KEY", postContentCompletion);
+
 postContentTemplate.wire("string->text", postContentCompletion);
 postContentCompletion.wire(
 	"$error",
@@ -194,7 +196,9 @@ comment.wire("comment->object", spread);
 spread.wire("children->list", popChildren);
 spread.wire("*", board.output({$id: "fullCommentData"}));
 
-const commentData = core.passthrough();
+const commentData = core.passthrough({
+	$id: "commentData",
+});
 spread.wire("text", commentData);
 spread.wire("id", commentData);
 spread.wire("story_id", commentData);
@@ -207,12 +211,22 @@ commentData.wire("*",
 
 //////////////////////////////////////////////////
 
-exadev.util.files.generateAndWriteCombinedMarkdown(board);
+util.files.makeMarkdown({
+	board,
+	filename: "README",
+	title: "Hacker News",
+	dir: ".",
+	markdownConfig: [
+		MarkdownContentType.mermaid,
+		MarkdownContentType.json
+	]
+})
 
 const suppressedOutputIds = [
 	"commentOutput",
 	"fullCommentData"
 ]
+
 for await (const run of board.run({
 	// probe: new LogProbe(),
 })) {
