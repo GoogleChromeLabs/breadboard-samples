@@ -514,8 +514,9 @@ __metadata:
     "@google-labs/breadboard": "npm:^0.5.1"
     "@google-labs/core-kit": "npm:^0.0.1"
     "@google-labs/llm-starter": "npm:^0.2.1"
+    dotenv: "npm:^16.3.1"
     jsonschema: "npm:^1.4.1"
-  checksum: 9bdad0ab5b9ac3bb7be0249ad8bb7bd7ed9f0f13ac0113a2a4c5eca0917f5f90cc06aad31cc95de6757f25f5ed2b831799ea67f3abe560a9fbcefa842812fa0f
+  checksum: 6e65e24de72c283a2671270bfad167e412fa4166fd4f75974c3341a6d21089ebd009030e970d7dd6205305351f5d6718d5aa45641babac8d6e39bd98d6e44e86
   languageName: node
   linkType: hard
 
@@ -1091,7 +1092,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20.9.2, @types/node@npm:^20.9.0, @types/node@npm:^20.9.1, @types/node@npm:^20.9.2":
+"@types/node@npm:*, @types/node@npm:^20.9.0, @types/node@npm:^20.9.2":
   version: 20.9.2
   resolution: "@types/node@npm:20.9.2"
   dependencies:
@@ -1607,8 +1608,8 @@ __metadata:
   resolution: "breadboard-samples@workspace:."
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.1"
-    "@types/node": "npm:20.9.2"
-    typescript: "npm:5.2.2"
+    "@types/node": "npm:^20.9.2"
+    typescript: "npm:^5.2.2"
   languageName: unknown
   linkType: soft
 
@@ -1906,7 +1907,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dev-pulse-breadboard@workspace:samples/DevPulse/DevPulse Breadboard"
   dependencies:
-    "@exadev/breadboard-kits": "npm:^0.3.45"
+    "@exadev/breadboard-kits": "npm:^0.4.7"
     "@google-labs/breadboard": "npm:^0.5.1"
     "@google-labs/core-kit": "npm:^0.0.1"
     "@google-labs/llm-starter": "npm:^0.1.0"
@@ -3015,7 +3016,7 @@ __metadata:
   resolution: "hello-breadboard@workspace:samples/Hello World"
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.0"
-    "@types/node": "npm:^20.9.1"
+    "@types/node": "npm:^20.9.2"
     typescript: "npm:^5.2.2"
   languageName: unknown
   linkType: soft
@@ -5454,7 +5455,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.2.2, typescript@npm:^5.2.2":
+"typescript@npm:^5.2.2":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"
   bin:
@@ -5464,7 +5465,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>":
   version: 5.2.2
   resolution: "typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"
   bin:
