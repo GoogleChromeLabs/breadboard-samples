@@ -1917,9 +1917,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"devpulse-react@workspace:samples/DevPulse/devpulse-react":
+"devpulse-react@workspace:samples/DevPulse/DevPulse React":
   version: 0.0.0-use.local
-  resolution: "devpulse-react@workspace:samples/DevPulse/devpulse-react"
+  resolution: "devpulse-react@workspace:samples/DevPulse/DevPulse React"
   dependencies:
     "@types/react": "npm:^18.2.37"
     "@types/react-dom": "npm:^18.2.15"
