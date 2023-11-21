@@ -1,18 +1,11 @@
 #!/usr/bin/env npx -y tsx watch
-import {
-	ConfigKit,
-	HackerNewsAlgoliaKit,
-	HackerNewsFirebaseKit,
-	JsonKit,
-	ListKit,
-	ObjectKit,
-	StringKit,
-	util
-} from "@exadev/breadboard-kits";
-import { MarkdownContentType } from "@exadev/breadboard-kits/dist/types/markdown.js";
+
 import { Board } from "@google-labs/breadboard";
 import Core from "@google-labs/core-kit";
 import { ClaudeKit } from "@paulkinlan/claude-breadboard-kit";
+import { ListKit, HackerNewsAlgoliaKit, ObjectKit, HackerNewsFirebaseKit, ConfigKit, StringKit, JsonKit, default as exadev } from '@exadev/breadboard-kits';
+import { makeMarkdown } from '@exadev/breadboard-kits/dist/util/files/makeMarkdown.js';
+import { MarkdownContentType } from '@exadev/breadboard-kits/dist/types/markdown.js';
 
 const board = new Board({
 	title: "Hacker News"
@@ -24,8 +17,6 @@ const topStoryIdNode = firebase.topStoryIds({
 	limit: 1,
 	$id: "topStoryId",
 });
-
-//////////////////////////////////////////////////
 
 //////////////////////////////////////////////////
 const listKit = board.addKit(ListKit);
@@ -132,7 +123,7 @@ limit.wire(
 );
 const stringify = jsonKit.stringify();
 limit.wire("object", stringify);
-stringify.wire("*", board.output({$id: "stringifiedPost"}));
+stringify.wire("*", board.output({ $id: "stringifiedPost" }));
 const instruction = "Summarise the discussion regarding this post";
 
 const postContentTemplate = string.template({
@@ -194,7 +185,7 @@ const spread = objectKit.spread({
 });
 comment.wire("comment->object", spread);
 spread.wire("children->list", popChildren);
-spread.wire("*", board.output({$id: "fullCommentData"}));
+spread.wire("*", board.output({ $id: "fullCommentData" }));
 
 const commentData = core.passthrough({
 	$id: "commentData",
@@ -211,7 +202,7 @@ commentData.wire("*",
 
 //////////////////////////////////////////////////
 
-util.files.makeMarkdown({
+makeMarkdown({
 	board,
 	filename: "README",
 	title: "Hacker News",
@@ -220,12 +211,12 @@ util.files.makeMarkdown({
 		MarkdownContentType.mermaid,
 		MarkdownContentType.json
 	]
-})
+});
 
 const suppressedOutputIds = [
 	"commentOutput",
 	"fullCommentData"
-]
+];
 
 for await (const run of board.run({
 	// probe: new LogProbe(),
