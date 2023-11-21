@@ -43,9 +43,13 @@ input.wire("message", outputTwo);
 	}
 })();
 
-const markdownConfig : MarkdownContentList = [MarkdownContentType.mermaid, MarkdownContentType.json]
-const filename = board.title
-const title = board.title
-const dir = "output"
-
-makeMarkdown({board, filename, title, dir, markdownConfig});
+makeMarkdown({
+	board,
+	filename: board.title,
+	title: board.title,
+	dir: "output",
+	markdownConfig: [
+		MarkdownContentType.mermaid,
+		MarkdownContentType.json
+	]
+});
