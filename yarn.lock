@@ -507,29 +507,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@exadev/breadboard-kits@npm:^0.3.38, @exadev/breadboard-kits@npm:^0.3.45":
-  version: 0.3.45
-  resolution: "@exadev/breadboard-kits@npm:0.3.45"
+"@exadev/breadboard-kits@npm:^0.4.7, @exadev/breadboard-kits@npm:^0.4.8":
+  version: 0.4.8
+  resolution: "@exadev/breadboard-kits@npm:0.4.8"
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.1"
     "@google-labs/core-kit": "npm:^0.0.1"
     "@google-labs/llm-starter": "npm:^0.2.1"
     dotenv: "npm:^16.3.1"
     jsonschema: "npm:^1.4.1"
-  checksum: 6e65e24de72c283a2671270bfad167e412fa4166fd4f75974c3341a6d21089ebd009030e970d7dd6205305351f5d6718d5aa45641babac8d6e39bd98d6e44e86
-  languageName: node
-  linkType: hard
-
-"@exadev/breadboard-kits@npm:^0.4.3":
-  version: 0.4.3
-  resolution: "@exadev/breadboard-kits@npm:0.4.3"
-  dependencies:
-    "@google-labs/breadboard": "npm:^0.5.1"
-    "@google-labs/core-kit": "npm:^0.0.1"
-    "@google-labs/llm-starter": "npm:^0.2.1"
-    dotenv: "npm:^16.3.1"
-    jsonschema: "npm:^1.4.1"
-  checksum: 4393e71bed42e67832d1bf94200f786f9355e2345e75d68176e3ab96ab4c9a9fceda6e6f4339572127cdb2e2a1981d19ae32981e2d50a6ea61a76f633f2cf4ad
+  checksum: adb18ff562010ddb17b0a9c9d81848c670c19447f71fa034420d33ee7949318bfe3854415fa53cd08bf6633cef17a3efeaa51ad806ff9899dfb0960b467dbfb0
   languageName: node
   linkType: hard
 
@@ -1110,6 +1097,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^20.9.3":
+  version: 20.9.3
+  resolution: "@types/node@npm:20.9.3"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 5d2a3a6b2b900814eab8c5093dabb7aa10895928719ec0074b9ac5584bcc83f5b680e2d2cb6c8b9751511b7b1b7fdd8586d2fc827b156f0263fdb65c4741bdef
+  languageName: node
+  linkType: hard
+
 "@types/prop-types@npm:*":
   version: 15.7.10
   resolution: "@types/prop-types@npm:15.7.10"
@@ -1608,8 +1604,8 @@ __metadata:
   resolution: "breadboard-samples@workspace:."
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.1"
-    "@types/node": "npm:^20.9.2"
-    typescript: "npm:^5.2.2"
+    "@types/node": "npm:^20.9.3"
+    typescript: "npm:^5.3.2"
   languageName: unknown
   linkType: soft
 
@@ -1617,12 +1613,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "breadboard-walkthrough@workspace:samples/Breadboard Walkthrough"
   dependencies:
-    "@exadev/breadboard-kits": "npm:^0.3.38"
+    "@exadev/breadboard-kits": "npm:^0.4.8"
     "@google-labs/breadboard": "npm:^0.5.1"
-    "@types/node": "npm:^20.9.2"
+    "@types/node": "npm:^20.9.3"
     npm-run-all: "npm:^4.1.5"
-    tsx: "npm:^4.1.4"
-    typescript: "npm:^5.2.2"
+    tsx: "npm:^4.2.0"
+    typescript: "npm:^5.3.2"
   languageName: unknown
   linkType: soft
 
@@ -3025,7 +3021,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "hello-react-breadboard@workspace:samples/Hello React Breadboard"
   dependencies:
-    "@exadev/breadboard-kits": "npm:^0.4.3"
+    "@exadev/breadboard-kits": "npm:^0.4.8"
     "@types/react": "npm:^18.2.37"
     "@types/react-dom": "npm:^18.2.15"
     "@typescript-eslint/eslint-plugin": "npm:^6.10.0"
@@ -5392,6 +5388,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tsx@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "tsx@npm:4.2.0"
+  dependencies:
+    esbuild: "npm:~0.18.20"
+    fsevents: "npm:~2.3.3"
+    get-tsconfig: "npm:^4.7.2"
+    source-map-support: "npm:^0.5.21"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    tsx: dist/cli.mjs
+  checksum: 73a2c4cb7e21cb36080e0430b4aa6e7dce793780faf343b807ee64ba435c722907dd18c140411c5296edca618858f8429469f42a441f1bd3920b29df338c57c1
+  languageName: node
+  linkType: hard
+
 "type-check@npm:^0.4.0, type-check@npm:~0.4.0":
   version: 0.4.0
   resolution: "type-check@npm:0.4.0"
@@ -5465,6 +5478,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "typescript@npm:5.3.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 415e5fb6611f5713e460bad48039f00bcfdbde53a2f911727862d5aa9c5d5edd250059a419df382d8f031709e15a169c41eb62b6a401da5eec7ac0f4e359d6ac
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>":
   version: 5.2.2
   resolution: "typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"
@@ -5472,6 +5495,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: f79cc2ba802c94c2b78dbb00d767a10adb67368ae764709737dc277273ec148aa4558033a03ce901406b35fddf4eac46dabc94a1e1d12d2587e2b9cfe5707b4a
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.3.2#optional!builtin<compat/typescript>":
+  version: 5.3.2
+  resolution: "typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>::version=5.3.2&hash=e012d7"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 1b45cdfb577a78ae7a9a9d0b77a7b772142cb98ba05e4e5aefba7044a028ded885bcecef63166407a5986645cea816fe4986894336aacd5e791796ea79a6a7ed
   languageName: node
   linkType: hard
 
