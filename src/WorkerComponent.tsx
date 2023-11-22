@@ -43,11 +43,64 @@ export const WorkerComponent: React.FC = () => {
 
 	console.log("main", dateTime);
 	return (
-		<div>
-			<button onClick={startLoop}>Start</button>
-			<button onClick={pauseLoop}>Pause</button>
-			<button onClick={stopLoop}>Stop</button>
-			<p>Current Date Time from Worker: {dateTime}</p>
+		<div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+			<h1 style={{ textAlign: "center" }}>Worker Data</h1>
+
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					marginBottom: "20px",
+				}}
+			>
+				<div style={{ marginRight: "20px" }}>
+					<div>
+						<strong>Iteration:</strong>
+					</div>
+					<div style={{ fontSize: "1.2em", marginTop: "5px" }}>
+						{iteration}
+					</div>
+				</div>
+
+				<div>
+					<div>
+						<strong>Current Date Time:</strong>
+					</div>
+					<div style={{ fontSize: "1.2em", marginTop: "5px" }}>
+						{dateTime}
+					</div>
+				</div>
+			</div>
+
+			<div style={{ textAlign: "center" }}>
+				<button
+					style={{
+						marginRight: "10px",
+						padding: "10px 20px",
+						cursor: "pointer",
+					}}
+					onClick={startLoop}
+				>
+					Start
+				</button>
+				<button
+					style={{
+						marginRight: "10px",
+						padding: "10px 20px",
+						cursor: "pointer",
+					}}
+					onClick={pauseLoop}
+				>
+					Pause
+				</button>
+				<button
+					style={{ padding: "10px 20px", cursor: "pointer" }}
+					onClick={stopLoop}
+				>
+					Stop
+				</button>
+			</div>
 		</div>
 	);
 };
