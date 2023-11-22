@@ -4,12 +4,15 @@ import WorkerManager from "./WorkerService.ts";
 const worker: Worker = WorkerManager.getInstance();
 export const WorkerComponent: React.FC = () => {
 	const [dateTime, setDateTime] = useState("");
+	const [iteration, setIteration] = useState(0);
 
 	useEffect(() => {
 		worker.onmessage = (event) => {
 			if (event.data.currentDateTime) {
 				setDateTime(event.data.currentDateTime);
 			}
+			if (event.data.iteration) {
+				setIteration(event.data.iteration);
 			}
 		};
 	}, []);

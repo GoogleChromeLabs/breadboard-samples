@@ -19,6 +19,7 @@ const asyncLoop = async () => {
 		console.log("worker", loop++, currentDateTime);
 		postMessage({
 			currentDateTime,
+			iteration: loop,
 		});
 
 		await new Promise((resolve) => setTimeout(resolve, 1000));
