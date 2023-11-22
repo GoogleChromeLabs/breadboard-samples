@@ -12,8 +12,9 @@ const asyncLoop = async () => {
 	// eslint-disable-next-line no-constant-condition
 	while (true) {
 		if (isStopped) break;
-		while (isPaused)
-			await new Promise((resolve) => setTimeout(resolve, 1000));
+		while (isPaused) {
+			await new Promise((resolve) => setTimeout(resolve, 10));
+		}
 
 		const currentDateTime = new Date().toISOString();
 		console.log("worker", loop++, currentDateTime);
@@ -22,7 +23,7 @@ const asyncLoop = async () => {
 			iteration: loop,
 		});
 
-		await new Promise((resolve) => setTimeout(resolve, 1000));
+		await new Promise((resolve) => setTimeout(resolve, 100));
 	}
 	isRunning = false;
 };
