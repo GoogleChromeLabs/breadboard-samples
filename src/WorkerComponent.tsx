@@ -7,22 +7,29 @@ export const WorkerComponent: React.FC = () => {
 
 	useEffect(() => {
 		worker.onmessage = (event) => {
-			if (typeof event.data === "string") {
-				setDateTime(event.data);
+			if (event.data.currentDateTime) {
+				setDateTime(event.data.currentDateTime);
+			}
 			}
 		};
 	}, []);
 
 	const startLoop = () => {
-		worker.postMessage("start");
+		worker.postMessage({
+			command: "start",
+		});
 	};
 
 	const pauseLoop = () => {
-		worker.postMessage("pause");
+		worker.postMessage({
+			command: "pause",
+		});
 	};
 
 	const stopLoop = () => {
-		worker.postMessage("stop");
+		worker.postMessage({
+			command: "stop",
+		});
 	};
 
 	// const requestDateTime = () => {

@@ -17,7 +17,9 @@ const asyncLoop = async () => {
 
 		const currentDateTime = new Date().toISOString();
 		console.log("worker", loop++, currentDateTime);
-		postMessage(currentDateTime);
+		postMessage({
+			currentDateTime,
+		});
 
 		await new Promise((resolve) => setTimeout(resolve, 1000));
 	}
@@ -25,17 +27,17 @@ const asyncLoop = async () => {
 };
 
 self.onmessage = (event) => {
-	if (event.data === "start") {
+	if (event.data.command === "start") {
 		console.log("worker", "start");
 		isPaused = false;
 		isStopped = false;
 		if (!isRunning) {
 			asyncLoop().then();
 		}
-	} else if (event.data === "pause") {
+	} else if (event.data.command == "pause") {
 		console.log("worker", "pause");
 		isPaused = true;
-	} else if (event.data === "stop") {
+	} else if (event.data.command === "stop") {
 		console.log("worker", "stop");
 		isStopped = true;
 	}
