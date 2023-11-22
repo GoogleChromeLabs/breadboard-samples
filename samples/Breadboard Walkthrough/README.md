@@ -7,3 +7,8 @@
 5. [Nodes by ID](./output/nodes-by-id.ts.md)
 6. [One Input Multiple Outputs](./output/one-input-multiple-outputs.ts.md)
 7. [Multiple Inputs One Output](./output/multiple-inputs-one-output.ts.md)
+8. [Naming Wiring Parameters]()
+9. [Arrow Directions]()
+10. [Kit Node Values and Handlers]()
+11. [Include Board as a Node]()
+12. [Adding Slot to Board]()
