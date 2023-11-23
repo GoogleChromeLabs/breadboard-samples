@@ -5,5 +5,5 @@
 		"noEmit": true,
 		"target": "ES2017"
 	},
-	"extends": "../../../tsconfig.minimal.json"
+	"extends": "../../../tsconfig.minimal.json",
 }
