@@ -17,7 +17,7 @@ input.wire("inputPartOne", board.output({
 }));
 
 // redirecting a parameter to another name can be useful for when you want to use a node that requires a specifically named input or input(s)
-input.wire("inputPartOne->outputPartOne", board.output({
+input.wire("inputPartOne->renamedOutput", board.output({
 	$id: "renamedOutputNode"
 }));
 
