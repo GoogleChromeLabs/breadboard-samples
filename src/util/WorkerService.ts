@@ -1,4 +1,4 @@
-import Worker from "./sw/worker.ts?worker";
+import Worker from "~/sw/worker.ts?worker";
 
 class WorkerManager {
 	private static instance: Worker = new Worker();

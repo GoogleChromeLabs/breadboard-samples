@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import WorkerManager from "./WorkerService.ts";
+import WorkerManager from "~/util/WorkerService";
 
 const worker: Worker = WorkerManager.getInstance();
 export const WorkerComponent: React.FC = () => {

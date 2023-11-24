@@ -1,7 +1,7 @@
 // YourComponent.tsx
 import "./App.css";
 import React from "react";
-import WorkerComponent from "./WorkerComponent.tsx";
+import WorkerComponent from "~/components/WorkerComponent.tsx";
 
 function App() {
 	return (
