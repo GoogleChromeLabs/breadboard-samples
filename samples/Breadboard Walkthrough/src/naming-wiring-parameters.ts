@@ -2,10 +2,12 @@
 
 import { Board } from "@google-labs/breadboard";
 import { Core } from "@google-labs/core-kit";
+import path from "path";
+import exadev from "@exadev/breadboard-kits";
 
 const board = new Board({
-	title: "My First Board",
-	description: "This is my first board",
+    title: path.basename(new URL(import.meta.url).pathname),
+
 });
 
 const coreKit = board.addKit(Core);
@@ -39,3 +41,5 @@ input.wire("*", board.output({
 		}
 	}
 })();
+
+exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");
