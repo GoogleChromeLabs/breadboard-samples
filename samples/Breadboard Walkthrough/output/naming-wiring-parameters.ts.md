@@ -4,7 +4,7 @@
 %%{init: 'themeVariables': { 'fontFamily': 'Fira Code, monospace' }}%%
 graph TD;
 inputNode[/"input <br> id='inputNode'"/]:::input -- "inputPartOne->inputPartOne" --> outputNode{{"output <br> id='outputNode'"}}:::output
-inputNode[/"input <br> id='inputNode'"/]:::input -- "inputPartOne->outputPartOne" --> renamedOutputNode{{"output <br> id='renamedOutputNode'"}}:::output
+inputNode[/"input <br> id='inputNode'"/]:::input -- "inputPartOne->renamedOutput" --> renamedOutputNode{{"output <br> id='renamedOutputNode'"}}:::output
 inputNode[/"input <br> id='inputNode'"/]:::input -- all --> outputAll{{"output <br> id='outputAll'"}}:::output
 classDef default stroke:#ffab40,fill:#fff2ccff,color:#000
 classDef input stroke:#3c78d8,fill:#c9daf8ff,color:#000
@@ -30,7 +30,7 @@ classDef slotted stroke:#a64d79
 			"from": "inputNode",
 			"to": "renamedOutputNode",
 			"out": "inputPartOne",
-			"in": "outputPartOne"
+			"in": "renamedOutput"
 		},
 		{
 			"from": "inputNode",
