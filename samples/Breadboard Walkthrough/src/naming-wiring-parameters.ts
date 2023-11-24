@@ -2,7 +2,6 @@
 
 import { Board } from "@google-labs/breadboard";
 import { Core } from "@google-labs/core-kit";
-import exadev from "@exadev/breadboard-kits";
 
 const board = new Board({
 	title: "My First Board",
@@ -24,10 +23,6 @@ input.wire("inputPartOne->outputPartOne", board.output({
 	$id: "renamedOutputNode"
 }));
 
-board.output({
-	$id: "partTwoOutputNode"
-}).wire("outputPartTwo<-inputPartTwo", input)
-
 input.wire("*", board.output({
 		$id: "outputAll"
 }));
@@ -44,5 +39,3 @@ input.wire("*", board.output({
 		}
 	}
 })();
-
-exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");
