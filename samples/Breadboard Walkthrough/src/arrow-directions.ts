@@ -1,45 +1,34 @@
 #!/usr/bin/env npx -y tsx
 
 import { Board } from "@google-labs/breadboard";
-import { Core } from "@google-labs/core-kit";
+import path from "path";
+import exadev from "@exadev/breadboard-kits";
 
 const board = new Board({
-	title: "My First Board",
-	description: "This is my first board",
+	title: path.basename(new URL(import.meta.url).pathname),
 });
 
-const coreKit = board.addKit(Core);
+const output = board.output();
 
-const input = board.input({
-	$id: "inputNode"
-});
+const input = board.input();
 
-input.wire("inputPartOne", board.output({
-        $id: "outputNode"
-    }));
+input.wire("inputPartOne", output); // Left-to-right direction is assumed by default
+input.wire("inputPartTwo->", output);
 
-// redirecting a parameter to another name can be useful for when you want to use a node that requires a specifically named input or input(s)
-input.wire("inputPartOne->outputPartOne", board.output({
-	$id: "renamedOutputNode"
-}));
-
-board.output({
-	$id: "partTwoOutputNode"
-}).wire("outputPartTwo<-inputPartTwo", input)
-
-input.wire("*", board.output({
-		$id: "outputAll"
-}));
+output.wire("<-inputPartThree", input);
 
 (async () => {
 	for await (const run of board.run()) {
         if (run.type === "input") {
 					run.inputs = {
-						inputPartOne: `Hello`,
-						inputPartTwo: "World!"
+						inputPartOne: "Welcome",
+						inputPartTwo: "To",
+						inputPartThree: "Breadboard!"
 			};
 		} else if (run.type === "output") {
-			console.log(run.node.id, run.outputs);
+			console.log(run.outputs);
 		}
 	}
 })();
+
+exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");
