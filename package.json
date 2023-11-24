@@ -17,7 +17,8 @@
 	],
 	"scripts": {
 		"start": "yarn workspaces foreach -A run start",
-		"watch": "yarn workspaces foreach -A run watch"
+		"watch": "yarn workspaces foreach -A run watch",
+		"build": "yarn workspaces foreach -A run build"
 	},
 	"repository": "https://github.com/GoogleChromeLabs/breadboard-samples",
 	"packageManager": "yarn@4.0.2"
