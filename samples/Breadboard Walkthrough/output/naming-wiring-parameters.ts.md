@@ -56,10 +56,6 @@ classDef slotted stroke:#a64d79
 			"type": "output"
 		}
 	],
-	"kits": [
-		{
-			"url": "npm:@google-labs/core-kit"
-		}
-	]
+	"kits": []
 }
 ```
