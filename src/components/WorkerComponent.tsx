@@ -1,10 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 
-const channel = new BroadcastChannel(BROADCAST_CHANNEL);
+const broadcastChannel = new BroadcastChannel(BROADCAST_CHANNEL);
 
 function sendMessage(data: unknown) {
-	channel.postMessage(data);
+	broadcastChannel.postMessage(data);
+}
+
+function renderInputForm(nodeID: string, message: string) {
+	// Create form elements
+	const form = document.createElement('form');
+	const input = document.createElement('input');
+	const submitButton = document.createElement('button');
+
+	// Configure elements
+	input.type = 'text';
+	input.placeholder = `Input for ${nodeID}`;
+	submitButton.type = 'submit';
+	submitButton.textContent = 'Submit';
+
+	// Append elements to the form
+	form.appendChild(input);
+	form.appendChild(submitButton);
+
+	// Append form to the body or a specific div
+	document.body.appendChild(form);
+
+	// Handle form submission
+	form.onsubmit = (e) => {
+		e.preventDefault();
+		broadcastChannel.postMessage({
+			command: 'inputResponse',
+			nodeID: nodeID,
+			userInput: input.value
+		});
+		form.remove(); // Remove the form after submission
+	};
 }
 
 export const WorkerComponent: React.FC = () => {
@@ -19,10 +50,21 @@ export const WorkerComponent: React.FC = () => {
 		if (data.currentDateTime) {
 			setDateTime(data.currentDateTime!);
 		}
+		if (data.type === 'inputNeeded') {
+			const {nodeID, message} = data;
+			renderInputForm(nodeID, message);
+		}
 	}
 
+	// broadcastChannel.onmessage = event => {
+	// 	if (event.data.type === 'inputNeeded') {
+	// 		const {nodeID, message} = event.data;
+	// 		renderInputForm(nodeID, message);
+	// 	}
+	// };
+
 	useEffect(() => {
-		channel.onmessage = (event) => handleMessage(event.data);
+		broadcastChannel.onmessage = (event) => handleMessage(event.data);
 		self.addEventListener("message", (event) => handleMessage(event.data));
 	}, []);
 

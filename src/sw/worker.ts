@@ -14,9 +14,14 @@ self.addEventListener("activate", (event) => {
 	event.waitUntil(self.clients.claim()); // Immediately control any open clients
 });
 
+type Receiver = {
+	log: (...args: unknown[]) => void;
+};
+
+import { Board, LogProbe } from "@google-labs/breadboard";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
-import { loadData, storeData } from "~/services/databaseService.ts";
 import { loadCounter, updateCounter } from "~/services/counterService.ts";
+import { loadData, storeData } from "~/services/databaseService.ts";
 
 let iteration: number = 0;
 let loopActive: boolean = false;
@@ -45,6 +50,79 @@ async function asyncLoop() {
 	await updateCounter(iteration);
 }
 
+const inputNodeID = "input";
+
+function makeBoard(): Board {
+	const board = new Board()
+	const input = board.input({
+		$id: inputNodeID,
+	})
+	const output = board.output({
+		$id: "output",
+	})
+	input.wire("message", output)
+
+	return board
+}
+
+const pendingInputResolvers: {
+	[key: string]: (input: string) => void
+} = {};
+
+function waitForInput(nodeID: string) {
+	console.debug("waitForInput", nodeID);
+	return new Promise((resolve) => {
+		// Store the resolver function in an object so it can be called when input is received
+		pendingInputResolvers[nodeID] = resolve;
+	});
+}
+
+async function runBoard() {
+	const board = makeBoard();
+	const logReceiver: Receiver = {
+		log: (message) => {
+			console.debug(message);
+		},
+	};
+
+	for await (const runResult of board.run({
+		probe: new LogProbe(logReceiver),
+	})) {
+		// Check if loop should stop
+		if (!loopActive) break;
+
+		// Check if loop is paused
+		if (loopPaused) {
+			await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before checking again
+			continue;
+		}
+
+		if (runResult.type === "input") {
+			console.log(runResult.node.id, "requesting input")
+			broadcastChannel.postMessage({
+				type: 'inputNeeded',
+				nodeID: runResult.node.id,
+				message: 'Input required for node ' + runResult.node.id
+			});
+
+			// Wait for input
+			const result: any = await waitForInput(runResult.node.id);
+			console.debug("waitForInput result", result);
+
+			//
+			// if (runResult.node.id === inputNodeID) {
+			// 	const message = await loadCounter();
+			runResult.inputs = {
+				message: result
+			}
+			// }
+			console.log(runResult.node.id, "requesting input")
+		} else if (runResult.type === "output") {
+			console.log(runResult.node.id, runResult.outputs)
+		}
+	}
+}
+
 // Message handling for Broadcast Channel and direct messages
 function handleCommand(data: {
 	command: string;
@@ -52,14 +130,37 @@ function handleCommand(data: {
 	data: unknown;
 	store: string | undefined;
 	dbName: string | undefined;
+	nodeID: string | undefined;
 }) {
 	console.debug("serviceWorker", "handleCommand", data);
 	switch (data.command) {
+		case "inputResponse":
+			// const resolver = pendingInputResolvers[data.nodeID];
+			// if (resolver) {
+			// 	resolver(data.userInput); // Assuming data.userInput contains the necessary input
+			// 	delete pendingInputResolvers[data.nodeID]; // Clean up
+			// }
+			// if (data.command === 'inputResponse' && data.nodeID) {
+			// 	const resolver = pendingInputResolvers[data.nodeID];
+			// 	if (resolver) {
+			// 		resolver(data.userInput); // Assuming data.userInput contains the necessary input
+			// 		delete pendingInputResolvers[data.nodeID]; // Clean up
+			// 	}
+			// }
+			if (data.nodeID) {
+				const resolver = pendingInputResolvers[data.nodeID];
+				if (resolver) {
+					resolver(data.userInput); // Assuming data.userInput contains the necessary input
+					delete pendingInputResolvers[data.nodeID]; // Clean up
+				}
+			}
+			break;
 		case "start":
 			if (!loopActive) {
 				// iteration = 0;
 				updateCounter(iteration).then();
-				asyncLoop().then(() => console.debug("asyncLoop finished"));
+				// asyncLoop().then(() => console.debug("asyncLoop finished"));
+				runBoard().then(() => console.debug("runBoard finished"));
 			} else {
 				console.debug("Loop already active");
 			}
