@@ -14,68 +14,25 @@ self.addEventListener("activate", (event) => {
 	event.waitUntil(self.clients.claim()); // Immediately control any open clients
 });
 
-import { IDBPDatabase, openDB } from "idb";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
-
-const DB_NAME = "worker_db";
-const STORE_NAME = "dataStore";
-const COUNTER_KEY = "currentCounter";
+import { loadData, storeData } from "~/services/databaseService.ts";
+import { loadCounter, updateCounter } from "~/services/counterService.ts";
 
 let iteration: number = 0;
-let loopActive: boolean = true;
+let loopActive: boolean = false;
 let loopPaused: boolean = false;
 
 const broadcastChannel: BroadcastChannel = new BroadcastChannel(
 	BROADCAST_CHANNEL
 );
 
-async function dbPromise(
-	dbName: string = DB_NAME,
-	storeName: string = STORE_NAME,
-	version: number = 1
-) {
-	return await openDB(dbName, version, {
-		upgrade(db) {
-			db.createObjectStore(storeName);
-		},
-	});
-}
-
-// Function to store data in IndexedDB
-async function storeData(
-	key: string,
-	data: unknown,
-	store?: string,
-	dbName?: string
-) {
-	const db: IDBPDatabase = await dbPromise(dbName, store);
-	await db.put(STORE_NAME, data, key);
-}
-
-// Function to load data from IndexedDB
-async function loadData(key: any, store?: string, dbName?: string) {
-	const db = await dbPromise(dbName, store);
-	return await db.get(STORE_NAME, key);
-}
-
-// Update counter in IndexedDB
-async function updateCounterInDB() {
-	await storeData(COUNTER_KEY, iteration);
-}
-
-// Load counter from IndexedDB
-async function loadCounterFromDB() {
-	const savedCounter = await loadData(COUNTER_KEY);
-	iteration = savedCounter || 0;
-}
-
 // Main loop for counter
 async function asyncLoop() {
-	await loadCounterFromDB();
+	await loadCounter();
 	while (loopActive) {
 		if (!loopPaused) {
 			iteration++;
-			await updateCounterInDB();
+			await updateCounter(iteration);
 			console.debug("serviceWorker", "Loop", iteration);
 			broadcastChannel.postMessage({
 				iteration,
@@ -85,7 +42,7 @@ async function asyncLoop() {
 		await new Promise((resolve) => setTimeout(resolve, 1000));
 	}
 	iteration = 0;
-	await updateCounterInDB();
+	await updateCounter(iteration);
 }
 
 // Message handling for Broadcast Channel and direct messages
@@ -101,11 +58,13 @@ function handleCommand(data: {
 		case "start":
 			if (!loopActive) {
 				// iteration = 0;
-				updateCounterInDB().then();
+				updateCounter(iteration).then();
+				asyncLoop().then(() => console.debug("asyncLoop finished"));
+			} else {
+				console.debug("Loop already active");
 			}
 			loopActive = true;
 			loopPaused = false;
-			asyncLoop().then(() => console.debug("asyncLoop finished"));
 			break;
 		case "pause":
 			loopPaused = true;
