@@ -9,12 +9,10 @@ export async function updateCounter(data: number) {
 
 // Load counter from IndexedDB
 export async function loadCounter() {
-	try{
+	try {
 		return await loadData(COUNTER_KEY);
-	}
-	catch(e){
+	} catch (e) {
 		console.error(e);
 		return 0;
 	}
 }
-
