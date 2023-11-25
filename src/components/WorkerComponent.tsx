@@ -108,7 +108,9 @@ export const WorkerComponent: React.FC = () => {
 			<div style={{padding: "20px", fontFamily: "Arial, sans-serif"}}>
 				{inputData && (
 					<form onSubmit={(e) => handleSubmit(e, inputData?.node, inputData?.attribute)}>
-						<input type="text" placeholder={`Input for ${inputData.node}`}/>
+						<label htmlFor="">{inputData.message}</label>
+						<br/>
+						<input type="text" placeholder={`${inputData.node}.${inputData.attribute}`}/>
 						<button type="submit">Submit</button>
 					</form>
 				)}
