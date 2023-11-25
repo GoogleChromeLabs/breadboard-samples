@@ -112,24 +112,6 @@ function handleCommand(data: {
 		case "stop":
 			loopActive = false;
 			break;
-		case "store":
-			if (data.key && data.data) {
-				storeData(data.key, data.data, data.store, data.dbName).then(
-					(r) => console.debug("storeData finished", r)
-				);
-			}
-			break;
-		case "load":
-			if (data.key) {
-				loadData(data.key).then((loadedData) => {
-					broadcastChannel.postMessage({
-						type: "loadedData",
-						key: data.key,
-						data: loadedData,
-					});
-				});
-			}
-			break;
 	}
 }
 
