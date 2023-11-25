@@ -22,25 +22,24 @@ let loopPaused: boolean = false;
 const broadcastChannel: BroadcastChannel = new BroadcastChannel(
 	BROADCAST_CHANNEL
 );
-const inputNode1 = "input";
-// const pendingInputResolvers: { [key: string]: (input: string) => void } = {};
-// const pendingInputResolvers = {}
-const pendingInputResolvers: { [key: string]: (input: string) => void } = {};
 
-const inputNode2 = "input2";
-const inputNode1Attr = "msgOne";
-const inputNode2Attr = "msgTwo";
+const pendingInputResolvers: { [key: string]: (input: string) => void } = {};
 
 function makeBoard(): Board {
 	const board = new Board();
-	const input = board.input({ $id: inputNode1 });
-	const input2 = board.input({ $id: inputNode2 });
-	const output = board.output({ $id: "output" });
-	input.wire(inputNode1Attr, output);
-	input2.wire(inputNode2Attr, output);
+	const input1 = board.input({ $id: "input1" });
+	const input2 = board.input({ $id: "input2" });
+
+	const output1 = board.output({ $id: "output1" });
+	input1.wire("msgOne", output1);
+
 	const output2 = board.output({ $id: "output2" });
-	input.wire(`${inputNode1Attr}->partOne`, output2);
-	input2.wire(`${inputNode2Attr}->partTwo`, output2);
+	input2.wire("msgTwo", output2);
+
+	const combinedOutput = board.output({ $id: "combinedOutput" });
+	input1.wire("msgOne->partOne", combinedOutput);
+	input2.wire("msgTwo->partTwo", combinedOutput);
+
 	return board;
 }
 
@@ -69,44 +68,47 @@ async function runBoard() {
 
 		if (runResult.type === "input") {
 			const nodeId = runResult.node.id;
-			// state.newOpportunities[0].from
-			const inputAttribute: string = runResult.state.newOpportunities.find(op => op.from == nodeId)!.out!;
-			// state.newOpportunities[0].out
+
+			const inputAttribute: string =
+				runResult.state.newOpportunities.find(
+					(op) => op.from == nodeId
+				)!.out!;
+
 			console.debug({
 				type: runResult.type,
 				node: runResult.node,
-				state: runResult.state
-			})
-			console.debug([
-				"Node",
-				runResult.node.id,
-				"requires",
-				inputAttribute
-			].join(" "))
+				state: runResult.state,
+			});
+
+			console.debug(
+				["Node", runResult.node.id, "requires", inputAttribute].join(
+					" "
+				)
+			);
 			broadcastChannel.postMessage({
 				type: "inputNeeded",
 				node: runResult.node.id,
 				attribute: inputAttribute,
-				message: [
-					"Node",
-					runResult.node.id,
-					"requires",
-					inputAttribute
-				].join(" "),
+				message: [runResult.node.id, "requires", inputAttribute].join(
+					" "
+				),
 			});
 
-			const userInput = await waitForInput(runResult.node.id, inputAttribute);
-			if (runResult.node.id == inputNode1) {
-				runResult.inputs = { [inputNode1Attr]: userInput };
-			} else if (runResult.node.id == inputNode2) {
-				runResult.inputs = { [inputNode2Attr]: userInput };
+			const userInput = await waitForInput(
+				runResult.node.id,
+				inputAttribute
+			);
+			if (runResult.node.id == "input1") {
+				runResult.inputs = { ["msgOne"]: userInput };
+			} else if (runResult.node.id == "input2") {
+				runResult.inputs = { ["msgTwo"]: userInput };
 			}
 		} else if (runResult.type === "output") {
 			console.log(runResult.node.id, runResult.outputs);
 			broadcastChannel.postMessage({
 				type: "output",
 				node: runResult.node.id,
-				output: runResult.outputs
+				output: runResult.outputs,
 			});
 		}
 	}
@@ -126,11 +128,14 @@ function handleCommand(data: {
 	switch (data.command) {
 		case "inputResponse":
 			if (data.node && data.value) {
-				const resolver = pendingInputResolvers[`${data.node}-${data.attribute}`];
+				const resolver =
+					pendingInputResolvers[`${data.node}-${data.attribute}`];
 				// const resolver = pendingInputResolvers[data.node]
 				if (resolver) {
 					resolver(data.value);
-					delete pendingInputResolvers[`${data.node}-${data.attribute}`];
+					delete pendingInputResolvers[
+						`${data.node}-${data.attribute}`
+					];
 				}
 			}
 			break;
