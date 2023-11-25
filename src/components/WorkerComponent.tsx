@@ -4,10 +4,11 @@ import { BROADCAST_CHANNEL } from "~/constants.ts";
 const broadcastChannel = new BroadcastChannel(BROADCAST_CHANNEL);
 
 interface WorkerMessage {
+	attribute?: string;
 	iteration?: number;
 	currentDateTime?: string;
 	type?: string;
-	nodeID?: string;
+	node?: string;
 	message?: string;
 }
 
@@ -16,15 +17,23 @@ function sendMessage(data: unknown) {
 }
 
 export const WorkerComponent: React.FC = () => {
-	const [dateTime, setDateTime] = useState("");
-	const [iteration, setIteration] = useState(0);
-	const [inputData, setInputData] = useState<{ nodeID: string; message: string } | null>(null);
+	// const [dateTime, setDateTime] = useState("");
+	// const [iteration, setIteration] = useState(0);
+	const [inputData, setInputData] = useState<{
+		node: string;
+		attribute: string;
+		message: string
+	} | null>(null);
 
 	function handleMessage(data: WorkerMessage) {
 		console.debug("main", data);
-		if (data.iteration) setIteration(data.iteration);
-		if (data.currentDateTime) setDateTime(data.currentDateTime);
-		if (data.type === 'inputNeeded') setInputData({nodeID: data.nodeID!, message: data.message!});
+		// if (data.iteration) setIteration(data.iteration);
+		// if (data.currentDateTime) setDateTime(data.currentDateTime);
+		if (data.type === 'inputNeeded') setInputData({
+			node: data.node!,
+			attribute: data.attribute!,
+			message: data.message!
+		});
 	}
 
 	useEffect(() => {
@@ -36,13 +45,14 @@ export const WorkerComponent: React.FC = () => {
 		return () => broadcastChannel.removeEventListener('message', handleBroadcastMessage);
 	}, []);
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, nodeID: string) => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, node: string, attribute: string) => {
 		e.preventDefault();
 		const input = (e.target as HTMLFormElement).querySelector('input');
 		sendMessage({
 			command: 'inputResponse',
-			nodeID: nodeID,
-			userInput: input?.value
+			node,
+			attribute,
+			value: input?.value
 		});
 		setInputData(null);
 	};
@@ -97,8 +107,8 @@ export const WorkerComponent: React.FC = () => {
 			</div>
 			<div style={{padding: "20px", fontFamily: "Arial, sans-serif"}}>
 				{inputData && (
-					<form onSubmit={(e) => handleSubmit(e, inputData.nodeID)}>
-						<input type="text" placeholder={`Input for ${inputData.nodeID}`}/>
+					<form onSubmit={(e) => handleSubmit(e, inputData?.node, inputData?.attribute)}>
+						<input type="text" placeholder={`Input for ${inputData.node}`}/>
 						<button type="submit">Submit</button>
 					</form>
 				)}

@@ -23,6 +23,8 @@ const broadcastChannel: BroadcastChannel = new BroadcastChannel(
 	BROADCAST_CHANNEL
 );
 const inputNode1 = "input";
+// const pendingInputResolvers: { [key: string]: (input: string) => void } = {};
+// const pendingInputResolvers = {}
 const pendingInputResolvers: { [key: string]: (input: string) => void } = {};
 
 const inputNode2 = "input2";
@@ -42,9 +44,9 @@ function makeBoard(): Board {
 	return board;
 }
 
-function waitForInput(nodeID: string) {
+function waitForInput(node: string, attrib: string): Promise<string> {
 	return new Promise<string>((resolve) => {
-		pendingInputResolvers[nodeID] = resolve;
+		pendingInputResolvers[`${node}-${attrib}`] = resolve;
 	});
 }
 
@@ -66,13 +68,34 @@ async function runBoard() {
 		}
 
 		if (runResult.type === "input") {
+			const nodeId = runResult.node.id;
+			// state.newOpportunities[0].from
+			const inputAttribute: string = runResult.state.newOpportunities.find(op => op.from == nodeId)!.out!;
+			// state.newOpportunities[0].out
+			console.debug({
+				type: runResult.type,
+				node: runResult.node,
+				state: runResult.state
+			})
+			console.debug([
+				"Node",
+				runResult.node.id,
+				"requires",
+				inputAttribute
+			].join(" "))
 			broadcastChannel.postMessage({
 				type: "inputNeeded",
-				nodeID: runResult.node.id,
-				message: "Input required for node " + runResult.node.id,
+				node: runResult.node.id,
+				attribute: inputAttribute,
+				message: [
+					"Node",
+					runResult.node.id,
+					"requires",
+					inputAttribute
+				].join(" "),
 			});
 
-			const userInput = await waitForInput(runResult.node.id);
+			const userInput = await waitForInput(runResult.node.id, inputAttribute);
 			if (runResult.node.id == inputNode1) {
 				runResult.inputs = { [inputNode1Attr]: userInput };
 			} else if (runResult.node.id == inputNode2) {
@@ -85,21 +108,24 @@ async function runBoard() {
 }
 
 function handleCommand(data: {
+	attribute: string;
+	value: string;
 	command: string;
 	key?: string;
 	data?: unknown;
 	store?: string;
 	dbName?: string;
-	nodeID?: string;
+	node?: string;
 	userInput?: string;
 }) {
 	switch (data.command) {
 		case "inputResponse":
-			if (data.nodeID && data.userInput) {
-				const resolver = pendingInputResolvers[data.nodeID];
+			if (data.node && data.value) {
+				const resolver = pendingInputResolvers[`${data.node}-${data.attribute}`];
+				// const resolver = pendingInputResolvers[data.node]
 				if (resolver) {
-					resolver(data.userInput);
-					delete pendingInputResolvers[data.nodeID];
+					resolver(data.value);
+					delete pendingInputResolvers[`${data.node}-${data.attribute}`];
 				}
 			}
 			break;
