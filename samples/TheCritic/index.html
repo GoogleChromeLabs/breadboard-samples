@@ -3,15 +3,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" href="/styles/global.css" />
+  <script src="./src/index.ts" type="module"></script>
   <title>The Critic</title>
 </head>
 <body>
   <header>
     <a href="/"><h1 id="title">The Critic</h1></a>
   </header>
-  <bb-ui></bb-ui>
-  <script type="module">
-    import { Main } from "./src/index.ts";
-    new Main();
-  </script>
+  <main>
+	<div id="app">
+		<the-panel></the-panel>
+		<the-article></the-article>
+	</div>
+  </main>
 </body>

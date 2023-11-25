@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "dev": "npm run generate:graphs && tsx run.ts",
+	"dev": "FORCE_COLOR=1 vite",
+    "run": "tsx run.ts",
     "build:vite": "FORCE_COLOR=1 vite build",
     "generate:graphs": "tsx src/make-graphs.ts",
     "generate:docs": "typedoc --plugin typedoc-plugin-markdown"

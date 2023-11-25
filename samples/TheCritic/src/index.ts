@@ -4,5 +4,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import * as BreadboardUI from "./ui";
+import {register} from "./ui";
 
+import { ThePanel } from "./boards/the-panel";
+
+
+register();
