@@ -4,6 +4,9 @@ import { BROADCAST_CHANNEL } from "~/constants.ts";
 const broadcastChannel = new BroadcastChannel(BROADCAST_CHANNEL);
 
 interface WorkerMessage {
+	output: {
+		[key: string]: unknown;
+	}[];
 	attribute?: string;
 	iteration?: number;
 	currentDateTime?: string;
@@ -17,6 +20,7 @@ function sendMessage(data: unknown) {
 }
 
 export const WorkerComponent: React.FC = () => {
+	const [outputData, setOutputData] = useState<any[]>([]); // State for storing output data
 	// const [dateTime, setDateTime] = useState("");
 	// const [iteration, setIteration] = useState(0);
 	const [inputData, setInputData] = useState<{
@@ -34,6 +38,12 @@ export const WorkerComponent: React.FC = () => {
 			attribute: data.attribute!,
 			message: data.message!
 		});
+		if (data.output) {
+			setOutputData(prevData => [...prevData, {
+				node: data.node,
+				output: data.output
+			}]); // Update the output data state
+		}
 	}
 
 	useEffect(() => {
@@ -114,6 +124,30 @@ export const WorkerComponent: React.FC = () => {
 						<button type="submit">Submit</button>
 					</form>
 				)}
+			</div>
+			<div
+				style={{
+					backgroundColor: '#282c34', // Dark background
+					color: '#abb2bf', // Light text color
+					fontFamily: 'Consolas, "Courier New", monospace', // Monospaced font
+					padding: '20px',
+					borderRadius: '5px',
+					boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
+					overflow: 'auto',
+					textAlign: 'left',
+				}}
+			>
+				{outputData.map((data, index) => (
+					<pre
+						key={index}
+						style={{
+							whiteSpace: 'pre-wrap',
+							margin: '0',
+						}}
+					>
+						{JSON.stringify(data, null, 2)}
+					</pre>
+				))}
 			</div>
 		</div>
 	);
