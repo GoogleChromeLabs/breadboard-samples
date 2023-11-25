@@ -1,47 +1,49 @@
 import React, { useEffect, useState } from "react";
-import WorkerManager from "~/util/WorkerService";
+import { BROADCAST_CHANNEL } from "~/constants.ts";
 
-const worker: Worker = WorkerManager.getInstance();
+const channel = new BroadcastChannel(BROADCAST_CHANNEL);
+
+function sendMessage(data: unknown) {
+	channel.postMessage(data);
+}
+
 export const WorkerComponent: React.FC = () => {
 	const [dateTime, setDateTime] = useState("");
 	const [iteration, setIteration] = useState(0);
 
+	function handleMessage(data: any) {
+		console.debug("main", data);
+		if (data.iteration) {
+			setIteration(data.iteration!);
+		}
+		if (data.currentDateTime) {
+			setDateTime(data.currentDateTime!);
+		}
+	}
+
 	useEffect(() => {
-		worker.onmessage = (event) => {
-			if (event.data.currentDateTime) {
-				setDateTime(event.data.currentDateTime);
-			}
-			if (event.data.iteration) {
-				setIteration(event.data.iteration);
-			}
-		};
+		channel.onmessage = (event) => handleMessage(event.data);
+		self.addEventListener("message", (event) => handleMessage(event.data));
 	}, []);
 
-	const startLoop = () => {
-		worker.postMessage({
+	function startLoop() {
+		sendMessage({
 			command: "start",
 		});
-	};
+	}
 
-	const pauseLoop = () => {
-		worker.postMessage({
+	function pauseLoop() {
+		sendMessage({
 			command: "pause",
 		});
-	};
+	}
 
-	const stopLoop = () => {
-		worker.postMessage({
+	function stopLoop() {
+		sendMessage({
 			command: "stop",
 		});
-	};
+	}
 
-	// const requestDateTime = () => {
-	// 	worker.postMessage("getCurrentDateTime");
-	// };
-
-	// requestDateTime(); // You can call this function based on specific events or user actions
-
-	console.log("main", dateTime);
 	return (
 		<div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
 			<h1 style={{ textAlign: "center" }}>Worker Data</h1>
@@ -72,7 +74,6 @@ export const WorkerComponent: React.FC = () => {
 					</div>
 				</div>
 			</div>
-
 			<div style={{ textAlign: "center" }}>
 				<button
 					style={{
