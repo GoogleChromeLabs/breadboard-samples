@@ -143,6 +143,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@esbuild-plugins/node-globals-polyfill@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "@esbuild-plugins/node-globals-polyfill@npm:0.2.3"
+  peerDependencies:
+    esbuild: "*"
+  checksum: 6452637b55da3d577b03bb6e9e9c5b88ec153a2c260a71d4f237fac1b46577e3536059030524b7088c9af7bc8da2afd926a5ebb72653876ce83621cc63d57efc
+  languageName: node
+  linkType: hard
+
 "@esbuild/android-arm64@npm:0.18.20":
   version: 0.18.20
   resolution: "@esbuild/android-arm64@npm:0.18.20"
@@ -619,6 +628,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@kitql/helpers@npm:0.8.4":
+  version: 0.8.4
+  resolution: "@kitql/helpers@npm:0.8.4"
+  checksum: 84ad63d92dca82e38d73a2cdf62e1e7a5129259aefd40fe2eaffb883e57885d14c3e9c508a4637b3df7a175811a4e4a58adeb798e6a8bb5df0c8e654e192af9c
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -1065,6 +1081,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 6f5bca390970ac42ed073490127edc9822e030def4f5ec7dd71e2dcf5a9dd622be984ef6676b698db126d986229ef5b02c65dac7cfc09cc2c1d94eaefe32a805
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.10.0":
+  version: 20.10.0
+  resolution: "@types/node@npm:20.10.0"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: c7d5ddbdbf3491e2363135c9611eb6bfae90eda2957279237fa232bcb29cd0df1cc3ee149d6de9915b754262a531ee2d57d33c9ecd58d763e8ad4856113822f3
   languageName: node
   linkType: hard
 
@@ -3589,7 +3614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromatch@npm:^4.0.4":
+"micromatch@npm:4.0.5, micromatch@npm:^4.0.4":
   version: 4.0.5
   resolution: "micromatch@npm:4.0.5"
   dependencies:
@@ -5278,6 +5303,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"the-critic@workspace:samples/TheCritic":
+  version: 0.0.0-use.local
+  resolution: "the-critic@workspace:samples/TheCritic"
+  dependencies:
+    "@esbuild-plugins/node-globals-polyfill": "npm:^0.2.3"
+    "@google-labs/breadboard": "npm:^0.5.1"
+    "@google-labs/core-kit": "npm:^0.0.1"
+    "@google-labs/llm-starter": "npm:^0.2.1"
+    "@paulkinlan/claude-breadboard-kit": "npm:^2.2.2"
+    "@types/node": "npm:^20.10.0"
+    "@typescript-eslint/eslint-plugin": "npm:^6.12.0"
+    "@typescript-eslint/parser": "npm:^6.12.0"
+    dotenv: "npm:^16.3.1"
+    tsx: "npm:^4.4.0"
+    typescript: "npm:^5.3.2"
+    vite: "npm:^5.0.2"
+    vite-plugin-full-reload: "npm:^1.1.0"
+    vite-plugin-watch-and-run: "npm:^1.4.3"
+  languageName: unknown
+  linkType: soft
+
 "throttle-debounce@npm:^5.0.0":
   version: 5.0.0
   resolution: "throttle-debounce@npm:5.0.0"
@@ -5387,6 +5433,22 @@ __metadata:
   bin:
     tsx: dist/cli.mjs
   checksum: 73a2c4cb7e21cb36080e0430b4aa6e7dce793780faf343b807ee64ba435c722907dd18c140411c5296edca618858f8429469f42a441f1bd3920b29df338c57c1
+  languageName: node
+  linkType: hard
+
+"tsx@npm:^4.4.0":
+  version: 4.5.0
+  resolution: "tsx@npm:4.5.0"
+  dependencies:
+    esbuild: "npm:~0.18.20"
+    fsevents: "npm:~2.3.3"
+    get-tsconfig: "npm:^4.7.2"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    tsx: dist/cli.mjs
+  checksum: 49576a8e20799f01e7eb282aec0dca3faa2d841fea688374e981e2a9ad433ac63397939bf787065450501a49f9bd84d7ce7f095fef2d11b6003fec3d426fc757
   languageName: node
   linkType: hard
 
@@ -5540,6 +5602,26 @@ __metadata:
     spdx-correct: "npm:^3.0.0"
     spdx-expression-parse: "npm:^3.0.0"
   checksum: 86242519b2538bb8aeb12330edebb61b4eb37fd35ef65220ab0b03a26c0592c1c8a7300d32da3cde5abd08d18d95e8dabfad684b5116336f6de9e6f207eec224
+  languageName: node
+  linkType: hard
+
+"vite-plugin-full-reload@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "vite-plugin-full-reload@npm:1.1.0"
+  dependencies:
+    picocolors: "npm:^1.0.0"
+    picomatch: "npm:^2.3.1"
+  checksum: 10dc0039265f2937876822043a3034e0f74ad120566b361ade5d896e1847726f5e2c7482ffdf3e28050e267f7fc0576e203737295dde4ebf6b83fc2ebf4647b5
+  languageName: node
+  linkType: hard
+
+"vite-plugin-watch-and-run@npm:^1.4.3":
+  version: 1.4.4
+  resolution: "vite-plugin-watch-and-run@npm:1.4.4"
+  dependencies:
+    "@kitql/helpers": "npm:0.8.4"
+    micromatch: "npm:4.0.5"
+  checksum: b848d1232c43d6a48ec6479a876dc5a040d1b9cbb1c5b8417902a70b9462984e27e9e804c072255ae97c1f65610ba2954f38e6fc79fb0eb6000bef9211f0392b
   languageName: node
   linkType: hard
 
