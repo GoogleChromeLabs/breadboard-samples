@@ -3,70 +3,49 @@ import { BROADCAST_CHANNEL } from "~/constants.ts";
 
 const broadcastChannel = new BroadcastChannel(BROADCAST_CHANNEL);
 
-function sendMessage(data: unknown) {
-	broadcastChannel.postMessage(data);
+interface WorkerMessage {
+	iteration?: number;
+	currentDateTime?: string;
+	type?: string;
+	nodeID?: string;
+	message?: string;
 }
 
-function renderInputForm(nodeID: string, message: string) {
-	// Create form elements
-	const form = document.createElement('form');
-	const input = document.createElement('input');
-	const submitButton = document.createElement('button');
-
-	// Configure elements
-	input.type = 'text';
-	input.placeholder = `Input for ${nodeID}`;
-	submitButton.type = 'submit';
-	submitButton.textContent = 'Submit';
-
-	// Append elements to the form
-	form.appendChild(input);
-	form.appendChild(submitButton);
-
-	// Append form to the body or a specific div
-	document.body.appendChild(form);
-
-	// Handle form submission
-	form.onsubmit = (e) => {
-		e.preventDefault();
-		broadcastChannel.postMessage({
-			command: 'inputResponse',
-			nodeID: nodeID,
-			userInput: input.value
-		});
-		form.remove(); // Remove the form after submission
-	};
+function sendMessage(data: unknown) {
+	broadcastChannel.postMessage(data);
 }
 
 export const WorkerComponent: React.FC = () => {
 	const [dateTime, setDateTime] = useState("");
 	const [iteration, setIteration] = useState(0);
+	const [inputData, setInputData] = useState<{ nodeID: string; message: string } | null>(null);
 
-	function handleMessage(data: any) {
+	function handleMessage(data: WorkerMessage) {
 		console.debug("main", data);
-		if (data.iteration) {
-			setIteration(data.iteration!);
-		}
-		if (data.currentDateTime) {
-			setDateTime(data.currentDateTime!);
-		}
-		if (data.type === 'inputNeeded') {
-			const {nodeID, message} = data;
-			renderInputForm(nodeID, message);
-		}
+		if (data.iteration) setIteration(data.iteration);
+		if (data.currentDateTime) setDateTime(data.currentDateTime);
+		if (data.type === 'inputNeeded') setInputData({nodeID: data.nodeID!, message: data.message!});
 	}
 
-	// broadcastChannel.onmessage = event => {
-	// 	if (event.data.type === 'inputNeeded') {
-	// 		const {nodeID, message} = event.data;
-	// 		renderInputForm(nodeID, message);
-	// 	}
-	// };
-
 	useEffect(() => {
-		broadcastChannel.onmessage = (event) => handleMessage(event.data);
-		self.addEventListener("message", (event) => handleMessage(event.data));
+		const handleBroadcastMessage = (event: MessageEvent) => {
+			handleMessage(event.data);
+		};
+
+		broadcastChannel.addEventListener('message', handleBroadcastMessage);
+		return () => broadcastChannel.removeEventListener('message', handleBroadcastMessage);
 	}, []);
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, nodeID: string) => {
+		e.preventDefault();
+		const input = (e.target as HTMLFormElement).querySelector('input');
+		sendMessage({
+			command: 'inputResponse',
+			nodeID: nodeID,
+			userInput: input?.value
+		});
+		setInputData(null);
+	};
 
 	function startLoop() {
 		sendMessage({
@@ -85,38 +64,10 @@ export const WorkerComponent: React.FC = () => {
 			command: "stop",
 		});
 	}
-
 	return (
-		<div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-			<h1 style={{ textAlign: "center" }}>Worker Data</h1>
 
-			<div
-				style={{
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-					marginBottom: "20px",
-				}}
-			>
-				<div style={{ marginRight: "20px" }}>
-					<div>
-						<strong>Iteration:</strong>
-					</div>
-					<div style={{ fontSize: "1.2em", marginTop: "5px" }}>
-						{iteration}
-					</div>
-				</div>
-
-				<div>
-					<div>
-						<strong>Current Date Time:</strong>
-					</div>
-					<div style={{ fontSize: "1.2em", marginTop: "5px" }}>
-						{dateTime}
-					</div>
-				</div>
-			</div>
-			<div style={{ textAlign: "center" }}>
+		<div style={{padding: "20px", fontFamily: "Arial, sans-serif"}}>
+			<div>
 				<button
 					style={{
 						marginRight: "10px",
@@ -143,6 +94,14 @@ export const WorkerComponent: React.FC = () => {
 				>
 					Stop
 				</button>
+			</div>
+			<div style={{padding: "20px", fontFamily: "Arial, sans-serif"}}>
+				{inputData && (
+					<form onSubmit={(e) => handleSubmit(e, inputData.nodeID)}>
+						<input type="text" placeholder={`Input for ${inputData.nodeID}`}/>
+						<button type="submit">Submit</button>
+					</form>
+				)}
 			</div>
 		</div>
 	);
