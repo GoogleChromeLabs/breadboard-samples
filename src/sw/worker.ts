@@ -29,8 +29,13 @@ const pendingInputResolvers: { [key: string]: (input: string) => void } = {};
 function makeBoard(): Board {
 	const board = new Board();
 	const input = board.input({ $id: inputNodeID });
+	const input2 = board.input({ $id: "input2" });
 	const output = board.output({ $id: "output" });
 	input.wire("message", output);
+	input2.wire("message", output);
+	const output2 = board.output({ $id: "output2" });
+	input.wire("message->messageOne", output2);
+	input2.wire("message->message2", output2);
 	return board;
 }
 
