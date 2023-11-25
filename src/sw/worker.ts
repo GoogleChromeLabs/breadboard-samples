@@ -16,26 +16,29 @@ self.addEventListener("activate", (event) => {
 import { Board, LogProbe } from "@google-labs/breadboard";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 import { updateCounter } from "~/services/counterService.ts";
-import { loadData, storeData } from "~/services/databaseService.ts";
 
 let loopActive: boolean = false;
 let loopPaused: boolean = false;
 const broadcastChannel: BroadcastChannel = new BroadcastChannel(
 	BROADCAST_CHANNEL
 );
-const inputNodeID = "input";
+const inputNode1 = "input";
 const pendingInputResolvers: { [key: string]: (input: string) => void } = {};
+
+const inputNode2 = "input2";
+const inputNode1Attr = "msgOne";
+const inputNode2Attr = "msgTwo";
 
 function makeBoard(): Board {
 	const board = new Board();
-	const input = board.input({ $id: inputNodeID });
-	const input2 = board.input({ $id: "input2" });
+	const input = board.input({ $id: inputNode1 });
+	const input2 = board.input({ $id: inputNode2 });
 	const output = board.output({ $id: "output" });
-	input.wire("message", output);
-	input2.wire("message", output);
+	input.wire(inputNode1Attr, output);
+	input2.wire(inputNode2Attr, output);
 	const output2 = board.output({ $id: "output2" });
-	input.wire("message->messageOne", output2);
-	input2.wire("message->message2", output2);
+	input.wire(`${inputNode1Attr}->partOne`, output2);
+	input2.wire(`${inputNode2Attr}->partTwo`, output2);
 	return board;
 }
 
@@ -70,7 +73,11 @@ async function runBoard() {
 			});
 
 			const userInput = await waitForInput(runResult.node.id);
-			runResult.inputs = { message: userInput };
+			if (runResult.node.id == inputNode1) {
+				runResult.inputs = { [inputNode1Attr]: userInput };
+			} else if (runResult.node.id == inputNode2) {
+				runResult.inputs = { [inputNode2Attr]: userInput };
+			}
 		} else if (runResult.type === "output") {
 			console.log(runResult.node.id, runResult.outputs);
 		}
