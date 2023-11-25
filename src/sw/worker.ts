@@ -103,6 +103,11 @@ async function runBoard() {
 			}
 		} else if (runResult.type === "output") {
 			console.log(runResult.node.id, runResult.outputs);
+			broadcastChannel.postMessage({
+				type: "output",
+				node: runResult.node.id,
+				output: runResult.outputs
+			});
 		}
 	}
 }
