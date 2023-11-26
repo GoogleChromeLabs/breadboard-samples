@@ -17,5 +17,9 @@ export default defineConfig({
 			},
 			srcDir: "src",
 			filename: "sw/worker.ts",
+			workbox: {
+				clientsClaim: true,
+				skipWaiting: true,
+			},
 	],
 });
