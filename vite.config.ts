@@ -20,6 +20,7 @@ export default defineConfig({
 			workbox: {
 				clientsClaim: true,
 				skipWaiting: true,
-			},
+			}
+		}),
 	],
 });
