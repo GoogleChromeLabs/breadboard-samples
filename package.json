@@ -29,5 +29,9 @@
 		"vite-plugin-pwa": "^0.17.0",
 		"vite-tsconfig-paths": "^4.2.1",
 		"workbox-core": "^7.0.0"
-	}
+	},
+	"engines": {
+		"node": ">=19.0.0"
+	},
+	"engineStrict": true
 }
