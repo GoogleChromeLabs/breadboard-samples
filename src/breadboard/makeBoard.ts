@@ -34,7 +34,10 @@ export function makeBoard(): Board {
 	const searchPassthrough = core.passthrough();
 	searchQuery.wire("query", searchPassthrough);
 	searchPassthrough.wire("*", search);
-	search.wire("algoliaUrl", board.output({ $id: "algoliaSearchUrl" }));
+
+	const queryOutput = board.output({ $id: "algoliaSearchUrl" });
+	search.wire("algoliaUrl", queryOutput);
+	searchQuery.wire("query", queryOutput);
 
 	//////////////////////////////////////////////
 	if (DEBUG) {
