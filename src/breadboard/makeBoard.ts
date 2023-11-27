@@ -22,6 +22,7 @@ export function makeBoard(): Board {
 	const listKit = board.addKit(ListKit);
 	const claudeKit = board.addKit(ClaudeKitBuilder);
 	const objectKit = board.addKit(ObjectKit);
+	const stringKit = board.addKit(StringKit);
 	//////////////////////////////////////////////
 	const searchQuery = board.input({
 		$id: "searchQuery",
@@ -57,12 +58,25 @@ export function makeBoard(): Board {
 		$id: "searchResult",
 	});
 	popSearchResult.wire("item->object", searchResult);
+	const searchResultOutput = board.output({
+		$id: "searchResultData",
+	});
+	searchResult.wire("story_id", searchResultOutput);
+	searchResult.wire("title", searchResultOutput);
+	searchResult.wire("url", searchResultOutput);
+	searchResult.wire("author", searchResultOutput);
+	searchResult.wire("created_at", searchResultOutput);
+	searchResult.wire("created_at_i", searchResultOutput);
+	searchResult.wire("points", searchResultOutput);
 	searchResult.wire(
-		"*",
-		board.output({
-			$id: "searchResultData",
-		})
+		"story_id",
+		stringKit
+			.template({
+				template: "https://news.ycombinator.com/item?id={{story_id}}",
+			})
+			.wire("string->hnURL", searchResultOutput)
 	);
+
 	//////////////////////////////////////////////
 	const popStory = listKit.pop({
 		$id: "popStoryId",
@@ -184,11 +198,10 @@ export function makeBoard(): Board {
 	}
 
 	//////////////////////////////////////////////
-	const string = board.addKit(StringKit);
 
 	const instruction = "Summarise the discussion regarding this post";
 
-	const instructionTemplate = string.template({
+	const instructionTemplate = stringKit.template({
 		$id: "instructionTemplate",
 		template: [instruction, "```json", "{{story}}", "```"].join("\n"),
 	});
@@ -227,7 +240,7 @@ export function makeBoard(): Board {
 
 	story.wire("url", storyData);
 
-	const hnUrl = string.template({
+	const hnUrl = stringKit.template({
 		template: "https://news.ycombinator.com/item?id={{story_id}}",
 	});
 	story.wire("story_id", hnUrl);
