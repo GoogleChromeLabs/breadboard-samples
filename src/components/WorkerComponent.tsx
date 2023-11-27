@@ -1,8 +1,8 @@
 import React from "react";
-import { useBroadcastChannelContext } from "~/broadcastChannel/useBroadcastChannelContext.tsx";
+import { useWorkerControllerContext } from "~/broadcastChannel/useWorkerControllerContext.tsx";
 
 export const WorkerComponent: React.FC = () => {
-	const { broadcastChannel } = useBroadcastChannelContext();
+	const { broadcastChannel } = useWorkerControllerContext();
 
 	const handleSubmit = (
 		e: React.FormEvent<HTMLFormElement>,

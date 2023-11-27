@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { WorkerControllerContext } from "~/broadcastChannel/workerControllerContext.tsx";
 
-export const useBroadcastChannelContext = () => {
+export const useWorkerControllerContext = () => {
 	const context = useContext(WorkerControllerContext);
 	if (context === null) {
 		throw new Error(
