@@ -1,5 +1,5 @@
 import React from "react";
-import { useWorkerControllerContext } from "~/broadcastChannel/useWorkerControllerContext.tsx";
+import { useWorkerControllerContext } from "worker/useWorkerControllerContext.tsx";
 
 export const WorkerComponent: React.FC = () => {
 	const { broadcastChannel } = useWorkerControllerContext();

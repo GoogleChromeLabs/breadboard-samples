@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { WorkerControllerContext } from "~/broadcastChannel/workerControllerContext.tsx";
+import { WorkerControllerContext } from "~/worker/workerControllerContext.tsx";
 
 export const useWorkerControllerContext = () => {
 	const context = useContext(WorkerControllerContext);

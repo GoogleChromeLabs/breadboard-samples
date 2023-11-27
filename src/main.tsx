@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { WorkerControllerProvider } from "~/broadcastChannel/workerControllerProvider.tsx";
+import { WorkerControllerProvider } from "worker/workerControllerProvider.tsx";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 import App from "./App.tsx";
 import "./index.css";

@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import useWorkerController from "~/broadcastChannel/useWorkerController.ts";
-import { WorkerControllerContext } from "broadcastChannel/workerControllerContext.tsx";
+import useWorkerController from "~/worker/useWorkerController.ts";
+import { WorkerControllerContext } from "~/worker/workerControllerContext.tsx";
 
 export function WorkerControllerProvider({
 	broadcastChannel,
