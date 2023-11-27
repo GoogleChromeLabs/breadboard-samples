@@ -1,4 +1,3 @@
-// YourComponent.tsx
 import React from "react";
 import WorkerComponent from "~/components/WorkerComponent.tsx";
 import "./App.css";

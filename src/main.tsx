@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BroadcastChannelProvider } from "~/broadcastChannel/broadcastChannelProvider.tsx";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
-import { BroadcastChannelProvider } from "~/broadcastChannel/context.tsx";
 import App from "./App.tsx";
 import "./index.css";
 

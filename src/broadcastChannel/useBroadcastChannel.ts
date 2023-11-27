@@ -12,7 +12,7 @@ export type BroadcastChannelHook = {
 	status: WorkerStatus;
 };
 
-const useBroadCastChannel = (
+const useBroadcastChannel = (
 	bcChannel?: BroadcastChannel
 ): BroadcastChannelHook => {
 	const broadcastChannel = useMemo(() => {
@@ -99,4 +99,4 @@ const useBroadCastChannel = (
 	};
 };
 
-export default useBroadCastChannel;
+export default useBroadcastChannel;

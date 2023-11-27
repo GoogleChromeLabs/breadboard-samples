@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { BroadcastChannelContext } from "./context";
+import { BroadcastChannelContext } from "~/broadcastChannel/broadcastChannelContext.tsx";
 
-export const useBroadCastChannelContext = () => {
+export const useBroadcastChannelContext = () => {
 	const context = useContext(BroadcastChannelContext);
 	if (context === null) {
 		throw new Error(
