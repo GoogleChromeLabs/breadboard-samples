@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BROADCAST_CHANNEL } from "~/constants";
 import { WorkerData, WorkerMessage, WorkerStatus } from "./types";
 
 const useBroadCastChannel = () => {
-	const broadcastChannel = new BroadcastChannel(BROADCAST_CHANNEL);
+	const broadcastChannel = useMemo(
+		() => new BroadcastChannel(BROADCAST_CHANNEL),
+		[]
+	);
 	const [input, setInput] = useState<WorkerData | null>(null);
 	const [output, setOutput] = useState<unknown[]>([]);
 	const [status, setStatus] = useState<WorkerStatus>("idle");
