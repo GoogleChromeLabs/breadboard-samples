@@ -16,10 +16,49 @@ export function makeBoard(): Board {
 	const board = new Board();
 	//////////////////////////////////////////////
 	const hnFirebaseKit = board.addKit(HackerNewsFirebaseKit);
+	const algolia = board.addKit(HackerNewsAlgoliaKit);
 	const core = board.addKit(Core);
 	const listKit = board.addKit(ListKit);
 	const claudeKit = board.addKit(ClaudeKitBuilder);
 	const objectKit = board.addKit(ObjectKit);
+	//////////////////////////////////////////////
+	const searchQuery = board.input({
+		$id: "searchQuery",
+	});
+
+	const search = algolia.search({
+		tags: ["story"],
+		limit: 5,
+	});
+	const searchPassthrough = core.passthrough();
+	searchQuery.wire("query", searchPassthrough);
+	searchPassthrough.wire("*", search);
+	search.wire("algoliaUrl", board.output({ $id: "algoliaSearchUrl" }));
+
+	//////////////////////////////////////////////
+	if (DEBUG) {
+		search.wire(
+			"hits",
+			board.output({
+				$id: "searchResults",
+			})
+		);
+	}
+	const popSearchResult = listKit.pop({
+		$id: "popSearchResult",
+	});
+	search.wire("hits->list", popSearchResult);
+	popSearchResult.wire("list", popSearchResult);
+	const searchResult = objectKit.spread({
+		$id: "searchResult",
+	});
+	popSearchResult.wire("item->object", searchResult);
+	searchResult.wire(
+		"*",
+		board.output({
+			$id: "searchResultData",
+		})
+	);
 	//////////////////////////////////////////////
 	const hackerNewsTopStoryIdList = core.passthrough();
 	hnFirebaseKit
