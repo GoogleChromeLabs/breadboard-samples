@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { BROADCAST_CHANNEL } from "~/constants";
 import { WorkerData, WorkerMessage, WorkerStatus } from "../sw/types";
 
-export type BroadcastChannelHook = {
+export type WorkerControllerHook = {
 	input: WorkerData | null;
 	output: unknown[];
 	start: () => void;
@@ -12,9 +12,9 @@ export type BroadcastChannelHook = {
 	status: WorkerStatus;
 };
 
-const useBroadcastChannel = (
+const useWorkerController = (
 	bcChannel?: BroadcastChannel
-): BroadcastChannelHook => {
+): WorkerControllerHook => {
 	const broadcastChannel = useMemo(() => {
 		if (bcChannel) {
 			return bcChannel;
@@ -99,4 +99,4 @@ const useBroadcastChannel = (
 	};
 };
 
-export default useBroadcastChannel;
+export default useWorkerController;

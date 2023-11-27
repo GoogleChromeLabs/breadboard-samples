@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import useBroadcastChannel from "~/broadcastChannel/useBroadcastChannel.ts";
+import useWorkerController from "~/broadcastChannel/useWorkerController.ts";
 import { WorkerControllerContext } from "broadcastChannel/workerControllerContext.tsx";
 
 export function BroadcastChannelProvider({
@@ -9,7 +9,7 @@ export function BroadcastChannelProvider({
 	broadcastChannel?: BroadcastChannel;
 	children: ReactNode;
 }): React.JSX.Element {
-	const bc = useBroadcastChannel(broadcastChannel);
+	const bc = useWorkerController(broadcastChannel);
 	return (
 		<WorkerControllerContext.Provider value={{ broadcastChannel: bc }}>
 			{children}
