@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { BroadcastChannelContext } from "~/broadcastChannel/broadcastChannelContext.tsx";
+import { WorkerControllerContext } from "~/broadcastChannel/workerControllerContext.tsx";
 
 export const useBroadcastChannelContext = () => {
-	const context = useContext(BroadcastChannelContext);
+	const context = useContext(WorkerControllerContext);
 	if (context === null) {
 		throw new Error(
 			"useBrandContext must be used within a BrandContextProvider"

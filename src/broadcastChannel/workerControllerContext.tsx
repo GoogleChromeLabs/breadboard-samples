@@ -1,6 +1,6 @@
 import React from "react";
 import { BroadcastChannelHook } from "~/broadcastChannel/useBroadcastChannel.ts";
 
-export const BroadcastChannelContext = React.createContext<{
+export const WorkerControllerContext = React.createContext<{
 	broadcastChannel: BroadcastChannelHook;
 } | null>(null);
