@@ -5,43 +5,6 @@
 "@aashutoshrathi/word-wrap@^1.2.3":
   version "1.2.6"
 
-"@ant-design/colors@^7.0.0":
-  version "7.0.0"
-  dependencies:
-    "@ctrl/tinycolor" "^3.4.0"
-
-"@ant-design/cssinjs@^1.17.2":
-  version "1.17.2"
-  dependencies:
-    "@babel/runtime" "^7.11.1"
-    "@emotion/hash" "^0.8.0"
-    "@emotion/unitless" "^0.7.5"
-    classnames "^2.3.1"
-    csstype "^3.0.10"
-    rc-util "^5.35.0"
-    stylis "^4.0.13"
-
-"@ant-design/icons-svg@^4.3.0":
-  version "4.3.1"
-
-"@ant-design/icons@^5.2.6":
-  version "5.2.6"
-  dependencies:
-    "@ant-design/colors" "^7.0.0"
-    "@ant-design/icons-svg" "^4.3.0"
-    "@babel/runtime" "^7.11.2"
-    classnames "^2.2.6"
-    rc-util "^5.31.1"
-
-"@ant-design/react-slick@~1.0.2":
-  version "1.0.2"
-  dependencies:
-    "@babel/runtime" "^7.10.4"
-    classnames "^2.2.5"
-    json2mq "^0.2.0"
-    resize-observer-polyfill "^1.5.1"
-    throttle-debounce "^5.0.0"
-
 "@anthropic-ai/sdk@^0.10.1":
   version "0.10.1"
   resolved "https://registry.npmjs.org/@anthropic-ai/sdk/-/sdk-0.10.1.tgz"
@@ -63,25 +26,6 @@
     "@types/node" "^18.11.18"
     tiktoken "^1.0.10"
 
-"@babel/runtime@^7.10.1", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.7", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.20.0", "@babel/runtime@^7.20.7", "@babel/runtime@^7.21.0", "@babel/runtime@^7.22.5", "@babel/runtime@^7.23.2":
-  version "7.23.2"
-  dependencies:
-    regenerator-runtime "^0.14.0"
-
-"@cspotcode/source-map-support@^0.8.0":
-  version "0.8.1"
-  dependencies:
-    "@jridgewell/trace-mapping" "0.3.9"
-
-"@ctrl/tinycolor@^3.4.0", "@ctrl/tinycolor@^3.6.0", "@ctrl/tinycolor@^3.6.1":
-  version "3.6.1"
-
-"@emotion/hash@^0.8.0":
-  version "0.8.0"
-
-"@emotion/unitless@^0.7.5":
-  version "0.7.5"
-
 "@esbuild-plugins/node-globals-polyfill@^0.2.3":
   version "0.2.3"
 
@@ -89,36 +33,6 @@
   version "0.18.20"
 
 "@esbuild/darwin-arm64@0.19.6":
-  version "0.19.6"
-
-"@esbuild/darwin-x64@0.18.20":
-  version "0.18.20"
-
-"@esbuild/darwin-x64@0.19.6":
-  version "0.19.6"
-
-"@esbuild/linux-arm64@0.18.20":
-  version "0.18.20"
-
-"@esbuild/linux-arm64@0.19.6":
-  version "0.19.6"
-
-"@esbuild/linux-x64@0.18.20":
-  version "0.18.20"
-
-"@esbuild/linux-x64@0.19.6":
-  version "0.19.6"
-
-"@esbuild/win32-arm64@0.18.20":
-  version "0.18.20"
-
-"@esbuild/win32-arm64@0.19.6":
-  version "0.19.6"
-
-"@esbuild/win32-x64@0.18.20":
-  version "0.18.20"
-
-"@esbuild/win32-x64@0.19.6":
   version "0.19.6"
 
 "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
@@ -144,15 +58,6 @@
 
 "@eslint/js@8.54.0":
   version "8.54.0"
-
-"@exadev/breadboard-kits@^0.5.2", "@exadev/breadboard-kits@^0.5.4":
-  version "0.5.4"
-  dependencies:
-    "@google-labs/breadboard" "^0.5.1"
-    "@google-labs/core-kit" "^0.0.1"
-    "@google-labs/llm-starter" "^0.2.1"
-    dotenv "^16.3.1"
-    jsonschema "^1.4.1"
 
 "@google-labs/breadboard@^0.5.0", "@google-labs/breadboard@^0.5.1":
   version "0.5.1"
@@ -187,18 +92,6 @@
 "@humanwhocodes/object-schema@^2.0.1":
   version "2.0.1"
 
-"@jridgewell/resolve-uri@^3.0.3":
-  version "3.1.1"
-
-"@jridgewell/sourcemap-codec@^1.4.10":
-  version "1.4.15"
-
-"@jridgewell/trace-mapping@0.3.9":
-  version "0.3.9"
-  dependencies:
-    "@jridgewell/resolve-uri" "^3.0.3"
-    "@jridgewell/sourcemap-codec" "^1.4.10"
-
 "@kitql/helpers@0.8.4":
   version "0.8.4"
 
@@ -217,7 +110,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@paulkinlan/claude-breadboard-kit@^2.2.2", "@paulkinlan/claude-breadboard-kit@^2.2.4":
+"@paulkinlan/claude-breadboard-kit@^2.2.4":
   version "2.2.4"
   resolved "https://registry.npmjs.org/@paulkinlan/claude-breadboard-kit/-/claude-breadboard-kit-2.2.4.tgz"
   integrity sha512-9tPHOWQeNaNfH3dDZxDmhvmYU5VP0s4UHJ5CgcAjBSQbjHiiMql5TRR0RzpOwFuUwMB9Tk3j0t3N4FDtVsaevQ==
@@ -228,58 +121,6 @@
     "@google-labs/llm-starter" "^0.2.1"
     js-tiktoken "^1.0.8"
 
-"@rc-component/color-picker@~1.4.1":
-  version "1.4.1"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    "@ctrl/tinycolor" "^3.6.0"
-    classnames "^2.2.6"
-    rc-util "^5.30.0"
-
-"@rc-component/context@^1.4.0":
-  version "1.4.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    rc-util "^5.27.0"
-
-"@rc-component/mini-decimal@^1.0.1":
-  version "1.1.0"
-  dependencies:
-    "@babel/runtime" "^7.18.0"
-
-"@rc-component/mutate-observer@^1.1.0":
-  version "1.1.0"
-  dependencies:
-    "@babel/runtime" "^7.18.0"
-    classnames "^2.3.2"
-    rc-util "^5.24.4"
-
-"@rc-component/portal@^1.0.0-8", "@rc-component/portal@^1.0.0-9", "@rc-component/portal@^1.0.2", "@rc-component/portal@^1.1.0", "@rc-component/portal@^1.1.1":
-  version "1.1.2"
-  dependencies:
-    "@babel/runtime" "^7.18.0"
-    classnames "^2.3.2"
-    rc-util "^5.24.4"
-
-"@rc-component/tour@~1.10.0":
-  version "1.10.0"
-  dependencies:
-    "@babel/runtime" "^7.18.0"
-    "@rc-component/portal" "^1.0.0-9"
-    "@rc-component/trigger" "^1.3.6"
-    classnames "^2.3.2"
-    rc-util "^5.24.4"
-
-"@rc-component/trigger@^1.17.0", "@rc-component/trigger@^1.18.0", "@rc-component/trigger@^1.18.2", "@rc-component/trigger@^1.3.6", "@rc-component/trigger@^1.5.0", "@rc-component/trigger@^1.7.0":
-  version "1.18.2"
-  dependencies:
-    "@babel/runtime" "^7.23.2"
-    "@rc-component/portal" "^1.1.0"
-    classnames "^2.3.2"
-    rc-motion "^2.0.0"
-    rc-resize-observer "^1.3.1"
-    rc-util "^5.38.0"
-
 "@rgrove/parse-xml@^4.1.0":
   version "4.1.0"
 
@@ -289,55 +130,7 @@
 "@rollup/rollup-darwin-arm64@4.5.0":
   version "4.5.0"
 
-"@rollup/rollup-darwin-x64@4.5.0":
-  version "4.5.0"
-
-"@rollup/rollup-linux-arm64-gnu@4.5.0":
-  version "4.5.0"
-
-"@rollup/rollup-linux-x64-gnu@4.5.0":
-  version "4.5.0"
-
-"@rollup/rollup-win32-arm64-msvc@4.5.0":
-  version "4.5.0"
-
-"@rollup/rollup-win32-x64-msvc@4.5.0":
-  version "4.5.0"
-
-"@swc/core-darwin-arm64@1.3.96":
-  version "1.3.96"
-
 "@swc/core-darwin-arm64@1.3.99":
-  version "1.3.99"
-
-"@swc/core-darwin-x64@1.3.96":
-  version "1.3.96"
-
-"@swc/core-darwin-x64@1.3.99":
-  version "1.3.99"
-
-"@swc/core-linux-arm64-gnu@1.3.96":
-  version "1.3.96"
-
-"@swc/core-linux-arm64-gnu@1.3.99":
-  version "1.3.99"
-
-"@swc/core-linux-x64-gnu@1.3.96":
-  version "1.3.96"
-
-"@swc/core-linux-x64-gnu@1.3.99":
-  version "1.3.99"
-
-"@swc/core-win32-arm64-msvc@1.3.96":
-  version "1.3.96"
-
-"@swc/core-win32-arm64-msvc@1.3.99":
-  version "1.3.99"
-
-"@swc/core-win32-x64-msvc@1.3.96":
-  version "1.3.96"
-
-"@swc/core-win32-x64-msvc@1.3.99":
   version "1.3.99"
 
 "@swc/core@^1.3.10":
@@ -356,40 +149,11 @@
     "@swc/core-win32-ia32-msvc" "1.3.99"
     "@swc/core-win32-x64-msvc" "1.3.99"
 
-"@swc/core@^1.3.96", "@swc/core@>=1.2.50":
-  version "1.3.96"
-  dependencies:
-    "@swc/counter" "^0.1.1"
-    "@swc/types" "^0.1.5"
-  optionalDependencies:
-    "@swc/core-darwin-arm64" "1.3.96"
-    "@swc/core-darwin-x64" "1.3.96"
-    "@swc/core-linux-arm-gnueabihf" "1.3.96"
-    "@swc/core-linux-arm64-gnu" "1.3.96"
-    "@swc/core-linux-arm64-musl" "1.3.96"
-    "@swc/core-linux-x64-gnu" "1.3.96"
-    "@swc/core-linux-x64-musl" "1.3.96"
-    "@swc/core-win32-arm64-msvc" "1.3.96"
-    "@swc/core-win32-ia32-msvc" "1.3.96"
-    "@swc/core-win32-x64-msvc" "1.3.96"
-
 "@swc/counter@^0.1.1":
   version "0.1.2"
 
 "@swc/types@^0.1.5":
   version "0.1.5"
-
-"@tsconfig/node10@^1.0.7":
-  version "1.0.9"
-
-"@tsconfig/node12@^1.0.7":
-  version "1.0.11"
-
-"@tsconfig/node14@^1.0.0":
-  version "1.0.3"
-
-"@tsconfig/node16@^1.0.2":
-  version "1.0.4"
 
 "@types/json-schema@^7.0.12":
   version "7.0.15"
@@ -402,8 +166,13 @@
     "@types/node" "*"
     form-data "^4.0.0"
 
-"@types/node@*", "@types/node@^18.0.0 || >=20.0.0", "@types/node@^20.9.3":
+"@types/node@*", "@types/node@^20.9.3":
   version "20.9.3"
+  dependencies:
+    undici-types "~5.26.4"
+
+"@types/node@^18.0.0 || >=20.0.0", "@types/node@^20.10.0":
+  version "20.10.0"
   dependencies:
     undici-types "~5.26.4"
 
@@ -413,36 +182,6 @@
   integrity sha512-vXYZGRrSCreZmq1rEjMRLXJhiy8MrIeVasx+PCVlP414N7CJLHnMf+juVvjdprHyH+XRy3zKZLHeNueOpJCn0g==
   dependencies:
     undici-types "~5.26.4"
-
-"@types/node@^20.10.0":
-  version "20.10.0"
-  dependencies:
-    undici-types "~5.26.4"
-
-"@types/prop-types@*":
-  version "15.7.10"
-
-"@types/react-dom@^18.2.16":
-  version "18.2.16"
-  dependencies:
-    "@types/react" "*"
-
-"@types/react@*":
-  version "18.2.37"
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^18.2.38":
-  version "18.2.38"
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/scheduler@*":
-  version "0.16.6"
 
 "@types/semver@^7.5.0":
   version "7.5.5"
@@ -519,11 +258,6 @@
 "@ungap/structured-clone@^1.2.0":
   version "1.2.0"
 
-"@vitejs/plugin-react-swc@^3.5.0":
-  version "3.5.0"
-  dependencies:
-    "@swc/core" "^1.3.96"
-
 abort-controller@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/abort-controller/-/abort-controller-3.0.0.tgz"
@@ -534,10 +268,7 @@ abort-controller@^3.0.0:
 acorn-jsx@^5.3.2:
   version "5.3.2"
 
-acorn-walk@^8.1.1:
-  version "8.3.0"
-
-"acorn@^6.0.0 || ^7.0.0 || ^8.0.0", acorn@^8.4.1, acorn@^8.9.0:
+"acorn@^6.0.0 || ^7.0.0 || ^8.0.0", acorn@^8.9.0:
   version "8.11.2"
 
 agentkeepalive@^4.2.1:
@@ -558,67 +289,10 @@ ajv@^6.12.4:
 ansi-regex@^5.0.1:
   version "5.0.1"
 
-ansi-styles@^3.2.1:
-  version "3.2.1"
-  dependencies:
-    color-convert "^1.9.0"
-
 ansi-styles@^4.1.0:
   version "4.3.0"
   dependencies:
     color-convert "^2.0.1"
-
-antd@^5.11.2:
-  version "5.11.2"
-  dependencies:
-    "@ant-design/colors" "^7.0.0"
-    "@ant-design/cssinjs" "^1.17.2"
-    "@ant-design/icons" "^5.2.6"
-    "@ant-design/react-slick" "~1.0.2"
-    "@babel/runtime" "^7.18.3"
-    "@ctrl/tinycolor" "^3.6.1"
-    "@rc-component/color-picker" "~1.4.1"
-    "@rc-component/mutate-observer" "^1.1.0"
-    "@rc-component/tour" "~1.10.0"
-    "@rc-component/trigger" "^1.18.2"
-    classnames "^2.3.2"
-    copy-to-clipboard "^3.3.3"
-    dayjs "^1.11.1"
-    qrcode.react "^3.1.0"
-    rc-cascader "~3.20.0"
-    rc-checkbox "~3.1.0"
-    rc-collapse "~3.7.1"
-    rc-dialog "~9.3.4"
-    rc-drawer "~6.5.2"
-    rc-dropdown "~4.1.0"
-    rc-field-form "~1.40.0"
-    rc-image "~7.3.2"
-    rc-input "~1.3.6"
-    rc-input-number "~8.4.0"
-    rc-mentions "~2.9.1"
-    rc-menu "~9.12.2"
-    rc-motion "^2.9.0"
-    rc-notification "~5.3.0"
-    rc-pagination "~3.7.0"
-    rc-picker "~3.14.6"
-    rc-progress "~3.5.1"
-    rc-rate "~2.12.0"
-    rc-resize-observer "^1.4.0"
-    rc-segmented "~2.2.2"
-    rc-select "~14.10.0"
-    rc-slider "~10.4.0"
-    rc-steps "~6.0.1"
-    rc-switch "~4.1.0"
-    rc-table "~7.36.0"
-    rc-tabs "~12.13.1"
-    rc-textarea "~1.5.3"
-    rc-tooltip "~6.1.2"
-    rc-tree "~5.8.2"
-    rc-tree-select "~5.15.0"
-    rc-upload "~4.3.5"
-    rc-util "^5.38.1"
-    scroll-into-view-if-needed "^3.1.0"
-    throttle-debounce "^5.0.0"
 
 anymatch@~3.1.2:
   version "3.1.3"
@@ -626,45 +300,16 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-arg@^4.1.0:
-  version "4.1.3"
-
 argparse@^2.0.1:
   version "2.0.1"
 
-array-buffer-byte-length@^1.0.0:
-  version "1.0.0"
-  dependencies:
-    call-bind "^1.0.2"
-    is-array-buffer "^3.0.1"
-
-array-tree-filter@^2.1.0:
-  version "2.1.0"
-
 array-union@^2.1.0:
   version "2.1.0"
-
-arraybuffer.prototype.slice@^1.0.2:
-  version "1.0.2"
-  dependencies:
-    array-buffer-byte-length "^1.0.0"
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    es-abstract "^1.22.1"
-    get-intrinsic "^1.2.1"
-    is-array-buffer "^3.0.2"
-    is-shared-array-buffer "^1.0.2"
-
-async-validator@^4.1.0:
-  version "4.2.5"
 
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
-
-available-typed-arrays@^1.0.5:
-  version "1.0.5"
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -693,31 +338,8 @@ braces@^3.0.2, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-"breadboard-walkthrough@file:/workspaces/breadboard-samples/samples/Breadboard Walkthrough":
-  resolved "file:samples/Breadboard Walkthrough"
-  dependencies:
-    "@exadev/breadboard-kits" "^0.5.4"
-    "@google-labs/breadboard" "^0.5.1"
-
-buffer-from@^1.0.0:
-  version "1.1.2"
-
-call-bind@^1.0.0, call-bind@^1.0.2, call-bind@^1.0.4, call-bind@^1.0.5:
-  version "1.0.5"
-  dependencies:
-    function-bind "^1.1.2"
-    get-intrinsic "^1.2.1"
-    set-function-length "^1.1.1"
-
 callsites@^3.0.0:
   version "3.1.0"
-
-chalk@^2.4.1:
-  version "2.4.2"
-  dependencies:
-    ansi-styles "^3.2.1"
-    escape-string-regexp "^1.0.5"
-    supports-color "^5.3.0"
 
 chalk@^4.0.0:
   version "4.1.2"
@@ -743,14 +365,6 @@ charenc@0.0.2:
   optionalDependencies:
     fsevents "~2.3.2"
 
-classnames@^2.2.1, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1, classnames@^2.3.2, classnames@2.x:
-  version "2.3.2"
-
-color-convert@^1.9.0:
-  version "1.9.3"
-  dependencies:
-    color-name "1.1.3"
-
 color-convert@^2.0.1:
   version "2.0.1"
   dependencies:
@@ -759,9 +373,6 @@ color-convert@^2.0.1:
 color-name@~1.1.4:
   version "1.1.4"
 
-color-name@1.1.3:
-  version "1.1.3"
-
 combined-stream@^1.0.8:
   version "1.0.8"
   resolved "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz"
@@ -769,28 +380,13 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
-compute-scroll-into-view@^3.0.2:
-  version "3.1.0"
+comlink@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.npmjs.org/comlink/-/comlink-4.4.1.tgz"
+  integrity sha512-+1dlx0aY5Jo1vHy/tSsIGpSkN4tS9rZSW8FIhG0JH/crs9wwweswIo/POr451r7bZww3hFbPAKnTpimzL/mm4Q==
 
 concat-map@0.0.1:
   version "0.0.1"
-
-copy-to-clipboard@^3.3.3:
-  version "3.3.3"
-  dependencies:
-    toggle-selection "^1.0.6"
-
-create-require@^1.1.0:
-  version "1.1.1"
-
-cross-spawn@^6.0.5:
-  version "6.0.5"
-  dependencies:
-    nice-try "^1.0.4"
-    path-key "^2.0.1"
-    semver "^5.5.0"
-    shebang-command "^1.2.0"
-    which "^1.2.9"
 
 cross-spawn@^7.0.2:
   version "7.0.3"
@@ -804,12 +400,6 @@ crypt@0.0.2:
   resolved "https://registry.npmjs.org/crypt/-/crypt-0.0.2.tgz"
   integrity sha512-mCxBlsHFYh9C+HVpiEacem8FEBnMXgU9gy4zmNC+SXAZNB/1idgp/aulFJ4FgCi7GPEVbfyng092GqL2k2rmow==
 
-csstype@^3.0.10, csstype@^3.0.2:
-  version "3.1.2"
-
-dayjs@^1.11.1, "dayjs@>= 1.x":
-  version "1.11.10"
-
 debug@^4.1.1, debug@^4.3.2, debug@^4.3.4:
   version "4.3.4"
   dependencies:
@@ -818,45 +408,10 @@ debug@^4.1.1, debug@^4.3.2, debug@^4.3.4:
 deep-is@^0.1.3:
   version "0.1.4"
 
-define-data-property@^1.0.1, define-data-property@^1.1.1:
-  version "1.1.1"
-  dependencies:
-    get-intrinsic "^1.2.1"
-    gopd "^1.0.1"
-    has-property-descriptors "^1.0.0"
-
-define-properties@^1.1.3, define-properties@^1.1.4, define-properties@^1.2.0:
-  version "1.2.1"
-  dependencies:
-    define-data-property "^1.0.1"
-    has-property-descriptors "^1.0.0"
-    object-keys "^1.1.1"
-
 delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
-
-"dev-pulse-breadboard@file:/workspaces/breadboard-samples/samples/DevPulse/DevPulse Breadboard":
-  resolved "file:samples/DevPulse/DevPulse Breadboard"
-  dependencies:
-    "@exadev/breadboard-kits" "^0.5.4"
-    "@google-labs/breadboard" "^0.5.1"
-    "@google-labs/core-kit" "^0.0.1"
-    "@google-labs/llm-starter" "^0.2.1"
-    "@paulkinlan/claude-breadboard-kit" "^2.2.2"
-    dotenv "^16.3.1"
-
-"devpulse-react@file:/workspaces/breadboard-samples/samples/DevPulse/DevPulse React":
-  version "0.0.0"
-  resolved "file:samples/DevPulse/DevPulse React"
-  dependencies:
-    "@exadev/breadboard-kits" "^0.5.2"
-    react "^18.2.0"
-    react-dom "^18.2.0"
-
-diff@^4.0.1:
-  version "4.0.2"
 
 digest-fetch@^1.3.0:
   version "1.3.0"
@@ -878,86 +433,6 @@ doctrine@^3.0.0:
 
 dotenv@^16.3.1:
   version "16.3.1"
-
-error-ex@^1.3.1:
-  version "1.3.2"
-  dependencies:
-    is-arrayish "^0.2.1"
-
-es-abstract@^1.22.1:
-  version "1.22.3"
-  dependencies:
-    array-buffer-byte-length "^1.0.0"
-    arraybuffer.prototype.slice "^1.0.2"
-    available-typed-arrays "^1.0.5"
-    call-bind "^1.0.5"
-    es-set-tostringtag "^2.0.1"
-    es-to-primitive "^1.2.1"
-    function.prototype.name "^1.1.6"
-    get-intrinsic "^1.2.2"
-    get-symbol-description "^1.0.0"
-    globalthis "^1.0.3"
-    gopd "^1.0.1"
-    has-property-descriptors "^1.0.0"
-    has-proto "^1.0.1"
-    has-symbols "^1.0.3"
-    hasown "^2.0.0"
-    internal-slot "^1.0.5"
-    is-array-buffer "^3.0.2"
-    is-callable "^1.2.7"
-    is-negative-zero "^2.0.2"
-    is-regex "^1.1.4"
-    is-shared-array-buffer "^1.0.2"
-    is-string "^1.0.7"
-    is-typed-array "^1.1.12"
-    is-weakref "^1.0.2"
-    object-inspect "^1.13.1"
-    object-keys "^1.1.1"
-    object.assign "^4.1.4"
-    regexp.prototype.flags "^1.5.1"
-    safe-array-concat "^1.0.1"
-    safe-regex-test "^1.0.0"
-    string.prototype.trim "^1.2.8"
-    string.prototype.trimend "^1.0.7"
-    string.prototype.trimstart "^1.0.7"
-    typed-array-buffer "^1.0.0"
-    typed-array-byte-length "^1.0.0"
-    typed-array-byte-offset "^1.0.0"
-    typed-array-length "^1.0.4"
-    unbox-primitive "^1.0.2"
-    which-typed-array "^1.1.13"
-
-es-set-tostringtag@^2.0.1:
-  version "2.0.2"
-  dependencies:
-    get-intrinsic "^1.2.2"
-    has-tostringtag "^1.0.0"
-    hasown "^2.0.0"
-
-es-to-primitive@^1.2.1:
-  version "1.2.1"
-  dependencies:
-    is-callable "^1.1.4"
-    is-date-object "^1.0.1"
-    is-symbol "^1.0.2"
-
-esbuild-darwin-64@0.15.18:
-  version "0.15.18"
-
-esbuild-darwin-arm64@0.15.18:
-  version "0.15.18"
-
-esbuild-linux-64@0.15.18:
-  version "0.15.18"
-
-esbuild-linux-arm64@0.15.18:
-  version "0.15.18"
-
-esbuild-windows-64@0.15.18:
-  version "0.15.18"
-
-esbuild-windows-arm64@0.15.18:
-  version "0.15.18"
 
 esbuild@*, esbuild@~0.18.20:
   version "0.18.20"
@@ -985,32 +460,6 @@ esbuild@*, esbuild@~0.18.20:
     "@esbuild/win32-ia32" "0.18.20"
     "@esbuild/win32-x64" "0.18.20"
 
-esbuild@^0.15.16:
-  version "0.15.18"
-  optionalDependencies:
-    "@esbuild/android-arm" "0.15.18"
-    "@esbuild/linux-loong64" "0.15.18"
-    esbuild-android-64 "0.15.18"
-    esbuild-android-arm64 "0.15.18"
-    esbuild-darwin-64 "0.15.18"
-    esbuild-darwin-arm64 "0.15.18"
-    esbuild-freebsd-64 "0.15.18"
-    esbuild-freebsd-arm64 "0.15.18"
-    esbuild-linux-32 "0.15.18"
-    esbuild-linux-64 "0.15.18"
-    esbuild-linux-arm "0.15.18"
-    esbuild-linux-arm64 "0.15.18"
-    esbuild-linux-mips64le "0.15.18"
-    esbuild-linux-ppc64le "0.15.18"
-    esbuild-linux-riscv64 "0.15.18"
-    esbuild-linux-s390x "0.15.18"
-    esbuild-netbsd-64 "0.15.18"
-    esbuild-openbsd-64 "0.15.18"
-    esbuild-sunos-64 "0.15.18"
-    esbuild-windows-32 "0.15.18"
-    esbuild-windows-64 "0.15.18"
-    esbuild-windows-arm64 "0.15.18"
-
 esbuild@^0.19.3:
   version "0.19.6"
   optionalDependencies:
@@ -1037,17 +486,8 @@ esbuild@^0.19.3:
     "@esbuild/win32-ia32" "0.19.6"
     "@esbuild/win32-x64" "0.19.6"
 
-escape-string-regexp@^1.0.5:
-  version "1.0.5"
-
 escape-string-regexp@^4.0.0:
   version "4.0.0"
-
-eslint-plugin-react-hooks@^4.6.0:
-  version "4.6.0"
-
-eslint-plugin-react-refresh@^0.4.4:
-  version "0.4.4"
 
 eslint-scope@^7.2.2:
   version "7.2.2"
@@ -1058,7 +498,7 @@ eslint-scope@^7.2.2:
 eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.1, eslint-visitor-keys@^3.4.3:
   version "3.4.3"
 
-"eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0", "eslint@^6.0.0 || ^7.0.0 || >=8.0.0", "eslint@^7.0.0 || ^8.0.0", eslint@^8.54.0, eslint@>=7:
+"eslint@^6.0.0 || ^7.0.0 || >=8.0.0", "eslint@^7.0.0 || ^8.0.0":
   version "8.54.0"
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
@@ -1177,11 +617,6 @@ flat-cache@^3.0.4:
 flatted@^3.2.9:
   version "3.2.9"
 
-for-each@^0.3.3:
-  version "0.3.3"
-  dependencies:
-    is-callable "^1.1.3"
-
 form-data-encoder@1.7.2:
   version "1.7.2"
   resolved "https://registry.npmjs.org/form-data-encoder/-/form-data-encoder-1.7.2.tgz"
@@ -1209,34 +644,6 @@ fs.realpath@^1.0.0:
 
 fsevents@~2.3.2, fsevents@~2.3.3:
   version "2.3.3"
-
-function-bind@^1.1.2:
-  version "1.1.2"
-
-function.prototype.name@^1.1.6:
-  version "1.1.6"
-  dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    es-abstract "^1.22.1"
-    functions-have-names "^1.2.3"
-
-functions-have-names@^1.2.3:
-  version "1.2.3"
-
-get-intrinsic@^1.0.2, get-intrinsic@^1.1.1, get-intrinsic@^1.1.3, get-intrinsic@^1.2.0, get-intrinsic@^1.2.1, get-intrinsic@^1.2.2:
-  version "1.2.2"
-  dependencies:
-    function-bind "^1.1.2"
-    has-proto "^1.0.1"
-    has-symbols "^1.0.3"
-    hasown "^2.0.0"
-
-get-symbol-description@^1.0.0:
-  version "1.0.0"
-  dependencies:
-    call-bind "^1.0.2"
-    get-intrinsic "^1.1.1"
 
 get-tsconfig@^4.7.2:
   version "4.7.2"
@@ -1268,11 +675,6 @@ globals@^13.19.0:
   dependencies:
     type-fest "^0.20.2"
 
-globalthis@^1.0.3:
-  version "1.0.3"
-  dependencies:
-    define-properties "^1.1.3"
-
 globby@^11.1.0:
   version "11.1.0"
   dependencies:
@@ -1283,63 +685,11 @@ globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-gopd@^1.0.1:
-  version "1.0.1"
-  dependencies:
-    get-intrinsic "^1.1.3"
-
-graceful-fs@^4.1.2:
-  version "4.2.11"
-
 graphemer@^1.4.0:
   version "1.4.0"
 
-has-bigints@^1.0.1, has-bigints@^1.0.2:
-  version "1.0.2"
-
-has-flag@^3.0.0:
-  version "3.0.0"
-
 has-flag@^4.0.0:
   version "4.0.0"
-
-has-property-descriptors@^1.0.0:
-  version "1.0.1"
-  dependencies:
-    get-intrinsic "^1.2.2"
-
-has-proto@^1.0.1:
-  version "1.0.1"
-
-has-symbols@^1.0.2, has-symbols@^1.0.3:
-  version "1.0.3"
-
-has-tostringtag@^1.0.0:
-  version "1.0.0"
-  dependencies:
-    has-symbols "^1.0.2"
-
-hasown@^2.0.0:
-  version "2.0.0"
-  dependencies:
-    function-bind "^1.1.2"
-
-"hello-breadboard@file:/workspaces/breadboard-samples/samples/Hello World":
-  resolved "file:samples/Hello World"
-  dependencies:
-    "@google-labs/breadboard" "^0.5.1"
-
-"hello-react-breadboard@file:/workspaces/breadboard-samples/samples/Hello React Breadboard":
-  version "0.0.0"
-  resolved "file:samples/Hello React Breadboard"
-  dependencies:
-    "@exadev/breadboard-kits" "^0.5.4"
-    antd "^5.11.2"
-    react "^18.2.0"
-    react-dom "^18.2.0"
-
-hosted-git-info@^2.1.4:
-  version "2.8.9"
 
 humanize-ms@^1.2.1:
   version "1.2.1"
@@ -1372,56 +722,15 @@ inflight@^1.0.4:
 inherits@2:
   version "2.0.4"
 
-internal-slot@^1.0.5:
-  version "1.0.6"
-  dependencies:
-    get-intrinsic "^1.2.2"
-    hasown "^2.0.0"
-    side-channel "^1.0.4"
-
-is-array-buffer@^3.0.1, is-array-buffer@^3.0.2:
-  version "3.0.2"
-  dependencies:
-    call-bind "^1.0.2"
-    get-intrinsic "^1.2.0"
-    is-typed-array "^1.1.10"
-
-is-arrayish@^0.2.1:
-  version "0.2.1"
-
-is-bigint@^1.0.1:
-  version "1.0.4"
-  dependencies:
-    has-bigints "^1.0.1"
-
 is-binary-path@~2.1.0:
   version "2.1.0"
   dependencies:
     binary-extensions "^2.0.0"
 
-is-boolean-object@^1.1.0:
-  version "1.1.2"
-  dependencies:
-    call-bind "^1.0.2"
-    has-tostringtag "^1.0.0"
-
 is-buffer@~1.1.6:
   version "1.1.6"
   resolved "https://registry.npmjs.org/is-buffer/-/is-buffer-1.1.6.tgz"
   integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
-
-is-callable@^1.1.3, is-callable@^1.1.4, is-callable@^1.2.7:
-  version "1.2.7"
-
-is-core-module@^2.13.0:
-  version "2.13.1"
-  dependencies:
-    hasown "^2.0.0"
-
-is-date-object@^1.0.1:
-  version "1.0.5"
-  dependencies:
-    has-tostringtag "^1.0.0"
 
 is-extglob@^2.1.1:
   version "2.1.1"
@@ -1431,53 +740,11 @@ is-glob@^4.0.0, is-glob@^4.0.1, is-glob@^4.0.3, is-glob@~4.0.1:
   dependencies:
     is-extglob "^2.1.1"
 
-is-negative-zero@^2.0.2:
-  version "2.0.2"
-
-is-number-object@^1.0.4:
-  version "1.0.7"
-  dependencies:
-    has-tostringtag "^1.0.0"
-
 is-number@^7.0.0:
   version "7.0.0"
 
 is-path-inside@^3.0.3:
   version "3.0.3"
-
-is-regex@^1.1.4:
-  version "1.1.4"
-  dependencies:
-    call-bind "^1.0.2"
-    has-tostringtag "^1.0.0"
-
-is-shared-array-buffer@^1.0.2:
-  version "1.0.2"
-  dependencies:
-    call-bind "^1.0.2"
-
-is-string@^1.0.5, is-string@^1.0.7:
-  version "1.0.7"
-  dependencies:
-    has-tostringtag "^1.0.0"
-
-is-symbol@^1.0.2, is-symbol@^1.0.3:
-  version "1.0.4"
-  dependencies:
-    has-symbols "^1.0.2"
-
-is-typed-array@^1.1.10, is-typed-array@^1.1.12, is-typed-array@^1.1.9:
-  version "1.1.12"
-  dependencies:
-    which-typed-array "^1.1.11"
-
-is-weakref@^1.0.2:
-  version "1.0.2"
-  dependencies:
-    call-bind "^1.0.2"
-
-isarray@^2.0.5:
-  version "2.0.5"
 
 isexe@^2.0.0:
   version "2.0.0"
@@ -1489,9 +756,6 @@ js-tiktoken@^1.0.8:
   dependencies:
     base64-js "^1.5.1"
 
-"js-tokens@^3.0.0 || ^4.0.0":
-  version "4.0.0"
-
 js-yaml@^4.1.0:
   version "4.1.0"
   dependencies:
@@ -1500,25 +764,14 @@ js-yaml@^4.1.0:
 json-buffer@3.0.1:
   version "3.0.1"
 
-json-parse-better-errors@^1.0.1:
-  version "1.0.2"
-
 json-schema-traverse@^0.4.1:
   version "0.4.1"
 
 json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
 
-json2mq@^0.2.0:
-  version "0.2.0"
-  dependencies:
-    string-convert "^0.2.0"
-
 jsonata@^2.0.3:
   version "2.0.3"
-
-jsonschema@^1.4.1:
-  version "1.4.1"
 
 keyv@^4.5.3:
   version "4.5.4"
@@ -1531,14 +784,6 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-load-json-file@^4.0.0:
-  version "4.0.0"
-  dependencies:
-    graceful-fs "^4.1.2"
-    parse-json "^4.0.0"
-    pify "^3.0.0"
-    strip-bom "^3.0.0"
-
 locate-path@^6.0.0:
   version "6.0.0"
   dependencies:
@@ -1547,18 +792,10 @@ locate-path@^6.0.0:
 lodash.merge@^4.6.2:
   version "4.6.2"
 
-loose-envify@^1.1.0:
-  version "1.4.0"
-  dependencies:
-    js-tokens "^3.0.0 || ^4.0.0"
-
 lru-cache@^6.0.0:
   version "6.0.0"
   dependencies:
     yallist "^4.0.0"
-
-make-error@^1.1.1:
-  version "1.3.6"
 
 md5@^2.3.0:
   version "2.3.0"
@@ -1568,9 +805,6 @@ md5@^2.3.0:
     charenc "0.0.2"
     crypt "0.0.2"
     is-buffer "~1.1.6"
-
-memorystream@^0.3.1:
-  version "0.3.1"
 
 merge2@^1.3.0, merge2@^1.4.1:
   version "1.4.1"
@@ -1593,7 +827,7 @@ mime-types@^2.1.12:
   dependencies:
     mime-db "1.52.0"
 
-minimatch@^3.0.4, minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
+minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   version "3.1.2"
   dependencies:
     brace-expansion "^1.1.7"
@@ -1607,9 +841,6 @@ nanoid@^3.3.6:
 natural-compare@^1.4.0:
   version "1.4.0"
 
-nice-try@^1.0.4:
-  version "1.0.5"
-
 node-domexception@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/node-domexception/-/node-domexception-1.0.0.tgz"
@@ -1622,43 +853,8 @@ node-fetch@^2.6.7:
   dependencies:
     whatwg-url "^5.0.0"
 
-normalize-package-data@^2.3.2:
-  version "2.5.0"
-  dependencies:
-    hosted-git-info "^2.1.4"
-    resolve "^1.10.0"
-    semver "2 || 3 || 4 || 5"
-    validate-npm-package-license "^3.0.1"
-
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
-
-npm-run-all@^4.1.5:
-  version "4.1.5"
-  dependencies:
-    ansi-styles "^3.2.1"
-    chalk "^2.4.1"
-    cross-spawn "^6.0.5"
-    memorystream "^0.3.1"
-    minimatch "^3.0.4"
-    pidtree "^0.3.0"
-    read-pkg "^3.0.0"
-    shell-quote "^1.6.1"
-    string.prototype.padend "^3.0.0"
-
-object-inspect@^1.13.1, object-inspect@^1.9.0:
-  version "1.13.1"
-
-object-keys@^1.1.1:
-  version "1.1.1"
-
-object.assign@^4.1.4:
-  version "4.1.4"
-  dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.1.4"
-    has-symbols "^1.0.3"
-    object-keys "^1.1.1"
 
 once@^1.3.0:
   version "1.4.0"
@@ -1690,31 +886,14 @@ parent-module@^1.0.0:
   dependencies:
     callsites "^3.0.0"
 
-parse-json@^4.0.0:
-  version "4.0.0"
-  dependencies:
-    error-ex "^1.3.1"
-    json-parse-better-errors "^1.0.1"
-
 path-exists@^4.0.0:
   version "4.0.0"
 
 path-is-absolute@^1.0.0:
   version "1.0.1"
 
-path-key@^2.0.1:
-  version "2.0.1"
-
 path-key@^3.1.0:
   version "3.1.1"
-
-path-parse@^1.0.7:
-  version "1.0.7"
-
-path-type@^3.0.0:
-  version "3.0.0"
-  dependencies:
-    pify "^3.0.0"
 
 path-type@^4.0.0:
   version "4.0.0"
@@ -1724,12 +903,6 @@ picocolors@^1.0.0:
 
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   version "2.3.1"
-
-pidtree@^0.3.0:
-  version "0.3.1"
-
-pify@^3.0.0:
-  version "3.0.0"
 
 postcss@^8.4.31:
   version "8.4.31"
@@ -1744,352 +917,19 @@ prelude-ls@^1.2.1:
 punycode@^2.1.0:
   version "2.3.1"
 
-qrcode.react@^3.1.0:
-  version "3.1.0"
-
 queue-microtask@^1.2.2:
   version "1.2.3"
-
-rc-cascader@~3.20.0:
-  version "3.20.0"
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    array-tree-filter "^2.1.0"
-    classnames "^2.3.1"
-    rc-select "~14.10.0"
-    rc-tree "~5.8.1"
-    rc-util "^5.37.0"
-
-rc-checkbox@~3.1.0:
-  version "3.1.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.3.2"
-    rc-util "^5.25.2"
-
-rc-collapse@~3.7.1:
-  version "3.7.1"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "2.x"
-    rc-motion "^2.3.4"
-    rc-util "^5.27.0"
-
-rc-dialog@~9.3.4:
-  version "9.3.4"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    "@rc-component/portal" "^1.0.0-8"
-    classnames "^2.2.6"
-    rc-motion "^2.3.0"
-    rc-util "^5.21.0"
-
-rc-drawer@~6.5.2:
-  version "6.5.2"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    "@rc-component/portal" "^1.1.1"
-    classnames "^2.2.6"
-    rc-motion "^2.6.1"
-    rc-util "^5.36.0"
-
-rc-dropdown@~4.1.0:
-  version "4.1.0"
-  dependencies:
-    "@babel/runtime" "^7.18.3"
-    "@rc-component/trigger" "^1.7.0"
-    classnames "^2.2.6"
-    rc-util "^5.17.0"
-
-rc-field-form@~1.40.0:
-  version "1.40.0"
-  dependencies:
-    "@babel/runtime" "^7.18.0"
-    async-validator "^4.1.0"
-    rc-util "^5.32.2"
-
-rc-image@~7.3.2:
-  version "7.3.2"
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@rc-component/portal" "^1.0.2"
-    classnames "^2.2.6"
-    rc-dialog "~9.3.4"
-    rc-motion "^2.6.2"
-    rc-util "^5.34.1"
-
-rc-input-number@~8.4.0:
-  version "8.4.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    "@rc-component/mini-decimal" "^1.0.1"
-    classnames "^2.2.5"
-    rc-input "~1.3.5"
-    rc-util "^5.28.0"
-
-rc-input@~1.3.5, rc-input@~1.3.6:
-  version "1.3.6"
-  dependencies:
-    "@babel/runtime" "^7.11.1"
-    classnames "^2.2.1"
-    rc-util "^5.18.1"
-
-rc-mentions@~2.9.1:
-  version "2.9.1"
-  dependencies:
-    "@babel/runtime" "^7.22.5"
-    "@rc-component/trigger" "^1.5.0"
-    classnames "^2.2.6"
-    rc-input "~1.3.5"
-    rc-menu "~9.12.0"
-    rc-textarea "~1.5.0"
-    rc-util "^5.34.1"
-
-rc-menu@~9.12.0, rc-menu@~9.12.2:
-  version "9.12.2"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    "@rc-component/trigger" "^1.17.0"
-    classnames "2.x"
-    rc-motion "^2.4.3"
-    rc-overflow "^1.3.1"
-    rc-util "^5.27.0"
-
-rc-motion@^2.0.0, rc-motion@^2.0.1, rc-motion@^2.3.0, rc-motion@^2.3.4, rc-motion@^2.4.3, rc-motion@^2.4.4, rc-motion@^2.6.1, rc-motion@^2.6.2, rc-motion@^2.9.0:
-  version "2.9.0"
-  dependencies:
-    "@babel/runtime" "^7.11.1"
-    classnames "^2.2.1"
-    rc-util "^5.21.0"
-
-rc-notification@~5.3.0:
-  version "5.3.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "2.x"
-    rc-motion "^2.9.0"
-    rc-util "^5.20.1"
-
-rc-overflow@^1.3.1:
-  version "1.3.2"
-  dependencies:
-    "@babel/runtime" "^7.11.1"
-    classnames "^2.2.1"
-    rc-resize-observer "^1.0.0"
-    rc-util "^5.37.0"
-
-rc-pagination@~3.7.0:
-  version "3.7.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.1"
-    rc-util "^5.32.2"
-
-rc-picker@~3.14.6:
-  version "3.14.6"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    "@rc-component/trigger" "^1.5.0"
-    classnames "^2.2.1"
-    rc-util "^5.30.0"
-
-rc-progress@~3.5.1:
-  version "3.5.1"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.6"
-    rc-util "^5.16.1"
-
-rc-rate@~2.12.0:
-  version "2.12.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.5"
-    rc-util "^5.0.1"
-
-rc-resize-observer@^1.0.0, rc-resize-observer@^1.1.0, rc-resize-observer@^1.3.1, rc-resize-observer@^1.4.0:
-  version "1.4.0"
-  dependencies:
-    "@babel/runtime" "^7.20.7"
-    classnames "^2.2.1"
-    rc-util "^5.38.0"
-    resize-observer-polyfill "^1.5.1"
-
-rc-segmented@~2.2.2:
-  version "2.2.2"
-  dependencies:
-    "@babel/runtime" "^7.11.1"
-    classnames "^2.2.1"
-    rc-motion "^2.4.4"
-    rc-util "^5.17.0"
-
-rc-select@~14.10.0:
-  version "14.10.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    "@rc-component/trigger" "^1.5.0"
-    classnames "2.x"
-    rc-motion "^2.0.1"
-    rc-overflow "^1.3.1"
-    rc-util "^5.16.1"
-    rc-virtual-list "^3.5.2"
-
-rc-slider@~10.4.0:
-  version "10.4.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.5"
-    rc-util "^5.27.0"
-
-rc-steps@~6.0.1:
-  version "6.0.1"
-  dependencies:
-    "@babel/runtime" "^7.16.7"
-    classnames "^2.2.3"
-    rc-util "^5.16.1"
-
-rc-switch@~4.1.0:
-  version "4.1.0"
-  dependencies:
-    "@babel/runtime" "^7.21.0"
-    classnames "^2.2.1"
-    rc-util "^5.30.0"
-
-rc-table@~7.36.0:
-  version "7.36.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    "@rc-component/context" "^1.4.0"
-    classnames "^2.2.5"
-    rc-resize-observer "^1.1.0"
-    rc-util "^5.37.0"
-    rc-virtual-list "^3.11.1"
-
-rc-tabs@~12.13.1:
-  version "12.13.1"
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    classnames "2.x"
-    rc-dropdown "~4.1.0"
-    rc-menu "~9.12.0"
-    rc-motion "^2.6.2"
-    rc-resize-observer "^1.0.0"
-    rc-util "^5.34.1"
-
-rc-textarea@~1.5.0, rc-textarea@~1.5.3:
-  version "1.5.3"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.1"
-    rc-input "~1.3.5"
-    rc-resize-observer "^1.0.0"
-    rc-util "^5.27.0"
-
-rc-tooltip@~6.1.2:
-  version "6.1.2"
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@rc-component/trigger" "^1.18.0"
-    classnames "^2.3.1"
-
-rc-tree-select@~5.15.0:
-  version "5.15.0"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "2.x"
-    rc-select "~14.10.0"
-    rc-tree "~5.8.1"
-    rc-util "^5.16.1"
-
-rc-tree@~5.8.1, rc-tree@~5.8.2:
-  version "5.8.2"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "2.x"
-    rc-motion "^2.0.1"
-    rc-util "^5.16.1"
-    rc-virtual-list "^3.5.1"
-
-rc-upload@~4.3.5:
-  version "4.3.5"
-  dependencies:
-    "@babel/runtime" "^7.18.3"
-    classnames "^2.2.5"
-    rc-util "^5.2.0"
-
-rc-util@^5.0.1, rc-util@^5.16.1, rc-util@^5.17.0, rc-util@^5.18.1, rc-util@^5.2.0, rc-util@^5.20.1, rc-util@^5.21.0, rc-util@^5.24.4, rc-util@^5.25.2, rc-util@^5.27.0, rc-util@^5.28.0, rc-util@^5.30.0, rc-util@^5.31.1, rc-util@^5.32.2, rc-util@^5.34.1, rc-util@^5.35.0, rc-util@^5.36.0, rc-util@^5.37.0, rc-util@^5.38.0, rc-util@^5.38.1:
-  version "5.38.1"
-  dependencies:
-    "@babel/runtime" "^7.18.3"
-    react-is "^18.2.0"
-
-rc-virtual-list@^3.11.1, rc-virtual-list@^3.5.1, rc-virtual-list@^3.5.2:
-  version "3.11.3"
-  dependencies:
-    "@babel/runtime" "^7.20.0"
-    classnames "^2.2.6"
-    rc-resize-observer "^1.0.0"
-    rc-util "^5.36.0"
-
-react-app-rewire-alias@^1.1.7:
-  version "1.1.7"
-
-react-app-rewired@^2.2.1, "react-app-rewired@1 || ^2":
-  version "2.2.1"
-  dependencies:
-    semver "^5.6.0"
-
-react-dom@*, react-dom@^18.2.0, react-dom@>=16.0.0, react-dom@>=16.11.0, react-dom@>=16.9.0:
-  version "18.2.0"
-  dependencies:
-    loose-envify "^1.1.0"
-    scheduler "^0.23.0"
-
-react-is@^18.2.0:
-  version "18.2.0"
-
-react@*, "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.2.0, react@>=16.0.0, react@>=16.11.0, react@>=16.9.0:
-  version "18.2.0"
-  dependencies:
-    loose-envify "^1.1.0"
-
-read-pkg@^3.0.0:
-  version "3.0.0"
-  dependencies:
-    load-json-file "^4.0.0"
-    normalize-package-data "^2.3.2"
-    path-type "^3.0.0"
 
 readdirp@~3.6.0:
   version "3.6.0"
   dependencies:
     picomatch "^2.2.1"
 
-regenerator-runtime@^0.14.0:
-  version "0.14.0"
-
-regexp.prototype.flags@^1.5.1:
-  version "1.5.1"
-  dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    set-function-name "^2.0.0"
-
-resize-observer-polyfill@^1.5.1:
-  version "1.5.1"
-
 resolve-from@^4.0.0:
   version "4.0.0"
 
 resolve-pkg-maps@^1.0.0:
   version "1.0.0"
-
-resolve@^1.10.0:
-  version "1.22.8"
-  dependencies:
-    is-core-module "^2.13.0"
-    path-parse "^1.0.7"
-    supports-preserve-symlinks-flag "^1.0.0"
 
 reusify@^1.0.4:
   version "1.0.4"
@@ -2121,92 +961,25 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-safe-array-concat@^1.0.1:
-  version "1.0.1"
-  dependencies:
-    call-bind "^1.0.2"
-    get-intrinsic "^1.2.1"
-    has-symbols "^1.0.3"
-    isarray "^2.0.5"
-
-safe-regex-test@^1.0.0:
-  version "1.0.0"
-  dependencies:
-    call-bind "^1.0.2"
-    get-intrinsic "^1.1.3"
-    is-regex "^1.1.4"
-
-sass@*, sass@^1.69.5:
+sass@*:
   version "1.69.5"
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
 
-scheduler@^0.23.0:
-  version "0.23.0"
-  dependencies:
-    loose-envify "^1.1.0"
-
-scroll-into-view-if-needed@^3.1.0:
-  version "3.1.0"
-  dependencies:
-    compute-scroll-into-view "^3.0.2"
-
-semver@^5.5.0:
-  version "5.7.2"
-
-semver@^5.6.0:
-  version "5.7.2"
-
 semver@^7.5.4:
   version "7.5.4"
   dependencies:
     lru-cache "^6.0.0"
-
-"semver@2 || 3 || 4 || 5":
-  version "5.7.2"
-
-set-function-length@^1.1.1:
-  version "1.1.1"
-  dependencies:
-    define-data-property "^1.1.1"
-    get-intrinsic "^1.2.1"
-    gopd "^1.0.1"
-    has-property-descriptors "^1.0.0"
-
-set-function-name@^2.0.0:
-  version "2.0.1"
-  dependencies:
-    define-data-property "^1.0.1"
-    functions-have-names "^1.2.3"
-    has-property-descriptors "^1.0.0"
-
-shebang-command@^1.2.0:
-  version "1.2.0"
-  dependencies:
-    shebang-regex "^1.0.0"
 
 shebang-command@^2.0.0:
   version "2.0.0"
   dependencies:
     shebang-regex "^3.0.0"
 
-shebang-regex@^1.0.0:
-  version "1.0.0"
-
 shebang-regex@^3.0.0:
   version "3.0.0"
-
-shell-quote@^1.6.1:
-  version "1.8.1"
-
-side-channel@^1.0.4:
-  version "1.0.4"
-  dependencies:
-    call-bind "^1.0.0"
-    get-intrinsic "^1.0.2"
-    object-inspect "^1.9.0"
 
 slash@^3.0.0:
   version "3.0.0"
@@ -2214,105 +987,30 @@ slash@^3.0.0:
 source-map-js@^1.0.2, "source-map-js@>=0.6.2 <2.0.0":
   version "1.0.2"
 
-source-map-support@^0.5.21:
-  version "0.5.21"
-  dependencies:
-    buffer-from "^1.0.0"
-    source-map "^0.6.0"
-
-source-map@^0.6.0:
-  version "0.6.1"
-
-spdx-correct@^3.0.0:
-  version "3.2.0"
-  dependencies:
-    spdx-expression-parse "^3.0.0"
-    spdx-license-ids "^3.0.0"
-
-spdx-exceptions@^2.1.0:
-  version "2.3.0"
-
-spdx-expression-parse@^3.0.0:
-  version "3.0.1"
-  dependencies:
-    spdx-exceptions "^2.1.0"
-    spdx-license-ids "^3.0.0"
-
-spdx-license-ids@^3.0.0:
-  version "3.0.16"
-
-string-convert@^0.2.0:
-  version "0.2.1"
-
-string.prototype.padend@^3.0.0:
-  version "3.1.5"
-  dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    es-abstract "^1.22.1"
-
-string.prototype.trim@^1.2.8:
-  version "1.2.8"
-  dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    es-abstract "^1.22.1"
-
-string.prototype.trimend@^1.0.7:
-  version "1.0.7"
-  dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    es-abstract "^1.22.1"
-
-string.prototype.trimstart@^1.0.7:
-  version "1.0.7"
-  dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    es-abstract "^1.22.1"
-
 strip-ansi@^6.0.1:
   version "6.0.1"
   dependencies:
     ansi-regex "^5.0.1"
 
-strip-bom@^3.0.0:
-  version "3.0.0"
-
 strip-json-comments@^3.1.1:
   version "3.1.1"
-
-stylis@^4.0.13:
-  version "4.3.0"
-
-supports-color@^5.3.0:
-  version "5.5.0"
-  dependencies:
-    has-flag "^3.0.0"
 
 supports-color@^7.1.0:
   version "7.2.0"
   dependencies:
     has-flag "^4.0.0"
 
-supports-preserve-symlinks-flag@^1.0.0:
-  version "1.0.0"
-
 text-table@^0.2.0:
   version "0.2.0"
 
-"the-critic@file:/workspaces/breadboard-samples/samples/TheCritic":
+"the-critic@file:/Users/paulkinlan/Code/breadboard-samples/samples/TheCritic":
   version "1.0.0"
   resolved "file:samples/TheCritic"
   dependencies:
     "@google-labs/breadboard" "^0.5.1"
     "@google-labs/core-kit" "^0.0.1"
     "@google-labs/llm-starter" "^0.2.1"
-    "@paulkinlan/claude-breadboard-kit" "^2.2.3"
-
-throttle-debounce@^5.0.0:
-  version "5.0.0"
+    "@paulkinlan/claude-breadboard-kit" "^2.2.4"
 
 tiktoken@^1.0.10:
   version "1.0.11"
@@ -2322,9 +1020,6 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-toggle-selection@^1.0.6:
-  version "1.0.6"
-
 tr46@~0.0.3:
   version "0.0.3"
   resolved "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz"
@@ -2332,37 +1027,6 @@ tr46@~0.0.3:
 
 ts-api-utils@^1.0.1:
   version "1.0.3"
-
-ts-node@^10.9.1:
-  version "10.9.1"
-  dependencies:
-    "@cspotcode/source-map-support" "^0.8.0"
-    "@tsconfig/node10" "^1.0.7"
-    "@tsconfig/node12" "^1.0.7"
-    "@tsconfig/node14" "^1.0.0"
-    "@tsconfig/node16" "^1.0.2"
-    acorn "^8.4.1"
-    acorn-walk "^8.1.1"
-    arg "^4.1.0"
-    create-require "^1.1.0"
-    diff "^4.0.1"
-    make-error "^1.1.1"
-    v8-compile-cache-lib "^3.0.1"
-    yn "3.1.1"
-
-tsm@^2.3.0:
-  version "2.3.0"
-  dependencies:
-    esbuild "^0.15.16"
-
-tsx@^4.2.0:
-  version "4.2.0"
-  dependencies:
-    esbuild "~0.18.20"
-    get-tsconfig "^4.7.2"
-    source-map-support "^0.5.21"
-  optionalDependencies:
-    fsevents "~2.3.3"
 
 tsx@^4.4.0:
   version "4.5.0"
@@ -2380,47 +1044,8 @@ type-check@^0.4.0, type-check@~0.4.0:
 type-fest@^0.20.2:
   version "0.20.2"
 
-typed-array-buffer@^1.0.0:
-  version "1.0.0"
-  dependencies:
-    call-bind "^1.0.2"
-    get-intrinsic "^1.2.1"
-    is-typed-array "^1.1.10"
-
-typed-array-byte-length@^1.0.0:
-  version "1.0.0"
-  dependencies:
-    call-bind "^1.0.2"
-    for-each "^0.3.3"
-    has-proto "^1.0.1"
-    is-typed-array "^1.1.10"
-
-typed-array-byte-offset@^1.0.0:
-  version "1.0.0"
-  dependencies:
-    available-typed-arrays "^1.0.5"
-    call-bind "^1.0.2"
-    for-each "^0.3.3"
-    has-proto "^1.0.1"
-    is-typed-array "^1.1.10"
-
-typed-array-length@^1.0.4:
-  version "1.0.4"
-  dependencies:
-    call-bind "^1.0.2"
-    for-each "^0.3.3"
-    is-typed-array "^1.1.9"
-
-typescript@^5.3.2, typescript@>=2.7, typescript@>=4.2.0:
+typescript@^5.3.2, typescript@>=4.2.0:
   version "5.3.2"
-
-unbox-primitive@^1.0.2:
-  version "1.0.2"
-  dependencies:
-    call-bind "^1.0.2"
-    has-bigints "^1.0.2"
-    has-symbols "^1.0.3"
-    which-boxed-primitive "^1.0.2"
 
 undici-types@~5.26.4:
   version "5.26.5"
@@ -2435,15 +1060,6 @@ url-template@^3.1.0:
 
 uuid@^9.0.0:
   version "9.0.1"
-
-v8-compile-cache-lib@^3.0.1:
-  version "3.0.1"
-
-validate-npm-package-license@^3.0.1:
-  version "3.0.4"
-  dependencies:
-    spdx-correct "^3.0.0"
-    spdx-expression-parse "^3.0.0"
 
 vite-plugin-full-reload@^1.1.0:
   version "1.1.0"
@@ -2467,17 +1083,8 @@ vite-plugin-watch-and-run@^1.4.3:
     "@kitql/helpers" "0.8.4"
     micromatch "4.0.5"
 
-"vite@^2 || ^3 || ^4", "vite@^4 || ^5", vite@^5.0.2, vite@>=2.8:
+"vite@^2 || ^3 || ^4", vite@^5.0.2, vite@>=2.8:
   version "5.0.2"
-  dependencies:
-    esbuild "^0.19.3"
-    postcss "^8.4.31"
-    rollup "^4.2.0"
-  optionalDependencies:
-    fsevents "~2.3.3"
-
-vite@^5.0.1:
-  version "5.0.1"
   dependencies:
     esbuild "^0.19.3"
     postcss "^8.4.31"
@@ -2508,29 +1115,6 @@ whatwg-url@^5.0.0:
     tr46 "~0.0.3"
     webidl-conversions "^3.0.0"
 
-which-boxed-primitive@^1.0.2:
-  version "1.0.2"
-  dependencies:
-    is-bigint "^1.0.1"
-    is-boolean-object "^1.1.0"
-    is-number-object "^1.0.4"
-    is-string "^1.0.5"
-    is-symbol "^1.0.3"
-
-which-typed-array@^1.1.11, which-typed-array@^1.1.13:
-  version "1.1.13"
-  dependencies:
-    available-typed-arrays "^1.0.5"
-    call-bind "^1.0.4"
-    for-each "^0.3.3"
-    gopd "^1.0.1"
-    has-tostringtag "^1.0.0"
-
-which@^1.2.9:
-  version "1.3.1"
-  dependencies:
-    isexe "^2.0.0"
-
 which@^2.0.1:
   version "2.0.2"
   dependencies:
@@ -2541,9 +1125,6 @@ wrappy@1:
 
 yallist@^4.0.0:
   version "4.0.0"
-
-yn@3.1.1:
-  version "3.1.1"
 
 yocto-queue@^0.1.0:
   version "0.1.0"

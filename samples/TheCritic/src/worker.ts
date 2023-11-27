@@ -1,7 +1,7 @@
 
 import '@anthropic-ai/sdk/shims/web'
 import { Panel } from './boards/the-panel';
+import { expose } from "comlink";
+import "./lib/comlink-async.ts";
 
-
-const panel = new Panel();
-panel.addCritic("Paul", "You are a member of the EFF (Electronic Frontier Foundation) and you are a privacy advocate");
+expose(new Panel);

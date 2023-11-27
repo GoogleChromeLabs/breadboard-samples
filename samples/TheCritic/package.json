@@ -38,6 +38,7 @@
     "@google-labs/breadboard": "^0.5.1",
     "@google-labs/core-kit": "^0.0.1",
     "@google-labs/llm-starter": "^0.2.1",
-    "@paulkinlan/claude-breadboard-kit": "^2.2.4"
+    "@paulkinlan/claude-breadboard-kit": "^2.2.4",
+    "comlink": "^4.4.1"
   }
 }
