@@ -1,12 +1,26 @@
 import { useEffect, useMemo, useState } from "react";
 import { BROADCAST_CHANNEL } from "~/constants";
-import { WorkerData, WorkerMessage, WorkerStatus } from "./types";
+import { WorkerData, WorkerMessage, WorkerStatus } from "../sw/types";
 
-const useBroadCastChannel = () => {
-	const broadcastChannel = useMemo(
-		() => new BroadcastChannel(BROADCAST_CHANNEL),
-		[]
-	);
+export type BroadcastChannelHook = {
+	input: WorkerData | null;
+	output: unknown[];
+	start: () => void;
+	pause: () => void;
+	stop: () => void;
+	send: (data: WorkerData, clearInput?: boolean) => void;
+	status: WorkerStatus;
+};
+
+const useBroadCastChannel = (
+	bcChannel?: BroadcastChannel
+): BroadcastChannelHook => {
+	const broadcastChannel = useMemo(() => {
+		if (bcChannel) {
+			return bcChannel;
+		}
+		return new BroadcastChannel(BROADCAST_CHANNEL);
+	}, [bcChannel]);
 	const [input, setInput] = useState<WorkerData | null>(null);
 	const [output, setOutput] = useState<unknown[]>([]);
 	const [status, setStatus] = useState<WorkerStatus>("idle");
@@ -40,29 +54,29 @@ const useBroadCastChannel = () => {
 				"message",
 				handleBroadcastMessage
 			);
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const start = () => {
 		broadcastChannel.postMessage({
 			command: "start",
 		});
-		setStatus(WorkerStatus.running)
-	}
+		setStatus(WorkerStatus.running);
+	};
 
 	const pause = () => {
 		broadcastChannel.postMessage({
 			command: "pause",
 		});
 		setStatus(WorkerStatus.paused);
-	}
+	};
 
 	const stop = () => {
 		broadcastChannel.postMessage({
 			command: "stop",
 		});
 		setStatus(WorkerStatus.stopped);
-	}
+	};
 
 	const send = (data: WorkerData, clearInput: boolean = true) => {
 		broadcastChannel.postMessage({
@@ -74,7 +88,15 @@ const useBroadCastChannel = () => {
 		}
 	};
 
-	return { input, output, start, pause, stop, send, status };
+	return {
+		input,
+		output,
+		start,
+		pause,
+		stop,
+		send,
+		status,
+	};
 };
 
 export default useBroadCastChannel;

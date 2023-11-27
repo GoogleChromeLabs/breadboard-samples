@@ -1,4 +1,4 @@
-export type WorkerMessage =  {
+export type WorkerMessage = {
 	output: {
 		[key: string]: unknown;
 	}[];
@@ -8,7 +8,7 @@ export type WorkerMessage =  {
 	type?: string;
 	node?: string;
 	message?: string;
-}
+};
 
 export type WorkerData = {
 	node: string;

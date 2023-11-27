@@ -1,8 +1,8 @@
 import React from "react";
-import useBroadCastChannel from "~/sw/useBroadcastChannel";
+import { useBroadCastChannelContext } from "~/broadcastChannel/useBroadCastChannelContext";
 
 export const WorkerComponent: React.FC = () => {
-	const broadcastChannel = useBroadCastChannel();
+	const { broadcastChannel } = useBroadCastChannelContext();
 
 	const handleSubmit = (
 		e: React.FormEvent<HTMLFormElement>,

@@ -1,9 +1,9 @@
 // YourComponent.tsx
-import "./App.css";
 import React from "react";
 import WorkerComponent from "~/components/WorkerComponent.tsx";
+import "./App.css";
 
-function App() {
+function App(): React.ReactElement {
 	return (
 		<>
 			<WorkerComponent />
