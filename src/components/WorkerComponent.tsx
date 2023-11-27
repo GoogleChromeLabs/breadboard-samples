@@ -1,5 +1,6 @@
 import React from "react";
 import { useWorkerControllerContext } from "worker/useWorkerControllerContext.tsx";
+import "./WorkerComponent.css";
 
 export const WorkerComponent: React.FC = () => {
 	const { broadcastChannel } = useWorkerControllerContext();
@@ -19,60 +20,67 @@ export const WorkerComponent: React.FC = () => {
 	};
 
 	return (
-		<div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-			<p>Status: {broadcastChannel.status}</p>
-			<div>
-				<button
-					style={{
-						marginRight: "10px",
-						padding: "10px 20px",
-						cursor: "pointer",
-					}}
-					onClick={broadcastChannel.start}
-				>
-					Start
-				</button>
-				<button
-					style={{
-						marginRight: "10px",
-						padding: "10px 20px",
-						cursor: "pointer",
-					}}
-					onClick={broadcastChannel.pause}
-				>
-					Pause
-				</button>
-				<button
-					style={{ padding: "10px 20px", cursor: "pointer" }}
-					onClick={broadcastChannel.stop}
-				>
-					Stop
-				</button>
-			</div>
-			<div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-				{broadcastChannel.input && (
-					<form
-						onSubmit={(e) =>
-							handleSubmit(
-								e,
-								broadcastChannel.input?.node || "",
-								broadcastChannel.input?.attribute || ""
-							)
-						}
+		<div
+			className="container"
+			style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}
+		>
+			<div className="content">
+				<p>Status: {broadcastChannel.status}</p>
+				<div>
+					<button
+						style={{
+							marginRight: "10px",
+							padding: "10px 20px",
+							cursor: "pointer",
+						}}
+						onClick={broadcastChannel.start}
 					>
-						<label htmlFor="">
-							{broadcastChannel.input.message}
-						</label>
-						<br />
-						<input
-							type="text"
-							placeholder={`${broadcastChannel.input.node}.${broadcastChannel.input.attribute}`}
-						/>
-						<button type="submit">Submit</button>
-					</form>
-				)}
+						Start
+					</button>
+					<button
+						style={{
+							marginRight: "10px",
+							padding: "10px 20px",
+							cursor: "pointer",
+						}}
+						onClick={broadcastChannel.pause}
+					>
+						Pause
+					</button>
+					<button
+						style={{ padding: "10px 20px", cursor: "pointer" }}
+						onClick={broadcastChannel.stop}
+					>
+						Stop
+					</button>
+				</div>
+				<div
+					style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}
+				>
+					{broadcastChannel.input && (
+						<form
+							onSubmit={(e) =>
+								handleSubmit(
+									e,
+									broadcastChannel.input?.node || "",
+									broadcastChannel.input?.attribute || ""
+								)
+							}
+						>
+							<label htmlFor="">
+								{broadcastChannel.input.message}
+							</label>
+							<br />
+							<input
+								type="text"
+								placeholder={`${broadcastChannel.input.node}.${broadcastChannel.input.attribute}`}
+							/>
+							<button type="submit">Submit</button>
+						</form>
+					)}
+				</div>
 			</div>
-			<div id="output">
+			<div className="content" id="output">
 				{broadcastChannel.output.map((data, index) => (
 					<pre
 						key={index}
