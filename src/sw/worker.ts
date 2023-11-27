@@ -85,13 +85,14 @@ async function runBoard() {
 			runResult.inputs = { [inputAttribute]: userInput };
 		}
 		if (runResult.type === "output") {
-			console.log(runResult.node.id, runResult.outputs);
-			broadcastChannel.postMessage({
+			const output = {
 				timestamp: Date.now(),
 				type: "output",
 				node: runResult.node.id,
 				output: runResult.outputs,
-			});
+			};
+			console.debug(output);
+			broadcastChannel.postMessage(output);
 		}
 	}
 }
