@@ -12,6 +12,7 @@ import { ClaudeKitBuilder } from "~/breadboard/ClaudeKitBuilder.ts";
 
 const LIMIT_DEPTH = 10;
 const DEBUG = false;
+const TOP_STORIES = false;
 export function makeBoard(): Board {
 	const board = new Board();
 	//////////////////////////////////////////////
@@ -60,17 +61,19 @@ export function makeBoard(): Board {
 		})
 	);
 	//////////////////////////////////////////////
-	const hackerNewsTopStoryIdList = core.passthrough();
-	hnFirebaseKit
-		.topStoryIds({
-			limit: 1,
-		})
-		.wire("storyIds", hackerNewsTopStoryIdList);
-
 	const popStory = listKit.pop({
 		$id: "popStoryId",
 	});
-	hackerNewsTopStoryIdList.wire("storyIds->list", popStory);
+	if (TOP_STORIES) {
+		const hackerNewsTopStoryIdList = core.passthrough();
+		hnFirebaseKit
+			.topStoryIds({
+				limit: 1,
+			})
+			.wire("storyIds", hackerNewsTopStoryIdList);
+
+		hackerNewsTopStoryIdList.wire("storyIds->list", popStory);
+	}
 	popStory.wire("->list", popStory);
 	const storyId = core.passthrough();
 	popStory.wire("item->id", storyId);
