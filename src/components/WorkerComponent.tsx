@@ -72,24 +72,21 @@ export const WorkerComponent: React.FC = () => {
 					</form>
 				)}
 			</div>
-			<div
-				style={{
-					backgroundColor: "#282c34", // Dark background
-					color: "#abb2bf", // Light text color
-					fontFamily: 'Consolas, "Courier New", monospace', // Monospaced font
-					padding: "20px",
-					borderRadius: "5px",
-					boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
-					overflow: "auto",
-					textAlign: "left",
-				}}
-			>
+			<div id="output">
 				{broadcastChannel.output.map((data, index) => (
 					<pre
 						key={index}
 						style={{
+							backgroundColor: "black",
 							whiteSpace: "pre-wrap",
-							margin: "0",
+							margin: "10px",
+							padding: "20px",
+							color: "#00FF00",
+							fontFamily: 'Consolas, "Courier New", monospace',
+							borderRadius: "15px",
+							boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+							overflow: "auto",
+							textAlign: "left",
 						}}
 					>
 						{JSON.stringify(data, null, 2)}
