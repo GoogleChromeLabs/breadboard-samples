@@ -91,7 +91,7 @@ export function makeBoard(): Board {
 
 		hackerNewsTopStoryIdList.wire("storyIds->list", popStory);
 	}
-	popStory.wire("->list", popStory);
+	popStory.wire("list", popStory);
 	const storyId = core.passthrough();
 	popStory.wire("item->id", storyId);
 
