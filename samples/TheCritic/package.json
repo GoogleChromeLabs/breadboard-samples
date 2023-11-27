@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-	"dev": "FORCE_COLOR=1 vite",
+    "dev": "FORCE_COLOR=1 vite",
     "run": "tsx run.ts",
     "build:vite": "FORCE_COLOR=1 vite build",
     "generate:graphs": "tsx src/make-graphs.ts",
@@ -16,10 +16,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "exports": {
-    ".": "./dist/src/runtime.js",
-    "./worker": "./dist/src/worker.js"
-  },
   "type": "module",
   "files": [
     "dist/src"
@@ -34,12 +30,14 @@
     "typescript": "^5.3.2",
     "vite": "^5.0.2",
     "vite-plugin-full-reload": "^1.1.0",
+    "vite-plugin-top-level-await": "^1.3.1",
+    "vite-plugin-wasm": "^3.2.2",
     "vite-plugin-watch-and-run": "^1.4.3"
   },
   "dependencies": {
     "@google-labs/breadboard": "^0.5.1",
     "@google-labs/core-kit": "^0.0.1",
     "@google-labs/llm-starter": "^0.2.1",
-    "@paulkinlan/claude-breadboard-kit": "^2.2.2"
+    "@paulkinlan/claude-breadboard-kit": "^2.2.4"
   }
 }

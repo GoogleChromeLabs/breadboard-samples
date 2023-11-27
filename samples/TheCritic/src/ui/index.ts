@@ -18,3 +18,4 @@ export const get = () => {
   return document.querySelector("#app");
 };
 
+// TODO: add a UI Controller that will handle UI events and udpate the board.

@@ -67,6 +67,11 @@ header a {
   margin: 0;
 }
 
+#app {
+	display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
 @media (min-width: 500px) {
   #title {
     font-size: 20px;
