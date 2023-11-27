@@ -16,7 +16,7 @@ self.addEventListener("activate", (event) => {
 import { LogProbe } from "@google-labs/breadboard";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 import { updateCounter } from "~/services/counterService.ts";
-import { makeBoard } from "./makeBoard";
+import { makeBoard } from "../breadboard/makeBoard";
 
 let loopActive: boolean = false;
 let loopPaused: boolean = false;
