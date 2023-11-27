@@ -8,6 +8,7 @@
 			"DOM.Iterable"
 		],
 		"module": "ESNext",
+		"esModuleInterop": true,
 		"skipLibCheck": true,
 		/* Bundler mode */
 		"moduleResolution": "bundler",
