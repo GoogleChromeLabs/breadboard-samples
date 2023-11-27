@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BroadcastChannelProvider } from "~/broadcastChannel/broadcastChannelProvider.tsx";
+import { WorkerControllerProvider } from "~/broadcastChannel/workerControllerProvider.tsx";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 import App from "./App.tsx";
 import "./index.css";
@@ -16,10 +16,10 @@ if ("serviceWorker" in navigator) {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<BroadcastChannelProvider
+		<WorkerControllerProvider
 			broadcastChannel={new BroadcastChannel(BROADCAST_CHANNEL)}
 		>
 			<App />
-		</BroadcastChannelProvider>
+		</WorkerControllerProvider>
 	</React.StrictMode>
 );

@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import useWorkerController from "~/broadcastChannel/useWorkerController.ts";
 import { WorkerControllerContext } from "broadcastChannel/workerControllerContext.tsx";
 
-export function BroadcastChannelProvider({
+export function WorkerControllerProvider({
 	broadcastChannel,
 	children,
 }: {
