@@ -24,7 +24,7 @@ export const get = () => {
 
 // TODO: add a UI Controller that will handle UI events and udpate the board.
 
-export const run = async (panel: Remote<Panel>) => {
+export const run = async (panel: Panel) => {
 	const app = get();
 	if (app == undefined) return;
 

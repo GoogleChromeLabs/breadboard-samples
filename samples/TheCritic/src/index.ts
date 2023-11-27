@@ -13,9 +13,9 @@ register();
 
 const w = new Worker(new URL("./worker.ts", import.meta.url), { type: "module"});
 
-const panel = wrap<Panel>(w);
+//const panel = wrap<Panel>(w);
 
-run(panel);
+run(new Panel);
 
 
 
