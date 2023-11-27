@@ -10,7 +10,7 @@ import { Board } from "@google-labs/breadboard";
 import Core from "@google-labs/core-kit";
 import { ClaudeKitBuilder } from "~/breadboard/ClaudeKitBuilder.ts";
 
-const LIMIT = 10;
+const LIMIT_DEPTH = 10;
 const DEBUG = false;
 export function makeBoard(): Board {
 	const board = new Board();
@@ -163,10 +163,10 @@ export function makeBoard(): Board {
 	});
 	story.wire("*", nest);
 
-	if (LIMIT) {
+	if (LIMIT_DEPTH) {
 		const objectKit = board.addKit(ObjectKit);
 		const limit = objectKit.limitDepth({
-			depth: 10,
+			depth: LIMIT_DEPTH,
 		});
 		nest.wire("story->object", limit);
 		limit.wire("object", stringifiedPost);
