@@ -13,9 +13,10 @@ self.addEventListener("activate", (event) => {
 	event.waitUntil(self.clients.claim());
 });
 
-import { Board, LogProbe } from "@google-labs/breadboard";
+import { LogProbe } from "@google-labs/breadboard";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 import { updateCounter } from "~/services/counterService.ts";
+import { makeBoard } from "./makeBoard";
 
 let loopActive: boolean = false;
 let loopPaused: boolean = false;
@@ -24,24 +25,6 @@ const broadcastChannel: BroadcastChannel = new BroadcastChannel(
 );
 
 const pendingInputResolvers: { [key: string]: (input: string) => void } = {};
-
-function makeBoard(): Board {
-	const board = new Board();
-	const input1 = board.input({ $id: "input1" });
-	const input2 = board.input({ $id: "input2" });
-
-	const output1 = board.output({ $id: "output1" });
-	input1.wire("msgOne", output1);
-
-	const output2 = board.output({ $id: "output2" });
-	input2.wire("msgTwo", output2);
-
-	const combinedOutput = board.output({ $id: "combinedOutput" });
-	input1.wire("msgOne->partOne", combinedOutput);
-	input2.wire("msgTwo->partTwo", combinedOutput);
-
-	return board;
-}
 
 function waitForInput(node: string, attrib: string): Promise<string> {
 	return new Promise<string>((resolve) => {
