@@ -105,6 +105,8 @@ export function makeBoard(): Board {
 	}
 
 	//////////////////////////////////////////////
+	searchResult.wire("story_id->id", storyId);
+	//////////////////////////////////////////////
 
 	const hnAlgoliaKit = board.addKit(HackerNewsAlgoliaKit);
 
@@ -235,10 +237,11 @@ export function makeBoard(): Board {
 	const storyData = core.passthrough();
 
 	story.wire("story_id", storyData);
-
 	story.wire("title", storyData);
-
 	story.wire("url", storyData);
+	story.wire("points", storyData);
+	story.wire("created_at", storyData);
+	story.wire("created_at_i", storyData);
 
 	const hnUrl = stringKit.template({
 		template: "https://news.ycombinator.com/item?id={{story_id}}",
@@ -257,6 +260,9 @@ export function makeBoard(): Board {
 	storyData.wire("story_id", summary);
 	storyData.wire("title", summary);
 	storyData.wire("url", summary);
+	storyData.wire("points", summary);
+	storyData.wire("created_at", summary);
+	storyData.wire("created_at_i", summary);
 	storyData.wire("post_url", summary);
 
 	claudePostSummarisation.wire("completion", summary);
