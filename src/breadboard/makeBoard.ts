@@ -16,7 +16,11 @@ export function makeBoard(): Board {
 	const claudeKit = board.addKit(ClaudeKitBuilder);
 	//////////////////////////////////////////////
 	const hackerNewsTopStoryIdList = core.passthrough();
-	hnFirebaseKit.topStoryIds().wire("storyIds", hackerNewsTopStoryIdList);
+	hnFirebaseKit
+		.topStoryIds({
+			limit: 1,
+		})
+		.wire("storyIds", hackerNewsTopStoryIdList);
 
 	const popStory = listKit.pop({
 		$id: "popStoryId",
