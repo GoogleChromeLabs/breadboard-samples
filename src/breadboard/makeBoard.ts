@@ -162,7 +162,7 @@ export function makeBoard(): Board {
 	const serverUrl = `http://localhost:${VITE_SERVER_PORT}`;
 	const claudeParams = {
 		model: "claude-2",
-		userQuestion: "What is the meaning of life?",
+		userQuestion: "Tell me a joke about a software engineer",
 		url: `${serverUrl}/anthropic/v1/complete`,
 	};
 	const claudeCompletion = claudeKit.complete({
