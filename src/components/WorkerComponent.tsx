@@ -2,6 +2,7 @@ import React from "react";
 import { useWorkerControllerContext } from "worker/useWorkerControllerContext.tsx";
 import "./WorkerComponent.css";
 import { WorkerStatus } from "~/sw/types";
+import OutputNode from "~/components/OutputNode";
 
 export const WorkerComponent: React.FC = () => {
 	const { broadcastChannel, unregisterController } = useWorkerControllerContext();
@@ -84,23 +85,7 @@ export const WorkerComponent: React.FC = () => {
 			</div>
 			<div className="content" id="output">
 				{broadcastChannel.output.map((data, index) => (
-					<pre
-						key={index}
-						style={{
-							backgroundColor: "black",
-							whiteSpace: "pre-wrap",
-							margin: "10px",
-							padding: "20px",
-							color: "#00FF00",
-							fontFamily: 'Consolas, "Courier New", monospace',
-							borderRadius: "15px",
-							boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
-							overflow: "auto",
-							textAlign: "left",
-						}}
-					>
-						{JSON.stringify(data, null, 2)}
-					</pre>
+					<OutputNode data={data} key={index} nodeType="searchResultData" />
 				))}
 			</div>
 		</div>

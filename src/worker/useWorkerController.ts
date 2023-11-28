@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
-import { WorkerData, WorkerMessage, WorkerStatus } from "sw/types.ts";
+import { WorkerData, WorkerStatus } from "sw/types.ts";
 
 export type WorkerControllerHook = {
 	input: WorkerData | null;
