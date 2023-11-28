@@ -22,6 +22,8 @@ export const WorkerStatus = {
 	running: "running",
 	paused: "paused",
 	stopped: "stopped",
+	loading: "loading",
+	finished: "finished",
 } as const;
 
 export type WorkerStatus = (typeof WorkerStatus)[keyof typeof WorkerStatus];

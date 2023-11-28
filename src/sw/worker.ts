@@ -17,6 +17,7 @@ import { LogProbe } from "@google-labs/breadboard";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 import { updateCounter } from "~/services/counterService.ts";
 import { makeBoard } from "../breadboard/makeBoard";
+import { WorkerStatus } from "./types";
 
 let loopActive: boolean = false;
 let loopPaused: boolean = false;
@@ -39,6 +40,8 @@ type Receiver = {
 async function runBoard() {
 	const board = makeBoard();
 	const logReceiver: Receiver = { log: (message) => console.debug(message) };
+
+	broadcastWorkerStatus("running")
 
 	for await (const runResult of board.run({
 		probe: new LogProbe(logReceiver),
@@ -95,6 +98,7 @@ async function runBoard() {
 			broadcastChannel.postMessage(output);
 		}
 	}
+	broadcastWorkerStatus("finished")
 }
 
 function handleCommand(data: {
@@ -134,11 +138,21 @@ function handleCommand(data: {
 			break;
 		case "pause":
 			loopPaused = true;
+			broadcastWorkerStatus("paused")
 			break;
 		case "stop":
 			loopActive = false;
+			broadcastWorkerStatus("stopped")
 			break;
 	}
+}
+
+function broadcastWorkerStatus(status: WorkerStatus){
+	broadcastChannel.postMessage({
+		type: "status",
+		status,
+		source: "worker",
+	})
 }
 
 broadcastChannel.onmessage = (event) => handleCommand(event.data);

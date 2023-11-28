@@ -25,57 +25,55 @@ const useWorkerController = (
 	const [output, setOutput] = useState<unknown[]>([]);
 	const [status, setStatus] = useState<WorkerStatus>("idle");
 
-	const handleMessage = (data: WorkerMessage) => {
-		if (data.type === "inputNeeded")
+	const handleMessage = (event: MessageEvent) => {
+		if (event.data.type === "inputNeeded")
 			setInput({
-				node: data.node!,
-				attribute: data.attribute!,
-				message: data.message!,
+				node: event.data.node!,
+				attribute: event.data.attribute!,
+				message: event.data.message!,
 			});
-		if (data.output) {
+		if (event.data.output) {
 			setOutput((prevData) => [
 				...prevData,
 				{
-					node: data.node,
-					output: data.output,
+					node: event.data.node,
+					output: event.data.output,
 				},
 			]); // Update the output data state
+		}
+		if (event.data.type === "status") {
+			setStatus(event.data.status);
 		}
 	};
 
 	useEffect(() => {
-		const handleBroadcastMessage = (event: MessageEvent) => {
-			handleMessage(event.data);
-		};
-
-		broadcastChannel.addEventListener("message", handleBroadcastMessage);
+		if (!broadcastChannel) return;
+		broadcastChannel.removeEventListener("message", handleMessage);
+		broadcastChannel.addEventListener("message", handleMessage);
 		return () =>
-			broadcastChannel.removeEventListener(
-				"message",
-				handleBroadcastMessage
-			);
+			broadcastChannel.removeEventListener("message", handleMessage);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [broadcastChannel]);
 
 	const start = () => {
 		broadcastChannel.postMessage({
 			command: "start",
 		});
-		setStatus(WorkerStatus.running);
+		setStatus(WorkerStatus.loading);
 	};
 
 	const pause = () => {
 		broadcastChannel.postMessage({
 			command: "pause",
 		});
-		setStatus(WorkerStatus.paused);
+		setStatus(WorkerStatus.loading);
 	};
 
 	const stop = () => {
 		broadcastChannel.postMessage({
 			command: "stop",
 		});
-		setStatus(WorkerStatus.stopped);
+		setStatus(WorkerStatus.loading);
 	};
 
 	const send = (data: WorkerData, clearInput: boolean = true) => {

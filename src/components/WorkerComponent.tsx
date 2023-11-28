@@ -1,9 +1,10 @@
 import React from "react";
 import { useWorkerControllerContext } from "worker/useWorkerControllerContext.tsx";
 import "./WorkerComponent.css";
+import { WorkerStatus } from "~/sw/types";
 
 export const WorkerComponent: React.FC = () => {
-	const { broadcastChannel } = useWorkerControllerContext();
+	const { broadcastChannel, unregisterController } = useWorkerControllerContext();
 
 	const handleSubmit = (
 		e: React.FormEvent<HTMLFormElement>,
@@ -57,7 +58,7 @@ export const WorkerComponent: React.FC = () => {
 				<div
 					style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}
 				>
-					{broadcastChannel.input && (
+					{broadcastChannel.status === WorkerStatus.running && (
 						<form
 							onSubmit={(e) =>
 								handleSubmit(
@@ -68,16 +69,17 @@ export const WorkerComponent: React.FC = () => {
 							}
 						>
 							<label htmlFor="">
-								{broadcastChannel.input.message}
+								{broadcastChannel.input?.message || ""}
 							</label>
 							<br />
 							<input
 								type="text"
-								placeholder={`${broadcastChannel.input.node}.${broadcastChannel.input.attribute}`}
+								placeholder={`${broadcastChannel.input?.node}.${broadcastChannel.input?.attribute}`}
 							/>
 							<button type="submit">Submit</button>
 						</form>
 					)}
+					<button type="button" onClick={unregisterController}>Unregister Worker</button>
 				</div>
 			</div>
 			<div className="content" id="output">
