@@ -1,8 +1,8 @@
 import React from "react";
 import { useWorkerControllerContext } from "worker/useWorkerControllerContext.tsx";
 import "./WorkerComponent.css";
-import { WorkerStatus } from "~/sw/types";
-import OutputNode from "~/components/OutputNode";
+import { OutputNodeData, WorkerStatus } from "~/sw/types";
+import OutputNode from "~/components/OutputCard";
 
 export const WorkerComponent: React.FC = () => {
 	const { broadcastChannel, unregisterController } = useWorkerControllerContext();
@@ -85,7 +85,11 @@ export const WorkerComponent: React.FC = () => {
 			</div>
 			<div className="content" id="output">
 				{broadcastChannel.output.map((data, index) => (
-					<OutputNode data={data} key={index} nodeType="searchResultData" />
+					<OutputNode
+						data={data as OutputNodeData}
+						key={index}
+					// nodeType="searchResultData"
+					/>
 				))}
 			</div>
 		</div>

@@ -52,6 +52,14 @@ export function makeBoard(): Board {
 	const popSearchResult = listKit.pop({
 		$id: "popSearchResult",
 	});
+
+	// const result = {
+	// 	// object: {
+	// 	storyid: "asdkjahsdkjash",
+	// 	created_at: "2021-08-01T00:00:00.000Z",
+	// 	// }
+	// }
+
 	search.wire("hits->list", popSearchResult);
 	popSearchResult.wire("list", popSearchResult);
 	const searchResult = objectKit.spread({
@@ -227,12 +235,12 @@ export function makeBoard(): Board {
 	claudeApiKey.wire("apiKey.", claudePostSummarisation);
 	instructionTemplate.wire("string->userQuestion", claudePostSummarisation);
 
-	// claudePostSummarisation.wire(
-	// 	"*",
-	// 	board.output({
-	// 		$id: "postSummarisation",
-	// 	})
-	// );
+	claudePostSummarisation.wire(
+		"*",
+		board.output({
+			$id: "postSummarisation",
+		})
+	);
 
 	const storyData = core.passthrough();
 

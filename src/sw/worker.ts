@@ -71,6 +71,7 @@ async function runBoard() {
 					" "
 				)
 			);
+
 			broadcastChannel.postMessage({
 				type: "inputNeeded",
 				node: runResult.node.id,
@@ -147,7 +148,7 @@ function handleCommand(data: {
 	}
 }
 
-function broadcastWorkerStatus(status: WorkerStatus){
+function broadcastWorkerStatus(status: WorkerStatus) {
 	broadcastChannel.postMessage({
 		type: "status",
 		status,

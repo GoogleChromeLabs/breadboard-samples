@@ -27,3 +27,22 @@ export const WorkerStatus = {
 } as const;
 
 export type WorkerStatus = (typeof WorkerStatus)[keyof typeof WorkerStatus];
+
+
+export const OutputComponentTypes = {
+	searchResultData: "searchResultData",
+	summary: "summary",
+	storyData: "storyData"
+} as const
+
+export type OutputComponentTypes = (typeof OutputComponentTypes)[keyof typeof OutputComponentTypes];
+
+export type NodeData = {
+	node: string // node id
+	type: "input" | "output"
+}
+export type OutputNodeData = NodeData & {
+	type: "output"
+	timestamp: number
+	output: { [key: string]: unknown }
+}
