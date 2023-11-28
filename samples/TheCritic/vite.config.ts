@@ -22,4 +22,14 @@ export default defineConfig({
 		plugins: [wasm(), topLevelAwait()]
 	},
 	plugins: [wasm(), topLevelAwait()],
+	server: {
+		port: 5173,
+		strictPort: true,
+		proxy: {
+			"/v1/complete": {
+				target: "https://api.anthropic.com",
+				changeOrigin: true
+			},
+		},
+	},
 });
