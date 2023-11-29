@@ -54,7 +54,7 @@ You will create a critique of the following input:
 Critique:
 `);
 
-const claudeCompletion = claudeKit.generateCompletion({ model: "claude-2.1", baseURL: "http://localhost:5173/"});
+const claudeCompletion = claudeKit.generateCompletion({ model: "claude-2.1", baseURL: location.origin});
 
 inputCritic.wire("persona->persona", criticPrompt);
 inputCritic.wire("input->input", criticPrompt);
