@@ -47,6 +47,19 @@ body {
   margin: 0;
   font-family: var(--bb-font-family);
   color: var(--bb-font-color);
+  height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
+}
+
+#app {
 }
 
 header {
@@ -70,6 +83,7 @@ header a {
 #app {
 	display: grid;
     grid-template-columns: 1fr 2fr;
+	height: 100%;
 }
 
 @media (min-width: 500px) {

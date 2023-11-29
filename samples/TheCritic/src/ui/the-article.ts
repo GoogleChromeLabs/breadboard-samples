@@ -4,16 +4,17 @@ export class TheArticle extends HTMLElement {
 		const root = this.attachShadow({ mode: "open" });
 		root.innerHTML = `<style>
 		:host {
-		  display: block;
+		  display: flex;
+		  flex-direction: column;
 		  padding: 10px;
 		}
 
 		textarea {
-			display: block;
 			width: 100%;
+			flex:1;
 		}
 	  </style>
-	  <textarea rows="10"></textarea>
+	  <textarea></textarea>
 	  <button id="critique">Critique</button>
 	`;
 

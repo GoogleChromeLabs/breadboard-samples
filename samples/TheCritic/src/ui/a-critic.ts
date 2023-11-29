@@ -7,6 +7,13 @@ export class ACritic extends HTMLElement {
 	}
 
 	attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+		if (name === 'persona') {
+			const personaElement = this.#root.querySelector(`#${name}`) as HTMLTextAreaElement;
+			if (personaElement===null) return;
+
+			personaElement.innerText = newValue;
+
+		}
 		this.#root.querySelector(`#${name}`)?.setAttribute('value', newValue);
 	}
 
@@ -47,12 +54,24 @@ export class ACritic extends HTMLElement {
 		}
 
 		details ::slotted(div:empty)) {
-			display: none
+			display: none;
 		}
+
+		div.config {
+			display: flex;
+			flex-direction: column;
+		}
+
+		div.config input {
+			flex: 1;
+			width: 100%;
+			display; block;
+		}
+
 	  </style>
-		<div>
+		<div class="config">
 			<input type=text id="name" value="${this.name}">
-			<input type=text id="persona" value="${this.persona}">
+			<textarea id="persona">${this.persona}</textarea>
 		</div>
 		<div>
 			<details>

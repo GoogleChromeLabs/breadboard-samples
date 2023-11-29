@@ -8,18 +8,23 @@ export class ThePanel extends HTMLElement {
 		  display: block;
 		  padding: 10px;
 		}
+
+		div.config {
+			display: flex;
+			flex-direction: column;
+		}
 	  </style>
 	  <slot name="critics"></slot>
-	  <div>
+	  <div class="config">
 		<input type="text" id="name" placeholder="Name" />
-		<input type="text" id="persona" placeholder="Persona" />
+		<textarea type="text" id="persona" placeholder="Persona"></textarea>
 		<button id="save">Save</button>
 	  </div>
 	`;
 
 		root.querySelector("#save")?.addEventListener("click", () => {
 			const nameEl = <HTMLInputElement>root.querySelector("#name");
-			const personaEl = <HTMLInputElement>root.querySelector("#persona")
+			const personaEl = <HTMLTextAreaElement>root.querySelector("#persona")
 			this.addCritic(nameEl.value, personaEl.value);
 
 			nameEl.value = "";
