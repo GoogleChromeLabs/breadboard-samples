@@ -1108,7 +1108,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.2.16":
+"@types/react-dom@npm:^18.2.15, @types/react-dom@npm:^18.2.16":
   version: 18.2.17
   resolution: "@types/react-dom@npm:18.2.17"
   dependencies:
@@ -1117,7 +1117,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.2.38":
+"@types/react@npm:*, @types/react@npm:^18.2.37, @types/react@npm:^18.2.38":
   version: 18.2.39
   resolution: "@types/react@npm:18.2.39"
   dependencies:
@@ -1142,7 +1142,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^6.12.0":
+"@typescript-eslint/eslint-plugin@npm:^6.10.0, @typescript-eslint/eslint-plugin@npm:^6.12.0":
   version: 6.13.1
   resolution: "@typescript-eslint/eslint-plugin@npm:6.13.1"
   dependencies:
@@ -1167,7 +1167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^6.12.0":
+"@typescript-eslint/parser@npm:^6.10.0, @typescript-eslint/parser@npm:^6.12.0":
   version: 6.13.1
   resolution: "@typescript-eslint/parser@npm:6.13.1"
   dependencies:
@@ -1537,6 +1537,25 @@ __metadata:
   checksum: 3ce727cbc78f69d6a4722517a58ee926c8c21083633b1d3fdf66fd688f6c127a53a592141bd4866f9b63240a86e9d8e974b13919450bd17fa33c2d22c4558ad8
   languageName: node
   linkType: hard
+
+"autobake@workspace:samples/AutoBake":
+  version: 0.0.0-use.local
+  resolution: "autobake@workspace:samples/AutoBake"
+  dependencies:
+    "@types/react": "npm:^18.2.37"
+    "@types/react-dom": "npm:^18.2.15"
+    "@typescript-eslint/eslint-plugin": "npm:^6.10.0"
+    "@typescript-eslint/parser": "npm:^6.10.0"
+    "@vitejs/plugin-react-swc": "npm:^3.5.0"
+    eslint: "npm:^8.53.0"
+    eslint-plugin-react-hooks: "npm:^4.6.0"
+    eslint-plugin-react-refresh: "npm:^0.4.4"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    typescript: "npm:^5.2.2"
+    vite: "npm:^5.0.0"
+  languageName: unknown
+  linkType: soft
 
 "available-typed-arrays@npm:^1.0.5":
   version: 1.0.5
@@ -2523,7 +2542,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.54.0":
+"eslint@npm:^8.53.0, eslint@npm:^8.54.0":
   version: 8.54.0
   resolution: "eslint@npm:8.54.0"
   dependencies:
@@ -5488,7 +5507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.3.2":
+"typescript@npm:^5.2.2, typescript@npm:^5.3.2":
   version: 5.3.2
   resolution: "typescript@npm:5.3.2"
   bin:
@@ -5498,7 +5517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.3.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.3.2#optional!builtin<compat/typescript>":
   version: 5.3.2
   resolution: "typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>::version=5.3.2&hash=e012d7"
   bin:
@@ -5629,7 +5648,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.1, vite@npm:^5.0.2":
+"vite@npm:^5.0.0, vite@npm:^5.0.1, vite@npm:^5.0.2":
   version: 5.0.3
   resolution: "vite@npm:5.0.3"
   dependencies:
