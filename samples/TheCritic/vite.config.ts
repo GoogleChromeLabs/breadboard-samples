@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
-import wasm from "vite-plugin-wasm";
-import topLevelAwait from "vite-plugin-top-level-await";
+import path from "path";
+import watchAndRun from "vite-plugin-watch-and-run";
+import fullReload from "vite-plugin-full-reload";
 
 export const buildCustomAllowList = (value?: string) => {
 	if (!value) return {};
@@ -18,10 +19,13 @@ export default defineConfig({
 		},
 		target: "esnext",
 	},
-	worker: {
-		plugins: [wasm(), topLevelAwait()]
-	},
-	plugins: [wasm(), topLevelAwait()],
+	plugins: [watchAndRun([
+        {
+          watch: path.resolve("src/boards/**/*.ts"),
+          run: "npm run generate:graphs",
+        },
+      ]),
+      fullReload(["public/*.json"])],
 	server: {
 		port: 5173,
 		strictPort: true,

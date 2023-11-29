@@ -24,17 +24,19 @@ export const get = () => {
 
 // TODO: add a UI Controller that will handle UI events and udpate the board.
 
-export const run = async (panel: Panel) => {
+export const run = async () => {
 	const app = get();
 	if (app == undefined) return;
 
 	const articleElement = app.getElementsByTagName("the-article")[0] as TheArticle;
 
 	if (articleElement) {
+
 		articleElement.addEventListener("critique", (async (e: CustomEvent) => {
 			const criticsElements = app.getElementsByTagName("a-critic");
-
 			const article = e.detail.text;
+
+			const panel = new Panel();
 
 			for (let i = 0; i < criticsElements.length; i++) {
 				const critic = criticsElements[i] as ACritic;
@@ -42,14 +44,24 @@ export const run = async (panel: Panel) => {
 				if (name == null || persona == null) {
 					continue;
 				}
-				await panel.addCritic(name, persona);
+				const criticData = await panel.addCritic(name, persona);
+				critic.id = criticData.id;
 			}
 
 			const ittr = await panel.critique(article);
 
-			for await(const response of ittr) {
+			for await (const response of ittr) {
 				console.log(`## ${response.name}\n`)
 				console.log(`${response.response}\n`)
+
+				const id = response.id;
+				const el = document.querySelector(`a-critic[id="${id}"]`) as ACritic;
+				if (el) {
+					const responseEl = document.createElement("div");
+					responseEl.innerHTML = response.response;
+					responseEl.slot = "response";
+					el.appendChild(responseEl)
+				}
 			}
 
 		}) as (e: Event) => Promise<void>);

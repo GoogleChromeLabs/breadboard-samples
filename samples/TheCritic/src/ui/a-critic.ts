@@ -15,11 +15,11 @@ export class ACritic extends HTMLElement {
 	}
 
 	set name(value) {
-		if (value) { 
+		if (value) {
 			this.setAttribute('name', value);
-		} 
-		else { 
-			this.removeAttribute('name'); 
+		}
+		else {
+			this.removeAttribute('name');
 		}
 	}
 
@@ -28,11 +28,11 @@ export class ACritic extends HTMLElement {
 	}
 
 	set persona(value) {
-		if (value) { 
+		if (value) {
 			this.setAttribute('persona', value);
-		} 
-		else { 
-			this.removeAttribute('persona'); 
+		}
+		else {
+			this.removeAttribute('persona');
 		}
 	}
 
@@ -45,12 +45,21 @@ export class ACritic extends HTMLElement {
 		  display: block;
 		  padding: 10px;
 		}
+
+		details ::slotted(div:empty)) {
+			display: none
+		}
 	  </style>
 		<div>
 			<input type=text id="name" value="${this.name}">
 			<input type=text id="persona" value="${this.persona}">
 		</div>
-	  <slot></slot>
+		<div>
+			<details>
+				<summary>Response</summary>
+				<slot name=response></slot>
+			</details>
+		</div>
 	`;
 	}
 }

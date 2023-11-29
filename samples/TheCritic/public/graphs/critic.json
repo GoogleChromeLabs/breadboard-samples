@@ -12,8 +12,8 @@
     {
       "from": "critic-name",
       "to": "promptTemplate-3",
-      "out": "input",
-      "in": "input"
+      "out": "article",
+      "in": "article"
     },
     {
       "from": "critic-name",
@@ -44,6 +44,12 @@
       "to": "output-1",
       "out": "name",
       "in": "name"
+    },
+    {
+      "from": "critic-name",
+      "to": "output-1",
+      "out": "id",
+      "in": "id"
     }
   ],
   "nodes": [
@@ -63,10 +69,15 @@
               "title": "Critic Name",
               "description": "The name of the Critic"
             },
-            "input": {
+            "id": {
               "type": "string",
-              "title": "inputToCritique",
-              "description": "The input that is being critiqued"
+              "title": "id",
+              "description": "The id of the critique being created"
+            },
+            "article": {
+              "type": "string",
+              "title": "articleToCritique",
+              "description": "The article that is being critiqued"
             },
             "persona": {
               "type": "string",
@@ -90,14 +101,15 @@
       "id": "promptTemplate-3",
       "type": "promptTemplate",
       "configuration": {
-        "template": "\nYour name is {{name}} and you are a {{persona}}.\n\nYou will create a critique of the following input:\n\n{{input}}\n\nCritique:\n"
+        "template": "\nYour name is {{name}} and you are a {{persona}}.\n\nYou will create a critique of the following input:\n\n{{article}}\n\nCritique:\n"
       }
     },
     {
       "id": "generateCompletion-4",
       "type": "generateCompletion",
       "configuration": {
-        "model": "claude-2.1"
+        "model": "claude-2.1",
+        "baseURL": "http://localhost:5173"
       }
     }
   ],
