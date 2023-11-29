@@ -14,12 +14,12 @@ export class TheArticle extends HTMLElement {
 			flex:1;
 		}
 	  </style>
-	  <textarea></textarea>
+	  <textarea placeholder="Your Article"></textarea>
 	  <button id="critique">Critique</button>
 	`;
 
 	const critique = root.getElementById("critique");
-	critique?.addEventListener("click", (event) => {
+	critique?.addEventListener("click", () => {
 		const textarea = root.querySelector("textarea");
 		const critiqueEvent = new CustomEvent("critique", {
 			detail: {
