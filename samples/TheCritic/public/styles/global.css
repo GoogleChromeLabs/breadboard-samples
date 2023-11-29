@@ -59,19 +59,23 @@ main {
 	flex: 1;
 }
 
-#app {
-}
-
 header {
   padding: calc(var(--bb-grid-size) * 10) calc(var(--bb-grid-size) * 6)
     calc(var(--bb-grid-size) * 8) calc(var(--bb-grid-size) * 6);
   min-height: calc(var(--bb-grid-size) * 24);
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;;
+  align-items: flex-start;
 }
 
 header a {
   text-decoration: none;
+}
+
+header h2 {
+	font: var(--bb-text-medium) var(--bb-font-family-header);
+	color: rgb(90, 64, 119);
+	margin: 0;
 }
 
 #title {
