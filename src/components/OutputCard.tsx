@@ -1,48 +1,61 @@
-import { intlFormatDate } from "~/hooks/date-time";
+import { intlFormatDate } from "~/hooks/useFormattedDate";
 import "./OutputCard.css";
-import { OutputComponentTypes, OutputNodeData } from "~/sw/types";
+import { OutputNodeData } from "~/sw/types";
+import useCategoriseNodes from "~/hooks/useCategoriseNodes";
+//import useComponentForNode from "~/hooks/useComponentForNode";
 
 export type OutputNodeProps = {
-	nodeType?: string;
-	data: OutputNodeData;
+	nodeId?: string;
+	data: OutputNodeData[];
 };
 
-const OutputNode = ({ data, nodeType }: OutputNodeProps): React.JSX.Element => {
+const OutputNode = ({ data }: OutputNodeProps): React.JSX.Element => {
 
-	nodeType = nodeType || getComponentForNode(data);
 	const dataString = JSON.stringify(data, null, 2);
 	const dataObject = JSON.parse(dataString);
 
-	const title = dataObject["output"].title;
-	const author = dataObject["output"].author;
-	const postUrl = dataObject["output"].url;
-	const dateCreated = intlFormatDate(dataObject["output"].created_at);
+	console.log(dataObject);
+
+	const categoryArrays = useCategoriseNodes(dataObject);
+
+	/* 	const getSummaries = (searchData: OutputNodeData[], summaries: OutputNodeData[]): OutputNodeData | undefined => {
+			let matchSummary;
+			summaries.map((summary) => {
+				matchSummary = searchData.some((data) => data.output.story_id === summary.output.story_id)
+			})
+			console.log(matchSummary);
+			return matchSummary;
+		};
+	
+		console.log(getSummaries(categoryArrays.searchResultData, categoryArrays.summarisationData)); */
 
 
 	return (
-		<>
-			{nodeType === "searchResultData" &&
-				(
+		<div>
+			{
+				categoryArrays.searchResultData.map((result) => (
 					<section className="card">
-						<h3>{title}</h3>
-						<h4>By {author}</h4>
-						<p>URL:<a href={postUrl}>{postUrl}</a></p>
-						<p>Created at: {dateCreated}</p>
+						<h3>{result.output.title}</h3>
+						<h4>By {result.output.author}</h4>
+						<p>URL:<a href={result.output.url}>{result.output.url}</a></p>
+						<p>Created at: {intlFormatDate(result.output.created_at)}</p>
 					</section>
-				)
+				))
+
 			}
-			{nodeType === "summary" &&
-				(
+			{
+				categoryArrays.summarisationData.map((result) => (
 					<section className="card">
-						<h4>Type: {dataObject["node"]}</h4>
-						<p>URL:<a href={postUrl}>{postUrl}</a></p>
-						<p>Completion: {dataObject["output"].completion}</p>
-						<p>Created at: {dateCreated}</p>
+						<h4>Type: {result.node}</h4>
+						<p>URL:<a href={result.output.url}>{result.output.url}</a></p>
+						<p>Completion: {result.output.completion}</p>
+						<p>Created at: {intlFormatDate(result.output.created_at)}</p>
 					</section>
-				)
+				))
+
 			}
-			{nodeType === "storyData" &&
-				(
+			{
+				categoryArrays.debugData.map((result) => (
 					<pre
 						style={{
 							backgroundColor: "black",
@@ -56,23 +69,13 @@ const OutputNode = ({ data, nodeType }: OutputNodeProps): React.JSX.Element => {
 							overflow: "auto",
 							textAlign: "left",
 						}}>
-						{dataString}
+						{JSON.stringify(result, null, 2)}
 					</pre>
-				)
+				))
+
 			}
-		</>
-	)
+		</div>);
+
 };
 
 export default OutputNode;
-
-const Fallback = "Hidden"
-
-const NodeTypeMap: Map<string, OutputComponentTypes> = new Map()
-NodeTypeMap.set("searchResultData", OutputComponentTypes.searchResultData)
-NodeTypeMap.set("summary", OutputComponentTypes.summary)
-NodeTypeMap.set("storyData", OutputComponentTypes.storyData)
-
-function getComponentForNode(data: OutputNodeData): OutputComponentTypes | typeof Fallback {
-	return NodeTypeMap.get(data["node"]) || Fallback
-}

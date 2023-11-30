@@ -29,20 +29,20 @@ export const WorkerStatus = {
 export type WorkerStatus = (typeof WorkerStatus)[keyof typeof WorkerStatus];
 
 
-export const OutputComponentTypes = {
+export const OutputNodeIds = {
 	searchResultData: "searchResultData",
 	summary: "summary",
 	storyData: "storyData"
-} as const
+} as const;
 
-export type OutputComponentTypes = (typeof OutputComponentTypes)[keyof typeof OutputComponentTypes];
+export type OutputNodeIds = (typeof OutputNodeIds)[keyof typeof OutputNodeIds];
 
 export type NodeData = {
-	node: string // node id
-	type: "input" | "output"
+	node: string; // node id
+	type: "input" | "output";
 }
 export type OutputNodeData = NodeData & {
-	type: "output"
-	timestamp: number
-	output: { [key: string]: unknown }
+	type: "output";
+	timestamp: number;
+	output: { [key: string]: unknown };
 }

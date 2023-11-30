@@ -84,13 +84,10 @@ export const WorkerComponent: React.FC = () => {
 				</div>
 			</div>
 			<div className="content" id="output">
-				{broadcastChannel.output.map((data, index) => (
-					<OutputNode
-						data={data as OutputNodeData}
-						key={index}
-					// nodeType="searchResultData"
-					/>
-				))}
+				<OutputNode
+					data={broadcastChannel.output as OutputNodeData[]}
+					nodeId="searchResultData"
+				/>
 			</div>
 		</div>
 	);
