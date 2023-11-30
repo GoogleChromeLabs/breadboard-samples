@@ -16,20 +16,20 @@ input.wire("inputPartOne", board.output({
         $id: "outputNode"
 }));
 
-// redirecting a parameter to another name can be useful for when you want to use a node that requires a specifically named input or input(s)
-input.wire("inputPartOne->renamedOutput", board.output({
+// Redirecting a parameter to another name can be useful for when you want to use a node that requires a specifically named input or input(s)
+input.wire("inputPartTwo->renamedOutput", board.output({
 	$id: "renamedOutputNode"
 }));
 
 input.wire("*", board.output({
-		$id: "outputAll"
+	$id: "outputAll"
 }));
 
 (async () => {
 	for await (const run of board.run()) {
         if (run.type === "input") {
 			run.inputs = {
-				inputPartOne: `Hello`,
+				inputPartOne: "Hello",
 				inputPartTwo: "World!"
 		    };
 		} else if (run.type === "output") {

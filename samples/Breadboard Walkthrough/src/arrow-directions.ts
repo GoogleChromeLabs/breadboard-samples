@@ -13,6 +13,7 @@ const output = board.output();
 const input = board.input();
 
 input.wire("inputPartOne", output); // Left-to-right direction is assumed by default
+
 input.wire("inputPartTwo->", output);
 
 output.wire("<-inputPartThree", input);
