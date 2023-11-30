@@ -5,8 +5,9 @@
  */
 //import '@anthropic-ai/sdk/shims/web'
 
-import { register, run } from "./ui";
+import { register, run, load } from "./ui";
 
 register();
 
+load();
 run();

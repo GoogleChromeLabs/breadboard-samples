@@ -24,11 +24,35 @@ export const get = () => {
 
 // TODO: add a UI Controller that will handle UI events and udpate the board.
 
+export const load = async () => {
+	const app = get();
+	if (app == undefined) return;
+
+	const criticString = localStorage.getItem("critics");
+	if (criticString == null) return;
+
+	const critics = JSON.parse(criticString);
+	const panelElement = app.getElementsByTagName("the-panel")[0] as ThePanel;
+
+	for (const critic of critics) {
+		const { name, persona } = critic;
+
+		panelElement.addCritic(name, persona);
+	}
+};
+
 export const run = async () => {
 	const app = get();
 	if (app == undefined) return;
 
 	const articleElement = app.getElementsByTagName("the-article")[0] as TheArticle;
+
+	const panelElement = app.getElementsByTagName("the-panel")[0] as ThePanel;
+
+	panelElement.addEventListener("criticadded", (async (e: CustomEvent) => { 
+		const critics = panelElement.critics;
+		localStorage.setItem("critics", JSON.stringify(critics));
+	}) as (e: Event) => Promise<void>);
 
 	if (articleElement) {
 

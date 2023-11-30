@@ -35,7 +35,6 @@ export class Panel {
 
     this.#coreKit = this.#board.addKit(Core);
     this.#inputText = this.#board.input({ $id: "input-text" });
-
   }
 
   addCritic(name: string, persona: string) {
@@ -73,5 +72,6 @@ export class Panel {
 // testing so we can preview the board.
 const p = new Panel()
 p.addCritic("Paul", "The Critic");
+p.addCritic("Paul 2", "The Critic");
 
 export default p.board;

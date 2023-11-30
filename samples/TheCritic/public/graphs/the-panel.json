@@ -38,6 +38,42 @@
       "from": "invoke-2",
       "to": "output-1",
       "out": "*"
+    },
+    {
+      "from": "input-text",
+      "to": "critic2-lambda",
+      "out": "article",
+      "in": "article"
+    },
+    {
+      "from": "critic2-lambda",
+      "to": "invoke-4",
+      "constant": true,
+      "out": "board",
+      "in": "board"
+    },
+    {
+      "from": "critic2-input",
+      "to": "invoke-4",
+      "out": "id",
+      "in": "id"
+    },
+    {
+      "from": "critic2-input",
+      "to": "invoke-4",
+      "out": "persona",
+      "in": "persona"
+    },
+    {
+      "from": "critic2-input",
+      "to": "invoke-4",
+      "out": "name",
+      "in": "name"
+    },
+    {
+      "from": "invoke-4",
+      "to": "output-3",
+      "out": "*"
     }
   ],
   "nodes": [
@@ -193,6 +229,157 @@
     },
     {
       "id": "invoke-2",
+      "type": "invoke",
+      "configuration": {}
+    },
+    {
+      "id": "output-3",
+      "type": "output"
+    },
+    {
+      "id": "critic2-input",
+      "type": "input"
+    },
+    {
+      "id": "critic2-lambda",
+      "type": "lambda",
+      "configuration": {
+        "board": {
+          "kind": "board",
+          "board": {
+            "title": "The Critic",
+            "description": "Test Breadboard Kit",
+            "version": "0.0.1",
+            "edges": [
+              {
+                "from": "critic-name",
+                "to": "promptTemplate-3",
+                "out": "persona",
+                "in": "persona"
+              },
+              {
+                "from": "critic-name",
+                "to": "promptTemplate-3",
+                "out": "article",
+                "in": "article"
+              },
+              {
+                "from": "critic-name",
+                "to": "promptTemplate-3",
+                "out": "name",
+                "in": "name"
+              },
+              {
+                "from": "promptTemplate-3",
+                "to": "generateCompletion-4",
+                "out": "prompt",
+                "in": "text"
+              },
+              {
+                "from": "secrets-2",
+                "to": "generateCompletion-4",
+                "out": "CLAUDE_API_KEY",
+                "in": "CLAUDE_API_KEY"
+              },
+              {
+                "from": "generateCompletion-4",
+                "to": "output-1",
+                "out": "completion",
+                "in": "response"
+              },
+              {
+                "from": "critic-name",
+                "to": "output-1",
+                "out": "name",
+                "in": "name"
+              },
+              {
+                "from": "critic-name",
+                "to": "output-1",
+                "out": "id",
+                "in": "id"
+              }
+            ],
+            "nodes": [
+              {
+                "id": "output-1",
+                "type": "output"
+              },
+              {
+                "id": "critic-name",
+                "type": "input",
+                "configuration": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "title": "Critic Name",
+                        "description": "The name of the Critic"
+                      },
+                      "id": {
+                        "type": "string",
+                        "title": "id",
+                        "description": "The id of the critique being created"
+                      },
+                      "article": {
+                        "type": "string",
+                        "title": "articleToCritique",
+                        "description": "The article that is being critiqued"
+                      },
+                      "persona": {
+                        "type": "string",
+                        "title": "Critic Persona",
+                        "description": "The Persona of the Critic"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "id": "secrets-2",
+                "type": "secrets",
+                "configuration": {
+                  "keys": [
+                    "CLAUDE_API_KEY"
+                  ]
+                }
+              },
+              {
+                "id": "promptTemplate-3",
+                "type": "promptTemplate",
+                "configuration": {
+                  "template": "\nYour name is {{name}} and you are a {{persona}}.\n\nYou will create a critique of the following input:\n\n{{article}}\n\nCritique:\n"
+                }
+              },
+              {
+                "id": "generateCompletion-4",
+                "type": "generateCompletion",
+                "configuration": {
+                  "model": "claude-2.1",
+                  "baseURL": "http://localhost:5173"
+                }
+              }
+            ],
+            "kits": [
+              {
+                "title": "LLM Starter Kit",
+                "description": "A kit that provides a few necessary components for wiring boards that use PaLM API.",
+                "version": "0.0.1",
+                "url": "npm:@google-labs/llm-starter"
+              },
+              {
+                "url": "npm:@paulkinlan/claude-breadboard-kit"
+              }
+            ]
+          }
+        },
+        "name": "Paul 2",
+        "persona": "The Critic"
+      }
+    },
+    {
+      "id": "invoke-4",
       "type": "invoke",
       "configuration": {}
     }
