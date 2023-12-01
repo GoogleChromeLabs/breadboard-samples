@@ -11,6 +11,8 @@ import { TheArticle } from "./the-article";
 import { ThePanel } from "./the-panel";
 
 import "../lib/comlink-async.ts";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 export const register = () => {
 	customElements.define("a-critic", ACritic);
@@ -49,7 +51,7 @@ export const run = async () => {
 
 	const panelElement = app.getElementsByTagName("the-panel")[0] as ThePanel;
 
-	panelElement.addEventListener("criticadded", (async (e: CustomEvent) => { 
+	panelElement.addEventListener("criticadded", (async (e: CustomEvent) => {
 		const critics = panelElement.critics;
 		localStorage.setItem("critics", JSON.stringify(critics));
 	}) as (e: Event) => Promise<void>);
@@ -82,7 +84,8 @@ export const run = async () => {
 				const el = document.querySelector(`a-critic[id="${id}"]`) as ACritic;
 				if (el) {
 					const responseEl = document.createElement("div");
-					responseEl.innerHTML = response.response;
+
+					responseEl.innerHTML = DOMPurify.sanitize(await marked(response.response));
 					responseEl.slot = "response";
 					el.appendChild(responseEl)
 				}
