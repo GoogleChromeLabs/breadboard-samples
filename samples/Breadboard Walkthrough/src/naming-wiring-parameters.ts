@@ -12,15 +12,37 @@ const input = board.input({
 	$id: "inputNode"
 });
 
-input.wire("inputPartOne", board.output({
+/**
+ * The following 4 wires are equivalent because the property names are the identical on both the sending and receiving nodes 
+ */
+// This means the parameter name can be on both sides of the arrow...
+input.wire("inputPartOne->inputPartOne", board.output({
         $id: "outputNode"
 }));
+// Or either side of the arrow...
+input.wire("inputPartTwo->", board.output({
+	$id: "outputNode"
+}));
+input.wire("->inputPartThree", board.output({
+	$id: "outputNode"
+}));
+// Or the arrow can be omitted entirely, which assumes left-to-right direction by default 
+input.wire("inputPartFour", board.output({
+	$id: "outputNode"
+}));
 
-// Redirecting a parameter to another name can be useful for when you want to use a node that requires a specifically named input or input(s)
-input.wire("inputPartTwo->renamedOutput", board.output({
+// The right-to-left arrow direction can be used to pass values from nodes inside the wire function to outer nodes
+// The arrow direction must be included here, but the parameter name can be on the left, right or both sides of the arrow
+board.output({
+	$id: "outputNode"
+}).wire("inputPartFive<-inputPartFive", input);
+
+// Redirecting a parameter to another name can be useful for when you want to use a node that requires specifically named input(s)
+input.wire("inputPartSix->renamedOutput", board.output({
 	$id: "renamedOutputNode"
 }));
 
+// Using asterisk (*) will wire all properties
 input.wire("*", board.output({
 	$id: "outputAll"
 }));
@@ -30,7 +52,11 @@ input.wire("*", board.output({
         if (run.type === "input") {
 			run.inputs = {
 				inputPartOne: "Hello",
-				inputPartTwo: "World!"
+				inputPartTwo: "World",
+				inputPartThree: "And",
+				inputPartFour: "Welcome",
+				inputPartFive: "To",
+				inputPartSix: "Breadboard!"
 		    };
 		} else if (run.type === "output") {
 			console.log(run.node.id, run.outputs);
