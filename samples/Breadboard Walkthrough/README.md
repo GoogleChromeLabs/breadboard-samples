@@ -9,6 +9,6 @@
 7. [Multiple Inputs One Output](./output/multiple-inputs-one-output.ts.md)
 8. [Naming Wiring Parameters](./output/naming-wiring-parameters.ts.md)
 9. [Arrow Directions](./output/arrow-directions.ts.md)
-10. [Kit Node Values and Handlers]()
+10. [Custom Kit Node Values and Handlers](./output/custom-kit-node-values-and-handlers-demo.ts.md)
 11. [Include Board as a Node]()
 12. [Adding Slot to Board]()
