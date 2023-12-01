@@ -3,8 +3,8 @@
 		"@google-labs/breadboard": "^0.5.1"
 	},
 	"devDependencies": {
-		"@types/node": "^20.9.2",
-		"typescript": "^5.2.2"
+		"@types/node": "^20.9.3",
+		"typescript": "^5.3.2"
 	},
 	"engines": {
 		"node": ">=19"
@@ -17,7 +17,8 @@
 	],
 	"scripts": {
 		"start": "yarn workspaces foreach -A run start",
-		"watch": "yarn workspaces foreach -A run watch"
+		"watch": "yarn workspaces foreach -A run watch",
+		"build": "yarn workspaces foreach -A run build"
 	},
 	"repository": "https://github.com/GoogleChromeLabs/breadboard-samples",
 	"packageManager": "yarn@4.0.2"
