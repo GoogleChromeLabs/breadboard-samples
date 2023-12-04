@@ -5,11 +5,53 @@ type Receiver = {
 };
 import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 import { Board, LogProbe } from "@google-labs/breadboard";
-import { handleBoardOutput } from "./boardOutputHandler";
 import { makeBoard } from "./makeBoard";
 
 const board: Board = makeBoard();
 const logReceiver: Receiver = { log: (message) => console.debug(message) };
+
+class Stories {
+	private static instance: Stories;
+
+	private stories: Map<number, unknown> = new Map<number, unknown>();
+
+	private constructor() {}
+	public static getInstance(): Stories {
+		if (!Stories.instance) {
+			Stories.instance = new Stories();
+		}
+		return Stories.instance;
+	}
+
+	private get(id: number): unknown {
+		return this.stories.get(id);
+	}
+	private add(
+		id: number,
+		story: {
+			[key: string]: unknown;
+		}
+	): void {
+		this.stories.set(id, {
+			...(this.stories.get(id) || {}),
+			...story,
+		});
+	}
+	static get(id: number): unknown {
+		return Stories.getInstance().get(id);
+	}
+	static add(
+		id: number,
+		story: {
+			[key: string]: unknown;
+		}
+	): void {
+		Stories.getInstance().add(id, story);
+	}
+	static getAll(): unknown[] {
+		return Array.from(Stories.getInstance().stories.values());
+	}
+}
 
 const ignoredOutputNodeIds = [
 	"testCompletion",
@@ -25,8 +67,8 @@ generateAndWriteCombinedMarkdown({
 });
 
 for await (const runResult of board.run({
-	probe: new LogProbe(),
-	// probe: new LogProbe(logReceiver),
+	// probe: new LogProbe(),
+	probe: new LogProbe(logReceiver),
 })) {
 	if (runResult.type === "input") {
 		if (runResult.node.id === "claudeApiKey") {
@@ -42,15 +84,11 @@ for await (const runResult of board.run({
 		}
 	}
 	if (runResult.type === "output") {
-		handleBoardOutput({
-			node: runResult.node,
-			outputs: runResult.outputs,
-			state: runResult.state,
-		});
-
 		console.log("output", runResult.node.id, runResult.outputs);
 		if (runResult.outputs?.story_id) {
-			//
+			const id = runResult.outputs.story_id as number;
+			Stories.add(id, runResult.outputs);
+			console.log("StoryLibrary", Stories.getAll());
 		} else if (ignoredOutputNodeIds.includes(runResult.node.id)) {
 			//
 		} else {
@@ -59,3 +97,4 @@ for await (const runResult of board.run({
 		}
 	}
 }
+console.log(Stories.getAll());
