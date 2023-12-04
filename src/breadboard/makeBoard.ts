@@ -134,22 +134,25 @@ export function makeBoard(): Board {
 		);
 	}
 
-	if (DEBUG) {
-		const storyOutput = board.output({
-			$id: "story",
-		});
+	const storyOutput = board.output({
+		$id: "story",
+	});
 
-		story.wire("algoliaUrl", storyOutput);
-		story.wire("author", storyOutput);
-		// story.wire("children", storyOutput);
-		story.wire("created_at", storyOutput);
-		story.wire("created_at_i", storyOutput);
-		// story.wire("id", storyOutput);
-		story.wire("points", storyOutput);
-		story.wire("story_id", storyOutput);
-		story.wire("title", storyOutput);
-		// story.wire("type", storyOutput);
-		story.wire("url", storyOutput);
+	story.wire("algoliaUrl", storyOutput);
+	story.wire("author", storyOutput);
+	story.wire("created_at", storyOutput);
+	story.wire("created_at_i", storyOutput);
+	// story.wire("id", storyOutput);
+	story.wire("points", storyOutput);
+	story.wire("story_id", storyOutput);
+	story.wire("title", storyOutput);
+	story.wire("type", storyOutput);
+	story.wire("url", storyOutput);
+	search.wire("algoliaUrl", storyOutput);
+	searchQuery.wire("query", storyOutput);
+
+	if (DEBUG) {
+		story.wire("children", storyOutput);
 	}
 
 	//////////////////////////////////////////////
