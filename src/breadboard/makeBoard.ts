@@ -260,59 +260,12 @@ export function makeBoard(): Board {
 	claudeApiKey.wire("apiKey.", claudePostSummarisation);
 	instructionTemplate.wire("string->userQuestion", claudePostSummarisation);
 
-	claudePostSummarisation.wire(
-		"*",
-		board.output({
-			$id: "postSummarisation",
-		})
-	);
-
-	const storyData = core.passthrough();
-
-	story.wire("story_id", storyData);
-	story.wire("title", storyData);
-	story.wire("url", storyData);
-	story.wire("points", storyData);
-	story.wire("created_at", storyData);
-	story.wire("created_at_i", storyData);
-
-	const hnUrl = stringKit.template({
-		template: "https://news.ycombinator.com/item?id={{story_id}}",
+	const summaryOutput = board.output({
+		$id: "summary",
 	});
-	story.wire("story_id", hnUrl);
-	hnUrl.wire("string->post_url", storyData);
 
-	storyData.wire(
-		"*",
-		board.output({
-			$id: "storyData",
-		})
-	);
-	//////////////////////////////////////////////
-	const summary = core.passthrough();
-	storyData.wire("story_id", summary);
-	storyData.wire("title", summary);
-	storyData.wire("url", summary);
-	storyData.wire("points", summary);
-	storyData.wire("created_at", summary);
-	storyData.wire("created_at_i", summary);
-	storyData.wire("post_url", summary);
-
-	claudePostSummarisation.wire("completion", summary);
-	if (DEBUG) {
-		claudePostSummarisation.wire("stop_reason", summary);
-		claudePostSummarisation.wire("model", summary);
-		claudePostSummarisation.wire("stop", summary);
-		claudePostSummarisation.wire("log_id", summary);
-	}
-	storyData.wire("*", summary);
-
-	summary.wire(
-		"*",
-		board.output({
-			$id: "summary",
-		})
-	);
-
+	story.wire("story_id", summaryOutput);
+	claudePostSummarisation.wire("completion->summary", summaryOutput);
+	claudePostSummarisation.wire("*", summaryOutput);
 	return board;
 }
