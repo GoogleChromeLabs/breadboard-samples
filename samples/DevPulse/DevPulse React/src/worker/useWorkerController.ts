@@ -24,6 +24,9 @@ const useWorkerController = (
 	const [input, setInput] = useState<WorkerData | null>(null);
 	const [output, setOutput] = useState<unknown[]>([]);
 	const [status, setStatus] = useState<WorkerStatus>("idle");
+	//const appDispatch = useAppDispatch();
+
+	//console.log(appDispatch.dispatch(getStories()));
 
 	const handleMessage = (event: MessageEvent) => {
 		if (event.data.type === "inputNeeded")

@@ -4,6 +4,8 @@ import { WorkerControllerProvider } from "worker/workerControllerProvider.tsx";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 import App from "./App.tsx";
 import "./index.css";
+import { Provider } from "react-redux";
+import { store } from "~/core/redux/store.ts";
 
 if ("serviceWorker" in navigator) {
 	navigator.serviceWorker.register(
@@ -16,10 +18,14 @@ if ("serviceWorker" in navigator) {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<WorkerControllerProvider
-			broadcastChannel={new BroadcastChannel(BROADCAST_CHANNEL)}
-		>
-			<App />
-		</WorkerControllerProvider>
+		<Provider store={store}>
+			<WorkerControllerProvider
+				broadcastChannel={new BroadcastChannel(BROADCAST_CHANNEL)}
+			>
+
+				<App />
+
+			</WorkerControllerProvider>
+		</Provider>
 	</React.StrictMode>
 );
