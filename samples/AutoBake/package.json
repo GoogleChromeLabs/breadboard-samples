@@ -10,6 +10,8 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@exadev/breadboard-kits": "^0.8.1",
+		"@google-labs/breadboard": "^0.5.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
