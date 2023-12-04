@@ -205,7 +205,7 @@ type Feature = {
 
 type ChromeStatusFeatures = {
 	total_count: number;
-	fueatures: Feature[];
+	features: Feature[];
 };
 
 export async function chromeStatusApiFeatures(): Promise<ChromeStatusFeatures> {
