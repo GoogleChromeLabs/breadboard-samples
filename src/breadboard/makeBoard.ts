@@ -11,6 +11,8 @@ import Core from "@google-labs/core-kit";
 import { ClaudeKitBuilder } from "~/breadboard/ClaudeKitBuilder.ts";
 
 const LIMIT_DEPTH = 10;
+const SEARCH_RESULT_COUNT = 2;
+
 const DEBUG = false;
 const TOP_STORIES = false;
 export function makeBoard(): Board {
@@ -30,7 +32,7 @@ export function makeBoard(): Board {
 
 	const search = algolia.search({
 		tags: ["story"],
-		limit: 5,
+		limit: SEARCH_RESULT_COUNT,
 	});
 	const searchPassthrough = core.passthrough();
 	searchQuery.wire("query", searchPassthrough);
