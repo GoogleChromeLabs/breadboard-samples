@@ -215,10 +215,22 @@ export function makeBoard(): Board {
 	//////////////////////////////////////////////
 
 	const instruction = "Summarise the discussion regarding this post";
+	const templateText = [instruction, "```json", "{{story}}", "```"].join(
+		"\n"
+	);
+
+	story.wire(
+		"story_id",
+		board.output({
+			$id: "templateText",
+			instruction,
+			templateText,
+		})
+	);
 
 	const instructionTemplate = stringKit.template({
 		$id: "instructionTemplate",
-		template: [instruction, "```json", "{{story}}", "```"].join("\n"),
+		template: templateText,
 	});
 	stringifiedPost.wire("string->story", instructionTemplate);
 
