@@ -7,6 +7,13 @@ export class ACritic extends HTMLElement {
 	}
 
 	attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+		if (name === 'persona') {
+			const personaElement = this.#root.querySelector(`#${name}`) as HTMLTextAreaElement;
+			if (personaElement===null) return;
+
+			personaElement.innerText = newValue;
+
+		}
 		this.#root.querySelector(`#${name}`)?.setAttribute('value', newValue);
 	}
 
@@ -15,11 +22,11 @@ export class ACritic extends HTMLElement {
 	}
 
 	set name(value) {
-		if (value) { 
+		if (value) {
 			this.setAttribute('name', value);
-		} 
-		else { 
-			this.removeAttribute('name'); 
+		}
+		else {
+			this.removeAttribute('name');
 		}
 	}
 
@@ -28,11 +35,11 @@ export class ACritic extends HTMLElement {
 	}
 
 	set persona(value) {
-		if (value) { 
+		if (value) {
 			this.setAttribute('persona', value);
-		} 
-		else { 
-			this.removeAttribute('persona'); 
+		}
+		else {
+			this.removeAttribute('persona');
 		}
 	}
 
@@ -45,12 +52,33 @@ export class ACritic extends HTMLElement {
 		  display: block;
 		  padding: 10px;
 		}
+
+		details ::slotted(div:empty)) {
+			display: none;
+		}
+
+		div.config {
+			display: flex;
+			flex-direction: column;
+		}
+
+		div.config input {
+			flex: 1;
+			width: 100%;
+			display; block;
+		}
+
 	  </style>
-		<div>
+		<div class="config">
 			<input type=text id="name" value="${this.name}">
-			<input type=text id="persona" value="${this.persona}">
+			<textarea id="persona">${this.persona}</textarea>
 		</div>
-	  <slot></slot>
+		<div>
+			<details>
+				<summary>Response</summary>
+				<slot name=response></slot>
+			</details>
+		</div>
 	`;
 	}
 }

@@ -29,10 +29,15 @@ const inputCritic = board.input({
         title: "Critic Name",
         description: "The name of the Critic"
       },
-      input: {
+	  id: {
         type: "string",
-        title: "inputToCritique",
-        description: "The input that is being critiqued",
+        title: "id",
+        description: "The id of the critique being created",
+      },
+      article: {
+        type: "string",
+        title: "articleToCritique",
+        description: "The article that is being critiqued",
       },
       persona: {
         type: "string",
@@ -47,17 +52,17 @@ const secret = starterKit.secrets(["CLAUDE_API_KEY"]);
 const criticPrompt = starterKit.promptTemplate(`
 Your name is {{name}} and you are a {{persona}}.
 
-You will create a critique of the following input:
+You will create a markdown bulleted critique of the following input:
 
-{{input}}
+{{article}}
 
 Critique:
 `);
 
-const claudeCompletion = claudeKit.generateCompletion({ model: "claude-2.1", baseURL: "http://localhost:5173/"});
+const claudeCompletion = claudeKit.generateCompletion({ model: "claude-2.1", baseURL: globalThis.location?.origin || "http://localhost:5173" });
 
 inputCritic.wire("persona->persona", criticPrompt);
-inputCritic.wire("input->input", criticPrompt);
+inputCritic.wire("article->article", criticPrompt);
 inputCritic.wire("name->name", criticPrompt);
 
 criticPrompt.wire("prompt->text", claudeCompletion);
@@ -65,5 +70,6 @@ secret.wire("CLAUDE_API_KEY->CLAUDE_API_KEY", claudeCompletion);
 
 claudeCompletion.wire("completion->response", criticOutput);
 inputCritic.wire("name->name", criticOutput);
+inputCritic.wire("id->id", criticOutput);
 
 export default board;

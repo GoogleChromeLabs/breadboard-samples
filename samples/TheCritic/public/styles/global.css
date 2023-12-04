@@ -47,6 +47,16 @@ body {
   margin: 0;
   font-family: var(--bb-font-family);
   color: var(--bb-font-color);
+  height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
 }
 
 header {
@@ -54,11 +64,18 @@ header {
     calc(var(--bb-grid-size) * 8) calc(var(--bb-grid-size) * 6);
   min-height: calc(var(--bb-grid-size) * 24);
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;;
+  align-items: flex-start;
 }
 
 header a {
   text-decoration: none;
+}
+
+header h2 {
+	font: var(--bb-text-medium) var(--bb-font-family-header);
+	color: rgb(90, 64, 119);
+	margin: 0;
 }
 
 #title {
@@ -70,6 +87,7 @@ header a {
 #app {
 	display: grid;
     grid-template-columns: 1fr 2fr;
+	height: 100%;
 }
 
 @media (min-width: 500px) {

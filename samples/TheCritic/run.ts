@@ -91,6 +91,7 @@ The data generated is fictitious and should only be used to open up the possibil
 console.log(reportHeader)
 
 for await(const response of panel.critique(input)) {
-  console.log(`## ${response.name}\n`)
-  console.log(`${response.response}\n`)
+
+	console.log(`## ${response.name}\n`)
+	console.log(`${response.response}\n`)
 }

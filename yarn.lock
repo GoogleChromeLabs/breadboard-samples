@@ -105,11 +105,11 @@ __metadata:
   linkType: hard
 
 "@babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.1, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.0, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.22.5, @babel/runtime@npm:^7.23.2":
-  version: 7.23.4
-  resolution: "@babel/runtime@npm:7.23.4"
+  version: 7.23.5
+  resolution: "@babel/runtime@npm:7.23.5"
   dependencies:
     regenerator-runtime: "npm:^0.14.0"
-  checksum: 6ef4f6dcc4ec4d74cb9f6c26a26e92d016b36debd167be48cae293fbd990b3157fb1d8d21c531285da15a5bda9ccb23e651b56234941e03d91c8af69d4c593a9
+  checksum: 0f1669f639af30a0a2948ffcefa2c61935f337b0777bd94f8d7bc66bba8e7d4499e725caeb0449540d9c6d67399b733c4e719babb43ce9a0f33095aa01b42b37
   languageName: node
   linkType: hard
 
@@ -542,9 +542,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@exadev/breadboard-kits@npm:^0.8.1":
-  version: 0.8.1
-  resolution: "@exadev/breadboard-kits@npm:0.8.1"
+"@exadev/breadboard-kits@npm:^0.8.2":
+  version: 0.8.2
+  resolution: "@exadev/breadboard-kits@npm:0.8.2"
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.1"
     "@google-labs/core-kit": "npm:^0.0.1"
@@ -552,7 +552,7 @@ __metadata:
     "@xenova/transformers": "npm:^2.9.0"
     dotenv: "npm:^16.3.1"
     jsonschema: "npm:^1.4.1"
-  checksum: 572823f73168e06aa4d4a419710925473858a2ec443907efa3924d277e8098f0de85b4e3c232dd14ff4b041c2a1c5c231ceec645de76df764f3f255a6956c3f2
+  checksum: cd3ca90126d30e06ad7d958dd719ee70304e65aaae1541421ac77b3559355c93998aa3c105db0e4067e5059e819696c3fa5b19c0ac3c9a1f52a67f95391372af
   languageName: node
   linkType: hard
 
@@ -1153,6 +1153,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/dompurify@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "@types/dompurify@npm:3.0.5"
+  dependencies:
+    "@types/trusted-types": "npm:*"
+  checksum: e544b3ce53c41215cabff3d89256ff707c7ee8e0c9a1b5034b22014725d288b16e6942cdcdeeb4221c578c3421a6a4721aa0676431f55d7abd18c07368855c5e
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.12":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
@@ -1245,7 +1254,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^6.10.0, @typescript-eslint/eslint-plugin@npm:^6.12.0":
+"@types/trusted-types@npm:*":
+  version: 2.0.7
+  resolution: "@types/trusted-types@npm:2.0.7"
+  checksum: 8e4202766a65877efcf5d5a41b7dd458480b36195e580a3b1085ad21e948bc417d55d6f8af1fd2a7ad008015d4117d5fdfe432731157da3c68678487174e4ba3
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/eslint-plugin@npm:^6.12.0":
   version: 6.13.1
   resolution: "@typescript-eslint/eslint-plugin@npm:6.13.1"
   dependencies:
@@ -1761,6 +1777,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "breadboard-samples@workspace:."
   dependencies:
+    "@exadev/breadboard-kits": "npm:^0.8.2"
     "@google-labs/breadboard": "npm:^0.5.1"
     "@types/node": "npm:^20.9.3"
     typescript: "npm:^5.3.2"
@@ -2187,6 +2204,13 @@ __metadata:
   dependencies:
     esutils: "npm:^2.0.2"
   checksum: b4b28f1df5c563f7d876e7461254a4597b8cabe915abe94d7c5d1633fed263fcf9a85e8d3836591fc2d040108e822b0d32758e5ec1fe31c590dc7e08086e3e48
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^3.0.6":
+  version: 3.0.6
+  resolution: "dompurify@npm:3.0.6"
+  checksum: bf6e8a240673f60f5aafa46b598cfb66a18ab68f2801840005bc784b3fd3598a6bfac1eca1f80a98b197054d2329cd6edbc857aca34364abdee389a8fe6c027a
   languageName: node
   linkType: hard
 
@@ -3885,6 +3909,15 @@ __metadata:
     promise-retry: "npm:^2.0.1"
     ssri: "npm:^10.0.0"
   checksum: ded5a91a02b76381b06a4ec4d5c1d23ebbde15d402b3c3e4533b371dac7e2f7ca071ae71ae6dae72aa261182557b7b1b3fd3a705b39252dc17f74fa509d3e76f
+  languageName: node
+  linkType: hard
+
+"marked@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "marked@npm:11.0.0"
+  bin:
+    marked: bin/marked.js
+  checksum: bc533791a77a041291a92f91083482a95d59767c4adaf39c4aa3008400446e586933578065ceb4c66c340aed0fb13a61b489d7d88adfbecda7c8ed7bfcead102
   languageName: node
   linkType: hard
 
@@ -5898,18 +5931,21 @@ __metadata:
     "@google-labs/core-kit": "npm:^0.0.1"
     "@google-labs/llm-starter": "npm:^0.2.1"
     "@paulkinlan/claude-breadboard-kit": "npm:^2.2.5"
+    "@types/dompurify": "npm:^3.0.5"
     "@types/node": "npm:^20.10.0"
     "@typescript-eslint/eslint-plugin": "npm:^6.12.0"
     "@typescript-eslint/parser": "npm:^6.12.0"
     comlink: "npm:^4.4.1"
+    dompurify: "npm:^3.0.6"
     dotenv: "npm:^16.3.1"
+    marked: "npm:^11.0.0"
     tsx: "npm:^4.4.0"
     typescript: "npm:^5.3.2"
     vite: "npm:^5.0.2"
     vite-plugin-full-reload: "npm:^1.1.0"
     vite-plugin-top-level-await: "npm:^1.3.1"
     vite-plugin-wasm: "npm:^3.2.2"
-    vite-plugin-watch-and-run: "npm:^1.4.3"
+    vite-plugin-watch-and-run: "npm:^1.4.4"
   languageName: unknown
   linkType: soft
 
@@ -6234,7 +6270,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-watch-and-run@npm:^1.4.3":
+"vite-plugin-watch-and-run@npm:^1.4.4":
   version: 1.4.4
   resolution: "vite-plugin-watch-and-run@npm:1.4.4"
   dependencies:
@@ -6244,9 +6280,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0, vite@npm:^5.0.1, vite@npm:^5.0.2":
-  version: 5.0.3
-  resolution: "vite@npm:5.0.3"
+"vite@npm:^5.0.1, vite@npm:^5.0.2":
+  version: 5.0.4
+  resolution: "vite@npm:5.0.4"
   dependencies:
     esbuild: "npm:^0.19.3"
     fsevents: "npm:~2.3.3"
@@ -6280,7 +6316,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 3f2cc01eaa632df89c1486dccdbea7df1e7b1d7e4f9270b987502096ac97038b0c7d5989ea04e7d095e3eaa5669e78e700470690b0f12076e2a58b97cda24351
+  checksum: 3d1726e5ee09c99ca8f57ebb34428ceb23e51705cd9e39ee97cb123870caaff1e65fbeaed00658f8112dd6ac658e90cd020bd33c090ecd190fb962e43cc8d64c
   languageName: node
   linkType: hard
 
