@@ -8,6 +8,7 @@
 			"DOM.Iterable"
 		],
 		"module": "ESNext",
+		"esModuleInterop": true,
 		"skipLibCheck": true,
 		/* Bundler mode */
 		"moduleResolution": "bundler",
@@ -20,7 +21,18 @@
 		"strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true
+		"noFallthroughCasesInSwitch": true,
+		"baseUrl": "./src/",
+		"rootDir": ".",
+		"paths": {
+			"~/*": [
+				"./*"
+			],
+			"@/*": [
+				"./*"
+			]
+		},
+		"allowSyntheticDefaultImports": true
 	},
 	"include": [
 		"src"
