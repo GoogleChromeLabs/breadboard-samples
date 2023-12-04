@@ -186,7 +186,7 @@ export function makeBoard(): Board {
 	});
 	claudeApiKey.wire("apiKey", claudeCompletion);
 
-	claudeCompletion.wire("*", board.output({ $id: "completion" }));
+	claudeCompletion.wire("*", board.output({ $id: "testCompletion" }));
 
 	//////////////////////////////////////////////
 
