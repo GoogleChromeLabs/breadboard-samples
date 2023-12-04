@@ -243,6 +243,14 @@ export function makeBoard(): Board {
 		);
 	}
 
+	story.wire(
+		"story_id",
+		board.output({
+			$id: "pendingOutput",
+			summary: "pending",
+		})
+	);
+
 	const claudePostSummarisation = claudeKit.complete({
 		$id: "claudePostSummarisation",
 		model: "claude-2",
