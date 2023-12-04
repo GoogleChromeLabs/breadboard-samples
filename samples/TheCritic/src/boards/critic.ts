@@ -52,7 +52,7 @@ const secret = starterKit.secrets(["CLAUDE_API_KEY"]);
 const criticPrompt = starterKit.promptTemplate(`
 Your name is {{name}} and you are a {{persona}}.
 
-You will create a critique of the following input:
+You will create a markdown bulleted critique of the following input:
 
 {{article}}
 
