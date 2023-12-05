@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 import { WorkerData, WorkerStatus } from "sw/types.ts";
-import { useAppDispatch } from "~/core/redux/hooks";
-import { getStories } from "~/hnStory/thunks";
+import { useDispatch } from "react-redux";
+import { outputSuccess } from "~/hnStory/outputSlice";
 
 export type WorkerControllerHook = {
 	input: WorkerData | null;
@@ -26,20 +26,21 @@ const useWorkerController = (
 	const [input, setInput] = useState<WorkerData | null>(null);
 	const [output, setOutput] = useState<unknown[]>([]);
 	const [status, setStatus] = useState<WorkerStatus>("idle");
-	const appDispatch = useAppDispatch();
+	const dispatch = useDispatch();
 
 	//console.log();
 
 	const handleMessage = async (event: MessageEvent) => {
-		if (event.data.type === "inputNeeded")
+		if (event.data.type === "inputNeeded") {
 			setInput({
 				node: event.data.node!,
 				attribute: event.data.attribute!,
 				message: event.data.message!,
 			});
+		}
 		if (event.data.output) {
-			const stories = await appDispatch.dispatch(getStories()).unwrap();
-			setOutput(stories);
+			setOutput(event.data.output);
+			dispatch(outputSuccess(event.data.output));
 		}
 		if (event.data.type === "status") {
 			setStatus(event.data.status);

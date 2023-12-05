@@ -175,7 +175,7 @@ export function makeBoard(): Board {
 
 	const VITE_SERVER_PORT = 5173;
 	const serverUrl = `http://localhost:${VITE_SERVER_PORT}`;
-	const claudeParams = {
+	/* const claudeParams = {
 		model: "claude-2",
 		userQuestion: "Tell me a joke about a software engineer",
 		url: `${serverUrl}/anthropic/v1/complete`,
@@ -186,7 +186,7 @@ export function makeBoard(): Board {
 	});
 	claudeApiKey.wire("apiKey", claudeCompletion);
 
-	claudeCompletion.wire("*", board.output({ $id: "testCompletion" }));
+	claudeCompletion.wire("*", board.output({ $id: "testCompletion" })); */
 
 	//////////////////////////////////////////////
 

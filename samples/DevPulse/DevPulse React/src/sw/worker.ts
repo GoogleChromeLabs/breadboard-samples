@@ -84,7 +84,7 @@ async function runBoard() {
 				type: "inputNeeded",
 				node: runResult.node.id,
 				attribute: inputAttribute,
-				message: [runResult.node.id, "requires", inputAttribute].join(
+				message: ["Please type in", runResult.node.id].join(
 					" "
 				),
 			});

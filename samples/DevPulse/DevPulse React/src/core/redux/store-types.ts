@@ -1,7 +1,6 @@
 import { ApiError } from "~/core/hooks/error-hooks";
 import { SliceStatus } from "~/core/redux/slice-types";
-import { StoriesState } from "~/hnStory/store-types";
-
+import { InputState, OutputState } from "~/hnStory/store-types";
 
 export interface CoreState {
 	error: ApiError | null;
@@ -10,5 +9,6 @@ export interface CoreState {
 }
 
 export type RootState = {
-	stories: StoriesState;
+	input: InputState;
+	output: OutputState;
 }

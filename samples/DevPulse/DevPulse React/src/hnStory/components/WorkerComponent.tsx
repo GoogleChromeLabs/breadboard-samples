@@ -1,12 +1,15 @@
 import React from "react";
 import { useWorkerControllerContext } from "worker/useWorkerControllerContext.tsx";
 import "./WorkerComponent.css";
-import { OutputNodeData, WorkerStatus } from "~/sw/types";
+import { WorkerStatus } from "~/sw/types";
 import OutputNode from "~/hnStory/components/OutputCard";
+import { useDispatch } from "react-redux";
+import { StoryOutput } from "~/hnStory/domain";
+import { setInputValue } from "~/hnStory/inputSlice";
 
 export const WorkerComponent: React.FC = () => {
 	const { broadcastChannel, unregisterController } = useWorkerControllerContext();
-
+	const dispatch = useDispatch();
 	const handleSubmit = (
 		e: React.FormEvent<HTMLFormElement>,
 		node: string,
@@ -19,14 +22,13 @@ export const WorkerComponent: React.FC = () => {
 			attribute,
 			value: input?.value,
 		});
+		dispatch(setInputValue(input?.value));
 	};
 
-	console.log(broadcastChannel.output);
+	//const inputField = useSelector((state: RootState) => selectInput(state))
 
 	return (
-		<div
-			className="container"
-			style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}
+		<div className="container"
 		>
 			<div className="content">
 				<p>Status: {broadcastChannel.status}</p>
@@ -58,11 +60,9 @@ export const WorkerComponent: React.FC = () => {
 						Stop
 					</button>
 				</div>
-				<div
-					style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}
-				>
+				<div className="formContainer">
 					{broadcastChannel.status === WorkerStatus.running && (
-						<form
+						<form className="form"
 							onSubmit={(e) =>
 								handleSubmit(
 									e,
@@ -71,23 +71,26 @@ export const WorkerComponent: React.FC = () => {
 								)
 							}
 						>
+
 							<label htmlFor="">
 								{broadcastChannel.input?.message || ""}
 							</label>
-							<br />
-							<input
-								type="text"
-								placeholder={`${broadcastChannel.input?.node}.${broadcastChannel.input?.attribute}`}
-							/>
-							<button type="submit">Submit</button>
+							<div className="formInputs">
+								<input
+									type="text"
+									placeholder={`${broadcastChannel.input?.node}`}
+								/>
+
+								<button type="submit">Submit</button>
+							</div>
 						</form>
 					)}
 					<button type="button" onClick={unregisterController}>Unregister Worker</button>
 				</div>
 			</div>
-			<div className="content" id="output">
+			<div>
 				<OutputNode
-					data={broadcastChannel.output as OutputNodeData[]}
+					data={broadcastChannel.output as StoryOutput[]}
 					nodeId="searchResultData"
 				/>
 			</div>
