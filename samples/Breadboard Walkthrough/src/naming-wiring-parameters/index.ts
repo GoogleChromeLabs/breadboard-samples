@@ -1,11 +1,10 @@
 #!/usr/bin/env npx -y tsx
 
 import { Board } from "@google-labs/breadboard";
-import path from "path";
-import exadev from "@exadev/breadboard-kits";
+import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 
 const board = new Board({
-    title: path.basename(new URL(import.meta.url).pathname),
+    title: "Naming Wiring Parameters"
 });
 
 const input = board.input({
@@ -64,4 +63,10 @@ input.wire("*", board.output({
 	}
 })();
 
-exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");
+import * as url from 'url';
+
+generateAndWriteCombinedMarkdown({
+	board,
+	filename: "README",
+	dir: url.fileURLToPath(new URL('.', import.meta.url))
+});

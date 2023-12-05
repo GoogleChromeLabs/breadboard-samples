@@ -1,4 +1,4 @@
-# include-board-as-a-node.ts
+# Include Board as a Node
 
 ```mermaid
 %%{init: 'themeVariables': { 'fontFamily': 'Fira Code, monospace' }}%%
@@ -17,7 +17,7 @@ classDef slotted stroke:#a64d79
 
 ```json
 {
-	"title": "include-board-as-a-node.ts",
+	"title": "Include Board as a Node",
 	"edges": [
 		{
 			"from": "include-1",
@@ -42,7 +42,7 @@ classDef slotted stroke:#a64d79
 			"type": "include",
 			"configuration": {
 				"graph": {
-					"title": "include-board-as-a-node.ts",
+					"title": "Nested Board",
 					"edges": [
 						{
 							"from": "nestedInputNode",

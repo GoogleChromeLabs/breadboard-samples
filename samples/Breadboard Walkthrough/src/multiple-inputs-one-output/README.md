@@ -1,11 +1,10 @@
-# specific-outputs.ts
+# Multiple Inputs One Output
 
-## Mermaid
 ```mermaid
 %%{init: 'themeVariables': { 'fontFamily': 'Fira Code, monospace' }}%%
 graph TD;
-input1[/"input <br> id='input-1'"/]:::input -- "message->message" --> output1{{"output <br> id='output1'"}}:::output
-input1[/"input <br> id='input-1'"/]:::input -- "message->message" --> output2{{"output <br> id='output2'"}}:::output
+inputOne[/"input <br> id='inputOne'"/]:::input -- "partOne->partOne" --> output1{{"output <br> id='output-1'"}}:::output
+inputTwo[/"input <br> id='inputTwo'"/]:::input -- "partTwo->partTwo" --> output1{{"output <br> id='output-1'"}}:::output
 classDef default stroke:#ffab40,fill:#fff2ccff,color:#000
 classDef input stroke:#3c78d8,fill:#c9daf8ff,color:#000
 classDef output stroke:#38761d,fill:#b6d7a8ff,color:#000
@@ -16,36 +15,35 @@ classDef secrets stroke:#db4437,fill:#f4cccc,color:#000
 classDef slotted stroke:#a64d79
 ```
 
-## JSON
 ```json
 {
-	"title": "specific-outputs.ts",
+	"title": "Multiple Inputs One Output",
 	"edges": [
 		{
-			"from": "input-1",
-			"to": "output1",
-			"out": "message",
-			"in": "message"
+			"from": "inputOne",
+			"to": "output-1",
+			"out": "partOne",
+			"in": "partOne"
 		},
 		{
-			"from": "input-1",
-			"to": "output2",
-			"out": "message",
-			"in": "message"
+			"from": "inputTwo",
+			"to": "output-1",
+			"out": "partTwo",
+			"in": "partTwo"
 		}
 	],
 	"nodes": [
 		{
-			"id": "input-1",
+			"id": "output-1",
+			"type": "output"
+		},
+		{
+			"id": "inputOne",
 			"type": "input"
 		},
 		{
-			"id": "output1",
-			"type": "output"
-		},
-		{
-			"id": "output2",
-			"type": "output"
+			"id": "inputTwo",
+			"type": "input"
 		}
 	],
 	"kits": []

@@ -1,12 +1,11 @@
 #!/usr/bin/env npx -y tsx
 
 import { Board } from "@google-labs/breadboard";
-import path from "path";
-import exadev from "@exadev/breadboard-kits";
+import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 import MyCustomKit from "./custom-kit-node-values-and-handlers.js";
 
 const board = new Board({
-    title: path.basename(new URL(import.meta.url).pathname),
+    title: "Custom Kit Node Values and Handlers Demo"
 });
 
 const myCustomKit = board.addKit(MyCustomKit);
@@ -48,4 +47,10 @@ split.wire("value->splitInput", board.output({
 	}
 })();
 
-exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");
+import * as url from 'url';
+
+generateAndWriteCombinedMarkdown({
+	board,
+	filename: "README",
+	dir: url.fileURLToPath(new URL('.', import.meta.url))
+});

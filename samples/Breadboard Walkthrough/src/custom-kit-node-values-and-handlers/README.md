@@ -1,4 +1,4 @@
-# custom-kit-node-values-and-handlers-demo.ts
+# Custom Kit Node Values and Handlers Demo
 
 ```mermaid
 %%{init: 'themeVariables': { 'fontFamily': 'Fira Code, monospace' }}%%
@@ -22,7 +22,7 @@ classDef slotted stroke:#a64d79
 
 ```json
 {
-	"title": "custom-kit-node-values-and-handlers-demo.ts",
+	"title": "Custom Kit Node Values and Handlers Demo",
 	"edges": [
 		{
 			"from": "inputNode",

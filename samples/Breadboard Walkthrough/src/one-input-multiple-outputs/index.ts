@@ -1,10 +1,8 @@
 import { Board } from "@google-labs/breadboard";
-import path from "path";
-import {makeMarkdown} from "@exadev/breadboard-kits/dist/util/files/makeMarkdown.js"
-import {MarkdownContentList, MarkdownContentType} from "@exadev/breadboard-kits/dist/types/markdown.js"
+import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 
 const board = new Board({
-	title: path.basename(new URL(import.meta.url).pathname),
+	title: "One Input Multiple Outputs"
 });
 const outputOne = board.output({
 	$id: "outputOne",
@@ -35,13 +33,10 @@ input.wire("partTwo", outputTwo);
 	}
 })();
 
-makeMarkdown({
+import * as url from 'url';
+
+generateAndWriteCombinedMarkdown({
 	board,
-	filename: board.title,
-	title: board.title,
-	dir: "output",
-	markdownConfig: [
-		MarkdownContentType.mermaid,
-		MarkdownContentType.json
-	]
+	filename: "README",
+	dir: url.fileURLToPath(new URL('.', import.meta.url))
 });

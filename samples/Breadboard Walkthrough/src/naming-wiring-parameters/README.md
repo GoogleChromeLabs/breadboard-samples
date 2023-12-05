@@ -1,4 +1,4 @@
-# naming-wiring-parameters.ts
+# Naming Wiring Parameters
 
 ```mermaid
 %%{init: 'themeVariables': { 'fontFamily': 'Fira Code, monospace' }}%%
@@ -22,7 +22,7 @@ classDef slotted stroke:#a64d79
 
 ```json
 {
-	"title": "naming-wiring-parameters.ts",
+	"title": "Naming Wiring Parameters",
 	"edges": [
 		{
 			"from": "inputNode",

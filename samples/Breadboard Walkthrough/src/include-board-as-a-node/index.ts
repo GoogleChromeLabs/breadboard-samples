@@ -1,36 +1,35 @@
 #!/usr/bin/env npx -y tsx
 
 import { Board, GraphDescriptor } from "@google-labs/breadboard";
-import path from "path";
-import exadev from "@exadev/breadboard-kits";
+import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 import { Core } from "@google-labs/core-kit"
 
 const nestedBoard = new Board({
-    title: path.basename(new URL(import.meta.url).pathname),
+    title: "Nested Board"
 });
 
 nestedBoard.input({
 	$id: "nestedInputNode"
 }).wire("nestedInput->nestedOutput", nestedBoard.output({ $id:"nestedOutputNode" }));
 
-const mainBoard = new Board({
-    title: path.basename(new URL(import.meta.url).pathname),
+const board = new Board({
+    title: "Include Board as a Node"
 });
 
-const coreKit = mainBoard.addKit(Core);
+const coreKit = board.addKit(Core);
 
-mainBoard
+board
     .input({
 	    $id: "mainInputNode"
     })
     .wire("mainInput->nestedInput",
         coreKit
         .include({graph: nestedBoard as GraphDescriptor})
-        .wire("nestedOutput", mainBoard.output({ $id: "mainOutputNode" }))
+        .wire("nestedOutput", board.output({ $id: "mainOutputNode" }))
     );
 
 (async () => {
-	for await (const run of mainBoard.run()) {
+	for await (const run of board.run()) {
         if (run.type === "input") {
 			run.inputs = {
 				mainInput: "Hello World!"
@@ -41,4 +40,10 @@ mainBoard
 	}
 })();
 
-exadev.util.files.generateAndWriteCombinedMarkdown(mainBoard, undefined, "output");
+import * as url from 'url';
+
+generateAndWriteCombinedMarkdown({
+	board,
+	filename: "README",
+	dir: url.fileURLToPath(new URL('.', import.meta.url))
+});
