@@ -10,5 +10,5 @@
 8. [Naming Wiring Parameters](./output/naming-wiring-parameters.ts.md)
 9. [Arrow Directions](./output/arrow-directions.ts.md)
 10. [Custom Kit Node Values and Handlers](./output/custom-kit-node-values-and-handlers-demo.ts.md)
-11. [Include Board as a Node]()
+11. [Include Board as a Node](./output/include-board-as-a-node.ts.md)
 12. [Adding Slot to Board]()
