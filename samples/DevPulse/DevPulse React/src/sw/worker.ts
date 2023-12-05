@@ -18,6 +18,8 @@ import { BROADCAST_CHANNEL } from "~/constants.ts";
 import { updateCounter } from "~/services/counterService.ts";
 import { makeBoard } from "../breadboard/makeBoard";
 import { WorkerStatus } from "./types";
+import { Stories } from "~/core/Stories";
+import { StoryOutput } from "~/hnStory/domain";
 
 let loopActive: boolean = false;
 let loopPaused: boolean = false;
@@ -32,6 +34,12 @@ function waitForInput(node: string, attrib: string): Promise<string> {
 		pendingInputResolvers[`${node}-${attrib}`] = resolve;
 	});
 }
+
+const ignoredOutputNodeIds = [
+	"testCompletion",
+	"algoliaSearchUrl",
+	"postSummarisation",
+];
 
 type Receiver = {
 	log: (...args: unknown[]) => void;
@@ -89,13 +97,18 @@ async function runBoard() {
 			runResult.inputs = { [inputAttribute]: userInput };
 		}
 		if (runResult.type === "output") {
+			if (runResult.outputs?.story_id) {
+				const id = runResult.outputs.story_id as number;
+				Stories.add(id, runResult.outputs);
+			} else if (ignoredOutputNodeIds.includes(runResult.node.id)) {
+				//
+			} else {
+				throw new Error(`node: ${runResult.node.id}`);
+			}
 			const output = {
-				timestamp: Date.now(),
-				type: "output",
-				node: runResult.node.id,
-				output: runResult.outputs,
+				output: Stories.getAll() as StoryOutput[],
 			};
-			console.debug(output);
+			console.log(output);
 			broadcastChannel.postMessage(output);
 		}
 	}

@@ -21,6 +21,8 @@ export const WorkerComponent: React.FC = () => {
 		});
 	};
 
+	console.log(broadcastChannel.output);
+
 	return (
 		<div
 			className="container"
