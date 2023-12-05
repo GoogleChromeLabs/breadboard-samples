@@ -10,7 +10,7 @@ type Receiver = {
 
 for await (const runResult of board.run({
 	// probe: new LogProbe(),
-	probe: new LogProbe(logReceiver),
+	// probe: new LogProbe(logReceiver),
 })) {
 	console.log("-".repeat(10));
 	if (runResult.type === "input") {

@@ -1,3 +1,4 @@
+import { BrowserView, ChromeBrowser } from "./chromeStatusFeaturesV2";
 import { fetchDirtyJson } from "./fetchDirtyJson";
 
 type UserAction = {
@@ -57,49 +58,34 @@ type Stage = {
 	webview_last: string | null;
 };
 
-type BrowserView = {
-	text: string | null;
-	val: number | null;
-	url: string | null;
-	notes: string | null;
-};
-
 type BrowserStatus = {
 	text: string;
 	val: number;
 	milestone_str: string;
 };
 
-type BrowserInfo = {
-	bug: string;
-	blink_components: string[];
-	devrel: string[];
-	owners: string[];
-	origintrial: boolean;
-	intervention: boolean;
-	prefixed: boolean | null;
-	flag: boolean;
-	status: BrowserStatus;
-	desktop: string | null;
-	android: string | null;
-	webview: string | null;
-	ios: string | null;
+export type BrowserInfo = ChromeBrowser & {
+	android?: string;
+	// blink_components: string[];
+	// bug: string;
+	desktop?: string;
+	// devrel: string[];
+	// flag: boolean;
+	// intervention: boolean;
+	ios?: string;
+	// origintrial: boolean;
+	// owners: string[];
+	// prefixed: boolean | null;
+	// status: BrowserStatus;
+	webview?: string;
 };
 
 type Browsers = {
 	chrome: BrowserInfo;
-	ff: {
-		view: BrowserView;
-	};
-	safari: {
-		view: BrowserView;
-	};
-	webdev: {
-		view: BrowserView;
-	};
-	other: {
-		view: BrowserView;
-	};
+	ff: Partial<BrowserView>;
+	safari: Partial<BrowserView>;
+	webdev: Partial<BrowserView>;
+	other: Partial<BrowserView>;
 };
 
 type Standards = {
@@ -111,7 +97,7 @@ type Standards = {
 	};
 };
 
-type Feature = {
+export type ChromeStatusV1ApiFeature = {
 	id: number;
 	name: string;
 	summary: string;
@@ -205,14 +191,33 @@ type Feature = {
 
 type ChromeStatusFeatures = {
 	total_count: number;
-	features: Feature[];
+	features: ChromeStatusV1ApiFeature[];
 };
 
 export async function chromeStatusApiFeatures(): Promise<ChromeStatusFeatures> {
-	return await fetchDirtyJson(
+	return (await fetchDirtyJson(
 		"https://chromestatus.com/api/v0/features",
 		")]}'\n"
-	) as Promise<ChromeStatusFeatures>;
+	)) as Promise<ChromeStatusFeatures>;
 }
 
 export default chromeStatusApiFeatures;
+
+export async function getChromeStatusApiFeatures() {
+	const features = await chromeStatusApiFeatures();
+	return features.features;
+}
+
+export async function getChromeStatusApiFeatureids() {
+	const features = await getChromeStatusApiFeatures();
+	const featureIds = features.map((feature) => feature.id);
+	return featureIds;
+}
+
+export async function getChromeStatusV1Feature(
+	id: number
+): Promise<ChromeStatusV1ApiFeature | undefined> {
+	const features = await getChromeStatusApiFeatures();
+	const feature = features.find((feature) => feature.id === id);
+	return feature;
+}

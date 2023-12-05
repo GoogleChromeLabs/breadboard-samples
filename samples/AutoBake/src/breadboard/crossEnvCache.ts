@@ -5,6 +5,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const memoryCache: Record<string, { data: unknown; timestamp: number }> = {};
+
 export function makeCacheDirectory(cacheFilePath: string) {
 	const cacheDirectory = path.dirname(cacheFilePath);
 	if (!fs.existsSync(cacheDirectory)) {
@@ -27,8 +29,9 @@ export function isEnvNode() {
 	return isNode;
 }
 
-// Write to cache
 export function writeCache(url: string, data: unknown) {
+	memoryCache[url] = { data, timestamp: new Date().getTime() };
+
 	if (isNode) {
 		writeCacheNode(url, data);
 	} else {
@@ -37,6 +40,18 @@ export function writeCache(url: string, data: unknown) {
 }
 
 export function readCache(url: string, maxAge: Date = DEFAULT_MAX_AGE) {
+	// First, check in-memory cache
+	const cachedItem = memoryCache[url];
+	if (cachedItem) {
+		const now = new Date().getTime();
+		if (now - cachedItem.timestamp <= maxAge.getTime()) {
+			return cachedItem.data;
+		}
+		// If in-memory cache is stale, remove the entry
+		delete memoryCache[url];
+	}
+
+	// Then, check file-based cache
 	if (isNode) {
 		return readCacheNode(url, maxAge);
 	} else {

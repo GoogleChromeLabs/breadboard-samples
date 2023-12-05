@@ -1,14 +1,15 @@
+import { BrowserInfo } from "./chromeStatusApiFeatures";
 import fetchJson from "./fetchJson";
 
-type Feature = {
+export type ChromeStatusV2ApiFeature = {
 	blink_components: string[];
 	breaking_change: boolean;
 	browsers: {
-		chrome: ChromeBrowser;
-		ff: BrowserView;
+		chrome: BrowserInfo;
+		ff: Partial<BrowserView>;
 		other: Partial<BrowserView>;
-		safari: BrowserView;
-		webdev: BrowserView;
+		safari: Partial<BrowserView>;
+		webdev: Partial<BrowserView>;
 	};
 	created: RecordInfo;
 	first_of_section: boolean;
@@ -17,8 +18,8 @@ type Feature = {
 	milestone: null | string; // Assuming the type for milestone can be string or null
 	name: string;
 	resources: {
-		docs: any[]; // Replace 'any' with a more specific type if available
-		samples: any[]; // Replace 'any' with a more specific type if available
+		docs: string[];
+		samples: string[];
 	};
 	standards: {
 		maturity: Maturity;
@@ -29,10 +30,10 @@ type Feature = {
 	updated: RecordInfo;
 };
 
-type ChromeBrowser = {
+export type ChromeBrowser = {
 	blink_components: string[];
 	bug: string;
-	devrel: any[]; // Replace 'any' with a more specific type if available
+	devrel: string[];
 	flag: boolean;
 	intervention: boolean;
 	origintrial: boolean;
@@ -41,7 +42,7 @@ type ChromeBrowser = {
 	status: Status;
 };
 
-type BrowserView = {
+export type BrowserView = {
 	view: {
 		notes: string;
 		text: string;
@@ -66,8 +67,24 @@ type Status = {
 	val: number;
 };
 
-export async function chromeStatusFeaturesV2(): Promise<Feature[]> {
-	return await fetchJson("https://chromestatus.com/features_v2.json") as Promise<Feature[]>;
+export async function chromeStatusFeaturesV2(): Promise<
+	ChromeStatusV2ApiFeature[]
+> {
+	return (await fetchJson(
+		"https://chromestatus.com/features_v2.json"
+	)) as Promise<ChromeStatusV2ApiFeature[]>;
 }
 
 export default chromeStatusFeaturesV2;
+
+export async function getChromeStatusV2FeatureIds(): Promise<number[]> {
+	const features = await chromeStatusFeaturesV2();
+	return features.map((feature) => feature.id);
+}
+
+export async function getChromeStatusV2Feature(
+	id: number
+): Promise<ChromeStatusV2ApiFeature | undefined> {
+	const features = await chromeStatusFeaturesV2();
+	return features.find((feature) => feature.id === id);
+}

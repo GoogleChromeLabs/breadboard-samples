@@ -17,7 +17,7 @@ export type Versions = {
 }[];
 
 export async function chromeVersions() {
-	const versions: Versions = await fetchJson(versionsUrl) as Versions
+	const versions: Versions = (await fetchJson(versionsUrl)) as Versions;
 
 	// key versions by channel and return object with channel keys
 	return versions[0].versions.reduce((acc, version) => {
