@@ -1,6 +1,6 @@
 #!/usr/bin/env npx -y tsx
 
-import { KitBuilder } from '@google-labs/breadboard/kits'
+import { KitBuilder } from "@google-labs/breadboard/kits";
 
 // The NodeValue denotes the value types which can be received and returned by a node
 export type NodeValue =
