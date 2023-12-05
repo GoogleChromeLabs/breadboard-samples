@@ -1,11 +1,10 @@
 #!/usr/bin/env npx -y tsx
 
+import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 import { Board } from "@google-labs/breadboard";
-import path from "path";
-import exadev from "@exadev/breadboard-kits";
 
 const board = new Board({
-	title: path.basename(new URL(import.meta.url).pathname),
+	title: "Arrow Directions"
 });
 
 const output = board.output();
@@ -20,11 +19,11 @@ output.wire("<-inputPartThree", input);
 
 (async () => {
 	for await (const run of board.run()) {
-        if (run.type === "input") {
-					run.inputs = {
-						inputPartOne: "Welcome",
-						inputPartTwo: "To",
-						inputPartThree: "Breadboard!"
+		if (run.type === "input") {
+			run.inputs = {
+				inputPartOne: "Welcome",
+				inputPartTwo: "To",
+				inputPartThree: "Breadboard!"
 			};
 		} else if (run.type === "output") {
 			console.log(run.outputs);
@@ -32,4 +31,10 @@ output.wire("<-inputPartThree", input);
 	}
 })();
 
-exadev.util.files.generateAndWriteCombinedMarkdown(board, undefined, "output");
+import * as url from 'url';
+
+generateAndWriteCombinedMarkdown({
+	board,
+	filename: "README",
+	dir: url.fileURLToPath(new URL('.', import.meta.url))
+});
