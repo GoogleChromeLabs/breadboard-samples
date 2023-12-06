@@ -11,4 +11,5 @@
 9. [Arrow Directions](./src/arrow-directions/README.md)
 10. [Custom Kit Node Values and Handlers](./src/custom-kit-node-values-and-handlers/README.md)
 11. [Include Board as a Node](./src/include-board-as-a-node/README.md)
-12. [Adding Slot to a Board]()
+12. [Adding Slot to a Board](./src/adding-slot-to-a-board/README.md)
+13. [Adding Slot to a Board with JSON]()
