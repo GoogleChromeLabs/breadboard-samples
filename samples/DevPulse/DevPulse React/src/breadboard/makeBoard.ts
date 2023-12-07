@@ -10,7 +10,7 @@ import { Board } from "@google-labs/breadboard";
 import Core from "@google-labs/core-kit";
 import { ClaudeKitBuilder } from "~/breadboard/ClaudeKitBuilder.ts";
 
-const LIMIT_DEPTH = 10;
+const LIMIT_DEPTH = 3;
 const SEARCH_RESULT_COUNT = 2;
 
 const DEBUG = false;

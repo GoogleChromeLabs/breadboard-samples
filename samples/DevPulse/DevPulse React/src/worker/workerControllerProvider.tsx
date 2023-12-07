@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import useWorkerController from "~/worker/useWorkerController.ts";
 import { WorkerControllerContext } from "~/worker/workerControllerContext.tsx";
+import { registerServiceWorkerIfNeeded } from "~/sw/workerRegistration";
 
 export function WorkerControllerProvider({
 	broadcastChannel,
@@ -10,6 +11,9 @@ export function WorkerControllerProvider({
 	children: ReactNode;
 }): React.JSX.Element {
 	const bc = useWorkerController(broadcastChannel);
+	useEffect(() => {
+		registerServiceWorkerIfNeeded();
+	}, []);
 	const unregisterController = () => {
 		const workerName =
 			import.meta.env.MODE === "production"
@@ -20,7 +24,10 @@ export function WorkerControllerProvider({
 			.then(function (registrations) {
 				for (const registration of registrations) {
 					if (registration.active?.scriptURL.includes(workerName)) {
-						console.log("unregistering service worker", registration);
+						console.log(
+							"unregistering service worker",
+							registration
+						);
 						registration.unregister();
 					}
 				}
