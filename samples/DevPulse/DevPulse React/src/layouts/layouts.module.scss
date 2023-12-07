@@ -1,0 +1,32 @@
+.main {
+	display: grid;
+	grid-template-columns: 80px 1fr;
+	grid-template-rows: 40px 1fr;
+	grid-template-areas: "header header" "sidebar content";
+	position: fixed;
+	inset: 0;
+}
+
+.main :nth-child(1) {
+	grid-area: header;
+}
+.main :nth-child(2) {
+	grid-area: sidebar;
+}
+.main :nth-child(3) {
+	grid-area: content;
+}
+
+.contentBox {
+	border-radius: var(--theme-border-radius);
+	padding: 20px;
+	background-color: var(--theme-secondary-background-color);
+	width: 500px;
+	height: 300px;
+}
+
+.contentGrid {
+	display: flex;
+	flex-direction: column;
+	padding:30px;
+}

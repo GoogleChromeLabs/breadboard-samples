@@ -1,0 +1,15 @@
+.header {
+	background-color: var(--theme-secondary-background-color);
+	padding: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	z-index: 1;
+	display: flex;
+		align-items: center;
+		gap: 10px;
+	h2 {
+		font-size: 16px;
+		span {
+			font-weight: bold;
+		}
+	}
+}

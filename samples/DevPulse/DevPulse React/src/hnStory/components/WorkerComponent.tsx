@@ -6,9 +6,11 @@ import OutputNode from "~/hnStory/components/OutputCard";
 import { useDispatch } from "react-redux";
 import { StoryOutput } from "~/hnStory/domain";
 import { setInputValue } from "~/hnStory/inputSlice";
+import Button from "~/components/button";
 
 export const WorkerComponent: React.FC = () => {
-	const { broadcastChannel, unregisterController } = useWorkerControllerContext();
+	const { broadcastChannel, unregisterController } =
+		useWorkerControllerContext();
 	const dispatch = useDispatch();
 	const handleSubmit = (
 		e: React.FormEvent<HTMLFormElement>,
@@ -28,41 +30,19 @@ export const WorkerComponent: React.FC = () => {
 	//const inputField = useSelector((state: RootState) => selectInput(state))
 
 	return (
-		<div className="container"
-		>
+		<div className="container">
+			<h2>Service Worker</h2>
 			<div className="content">
 				<p>Status: {broadcastChannel.status}</p>
 				<div>
-					<button
-						style={{
-							marginRight: "10px",
-							padding: "10px 20px",
-							cursor: "pointer",
-						}}
-						onClick={broadcastChannel.start}
-					>
-						Start
-					</button>
-					<button
-						style={{
-							marginRight: "10px",
-							padding: "10px 20px",
-							cursor: "pointer",
-						}}
-						onClick={broadcastChannel.pause}
-					>
-						Pause
-					</button>
-					<button
-						style={{ padding: "10px 20px", cursor: "pointer" }}
-						onClick={broadcastChannel.stop}
-					>
-						Stop
-					</button>
+					<Button onClick={broadcastChannel.start}>Start</Button>
+					<Button onClick={broadcastChannel.pause}>Pause</Button>
+					<Button onClick={broadcastChannel.stop}>Stop</Button>
 				</div>
 				<div className="formContainer">
 					{broadcastChannel.status === WorkerStatus.running && (
-						<form className="form"
+						<form
+							className="form"
 							onSubmit={(e) =>
 								handleSubmit(
 									e,
@@ -71,7 +51,6 @@ export const WorkerComponent: React.FC = () => {
 								)
 							}
 						>
-
 							<label htmlFor="">
 								{broadcastChannel.input?.message || ""}
 							</label>
@@ -81,11 +60,13 @@ export const WorkerComponent: React.FC = () => {
 									placeholder={`${broadcastChannel.input?.node}`}
 								/>
 
-								<button type="submit">Submit</button>
+								<Button type="submit">Submit</Button>
 							</div>
 						</form>
 					)}
-					<button type="button" onClick={unregisterController}>Unregister Worker</button>
+					<Button type="button" onClick={unregisterController}>
+						Unregister Worker
+					</Button>
 				</div>
 			</div>
 			<div>

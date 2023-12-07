@@ -1,11 +1,18 @@
 import React from "react";
-import WorkerComponent from "~/hnStory/components/WorkerComponent";
-import "./App.css";
+import "./App.scss";
+import Header from "./components/header";
+import Sidebar from "./components/sidebar";
+import MainLayout from "./layouts/main-layout";
+import MainContent from "./components/main-content";
 
 function App(): React.ReactElement {
 	return (
 		<>
-			<WorkerComponent />
+			<MainLayout>
+				<Header />
+				<Sidebar />
+				<MainContent />
+			</MainLayout>
 		</>
 	);
 }

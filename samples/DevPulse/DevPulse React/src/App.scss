@@ -1,0 +1,42 @@
+@import './reset.scss';
+
+:root {
+	--theme-color: #C5C7C5;
+	--theme-background-color: #1F1F1F;
+	--theme-secondary-background-color: #2D2F31;
+
+	--theme-button-background-color: #CDCDCD;
+	--theme-button-disabled-background-color: #505050;
+	--theme-button-text-color: #1F1F1F;
+
+	--theme-border-radius: 16px;
+}
+html {
+	height: 100%;
+}
+body {
+	min-height: 100%;
+	background-color: var(--theme-background-color);
+	color: var(--theme-color);
+	font-family: inter;
+}
+
+*{
+	transition: background-color 0.2s ease-in-out;
+}
+
+body.lightMode {
+	--theme-background-color: #FFF;
+	--theme-secondary-background-color: #F3F6FC;
+	--theme-color: #1F1F1F;
+}
+
+h1{
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
