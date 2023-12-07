@@ -1,23 +1,28 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import inputReducer from '../../hnStory/inputSlice';
-import outputReducer from '../../hnStory/outputSlice';
-import storage from 'redux-persist/lib/storage';
+import inputSlice from '../../hnStory/inputSlice';
+import outputSlice from '../../hnStory/outputSlice';
+import storage from 'redux-persist/es/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 
 const persistConfig = {
 	key: 'root',
-	storage: storage
+	storage: storage,
+	blacklist: ['output']
 }
 
 const reducer = combineReducers({
-	inputReducer,
-	outputReducer
+	input: inputSlice, //the input reducer
+	output: outputSlice //the output reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
 export const store = configureStore({
 	reducer: persistedReducer,
+	middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 	devTools: true
 });
 

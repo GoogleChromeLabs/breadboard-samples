@@ -3,10 +3,11 @@ import { BROADCAST_CHANNEL } from "~/constants.ts";
 import { WorkerData, WorkerStatus } from "sw/types.ts";
 import { useDispatch } from "react-redux";
 import { outputSuccess } from "~/hnStory/outputSlice";
+import { StoryOutput } from "~/hnStory/domain";
 
 export type WorkerControllerHook = {
 	input: WorkerData | null;
-	output: unknown[];
+	output: StoryOutput[];
 	start: () => void;
 	pause: () => void;
 	stop: () => void;
@@ -24,7 +25,7 @@ const useWorkerController = (
 		return new BroadcastChannel(BROADCAST_CHANNEL);
 	}, [bcChannel]);
 	const [input, setInput] = useState<WorkerData | null>(null);
-	const [output, setOutput] = useState<unknown[]>([]);
+	const [output, setOutput] = useState<StoryOutput[]>([]);
 	const [status, setStatus] = useState<WorkerStatus>("idle");
 	const dispatch = useDispatch();
 
@@ -35,7 +36,7 @@ const useWorkerController = (
 			setInput({
 				node: event.data.node!,
 				attribute: event.data.attribute!,
-				message: event.data.message!,
+				message: event.data.message!
 			});
 		}
 		if (event.data.output) {
@@ -60,21 +61,21 @@ const useWorkerController = (
 		broadcastChannel.postMessage({
 			command: "start",
 		});
-		setStatus(WorkerStatus.loading);
+		setStatus(WorkerStatus.running);
 	};
 
 	const pause = () => {
 		broadcastChannel.postMessage({
 			command: "pause",
 		});
-		setStatus(WorkerStatus.loading);
+		setStatus(WorkerStatus.paused);
 	};
 
 	const stop = () => {
 		broadcastChannel.postMessage({
 			command: "stop",
 		});
-		setStatus(WorkerStatus.loading);
+		setStatus(WorkerStatus.stopped);
 	};
 
 	const send = (data: WorkerData, clearInput: boolean = true) => {

@@ -1,3 +1,11 @@
+export const InputNode = {
+	searchQuery: "searchQuery",
+	claudeApiKey: "claudeApiKey",
+	none: ""
+} as const;
+
+export type InputNode = (typeof InputNode)[keyof typeof InputNode];
+
 export type WorkerMessage = {
 	output: {
 		[key: string]: unknown;
@@ -11,10 +19,10 @@ export type WorkerMessage = {
 };
 
 export type WorkerData = {
-	node: string;
+	node: InputNode;
 	attribute: string;
 	message?: string;
-	value?: unknown;
+	value?: string;
 };
 
 export const WorkerStatus = {

@@ -1,35 +1,52 @@
 import React from "react";
 import { useWorkerControllerContext } from "worker/useWorkerControllerContext.tsx";
 import "./WorkerComponent.css";
-import { WorkerStatus } from "~/sw/types";
+import { InputNode, WorkerStatus } from "~/sw/types";
 import OutputNode from "~/hnStory/components/OutputCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StoryOutput } from "~/hnStory/domain";
-import { setInputValue } from "~/hnStory/inputSlice";
+import {
+	selectInputValue,
+	setApiKey,
+	setSearchQuery,
+} from "~/hnStory/inputSlice";
+import { RootState } from "~/core/redux/store";
 
 export const WorkerComponent: React.FC = () => {
-	const { broadcastChannel, unregisterController } = useWorkerControllerContext();
+	const { broadcastChannel, unregisterController } =
+		useWorkerControllerContext();
 	const dispatch = useDispatch();
 	const handleSubmit = (
 		e: React.FormEvent<HTMLFormElement>,
-		node: string,
+		node: InputNode,
 		attribute: string
 	) => {
 		e.preventDefault();
 		const input = (e.target as HTMLFormElement).querySelector("input");
-		broadcastChannel.send({
-			node,
-			attribute,
-			value: input?.value,
-		});
-		dispatch(setInputValue(input?.value));
+		if (node === InputNode.searchQuery) {
+			broadcastChannel.send({
+				node,
+				attribute,
+				value: input?.value,
+			});
+			dispatch(setSearchQuery(input?.value));
+		} else if (node === InputNode.claudeApiKey) {
+			broadcastChannel.send({
+				node,
+				attribute,
+				value: input?.value,
+			});
+			dispatch(setApiKey(input?.value));
+		}
 	};
 
 	//const inputField = useSelector((state: RootState) => selectInput(state))
-
+	const inputValue = useSelector((state: RootState) =>
+		selectInputValue(state)
+	);
+	console.log(inputValue);
 	return (
-		<div className="container"
-		>
+		<div className="container">
 			<div className="content">
 				<p>Status: {broadcastChannel.status}</p>
 				<div>
@@ -60,9 +77,10 @@ export const WorkerComponent: React.FC = () => {
 						Stop
 					</button>
 				</div>
-				<div className="formContainer">
-					{broadcastChannel.status === WorkerStatus.running && (
-						<form className="form"
+				{broadcastChannel.status === WorkerStatus.running && (
+					<div className="formContainer">
+						<form
+							className="form"
 							onSubmit={(e) =>
 								handleSubmit(
 									e,
@@ -71,7 +89,6 @@ export const WorkerComponent: React.FC = () => {
 								)
 							}
 						>
-
 							<label htmlFor="">
 								{broadcastChannel.input?.message || ""}
 							</label>
@@ -84,9 +101,12 @@ export const WorkerComponent: React.FC = () => {
 								<button type="submit">Submit</button>
 							</div>
 						</form>
-					)}
-					<button type="button" onClick={unregisterController}>Unregister Worker</button>
-				</div>
+
+						<button type="button" onClick={unregisterController}>
+							Unregister Worker
+						</button>
+					</div>
+				)}
 			</div>
 			<div>
 				<OutputNode

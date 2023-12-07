@@ -2,12 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "~/core/redux/store";
 import { StoryOutput } from "~/hnStory/domain";
 
+const initialState = {
+	output: [] as StoryOutput[],
+	isLoading: false
+};
+
 const outputSlice = createSlice({
 	name: "output",
-	initialState: {
-		output: [] as StoryOutput[],
-		isLoading: false
-	},
+	initialState: initialState,
 	reducers: {
 		outputSuccess: (state, action) => {
 			state.isLoading = true;
@@ -17,9 +19,8 @@ const outputSlice = createSlice({
 	},
 });
 
-const { reducer } = outputSlice;
-export const selectOutput = (state: RootState) => state.outputReducer;
+export const selectOutput = (state: RootState) => state.output;
 export const { outputSuccess } = outputSlice.actions;
-export default reducer;
+export default outputSlice.reducer;
 
 

@@ -2,25 +2,32 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "~/core/redux/store";
 import { WorkerData } from "~/sw/types";
 
+const initialState = {
+	input: {
+		node: "",
+		attribute: "",
+		message: "",
+		value: ""
+	} as WorkerData
+}
 
 const inputSlice = createSlice({
 	name: "input",
-	initialState: {
-		input: {
-			node: "",
-			attribute: "",
-			message: "",
-			value: undefined
-		} as WorkerData
-	},
+	initialState: initialState,
 	reducers: {
-		setInputValue: (state, action) => {
-			state.input.value = action.payload;
+		setSearchQuery: (state, action) => {
+			if (state.input.node === "searchQuery") state.input.value = action.payload;
+		},
+		setApiKey: (state, action) => {
+			if (state.input.node === "claudeApiKey") state.input.value = action.payload;
+		},
+		clearInput: (state) => {
+			state.input.value = '';
 		}
+		
 	},
 });
 
-const { reducer } = inputSlice;
-export const selectInput = (state: RootState) => state.inputReducer;
-export const { setInputValue } = inputSlice.actions;
-export default reducer;
+export const selectInputValue = (state: RootState) => state.input.input.value;
+export const { setSearchQuery, setApiKey, clearInput } = inputSlice.actions;
+export default inputSlice.reducer;
