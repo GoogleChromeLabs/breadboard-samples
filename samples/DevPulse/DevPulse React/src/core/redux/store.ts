@@ -1,13 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import inputReducer from '../../hnStory/inputSlice';
 import outputReducer from '../../hnStory/outputSlice';
-import storage from 'redux-persist/es/storage';
+import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 
 const persistConfig = {
 	key: 'root',
-	storage: storage,
-	whitelist: ['input'] //only auth needs to be persisted
+	storage: storage
 }
 
 const reducer = combineReducers({
