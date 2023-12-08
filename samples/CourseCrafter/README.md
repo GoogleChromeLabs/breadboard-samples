@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# BourseCrafter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
--   Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-	// other rules...
-	parserOptions: {
-		ecmaVersion: "latest",
-		sourceType: "module",
-		project: ["./tsconfig.json", "./tsconfig.node.json"],
-		tsconfigRootDir: __dirname,
-	},
-};
+```mermaid
+%%{init: 'themeVariables': { 'fontFamily': 'Fira Code, monospace' }}%%
+graph TD;
+input1[/"input <br> id='input-1'"/]:::input -- all --> output2{{"output <br> id='output-2'"}}:::output
+classDef default stroke:#ffab40,fill:#fff2ccff,color:#000
+classDef input stroke:#3c78d8,fill:#c9daf8ff,color:#000
+classDef output stroke:#38761d,fill:#b6d7a8ff,color:#000
+classDef passthrough stroke:#a64d79,fill:#ead1dcff,color:#000
+classDef slot stroke:#a64d79,fill:#ead1dcff,color:#000
+classDef config stroke:#a64d79,fill:#ead1dcff,color:#000
+classDef secrets stroke:#db4437,fill:#f4cccc,color:#000
+classDef slotted stroke:#a64d79
 ```
 
--   Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
--   Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+```json
+{
+	"title": "BourseCrafter",
+	"edges": [
+		{
+			"from": "input-1",
+			"to": "output-2",
+			"out": "*"
+		}
+	],
+	"nodes": [
+		{
+			"id": "input-1",
+			"type": "input",
+			"configuration": {
+				"input": "input"
+			}
+		},
+		{
+			"id": "output-2",
+			"type": "output",
+			"configuration": {
+				"output": "output"
+			}
+		}
+	],
+	"kits": []
+}
+```
