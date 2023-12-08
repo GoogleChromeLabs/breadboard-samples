@@ -7,7 +7,9 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"run-board": "npx -y tsx src/breadboard/runBoard.ts",
+		"watch-board": "npx -y tsx watch src/breadboard/runBoard.ts"
 	},
 	"dependencies": {
 		"@google-labs/breadboard": "^0.6.0",
