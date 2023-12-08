@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "~/core/redux/store";
 import { StoryOutput } from "~/hnStory/domain";
+import { WorkerStatus } from "~/sw/types";
 
 const initialState = {
 	output: [] as StoryOutput[],
-	isLoading: false
+	status: WorkerStatus
 };
 
 const outputSlice = createSlice({
@@ -12,14 +13,12 @@ const outputSlice = createSlice({
 	initialState: initialState,
 	reducers: {
 		outputSuccess: (state, action) => {
-			state.isLoading = true;
 			state.output = action.payload;
-			state.isLoading = false;
 		}
 	},
 });
 
-export const selectOutput = (state: RootState) => state.output;
+export const selectOutput = (state: RootState) => state.output.output;
 export const { outputSuccess } = outputSlice.actions;
 export default outputSlice.reducer;
 

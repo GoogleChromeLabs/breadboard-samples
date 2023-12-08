@@ -16,18 +16,22 @@ const inputSlice = createSlice({
 	initialState: initialState,
 	reducers: {
 		setSearchQuery: (state, action) => {
-			if (state.input.node === "searchQuery") state.input.value = action.payload;
+			if (state.input.node === "searchQuery") state.input = action.payload;
 		},
 		setApiKey: (state, action) => {
-			if (state.input.node === "claudeApiKey") state.input.value = action.payload;
+			if (state.input.node === "claudeApiKey") state.input = action.payload;
+		},
+		setInputObject: (state, action) => {
+			state.input = action.payload as WorkerData;
+			console.log(action.payload);
 		},
 		clearInput: (state) => {
-			state.input.value = '';
+			state.input.value = "";
 		}
 		
 	},
 });
 
-export const selectInputValue = (state: RootState) => state.input.input.value;
-export const { setSearchQuery, setApiKey, clearInput } = inputSlice.actions;
+export const selectInputObject = (state: RootState) => state.input.input;
+export const { setSearchQuery, setApiKey, setInputObject, clearInput } = inputSlice.actions;
 export default inputSlice.reducer;

@@ -3,14 +3,9 @@ import { useWorkerControllerContext } from "worker/useWorkerControllerContext.ts
 import "./WorkerComponent.css";
 import { InputNode, WorkerStatus } from "~/sw/types";
 import OutputNode from "~/hnStory/components/OutputCard";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { StoryOutput } from "~/hnStory/domain";
-import {
-	selectInputValue,
-	setApiKey,
-	setSearchQuery,
-} from "~/hnStory/inputSlice";
-import { RootState } from "~/core/redux/store";
+import { setApiKey, setSearchQuery } from "../inputSlice";
 
 export const WorkerComponent: React.FC = () => {
 	const { broadcastChannel, unregisterController } =
@@ -29,22 +24,17 @@ export const WorkerComponent: React.FC = () => {
 				attribute,
 				value: input?.value,
 			});
-			dispatch(setSearchQuery(input?.value));
+			dispatch(setSearchQuery({ node, attribute, value: input?.value }));
 		} else if (node === InputNode.claudeApiKey) {
 			broadcastChannel.send({
 				node,
 				attribute,
 				value: input?.value,
 			});
-			dispatch(setApiKey(input?.value));
+			dispatch(setApiKey({ node, attribute, value: input?.value }));
 		}
 	};
 
-	//const inputField = useSelector((state: RootState) => selectInput(state))
-	const inputValue = useSelector((state: RootState) =>
-		selectInputValue(state)
-	);
-	console.log(inputValue);
 	return (
 		<div className="container">
 			<div className="content">

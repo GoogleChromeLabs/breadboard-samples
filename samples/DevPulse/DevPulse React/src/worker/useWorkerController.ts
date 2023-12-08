@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { BROADCAST_CHANNEL } from "~/constants.ts";
 import { WorkerData, WorkerStatus } from "sw/types.ts";
-import { useDispatch } from "react-redux";
-import { outputSuccess } from "~/hnStory/outputSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { outputSuccess, selectOutput } from "~/hnStory/outputSlice";
 import { StoryOutput } from "~/hnStory/domain";
+import { clearInput, selectInputObject, setInputObject } from "~/hnStory/inputSlice";
+import { RootState } from "~/core/redux/store";
 
 export type WorkerControllerHook = {
 	input: WorkerData | null;
@@ -24,23 +26,21 @@ const useWorkerController = (
 		}
 		return new BroadcastChannel(BROADCAST_CHANNEL);
 	}, [bcChannel]);
-	const [input, setInput] = useState<WorkerData | null>(null);
-	const [output, setOutput] = useState<StoryOutput[]>([]);
+	const input = useSelector((state: RootState) => selectInputObject(state));
+	console.log(input);
+	const output = useSelector((state: RootState) => selectOutput(state));
 	const [status, setStatus] = useState<WorkerStatus>("idle");
 	const dispatch = useDispatch();
 
-	//console.log();
-
 	const handleMessage = async (event: MessageEvent) => {
 		if (event.data.type === "inputNeeded") {
-			setInput({
+			dispatch(setInputObject({
 				node: event.data.node!,
 				attribute: event.data.attribute!,
 				message: event.data.message!
-			});
+			}));
 		}
 		if (event.data.output) {
-			setOutput(event.data.output);
 			dispatch(outputSuccess(event.data.output));
 		}
 		if (event.data.type === "status") {
@@ -78,13 +78,13 @@ const useWorkerController = (
 		setStatus(WorkerStatus.stopped);
 	};
 
-	const send = (data: WorkerData, clearInput: boolean = true) => {
+	const send = (data: WorkerData, clearInputField: boolean = true) => {
 		broadcastChannel.postMessage({
 			command: "inputResponse",
 			...data,
 		});
-		if (clearInput) {
-			setInput(null);
+		if (clearInputField) {
+			dispatch(clearInput());
 		}
 	};
 
