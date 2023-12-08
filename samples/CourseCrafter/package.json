@@ -12,7 +12,7 @@
 		"watch-board": "npx -y tsx watch src/breadboard/runBoard.ts"
 	},
 	"dependencies": {
-		"@exadev/breadboard-kits": "^0.8.3",
+		"@exadev/breadboard-kits": "^0.9.0-0",
 		"@google-labs/breadboard": "^0.6.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
