@@ -529,19 +529,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@exadev/breadboard-kits@npm:^0.5.8-0":
-  version: 0.5.8-0
-  resolution: "@exadev/breadboard-kits@npm:0.5.8-0"
-  dependencies:
-    "@google-labs/breadboard": "npm:^0.5.1"
-    "@google-labs/core-kit": "npm:^0.0.1"
-    "@google-labs/llm-starter": "npm:^0.2.1"
-    dotenv: "npm:^16.3.1"
-    jsonschema: "npm:^1.4.1"
-  checksum: f00678ee194391e12cf3d1fdd48f4aa58bfe86e212ba60aba5540bd6330178dfb032b1fe820f09cf5cfbd221137abe642b932d61782b5df4a7a99492420b7af8
-  languageName: node
-  linkType: hard
-
 "@exadev/breadboard-kits@npm:^0.8.2":
   version: 0.8.2
   resolution: "@exadev/breadboard-kits@npm:0.8.2"
@@ -556,10 +543,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@exadev/breadboard-kits@npm:^0.8.3":
+  version: 0.8.3
+  resolution: "@exadev/breadboard-kits@npm:0.8.3"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.5.1"
+    "@google-labs/core-kit": "npm:^0.0.1"
+    "@google-labs/llm-starter": "npm:^0.2.1"
+    "@xenova/transformers": "npm:^2.9.0"
+    dotenv: "npm:^16.3.1"
+    jsonschema: "npm:^1.4.1"
+  checksum: 145e96b2754b6c5ac4b7ff972b34f6a1fde144d5dec85b71336d0bec9867568644acc281ff4b635ea4267be4e2ad91be5b6391c53842b5173a8e0f318f7b25fa
+  languageName: node
+  linkType: hard
+
 "@google-labs/breadboard@npm:^0.5.0, @google-labs/breadboard@npm:^0.5.1":
   version: 0.5.1
   resolution: "@google-labs/breadboard@npm:0.5.1"
   checksum: 335735132f25ac6f46e4f4e6e1b51de4b95f21dbffdf5c521162863c7d20248837694dd775fd64fc3bd627be9f5dc0e4907890ac30855ae7fea42f83ac2c725c
+  languageName: node
+  linkType: hard
+
+"@google-labs/breadboard@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@google-labs/breadboard@npm:0.6.0"
+  dependencies:
+    zod: "npm:^3.22.4"
+    zod-to-json-schema: "npm:^3.22.1"
+  checksum: bad6b96e287c27ed24f7612469db7c7dfb3eebd7148aeda608074b42bd93d5e3a3b467691d7e7a14879be7e1bccd65faf03da35605b7753fd46de0f148e28de4
   languageName: node
   linkType: hard
 
@@ -569,6 +580,15 @@ __metadata:
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.0"
   checksum: 4b59ec435c6068843c17f3f68707c8a853f36e6fd1f9d1055901c2bfa8016658f6b54f9238cfcf6a9ef7dcd7a0a27795218783617a2b435b82229312042f67b7
+  languageName: node
+  linkType: hard
+
+"@google-labs/core-kit@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@google-labs/core-kit@npm:0.1.0"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.6.0"
+  checksum: d05d81ee6318e9fdaa2699d45aee0339ef25547f234c67b0fe6d9cb0704fdaa879a36a20ca93ff9f2283c42770d9cb965ca53bdd0f09595c3b4401d51c16e26a
   languageName: node
   linkType: hard
 
@@ -582,6 +602,18 @@ __metadata:
     jsonata: "npm:^2.0.3"
     url-template: "npm:^3.1.0"
   checksum: 6d5daaad4ab58472d2fae042b94d55a7b035f89752346fc7d134c472611f3833a864058543d2d43d5be9180c6ffd2b14079449fd56a688ad8eb9864fc96b8adb
+  languageName: node
+  linkType: hard
+
+"@google-labs/llm-starter@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@google-labs/llm-starter@npm:0.3.0"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.6.0"
+    "@rgrove/parse-xml": "npm:^4.1.0"
+    jsonata: "npm:^2.0.3"
+    url-template: "npm:^3.1.0"
+  checksum: 42c0610860a8bc1981506602e2ba7f376a80b32b8140b8f684c8002a08524ad502d60d2202f90a87600adf70734e06f5a89e0f7e1649668994b1a1e74d41d1f0
   languageName: node
   linkType: hard
 
@@ -711,7 +743,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@paulkinlan/claude-breadboard-kit@npm:^2.2.2, @paulkinlan/claude-breadboard-kit@npm:^2.2.5":
+"@paulkinlan/claude-breadboard-kit@npm:^2.2.5":
   version: 2.2.5
   resolution: "@paulkinlan/claude-breadboard-kit@npm:2.2.5"
   dependencies:
@@ -1210,6 +1242,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 5dcab799e39570a858741a13373a584529d0e6b81120c8a2118e158749d9ace291748644d760af554fe73ab3cebdd91500314bf1ecd17a746fabcae06ebf9eea
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.10.4":
+  version: 20.10.4
+  resolution: "@types/node@npm:20.10.4"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: c10c1dd13f5c2341ad866777dc32946538a99e1ebd203ae127730814b8e5fa4aedfbcb01cb3e24a5466f1af64bcdfa16e7de6e745ff098fff0942aa779b7fe03
   languageName: node
   linkType: hard
 
@@ -2117,17 +2158,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dev-pulse-breadboard@workspace:samples/DevPulse/DevPulse Breadboard"
   dependencies:
-    "@exadev/breadboard-kits": "npm:^0.5.8-0"
-    "@google-labs/breadboard": "npm:^0.5.1"
-    "@google-labs/core-kit": "npm:^0.0.1"
-    "@google-labs/llm-starter": "npm:^0.2.1"
-    "@paulkinlan/claude-breadboard-kit": "npm:^2.2.2"
-    "@types/node": "npm:^20.9.3"
+    "@exadev/breadboard-kits": "npm:^0.8.3"
+    "@google-labs/breadboard": "npm:^0.6.0"
+    "@google-labs/core-kit": "npm:^0.1.0"
+    "@google-labs/llm-starter": "npm:^0.3.0"
+    "@paulkinlan/claude-breadboard-kit": "npm:^2.2.5"
+    "@types/node": "npm:^20.10.4"
     dotenv: "npm:^16.3.1"
     ts-node: "npm:^10.9.1"
     tsm: "npm:^2.3.0"
-    tsx: "npm:^4.2.0"
-    typescript: "npm:^5.3.2"
+    tsx: "npm:^4.6.2"
+    typescript: "npm:^5.3.3"
   languageName: unknown
   linkType: soft
 
@@ -6039,6 +6080,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tsx@npm:^4.6.2":
+  version: 4.6.2
+  resolution: "tsx@npm:4.6.2"
+  dependencies:
+    esbuild: "npm:~0.18.20"
+    fsevents: "npm:~2.3.3"
+    get-tsconfig: "npm:^4.7.2"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    tsx: dist/cli.mjs
+  checksum: 451b23ed999a3bf3592181f3411d67bfe6d4269f2171ca627c5acbe442fd08d8864585eb67095c0dc8462e35ee8427de37c9bb2b4f6ffc629d5a05f0c66983d4
+  languageName: node
+  linkType: hard
+
 "tunnel-agent@npm:^0.6.0":
   version: 0.6.0
   resolution: "tunnel-agent@npm:0.6.0"
@@ -6121,6 +6178,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^5.3.3":
+  version: 5.3.3
+  resolution: "typescript@npm:5.3.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 6e4e6a14a50c222b3d14d4ea2f729e79f972fa536ac1522b91202a9a65af3605c2928c4a790a4a50aa13694d461c479ba92cedaeb1e7b190aadaa4e4b96b8e18
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@npm%3A^5.3.2#optional!builtin<compat/typescript>":
   version: 5.3.2
   resolution: "typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>::version=5.3.2&hash=e012d7"
@@ -6128,6 +6195,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 1b45cdfb577a78ae7a9a9d0b77a7b772142cb98ba05e4e5aefba7044a028ded885bcecef63166407a5986645cea816fe4986894336aacd5e791796ea79a6a7ed
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.3.3#optional!builtin<compat/typescript>":
+  version: 5.3.3
+  resolution: "typescript@patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: c93786fcc9a70718ba1e3819bab56064ead5817004d1b8186f8ca66165f3a2d0100fee91fa64c840dcd45f994ca5d615d8e1f566d39a7470fc1e014dbb4cf15d
   languageName: node
   linkType: hard
 
@@ -6436,5 +6513,21 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zod-to-json-schema@npm:^3.22.1":
+  version: 3.22.1
+  resolution: "zod-to-json-schema@npm:3.22.1"
+  peerDependencies:
+    zod: ^3.22.4
+  checksum: 21c2f8bb62254370e89092a00893b05d40524544e5fcfbb13c0a35eb408318c598e3865de4b9b63e5d0ef691850cb183a74dbadeab3982f29b174d9e1c8cde43
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.4":
+  version: 3.22.4
+  resolution: "zod@npm:3.22.4"
+  checksum: 73622ca36a916f785cf528fe612a884b3e0f183dbe6b33365a7d0fc92abdbedf7804c5e2bd8df0a278e1472106d46674281397a3dd800fa9031dc3429758c6ac
   languageName: node
   linkType: hard
