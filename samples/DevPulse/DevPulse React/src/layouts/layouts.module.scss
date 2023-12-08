@@ -18,16 +18,10 @@
 }
 
 .contentBox {
-	border-radius: var(--theme-border-radius);
-	padding: 20px;
-	background-color: var(--theme-tertiary-background-color);
-	color: var(--theme-tertiary-color);
-	width: 500px;
-	height: 300px;
+	color: var(--theme-primary-color);
 }
 
 .contentGrid {
 	display: flex;
 	flex-direction: column;
-	padding:30px;
 }

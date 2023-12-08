@@ -7,6 +7,7 @@
 	align-items: center;
 	gap: 10px;
 	justify-content: space-between;
+	box-shadow: var(--theme-header-box-shadow-color);
 	.headerLogo{
 		display: flex;
 		align-items: center;

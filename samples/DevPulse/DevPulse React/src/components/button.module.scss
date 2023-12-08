@@ -5,4 +5,13 @@
 	border: none;
 	padding: 10px 20px;
 	font-weight: 600;
+	cursor: pointer;
+	&:disabled{
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+	&.danger{
+		background-color: var(--theme-red-color);
+		color: var(--theme-tertiary-color);
+	}
 }

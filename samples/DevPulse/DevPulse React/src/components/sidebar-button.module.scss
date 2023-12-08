@@ -1,0 +1,27 @@
+.button{
+	border: none;
+	outline: none;
+	background-color: inherit;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 10px;
+	margin-block: 20px;
+	cursor: pointer;
+	.icon{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 100vh;
+		background:inherit;
+		width: 58px;
+		height: 33px;
+		padding-top:2px;
+		padding-left: 2px;
+		color: var(--theme-color);
+	}
+	&:hover .icon{
+		background-color: var(--theme-icon-hover-color);
+		color: var(--theme-tertiary-color);
+	}
+}

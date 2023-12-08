@@ -1,4 +1,4 @@
-import WorkerComponent from "~/hnStory/components/WorkerComponent";
+import WorkerComponent from "~/hnStory/components/worker-component";
 import ContentBox from "~/layouts/content-box";
 import ContentGrid from "~/layouts/content-grid";
 
