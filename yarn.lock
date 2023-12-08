@@ -1826,9 +1826,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@exadev/breadboard-kits@npm:^0.9.0-0":
-  version: 0.9.0-0
-  resolution: "@exadev/breadboard-kits@npm:0.9.0-0"
+"@exadev/breadboard-kits@npm:^0.9.0-1":
+  version: 0.9.0-1
+  resolution: "@exadev/breadboard-kits@npm:0.9.0-1"
   dependencies:
     "@anthropic-ai/sdk": "npm:^0.10.2"
     "@anthropic-ai/tokenizer": "npm:^0.0.4"
@@ -1841,7 +1841,7 @@ __metadata:
     dotenv: "npm:^16.3.1"
     js-tiktoken: "npm:^1.0.8"
     jsonschema: "npm:^1.4.1"
-  checksum: 9333a9cb3d699dca5d62fe1022a293611facbd2230c8b86787efe1c611baddcccfa74c4b86ad42a3aaacce45aaab6e16be24069b8d88ada4395d7adfbd8c7d52
+  checksum: 6da4c8d7b78974f24ffb230b001beeb5660c294473dd86d6193227bf8b822dcf27af4b02134e01b428be62ce124cfde56fe54d252b72044db1f6639118f97e82
   languageName: node
   linkType: hard
 
@@ -1869,12 +1869,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@google-labs/core-kit@npm:*":
+  version: 0.1.0
+  resolution: "@google-labs/core-kit@npm:0.1.0"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.6.0"
+  checksum: d05d81ee6318e9fdaa2699d45aee0339ef25547f234c67b0fe6d9cb0704fdaa879a36a20ca93ff9f2283c42770d9cb965ca53bdd0f09595c3b4401d51c16e26a
+  languageName: node
+  linkType: hard
+
 "@google-labs/core-kit@npm:^0.0.1":
   version: 0.0.1
   resolution: "@google-labs/core-kit@npm:0.0.1"
   dependencies:
     "@google-labs/breadboard": "npm:^0.5.0"
   checksum: 4b59ec435c6068843c17f3f68707c8a853f36e6fd1f9d1055901c2bfa8016658f6b54f9238cfcf6a9ef7dcd7a0a27795218783617a2b435b82229312042f67b7
+  languageName: node
+  linkType: hard
+
+"@google-labs/llm-starter@npm:*":
+  version: 0.3.0
+  resolution: "@google-labs/llm-starter@npm:0.3.0"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.6.0"
+    "@rgrove/parse-xml": "npm:^4.1.0"
+    jsonata: "npm:^2.0.3"
+    url-template: "npm:^3.1.0"
+  checksum: 42c0610860a8bc1981506602e2ba7f376a80b32b8140b8f684c8002a08524ad502d60d2202f90a87600adf70734e06f5a89e0f7e1649668994b1a1e74d41d1f0
   languageName: node
   linkType: hard
 
@@ -3730,8 +3751,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "coursecrafter@workspace:samples/CourseCrafter"
   dependencies:
-    "@exadev/breadboard-kits": "npm:^0.9.0-0"
+    "@exadev/breadboard-kits": "npm:^0.9.0-1"
     "@google-labs/breadboard": "npm:^0.6.0"
+    "@google-labs/core-kit": "npm:*"
+    "@google-labs/llm-starter": "npm:*"
     "@types/react": "npm:^18.2.37"
     "@types/react-dom": "npm:^18.2.15"
     "@typescript-eslint/eslint-plugin": "npm:^6.10.0"
