@@ -1,26 +1,16 @@
 #!/usr/bin/env npx -y tsx watch
 import exadev from "@exadev/breadboard-kits";
 import { hackerNewsBoard } from "./hackerNewsBoard.js";
-import { makeMarkdown } from '@exadev/breadboard-kits/src/util/files/makeMarkdown.js';
-import { MarkdownContentType } from "@exadev/breadboard-kits/src/types/markdown.js";
-
+import { generateAndWriteCombinedMarkdown } from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 ////////////////////////////////////////////////
 
-makeMarkdown({
+generateAndWriteCombinedMarkdown({
 	board: hackerNewsBoard,
+	dir: "./",
 	filename: "README",
-	title: "Hacker News",
-	dir: ".",
-	markdownConfig: [
-		MarkdownContentType.mermaid,
-		MarkdownContentType.json
-	]
 });
 
-const suppressedOutputIds = [
-	"commentOutput",
-	"fullCommentData"
-];
+const suppressedOutputIds = ["commentOutput", "fullCommentData"];
 
 for await (const run of hackerNewsBoard.run({
 	// probe: new LogProbe(),
