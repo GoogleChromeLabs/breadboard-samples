@@ -9,15 +9,9 @@ export type OutputAccordionProps = {
 };
 
 const OutputAccordion = ({ data }: OutputAccordionProps): React.JSX.Element => {
-
-	const dataString = JSON.stringify(data, null, 2);
-	const dataObject = JSON.parse(dataString);
-	console.log(dataObject);
-
-
 	return (
 		<div className={styles.container}>
-			{dataObject.map((result: StoryOutput) => (
+			{data.map((result: StoryOutput) => (
 				<OutputAccordionItem result={result} key={result.story_id} />
 			))}
 		</div>

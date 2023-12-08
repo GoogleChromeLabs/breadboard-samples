@@ -15,6 +15,15 @@ const OutputAccordionItem = ({
 	const handleClick = () => {
 		setOpen(!open);
 	};
+	const renderStatus = (white?: boolean) => {
+		if (result.summary === "pending") {
+			return <Spin className={white ? styles.spinnerWhite : undefined} />;
+		}
+		if (!result.summary) {
+			return <span>Pending</span>;
+		}
+		return <span>Complete</span>;
+	};
 	return (
 		<section
 			className={[styles.card, open ? styles.open : undefined].join(" ")}
@@ -26,7 +35,7 @@ const OutputAccordionItem = ({
 						{result.title}
 					</a>
 				</span>
-				{result.summary == "pending" ? <Spin className={styles.spinnerWhite} /> : <span>Complete</span>}
+				{renderStatus(true)}
 			</h3>
 			<div className={styles.cardDetails}>
 				<dl className={styles.meta}>
@@ -37,11 +46,7 @@ const OutputAccordionItem = ({
 				</dl>
 				<h4>Summary</h4>
 				<div className={styles.summary}>
-					{result.summary == "pending" ? (
-						<Spin />
-					) : (
-						<p>{result.summary}</p>
-					)}
+					<p>{result.summary || renderStatus()}</p>
 				</div>
 			</div>
 		</section>

@@ -7,7 +7,7 @@ import Button from "~/components/button";
 import OutputAccordion from "~/hnStory/components/output-accordion";
 
 export const WorkerComponent: React.FC = () => {
-	const { broadcastChannel, unregisterController } =
+	const { broadcastChannel, unregisterController, workerSteps } =
 		useWorkerControllerContext();
 	const handleSubmit = (
 		e: React.FormEvent<HTMLFormElement>,
@@ -22,6 +22,7 @@ export const WorkerComponent: React.FC = () => {
 			attribute,
 			value: input?.value,
 		};
+		workerSteps.addStep(inputObject);
 		broadcastChannel.send(inputObject);
 	};
 	const running = broadcastChannel.status === WorkerStatus.running;

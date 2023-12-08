@@ -79,7 +79,6 @@ console.log("posting status message *********************");
 					" "
 				)
 			);
-     console.log("posting message *********************")
 			broadcastChannel.postMessage({
 				type: "inputNeeded",
 				node: runResult.node.id,
@@ -142,10 +141,11 @@ function handleCommand(data: {
 			break;
 		case "start":
 			if (!loopActive) {
+				console.log("Starting loop");
 				updateCounter(0).then();
 				runBoard().then(() => console.debug("runBoard finished"));
 			} else {
-				console.debug("Loop already active");
+				console.log("Loop already active");
 			}
 			loopActive = true;
 			loopPaused = false;

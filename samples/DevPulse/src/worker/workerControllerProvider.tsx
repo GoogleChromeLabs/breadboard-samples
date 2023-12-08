@@ -35,7 +35,7 @@ export function WorkerControllerProvider({
 	};
 	return (
 		<WorkerControllerContext.Provider
-			value={{ broadcastChannel: bc, unregisterController }}
+			value={{ broadcastChannel: bc, unregisterController, workerSteps: bc.workerSteps }}
 		>
 			{children}
 		</WorkerControllerContext.Provider>
