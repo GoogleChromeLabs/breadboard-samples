@@ -7,7 +7,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 const persistConfig = {
 	key: 'root',
 	storage: storage,
-	whitelist: ['input']
+	blacklist: ['output', 'input']
 }
 
 const reducer = combineReducers({

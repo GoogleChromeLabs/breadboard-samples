@@ -1,30 +1,28 @@
 import React from "react";
 import { useWorkerControllerContext } from "worker/useWorkerControllerContext.tsx";
 import styles from "./worker-component.module.scss";
-import { WorkerStatus } from "~/sw/types";
-import { useDispatch } from "react-redux";
+import { InputNode, WorkerStatus } from "~/sw/types";
 import { StoryOutput } from "~/hnStory/domain";
-import { setInputValue } from "~/hnStory/inputSlice";
 import Button from "~/components/button";
 import OutputAccordion from "~/hnStory/components/output-accordion";
 
 export const WorkerComponent: React.FC = () => {
 	const { broadcastChannel, unregisterController } =
 		useWorkerControllerContext();
-	const dispatch = useDispatch();
 	const handleSubmit = (
 		e: React.FormEvent<HTMLFormElement>,
-		node: string,
+		node: InputNode,
 		attribute: string
 	) => {
 		e.preventDefault();
 		const input = (e.target as HTMLFormElement).querySelector("input");
-		broadcastChannel.send({
+
+		const inputObject = {
 			node,
 			attribute,
 			value: input?.value,
-		});
-		dispatch(setInputValue(input?.value));
+		};
+		broadcastChannel.send(inputObject);
 	};
 	const running = broadcastChannel.status === WorkerStatus.running;
 	//const inputField = useSelector((state: RootState) => selectInput(state))

@@ -4,7 +4,7 @@ import { WorkerData, WorkerStatus } from "sw/types.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { outputSuccess, selectOutput } from "~/hnStory/outputSlice";
 import { StoryOutput } from "~/hnStory/domain";
-import { clearInput, selectInputObject, setInputObject } from "~/hnStory/inputSlice";
+import { InputSteps, addInputCollection} from "~/hnStory/inputSlice";
 import { RootState } from "~/core/redux/store";
 
 export type WorkerControllerHook = {
@@ -26,21 +26,25 @@ const useWorkerController = (
 		}
 		return new BroadcastChannel(BROADCAST_CHANNEL);
 	}, [bcChannel]);
-	const input = useSelector((state: RootState) => selectInputObject(state));
-	console.log(input);
+	const [input, setInput] = useState<WorkerData | null>(null);
 	const output = useSelector((state: RootState) => selectOutput(state));
 	const [status, setStatus] = useState<WorkerStatus>("idle");
 	const dispatch = useDispatch();
-
+	let inputSteps: InputSteps = {};
+	let step = 0;
 	const handleMessage = async (event: MessageEvent) => {
 		if (event.data.type === "inputNeeded") {
-			dispatch(setInputObject({
+			const inputObject = {
 				node: event.data.node!,
 				attribute: event.data.attribute!,
-				message: event.data.message!
-			}));
+				message: event.data.message!,
+			}
+			inputSteps[step++] = inputObject;
+			setInput(inputObject);
 		}
 		if (event.data.output) {
+			dispatch(addInputCollection(inputSteps));
+			inputSteps = {};
 			dispatch(outputSuccess(event.data.output));
 		}
 		if (event.data.type === "status") {
@@ -78,14 +82,12 @@ const useWorkerController = (
 		setStatus(WorkerStatus.stopped);
 	};
 
-	const send = (data: WorkerData, clearInputField: boolean = true) => {
+	const send = (data: WorkerData) => {
 		broadcastChannel.postMessage({
 			command: "inputResponse",
 			...data,
 		});
-		if (clearInputField) {
-			dispatch(clearInput());
-		}
+		
 	};
 
 	return {

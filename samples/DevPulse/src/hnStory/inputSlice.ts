@@ -1,37 +1,39 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "~/core/redux/store";
 import { WorkerData } from "~/sw/types";
+import { v4 as uuid } from "uuid";
 
-const initialState = {
-	input: {
-		node: "",
-		attribute: "",
-		message: "",
-		value: ""
-	} as WorkerData
-}
+export type InputSteps = Record<number, WorkerData>;
+export type WorkerDataCollection = { id: string; inputSteps: InputSteps };
+export const inputAdaptor = createEntityAdapter<WorkerDataCollection>();
+
+const initialState = inputAdaptor.getInitialState();
 
 const inputSlice = createSlice({
 	name: "input",
 	initialState: initialState,
 	reducers: {
-		setSearchQuery: (state, action) => {
-			if (state.input.node === "searchQuery") state.input = action.payload;
+		addInputCollection: (state, { payload }: PayloadAction<InputSteps>) => {
+			inputAdaptor.addOne(state, { id: uuid(), inputSteps: payload });
 		},
-		setApiKey: (state, action) => {
-			if (state.input.node === "claudeApiKey") state.input = action.payload;
+		setInputObject: (
+			state,
+			action: PayloadAction<{id: string, changes: InputSteps}>
+		) => {
+			inputAdaptor.updateOne(state, action);
 		},
-		setInputObject: (state, action) => {
-			state.input = action.payload as WorkerData;
-			console.log(action.payload);
-		},
-		clearInput: (state) => {
-			state.input.value = "";
-		}
-		
+		reset: () => initialState,
 	},
 });
 
-export const selectInputObject = (state: RootState) => state.input.input;
-export const { setSearchQuery, setApiKey, setInputObject, clearInput } = inputSlice.actions;
+
+export const {
+	selectById: selectInputStepById,
+	selectIds: selectInputStepIds,
+	selectEntities: selectInputStepEntities,
+	selectAll: selectAllInputSteps,
+	selectTotal: selectTotalInputSteps
+} = inputAdaptor.getSelectors<RootState>((state) => state.input);
+
+export const { addInputCollection, setInputObject, reset } = inputSlice.actions;
 export default inputSlice.reducer;

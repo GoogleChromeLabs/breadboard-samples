@@ -23,7 +23,7 @@ import { StoryOutput } from "~/hnStory/domain";
 
 let loopActive: boolean = false;
 let loopPaused: boolean = false;
-const broadcastChannel: BroadcastChannel = new BroadcastChannel(
+export const broadcastChannel: BroadcastChannel = new BroadcastChannel(
 	BROADCAST_CHANNEL
 );
 
@@ -50,7 +50,7 @@ async function runBoard() {
 	const logReceiver: Receiver = { log: (message) => console.debug(message) };
 
 	broadcastWorkerStatus("running")
-
+console.log("posting status message *********************");
 	for await (const runResult of board.run({
 		probe: new LogProbe(logReceiver),
 	})) {
@@ -79,7 +79,7 @@ async function runBoard() {
 					" "
 				)
 			);
-
+     console.log("posting message *********************")
 			broadcastChannel.postMessage({
 				type: "inputNeeded",
 				node: runResult.node.id,
