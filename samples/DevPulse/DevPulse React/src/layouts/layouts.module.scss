@@ -1,0 +1,27 @@
+.main {
+	display: grid;
+	grid-template-columns: 120px 1fr;
+	grid-template-rows: 60px 1fr;
+	grid-template-areas: "header header" "sidebar content";
+	position: fixed;
+	inset: 0;
+}
+
+.main :nth-child(1) {
+	grid-area: header;
+}
+.main :nth-child(2) {
+	grid-area: sidebar;
+}
+.main :nth-child(3) {
+	grid-area: content;
+}
+
+.contentBox {
+	color: var(--theme-primary-color);
+}
+
+.contentGrid {
+	display: flex;
+	flex-direction: column;
+}
