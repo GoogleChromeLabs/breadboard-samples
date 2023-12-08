@@ -13,6 +13,7 @@
 	"dependencies": {
 		"@anthropic-ai/tokenizer": "^0.0.4",
 		"@exadev/breadboard-kits": "^0.8.1",
+		"@fontsource/roboto": "^5.0.8",
 		"@google-labs/breadboard": "^0.5.1",
 		"@paulkinlan/claude-breadboard-kit": "^2.2.3",
 		"@reduxjs/toolkit": "^2.0.1",

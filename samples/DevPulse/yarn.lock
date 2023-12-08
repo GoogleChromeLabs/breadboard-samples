@@ -1682,6 +1682,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource/roboto@npm:^5.0.8":
+  version: 5.0.8
+  resolution: "@fontsource/roboto@npm:5.0.8"
+  checksum: 66722ef8a5199975cacfb951ff9364c9413a405d5dbc49e9f3e40fe6e50de67f61331d35780495fb7e72359b6267c4a140fd247ea2fbdc63e8cb75386c0224e8
+  languageName: node
+  linkType: hard
+
 "@google-labs/breadboard@npm:^0.5.0, @google-labs/breadboard@npm:^0.5.1":
   version: 0.5.1
   resolution: "@google-labs/breadboard@npm:0.5.1"
@@ -7442,6 +7449,7 @@ __metadata:
   dependencies:
     "@anthropic-ai/tokenizer": "npm:^0.0.4"
     "@exadev/breadboard-kits": "npm:^0.8.1"
+    "@fontsource/roboto": "npm:^5.0.8"
     "@google-labs/breadboard": "npm:^0.5.1"
     "@paulkinlan/claude-breadboard-kit": "npm:^2.2.3"
     "@reduxjs/toolkit": "npm:^2.0.1"
