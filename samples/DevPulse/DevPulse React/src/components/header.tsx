@@ -10,10 +10,20 @@ const Header = ({ className = "header" }: HeaderProps): React.JSX.Element => {
 			className={[className, styles.header].join(" ")}
 			data-cy="Header"
 		>
-			<Icon name="heart" fill="#505050" />
-			<h2>
-				Dev<span>Pulse</span>
-			</h2>
+			<div className={styles.headerLogo}>
+				<Icon
+					name="heart"
+					fill={getComputedStyle(
+						document.documentElement
+					).getPropertyValue("--theme-icon-color")}
+				/>
+				<h2>
+					Dev<span>Pulse</span>
+				</h2>
+			</div>
+			<nav>
+				<Icon name="settingsCog" fill="white" />
+			</nav>
 		</header>
 	);
 };

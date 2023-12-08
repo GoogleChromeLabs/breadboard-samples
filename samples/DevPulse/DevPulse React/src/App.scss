@@ -1,9 +1,16 @@
 @import './reset.scss';
 
 :root {
-	--theme-color: #C5C7C5;
-	--theme-background-color: #1F1F1F;
-	--theme-secondary-background-color: #2D2F31;
+	--theme-color: #1F1F1F;
+	--theme-secondary-color: #1F1F1F;
+	--theme-tertiary-color: #FFFFFF;
+	--theme-header-background-color: #2D2F31;
+	--theme-background-color: #FFFFFF;
+	--theme-secondary-background-color: #FFFFFF;
+	--theme-tertiary-background-color: #2D2F31;
+	--theme-border-color: #E4E4E4;
+
+	--theme-icon-color: #787878;
 
 	--theme-button-background-color: #CDCDCD;
 	--theme-button-disabled-background-color: #505050;
@@ -25,10 +32,10 @@ body {
 	transition: background-color 0.2s ease-in-out;
 }
 
-body.lightMode {
-	--theme-background-color: #FFF;
-	--theme-secondary-background-color: #F3F6FC;
-	--theme-color: #1F1F1F;
+body.darkMode {
+	--theme-background-color: #1F1F1F;
+	--theme-secondary-background-color: #2D2F31;
+	--theme-color: #C5C7C5;
 }
 
 h1{

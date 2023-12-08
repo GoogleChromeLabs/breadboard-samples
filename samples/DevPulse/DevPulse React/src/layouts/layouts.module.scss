@@ -1,7 +1,7 @@
 .main {
 	display: grid;
-	grid-template-columns: 80px 1fr;
-	grid-template-rows: 40px 1fr;
+	grid-template-columns: 120px 1fr;
+	grid-template-rows: 60px 1fr;
 	grid-template-areas: "header header" "sidebar content";
 	position: fixed;
 	inset: 0;
@@ -20,7 +20,8 @@
 .contentBox {
 	border-radius: var(--theme-border-radius);
 	padding: 20px;
-	background-color: var(--theme-secondary-background-color);
+	background-color: var(--theme-tertiary-background-color);
+	color: var(--theme-tertiary-color);
 	width: 500px;
 	height: 300px;
 }
