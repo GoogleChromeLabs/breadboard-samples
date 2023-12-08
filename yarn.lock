@@ -1833,6 +1833,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@exadev/breadboard-kits@npm:^0.8.3":
+  version: 0.8.3
+  resolution: "@exadev/breadboard-kits@npm:0.8.3"
+  dependencies:
+    "@google-labs/breadboard": "npm:^0.5.1"
+    "@google-labs/core-kit": "npm:^0.0.1"
+    "@google-labs/llm-starter": "npm:^0.2.1"
+    "@xenova/transformers": "npm:^2.9.0"
+    dotenv: "npm:^16.3.1"
+    jsonschema: "npm:^1.4.1"
+  checksum: 145e96b2754b6c5ac4b7ff972b34f6a1fde144d5dec85b71336d0bec9867568644acc281ff4b635ea4267be4e2ad91be5b6391c53842b5173a8e0f318f7b25fa
+  languageName: node
+  linkType: hard
+
 "@google-labs/breadboard@npm:^0.5.0, @google-labs/breadboard@npm:^0.5.1":
   version: 0.5.1
   resolution: "@google-labs/breadboard@npm:0.5.1"
@@ -3664,6 +3678,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "coursecrafter@workspace:samples/CourseCrafter"
   dependencies:
+    "@exadev/breadboard-kits": "npm:^0.8.3"
     "@google-labs/breadboard": "npm:^0.6.0"
     "@types/react": "npm:^18.2.37"
     "@types/react-dom": "npm:^18.2.15"
