@@ -1,9 +1,0 @@
-{
-	"compilerOptions": {
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
-		"noEmit": true,
-		"target": "ES2017"
-	},
-	"extends": "../../../tsconfig.minimal.json",
-}
