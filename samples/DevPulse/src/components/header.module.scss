@@ -1,0 +1,22 @@
+.header {
+	background-color: var(--theme-header-background-color);
+	color: var(--theme-tertiary-color);
+	padding: 10px;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	justify-content: space-between;
+	box-shadow: var(--theme-header-box-shadow-color);
+	.headerLogo{
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	h2 {
+		font-size: 16px;
+		span {
+			font-weight: bold;
+		}
+	}
+}

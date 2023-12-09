@@ -1,0 +1,75 @@
+@import './reset.scss';
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+@import '@fontsource/roboto/700.css';
+
+:root {
+	--theme-color: #1F1F1F;
+	--theme-secondary-color: #1F1F1F;
+	--theme-tertiary-color: #FFFFFF;
+	--theme-header-background-color: #2D2F31;
+	--theme-background-color: #FFFFFF;
+	--theme-secondary-background-color: #FFFFFF;
+	--theme-tertiary-background-color: #2D2F31;
+	--theme-border-color: #E4E4E4;
+
+	--theme-grey-color: #CDCDCD;
+	--theme-grey-color-2: rgb(231, 231, 231);
+	--theme-red-color: #ae0213;
+	--theme-blue-color: #003cbd;
+	--theme-purple-color: #6e1b95;
+
+	--theme-icon-color: #787878;
+	--theme-icon-hover-color: #4f5163;
+
+	--theme-button-background-color: #CDCDCD;
+	--theme-button-text-color: #1F1F1F;
+
+	--theme-border-radius: 16px;
+
+	--theme-header-box-shadow-color: 0 0 10px #1F1F1F;
+}
+html {
+	height: 100%;
+}
+body {
+	min-height: 100%;
+	background-color: var(--theme-background-color);
+	color: var(--theme-color);
+	font-family: roboto;
+}
+
+*{
+	transition: background-color 0.2s ease-in-out;
+}
+
+body.darkMode {
+	--theme-background-color: #1F1F1F;
+	--theme-secondary-background-color: #2D2F31;
+	--theme-color: #C5C7C5;
+}
+
+h1{
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+h6{
+	font-size: inherit;
+	font-weight: 600;
+}
+
+a{
+	color: var(--theme-blue-color);
+	font-weight: 600;
+}
+
+a:visited{
+	color: var(--theme-purple-color);
+}
