@@ -1824,7 +1824,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@exadev/breadboard-kits@npm:^0.8.1, @exadev/breadboard-kits@npm:^0.8.2, @exadev/breadboard-kits@npm:^0.8.3":
+"@exadev/breadboard-kits@npm:^0.8.2, @exadev/breadboard-kits@npm:^0.8.3":
   version: 0.8.3
   resolution: "@exadev/breadboard-kits@npm:0.8.3"
   dependencies:
@@ -1849,6 +1849,16 @@ __metadata:
   version: 0.5.1
   resolution: "@google-labs/breadboard@npm:0.5.1"
   checksum: 335735132f25ac6f46e4f4e6e1b51de4b95f21dbffdf5c521162863c7d20248837694dd775fd64fc3bd627be9f5dc0e4907890ac30855ae7fea42f83ac2c725c
+  languageName: node
+  linkType: hard
+
+"@google-labs/breadboard@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@google-labs/breadboard@npm:0.6.0"
+  dependencies:
+    zod: "npm:^3.22.4"
+    zod-to-json-schema: "npm:^3.22.1"
+  checksum: bad6b96e287c27ed24f7612469db7c7dfb3eebd7148aeda608074b42bd93d5e3a3b467691d7e7a14879be7e1bccd65faf03da35605b7753fd46de0f148e28de4
   languageName: node
   linkType: hard
 
@@ -2028,7 +2038,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@paulkinlan/claude-breadboard-kit@npm:^2.2.3, @paulkinlan/claude-breadboard-kit@npm:^2.2.5":
+"@paulkinlan/claude-breadboard-kit@npm:^2.2.5":
   version: 2.2.5
   resolution: "@paulkinlan/claude-breadboard-kit@npm:2.2.5"
   dependencies:
@@ -2579,7 +2589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=13.7.0, @types/node@npm:^20.10.0, @types/node@npm:^20.9.3":
+"@types/node@npm:*, @types/node@npm:>=13.7.0, @types/node@npm:^20.10.0, @types/node@npm:^20.10.4, @types/node@npm:^20.9.3":
   version: 20.10.4
   resolution: "@types/node@npm:20.10.4"
   dependencies:
@@ -2604,7 +2614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.2.15, @types/react-dom@npm:^18.2.17":
+"@types/react-dom@npm:^18.2.17":
   version: 18.2.17
   resolution: "@types/react-dom@npm:18.2.17"
   dependencies:
@@ -2613,7 +2623,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.2.37, @types/react@npm:^18.2.42":
+"@types/react@npm:*, @types/react@npm:^18.2.42":
   version: 18.2.42
   resolution: "@types/react@npm:18.2.42"
   dependencies:
@@ -2661,14 +2671,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/uuid@npm:^9":
+"@types/uuid@npm:^9.0.7":
   version: 9.0.7
   resolution: "@types/uuid@npm:9.0.7"
   checksum: c7321194aeba9ea173efd1e721403bdf4e7ae6945f8f8cdbc87c791f4b505ccf3dbc4a8883d90b394ef13b7c2dc778045792b05dbb23b3c746f8ea347804d448
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^6.10.0, @typescript-eslint/eslint-plugin@npm:^6.12.0, @typescript-eslint/eslint-plugin@npm:^6.13.2":
+"@typescript-eslint/eslint-plugin@npm:^6.12.0, @typescript-eslint/eslint-plugin@npm:^6.13.2":
   version: 6.13.2
   resolution: "@typescript-eslint/eslint-plugin@npm:6.13.2"
   dependencies:
@@ -2693,7 +2703,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^6.10.0, @typescript-eslint/parser@npm:^6.12.0, @typescript-eslint/parser@npm:^6.13.2":
+"@typescript-eslint/parser@npm:^6.12.0, @typescript-eslint/parser@npm:^6.13.2":
   version: 6.13.2
   resolution: "@typescript-eslint/parser@npm:6.13.2"
   dependencies:
@@ -2947,7 +2957,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"antd@npm:^5.11.5, antd@npm:^5.12.1":
+"antd@npm:^5.12.1":
   version: 5.12.1
   resolution: "antd@npm:5.12.1"
   dependencies:
@@ -4022,7 +4032,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-refresh@npm:^0.4.4, eslint-plugin-react-refresh@npm:^0.4.5":
+"eslint-plugin-react-refresh@npm:^0.4.5":
   version: 0.4.5
   resolution: "eslint-plugin-react-refresh@npm:0.4.5"
   peerDependencies:
@@ -4048,7 +4058,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.53.0, eslint@npm:^8.55.0":
+"eslint@npm:^8.55.0":
   version: 8.55.0
   resolution: "eslint@npm:8.55.0"
   dependencies:
@@ -6750,7 +6760,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-redux@npm:^9.0.0":
+"react-redux@npm:^9.0.2":
   version: 9.0.2
   resolution: "react-redux@npm:9.0.2"
   dependencies:
@@ -7941,7 +7951,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.2.2, typescript@npm:^5.3.2":
+"typescript@npm:^5.3.2, typescript@npm:^5.3.3":
   version: 5.3.3
   resolution: "typescript@npm:5.3.3"
   bin:
@@ -7961,7 +7971,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.3.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.3.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.3.3#optional!builtin<compat/typescript>":
   version: 5.3.3
   resolution: "typescript@patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"
   bin:
@@ -8137,7 +8147,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-pwa@npm:^0.17.0":
+"vite-plugin-pwa@npm:^0.17.4":
   version: 0.17.4
   resolution: "vite-plugin-pwa@npm:0.17.4"
   dependencies:
@@ -8182,38 +8192,38 @@ __metadata:
   resolution: "vite-react-worker@workspace:samples/DevPulse"
   dependencies:
     "@anthropic-ai/tokenizer": "npm:^0.0.4"
-    "@exadev/breadboard-kits": "npm:^0.8.1"
+    "@exadev/breadboard-kits": "npm:^0.8.3"
     "@fontsource/roboto": "npm:^5.0.8"
-    "@google-labs/breadboard": "npm:^0.5.1"
-    "@paulkinlan/claude-breadboard-kit": "npm:^2.2.3"
+    "@google-labs/breadboard": "npm:^0.6.0"
+    "@paulkinlan/claude-breadboard-kit": "npm:^2.2.5"
     "@reduxjs/toolkit": "npm:^2.0.1"
-    "@types/node": "npm:^20.10.0"
-    "@types/react": "npm:^18.2.37"
-    "@types/react-dom": "npm:^18.2.15"
-    "@types/uuid": "npm:^9"
-    "@typescript-eslint/eslint-plugin": "npm:^6.10.0"
-    "@typescript-eslint/parser": "npm:^6.10.0"
+    "@types/node": "npm:^20.10.4"
+    "@types/react": "npm:^18.2.42"
+    "@types/react-dom": "npm:^18.2.17"
+    "@types/uuid": "npm:^9.0.7"
+    "@typescript-eslint/eslint-plugin": "npm:^6.13.2"
+    "@typescript-eslint/parser": "npm:^6.13.2"
     "@vitejs/plugin-react-swc": "npm:^3.5.0"
-    antd: "npm:^5.11.5"
-    eslint: "npm:^8.53.0"
+    antd: "npm:^5.12.1"
+    eslint: "npm:^8.55.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
-    eslint-plugin-react-refresh: "npm:^0.4.4"
+    eslint-plugin-react-refresh: "npm:^0.4.5"
     js-tiktoken: "npm:^1.0.8"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
-    react-redux: "npm:^9.0.0"
+    react-redux: "npm:^9.0.2"
     redux-persist: "npm:^6.0.0"
     sass: "npm:^1.69.5"
-    typescript: "npm:^5.2.2"
+    typescript: "npm:^5.3.3"
     uuid: "npm:^9.0.1"
-    vite: "npm:^5.0.0"
-    vite-plugin-pwa: "npm:^0.17.0"
-    vite-tsconfig-paths: "npm:^4.2.1"
+    vite: "npm:^5.0.7"
+    vite-plugin-pwa: "npm:^0.17.4"
+    vite-tsconfig-paths: "npm:^4.2.2"
     workbox-core: "npm:^7.0.0"
   languageName: unknown
   linkType: soft
 
-"vite-tsconfig-paths@npm:^4.2.1":
+"vite-tsconfig-paths@npm:^4.2.2":
   version: 4.2.2
   resolution: "vite-tsconfig-paths@npm:4.2.2"
   dependencies:
@@ -8229,7 +8239,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0, vite@npm:^5.0.2, vite@npm:^5.0.6":
+"vite@npm:^5.0.2, vite@npm:^5.0.6, vite@npm:^5.0.7":
   version: 5.0.7
   resolution: "vite@npm:5.0.7"
   dependencies:
@@ -8614,5 +8624,21 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zod-to-json-schema@npm:^3.22.1":
+  version: 3.22.1
+  resolution: "zod-to-json-schema@npm:3.22.1"
+  peerDependencies:
+    zod: ^3.22.4
+  checksum: 21c2f8bb62254370e89092a00893b05d40524544e5fcfbb13c0a35eb408318c598e3865de4b9b63e5d0ef691850cb183a74dbadeab3982f29b174d9e1c8cde43
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.4":
+  version: 3.22.4
+  resolution: "zod@npm:3.22.4"
+  checksum: 73622ca36a916f785cf528fe612a884b3e0f183dbe6b33365a7d0fc92abdbedf7804c5e2bd8df0a278e1472106d46674281397a3dd800fa9031dc3429758c6ac
   languageName: node
   linkType: hard
