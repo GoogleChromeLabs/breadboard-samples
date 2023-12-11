@@ -1,4 +1,4 @@
-# CourseCrafter
+# title
 
 ```mermaid
 %%{init: 'themeVariables': { 'fontFamily': 'Fira Code, monospace' }}%%
@@ -219,9 +219,6 @@ classDef slotted stroke:#a64d79
 		},
 		{
 			"url": "npm:@exadev/breadboard-kits/kits/StringKit"
-		},
-		{
-			"url": "npm:@google-labs/core-kit"
 		},
 		{
 			"url": "npm:@google-labs/llm-starter"

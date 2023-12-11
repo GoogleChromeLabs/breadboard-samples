@@ -1,8 +1,6 @@
-import { CourseCrafterKit, StringKit, XenovaKit } from "@exadev/breadboard-kits";
+import { CourseCrafterKit, StringKit, XenovaKit, ConfigKit} from "@exadev/breadboard-kits";
 import { Board } from "@google-labs/breadboard";
 import { ClaudeKit } from "@paulkinlan/claude-breadboard-kit";
-import { config } from "dotenv";
-import { Starter } from "@google-labs/llm-starter";
 
 
 export function makeBoard(): Board{
@@ -14,9 +12,9 @@ export function makeBoard(): Board{
 	const xenovaKit = board.addKit(XenovaKit);
 	const claudeKit = board.addKit(ClaudeKit);
 	const stringKit = board.addKit(StringKit);
+	const config = board.addKit(ConfigKit);
+
 	
-	const starter = board.addKit(Starter);
-	config();
 	
 	const input = board.input({
 		$id: "blogDetails",
@@ -60,16 +58,12 @@ export function makeBoard(): Board{
 			},
 		},
 	});
-	
+
 	const getBlogContentForTask = courseCraftKit.getBlogContentForTask({ $id: "getBlogContents" });
 	const pipeline = xenovaKit.pipeline({ $id: "summaryLanguageModel" });
-	// const output = board.output({ $id: "outputSummary" });
 	
-	const instruction = "Based on this summary and original text, give me code sample on how to achieve the discussed topic. Output result in markdown format, do not include the summary text in the output: ";
-	const instructionTemplate = stringKit.template({
-		$id: "claudePromptConstructor",
-		template: [instruction, "{{summary}}", "the original text is the following: ", "{{blogContent}}", ].join("/n"),
-	});
+	//const instruction = "Based on this summary and original text, give me code sample on how to achieve the discussed topic. Output result in markdown format, do not include the summary text in the output: ";
+	const instructionTemplate = stringKit.template({$id: "claudePromptConstructor"});	
 	
 	templateInput.wire("->template", instructionTemplate);
 	input.wire("->url", getBlogContentForTask);
@@ -80,30 +74,30 @@ export function makeBoard(): Board{
 	getBlogContentForTask.wire("blogContent->input", pipeline);
 	getBlogContentForTask.wire("model->model", pipeline);
 	getBlogContentForTask.wire("task->task", pipeline);
-	// use passthrough to collect all outputs of previous nodes/kits
-	const allOutputs = board.output({ $id: "outputCollector" });
-	
+
 	getBlogContentForTask.wire("blogContent->blogContent", instructionTemplate);
 	pipeline.wire("output->summary", instructionTemplate);
-	getBlogContentForTask.wire("blogContent->blogContent", allOutputs);
-	pipeline.wire("output->blogSummary", allOutputs);
-	
-	const secrets = starter.secrets(["CLAUDE_API_KEY"]);
+
 	const serverUrl = "https://api.anthropic.com/v1/complete";
+
 	const claudeParams = {
 		model: "claude-2",
 		url: `${serverUrl}`,
 	};
-	
+
 	const claudeCompletion = claudeKit.generateCompletion({
 		$id: "claudeAPI",
 		...claudeParams,
 	});
+
+	const claudeApiKey = config.readEnvVar({
+		key: "CLAUDE_API_KEY",
+	});
+
+	claudeApiKey.wire("CLAUDE_API_KEY", claudeCompletion);
+	instructionTemplate.wire("string->text", claudeCompletion);
 	
-	secrets.wire("CLAUDE_KEY->apiKey", claudeCompletion);
-	instructionTemplate.wire("string->userQuestion", claudeCompletion);
-	instructionTemplate.wire("string->userQuestion", allOutputs);
-	claudeCompletion.wire("completion->claudeResponse", allOutputs);
+	claudeCompletion.wire("completion->", board.output());
 
 	return board
 }
