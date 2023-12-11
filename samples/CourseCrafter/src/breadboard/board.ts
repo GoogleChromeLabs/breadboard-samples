@@ -61,8 +61,6 @@ export function makeBoard(): Board{
 
 	const getBlogContentForTask = courseCraftKit.getBlogContentForTask({ $id: "getBlogContents" });
 	const pipeline = xenovaKit.pipeline({ $id: "summaryLanguageModel" });
-	
-	//const instruction = "Based on this summary and original text, give me code sample on how to achieve the discussed topic. Output result in markdown format, do not include the summary text in the output: ";
 	const instructionTemplate = stringKit.template({$id: "claudePromptConstructor"});	
 	
 	templateInput.wire("->template", instructionTemplate);
