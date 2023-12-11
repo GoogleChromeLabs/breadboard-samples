@@ -1,26 +1,30 @@
- Here is markdown formatted code for achieving the discussed topic of using `scheduler.yield` to yield control back to the main thread:
+ Here is Markdown code to display the topic discussed in the summary without including the original summary text:
 
 ```js
-// A function for using scheduler.yield 
-function yieldToMain() {
+// Check if scheduler.yield is available
+if ('scheduler' in window && 'yield' in scheduler) {
 
-  // Use scheduler.yield if available
-  if ('scheduler' in window && 'yield' in scheduler) {
-    return scheduler.yield();
+  // Use scheduler.yield to yield control back to main thread
+  async function doWork() {
+    // Do some work
+
+    await scheduler.yield();
+
+    // Do more work
   }
 
-}
+} else {
 
-// Example usage
-async function doWork() {
+  // Fallback to setTimeout
+  function doWork() {
+    // Do some work
 
-  // Do some work...
-
-  await yieldToMain();
-
-  // Do some more work...
+    setTimeout(() => {
+      // Do more work
+    }, 0); 
+  }
 
 }
 ```
 
-This uses `scheduler.yield` if available, and does not include a fallback. It yields control back to the main thread to improve responsiveness.
+This checks if the scheduler.yield API is available, and uses it to explicitly yield control back to the main thread during a long running task. If scheduler.yield is not available, it falls back to using setTimeout to approximate yielding behavior.
