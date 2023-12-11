@@ -1,16 +1,23 @@
 #!/usr/bin/env npx -y tsx
-import board from "./board";
+import { makeBoard } from "./board";
 import { generateAndWriteCombinedMarkdown } from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 import * as url from 'url';
 import path from "path";
 import fs from "fs";
-import { LogProbe } from "@google-labs/breadboard";
+
+import {makeMarkdown} from "@exadev/breadboard-kits/util/files/makeMarkdown"
+import {MarkdownContentType} from "@exadev/breadboard-kits/types/markdown"
+
+
+const board = makeBoard()
 
 generateAndWriteCombinedMarkdown({
-	board,
+	board: board,
 	filename: "README",
-	dir: "./",
+	title:"title",
+	dir: "./"
 });
+
 
 const blogUrl = "https://developer.chrome.com/blog/introducing-scheduler-yield-origin-trial/"
 
@@ -29,20 +36,9 @@ for await (const runResult of board.run({
 		} else {
 			console.log("runResult.state.newOpportunities", runResult.state.newOpportunities);
 			console.log("runResult.inputArguments", runResult.inputArguments);
-		// throw new Error("Unknown node id")
 		}
 
-		// if (runResult.node.id == "blogDetails"){
-		// 	runResult.inputs = {
-		// 		url: blogUrl,
-		// 	}
-		// } else 
-		//  else if (runResult.node.id == "taskDetails"){
-		// 	runResult.inputs = {
-		// 		task: "summarization",
-		// 	}
-		// } else{
-		// }
+	
 	} else if (runResult.type === "output") {
 		const outputs = runResult.outputs
 
@@ -57,7 +53,5 @@ for await (const runResult of board.run({
 
 		// write all outputs into 1 file, summarising the whole process
 		fs.writeFileSync(path.join(outputDir, "blog_summary.json"), JSON.stringify(outputBuffer, null, 2));
-		// this prompt returns text in markdown format
-		// fs.writeFileSync(path.join(outputDir,"code.md"), runResult.outputs["claudeResponse"] as string);
 	}
 }
