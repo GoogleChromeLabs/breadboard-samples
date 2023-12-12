@@ -1,0 +1,78 @@
+.container{
+	padding: 20px;
+	.card{
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto 0fr;
+		transition: grid-template-rows 0.5s ease-in-out;
+		grid-area: auto;
+		margin-bottom: 10px;
+		background: linear-gradient(to right bottom, #323941, #061018);
+		border-radius: var(--theme-border-radius);
+		overflow: hidden;
+		color: white;
+		h3{
+			grid-area:unset;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background: linear-gradient(to right bottom, #2999f5, #1859d1);
+			height:40px;
+			padding: 10px 20px;
+			a{
+				color: white;
+				&:visited{
+					color: rgb(207, 182, 244);
+				}
+			}
+		}
+		.cardDetails{
+			overflow: hidden;
+			grid-area: unset;
+			.meta{
+				display: grid;
+				grid-template-columns: auto 1fr;
+				grid-area:unset;
+				align-items: center;
+				padding: 10px 20px;
+				dd, dt{
+					grid-area: unset;
+				}
+				dt{
+					font-size: 0.75rem;
+					font-weight: 400;
+					line-height: 1.4;
+					margin-right: 10px;
+				}
+				span{
+					font-size: 0.75rem;
+					font-weight: 400;
+					line-height: 1.4;
+				}
+			}
+			h4{
+				grid-area: unset;
+				font-size: 1rem;
+				font-weight: 600;
+				line-height: 1.4;
+				padding: 10px 20px;
+			
+			}
+			.summary{
+
+				padding: 10px 20px 30px;
+				p{columns: 3;
+				line-height: 1.5;}
+			}
+		}
+		&.open{
+			grid-template-rows: auto 1fr;
+		}
+	}
+}
+
+.spinnerWhite{
+	:global(.ant-spin-dot-item){
+		background-color: white;
+	}
+}
