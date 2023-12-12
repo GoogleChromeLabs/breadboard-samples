@@ -1,6 +1,6 @@
 {
 	"dependencies": {
-		"@exadev/breadboard-kits": "^0.5.4",
+		"@exadev/breadboard-kits": "^0.8.3",
 		"@google-labs/breadboard": "^0.5.1"
 	},
 	"devDependencies": {
@@ -17,6 +17,8 @@
 	"scripts": {
 		"start": "npm-run-all --print-name --serial 'run-*'",
 		"watch": "npm-run-all --print-name --parallel 'watch-*'",
+		"run-arrow-directions": "tsx src/arrow-directions/index.ts",
+		"watch-arrow-directions": "tsx watch src/arrow-directions/index.ts",
 		"run-hello-world": "tsx src/hello-world.ts",
 		"watch-hello-world": "tsx watch src/hello-world.ts",
 		"run-multiple-inputs": "tsx src/multiple-inputs.ts",

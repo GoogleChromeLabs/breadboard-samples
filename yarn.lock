@@ -3232,7 +3232,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "breadboard-walkthrough@workspace:samples/Breadboard Walkthrough"
   dependencies:
-    "@exadev/breadboard-kits": "npm:^0.5.4"
+    "@exadev/breadboard-kits": "npm:^0.8.3"
     "@google-labs/breadboard": "npm:^0.5.1"
     "@types/node": "npm:^20.9.3"
     npm-run-all: "npm:^4.1.5"
