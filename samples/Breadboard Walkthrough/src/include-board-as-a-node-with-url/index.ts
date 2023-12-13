@@ -8,7 +8,7 @@ const board = new Board({
     title: "Include Board as a Node with URL"
 });
 
-const coreKit = board.addKit(Core);
+const core = board.addKit(Core);
 
 const NESTED_BOARD_URL = "https://raw.githubusercontent.com/ExaDev-io/breadboard-samples/more-demos/samples/Breadboard%20Walkthrough/src/include-board-as-a-node-with-url/nestedboard.json";
 
@@ -17,7 +17,7 @@ board
 	    $id: "mainInputNode"
     })
     .wire("mainInput->nestedInput",
-        coreKit
+        core
         .include({path: NESTED_BOARD_URL})
         .wire("nestedOutput", board.output({ $id: "mainOutputNode" }))
     );
