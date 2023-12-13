@@ -2,6 +2,7 @@
 
 import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 import { Board } from "@google-labs/breadboard";
+import fs from "fs";
 import * as url from "url";
 import MyCustomKit from "./custom-kit-node-values-and-handlers.js";
 
@@ -62,3 +63,9 @@ generateAndWriteCombinedMarkdown({
 	filename: "README",
 	dir: url.fileURLToPath(new URL(".", import.meta.url)),
 });
+
+
+fs.writeFileSync(
+	url.fileURLToPath(new URL("board.json", import.meta.url)),
+	JSON.stringify(board, null, "\t")
+);
