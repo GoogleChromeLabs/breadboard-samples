@@ -32,7 +32,19 @@
 		"run-one-input-multiple-outputs": "tsx src/one-input-multiple-outputs/index.ts",
 		"watch-one-input-multiple-outputs": "tsx watch src/one-input-multiple-outputs/index.ts",
 		"run-multiple-inputs-one-output": "tsx src/multiple-inputs-one-output/index.ts",
-		"watch-multiple-inputs-one-output": "tsx watch src/multiple-inputs-one-output/index.ts"
+		"watch-multiple-inputs-one-output": "tsx watch src/multiple-inputs-one-output/index.ts",
+		"run-adding-slot-to-a-board": "tsx src/adding-slot-to-a-board/index.ts",
+		"watch-adding-slot-to-a-board": "tsx watch src/adding-slot-to-a-board/index.ts",
+		"run-include-board-as-a-node-with-url": "tsx src/include-board-as-a-node-with-url/index.ts",
+		"watch-include-board-as-a-node-with-url": "tsx watch src/include-board-as-a-node-with-url/index.ts",
+		"run-custom-kit-node-values-and-handlers": "tsx src/custom-kit-node-values-and-handlers/index.ts",
+		"watch-custom-kit-node-values-and-handlers": "tsx watch src/custom-kit-node-values-and-handlers/index.ts",
+		"run-include-board-as-a-node": "tsx src/include-board-as-a-node/index.ts",
+		"watch-include-board-as-a-node": "tsx watch src/include-board-as-a-node/index.ts",
+		"run-naming-wiring-parameters": "tsx src/naming-wiring-parameters/index.ts",
+		"watch-naming-wiring-parameters": "tsx watch src/naming-wiring-parameters/index.ts",
+		"run-adding-slot-to-a-board-with-url": "tsx src/adding-slot-to-a-board-with-url/index.ts",
+		"watch-adding-slot-to-a-board-with-url": "tsx watch src/adding-slot-to-a-board-with-url/index.ts"
 	},
 	"type": "module"
 }
