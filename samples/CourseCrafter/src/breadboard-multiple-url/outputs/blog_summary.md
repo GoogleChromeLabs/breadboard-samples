@@ -1,26 +1,69 @@
- Unfortunately the original text provided does not contain enough technical details for me to provide code samples on the discussed topics. However, based on the summaries, here is an outline of topics discussed in each blog post:
+ Here are the outlined topics and code samples for each blog post:
 
-## Blog 1
+## Blog 1: Scheduler API origin trial
 
-Discussed topics:
-- scheduler.yield API for yielding control back to main thread
-- Problems with current yielding strategies like setTimeout
-- How scheduler.yield works and benefits over setTimeout
-- Ways to polyfill scheduler.yield
+- Yielding control back to main thread with `scheduler.yield()` to improve input responsiveness
 
-## Blog 2
+```js
+// Yield with scheduler.yield
+async function yieldy() {
+  await scheduler.yield(); 
+}
+```
 
-Discussed topics:
-- Automatically entering picture-in-picture mode when user switches tabs
-- Using media session API to register handler for "enterpictureinpicture" action
-- Opening picture-in-picture window with Video API or Document Picture-in-Picture API
+- `scheduler.yield()` sends remaining work to front of task queue 
 
-## Blog 3
+```js
+async function doWork() {
+  await yieldToMain();
 
-Discussed topics:
-- Enabling desktop mode by default for Chrome on premium Android tablets 
-- Differences in user agent strings between mobile and desktop
-- Testing websites to ensure good experience in desktop mode
-- Using feature detection instead of relying on user agent
+  // Remaining work
+}
 
-Unfortunately without more complete code examples from the original posts, I cannot provide specific code samples for these topics. Please let me know if you have any other questions!
+function yieldToMain() {
+  if ('scheduler' in window && 'yield' in scheduler) {
+    return scheduler.yield();
+  }
+}  
+```
+
+## Blog 2: Automatic picture-in-picture 
+
+- Register media session action handler for `enterpictureinpicture` 
+
+```js
+navigator.mediaSession.setActionHandler("enterpictureinpicture", () => {
+  video.requestPictureInPicture(); 
+});
+```
+
+- Use Document Picture-in-Picture API to populate custom HTML
+
+```js 
+navigator.mediaSession.setActionHandler("enterpictureinpicture", async () => {
+  const pipWindow = await documentPictureInPicture.requestWindow();  
+  // Populate HTML  
+});
+```
+
+## Blog 3: 16-bit floats in WebGPU/WGSL
+
+- Enable `f16` WGSL extension
+
+```wgsl
+enable f16;
+
+const c: vec3<f16> = ...;
+```
+
+- Conditionally use `f16` or `f32` based on GPU feature support 
+
+```js
+const hasShaderF16 = adapter.features.has("shader-f16");
+
+const header = hasShaderF16  
+  ? `enable f16; alias min16float = f16;`
+  : `alias min16float = f32;`;
+
+const c = vec3<min16float>(...); 
+```

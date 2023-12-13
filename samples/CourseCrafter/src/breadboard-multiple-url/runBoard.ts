@@ -17,7 +17,7 @@ generateAndWriteCombinedMarkdown({
 // if we get weird errors, check the blog still exists 
 const blogURL = "https://developer.chrome.com/blog/introducing-scheduler-yield-origin-trial/"
 const blogURL2 = "https://developer.chrome.com/blog/automatic-picture-in-picture/"
-const blogURL3 = "https://developer.chrome.com/blog/desktop-mode/"
+const blogURL3 = "https://developer.chrome.com/blog/new-in-webgpu-120/"
 const urls = [blogURL, blogURL2, blogURL3];
 
 for await (const runResult of board.run({
