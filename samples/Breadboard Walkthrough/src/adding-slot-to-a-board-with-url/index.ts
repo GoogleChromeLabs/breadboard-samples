@@ -24,7 +24,7 @@ import { Core } from "@google-labs/core-kit"
 
 	for await (const run of board.run({
 		slots: {},
-		kits: [asRuntimeKit(Core)]
+		kits: [asRuntimeKit(Core)] // The kit needs to be passed because the JSON only contains an identifier of the kit and not the logic
 	})) {	
         if (run.type === "input") {
 			run.inputs = {
