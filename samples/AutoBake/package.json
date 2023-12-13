@@ -12,22 +12,22 @@
 		"watchBoard": "tsx watch src/breadboard/runBoard.ts"
 	},
 	"dependencies": {
-		"@exadev/breadboard-kits": "^0.8.3",
-		"@google-labs/breadboard": "^0.5.1",
+		"@exadev/breadboard-kits": "^0.9.0",
+		"@google-labs/breadboard": "^0.6.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
-		"@types/react": "^18.2.37",
-		"@types/react-dom": "^18.2.15",
-		"@typescript-eslint/eslint-plugin": "^6.10.0",
-		"@typescript-eslint/parser": "^6.10.0",
+		"@types/react": "^18.2.45",
+		"@types/react-dom": "^18.2.17",
+		"@typescript-eslint/eslint-plugin": "^6.14.0",
+		"@typescript-eslint/parser": "^6.14.0",
 		"@vitejs/plugin-react-swc": "^3.5.0",
-		"eslint": "^8.53.0",
+		"eslint": "^8.55.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
-		"eslint-plugin-react-refresh": "^0.4.4",
+		"eslint-plugin-react-refresh": "^0.4.5",
 		"tsx": "^4.6.2",
-		"typescript": "^5.2.2",
-		"vite": "^5.0.0"
+		"typescript": "^5.3.3",
+		"vite": "^5.0.8"
 	}
 }
