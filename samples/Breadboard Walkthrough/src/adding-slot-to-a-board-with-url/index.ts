@@ -6,11 +6,30 @@ import { Core } from "@google-labs/core-kit";
 import * as url from "url";
 
 (async () => {
-	const MAIN_BOARD_URL =
-		"https://raw.githubusercontent.com/ExaDev-io/breadboard-samples/more-demos/samples/Breadboard%20Walkthrough/src/adding-slot-to-a-board-with-url/mainboard.json";
+	const BASE = "https://raw.githubusercontent.com";
+	const OWNER = "ExaDev-io";
+	const REPO = "breadboard-samples";
+	const BRANCH = "";
+	const PATH =
+		"samples/Breadboard%20Walkthrough/src/adding-slot-to-a-board-with-url";
 
-	const NESTED_BOARD_URL =
-		"https://raw.githubusercontent.com/ExaDev-io/breadboard-samples/more-demos/samples/Breadboard%20Walkthrough/src/adding-slot-to-a-board-with-url/nestedboard.json";
+	const MAIN_BOARD_URL = [
+		BASE,
+		OWNER,
+		REPO,
+		BRANCH,
+		PATH,
+		"mainboard.json",
+	].join("/");
+
+	const NESTED_BOARD_URL = [
+		BASE,
+		OWNER,
+		REPO,
+		BRANCH,
+		PATH,
+		"nestedboard.json",
+	].join("/");
 
 	const nested = await Board.load(NESTED_BOARD_URL);
 
