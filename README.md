@@ -10,4 +10,4 @@ They will demonstrate how to build complex LLM applications that can be run in t
 
 All of this code will be prototype code. It will not be production-ready. It will be used to demonstrate the capabilities of the Breadboard project.
 
-- [Breadboard Walkthrough](samples/Breadboard Walkthrough)
+- [Breadboard Walkthrough](samples/Breadboard%20Walkthrough)
