@@ -9,7 +9,8 @@
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"runBoard": "tsx src/breadboard/runBoard.ts",
-		"watchBoard": "tsx watch src/breadboard/runBoard.ts"
+		"watchBoard": "tsx watch src/breadboard/runBoard.ts",
+		"runAutoBake": "tsx src/breadboard/test.ts"
 	},
 	"dependencies": {
 		"@exadev/breadboard-kits": "^0.9.0",
