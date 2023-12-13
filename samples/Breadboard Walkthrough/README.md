@@ -13,4 +13,4 @@
 11. [Include Board as a Node](./src/include-board-as-a-node/README.md)
 12. [Include Board as a Node with URL](./src/include-board-as-a-node-with-url/README.md)
 13. [Adding Slot to a Board](./src/adding-slot-to-a-board/README.md)
-14. [Adding Slot to a Board with JSON](./src/adding-slot-to-a-board-with-json/README.md)
+14. [Adding Slot to a Board with URL](./src/adding-slot-to-a-board-with-url/README.md)
