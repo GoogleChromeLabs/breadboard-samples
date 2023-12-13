@@ -3,6 +3,7 @@
 import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 import { Board } from "@google-labs/breadboard";
 import { Core } from "@google-labs/core-kit";
+import * as url from "url";
 
 const board: Board = new Board({
 	title: "Adding Slot to a Board",
@@ -50,10 +51,8 @@ nested
 	}
 })();
 
-import * as url from 'url';
-
 generateAndWriteCombinedMarkdown({
 	board,
 	filename: "README",
-	dir: url.fileURLToPath(new URL('.', import.meta.url))
+	dir: url.fileURLToPath(new URL(".", import.meta.url)),
 });
