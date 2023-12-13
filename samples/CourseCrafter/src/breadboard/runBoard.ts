@@ -3,22 +3,19 @@ import { makeBoard } from "./board";
 import * as url from 'url';
 import path from "path";
 import fs from "fs";
-import {makeMarkdown} from "@exadev/breadboard-kits/util/files/makeMarkdown"
-import {markdown} from "@exadev/breadboard-kits/types"
 
+import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 
 const board = makeBoard()
 
-makeMarkdown({
-	board: board,
-	filename: board.title,
-	title: board.title,
-	dir: "output",
-	markdownConfig: [
-		markdown.MarkdownContentType.mermaid,
-		markdown.MarkdownContentType.json
-	]
+generateAndWriteCombinedMarkdown({
+	board,
+	filename: "README",
+	dir: url.fileURLToPath(new URL('.', import.meta.url))
 });
+
+
+
 
 const blogUrl = "https://developer.chrome.com/blog/introducing-scheduler-yield-origin-trial/"
 
