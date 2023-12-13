@@ -10,7 +10,7 @@ const board = new Board({
 
 const coreKit = board.addKit(Core);
 
-const NESTED_BOARD_URL = 'https://raw.githubusercontent.com/ExaDev-io/breadboard-samples/more-demos/samples/Breadboard%20Walkthrough/src/include-board-as-a-node-with-url/nestedboard.json'
+const NESTED_BOARD_URL = "https://raw.githubusercontent.com/ExaDev-io/breadboard-samples/more-demos/samples/Breadboard%20Walkthrough/src/include-board-as-a-node-with-url/nestedboard.json";
 
 board
     .input({
