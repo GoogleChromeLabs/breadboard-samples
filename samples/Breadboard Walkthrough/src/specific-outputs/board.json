@@ -1,0 +1,32 @@
+{
+	"title": "Specific Outputs",
+	"edges": [
+		{
+			"from": "input-1",
+			"to": "output1",
+			"out": "message",
+			"in": "message"
+		},
+		{
+			"from": "input-1",
+			"to": "output2",
+			"out": "message",
+			"in": "message"
+		}
+	],
+	"nodes": [
+		{
+			"id": "input-1",
+			"type": "input"
+		},
+		{
+			"id": "output1",
+			"type": "output"
+		},
+		{
+			"id": "output2",
+			"type": "output"
+		}
+	],
+	"kits": []
+}

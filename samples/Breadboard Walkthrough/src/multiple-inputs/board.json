@@ -1,0 +1,32 @@
+{
+	"title": "Multiple Inputs",
+	"edges": [
+		{
+			"from": "input-2",
+			"to": "output-1",
+			"out": "message",
+			"in": "message"
+		},
+		{
+			"from": "input-3",
+			"to": "output-1",
+			"out": "message",
+			"in": "message"
+		}
+	],
+	"nodes": [
+		{
+			"id": "output-1",
+			"type": "output"
+		},
+		{
+			"id": "input-2",
+			"type": "input"
+		},
+		{
+			"id": "input-3",
+			"type": "input"
+		}
+	],
+	"kits": []
+}

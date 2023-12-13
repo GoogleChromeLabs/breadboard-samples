@@ -1,13 +1,13 @@
 {
 	"dependencies": {
-		"@exadev/breadboard-kits": "^0.8.3",
-		"@google-labs/breadboard": "^0.5.1"
+		"@exadev/breadboard-kits": "^0.9.1",
+		"@google-labs/breadboard": "^0.6.0"
 	},
 	"devDependencies": {
-		"@types/node": "^20.9.3",
+		"@types/node": "^20.10.4",
 		"npm-run-all": "^4.1.5",
-		"tsx": "^4.2.0",
-		"typescript": "^5.3.2"
+		"tsx": "^4.6.2",
+		"typescript": "^5.3.3"
 	},
 	"engines": {
 		"node": ">=19"
@@ -15,24 +15,36 @@
 	"engineStrict": true,
 	"name": "breadboard-walkthrough",
 	"scripts": {
+		"run-adding-slot-to-a-board": "tsx src/adding-slot-to-a-board/index.ts",
+		"run-adding-slot-to-a-board-with-url": "tsx src/adding-slot-to-a-board-with-url/index.ts",
+		"run-arrow-directions": "tsx src/arrow-directions/index.ts",
+		"run-custom-kit-node-values-and-handlers": "tsx src/custom-kit-node-values-and-handlers/index.ts",
+		"run-hello-world": "tsx src/hello-world/index.ts",
+		"run-include-board-as-a-node": "tsx src/include-board-as-a-node/index.ts",
+		"run-include-board-as-a-node-with-url": "tsx src/include-board-as-a-node-with-url/index.ts",
+		"run-multiple-inputs": "tsx src/multiple-inputs/index.ts",
+		"run-multiple-inputs-one-output": "tsx src/multiple-inputs-one-output/index.ts",
+		"run-multiple-outputs": "tsx src/multiple-outputs/index.ts",
+		"run-naming-wiring-parameters": "tsx src/naming-wiring-parameters/index.ts",
+		"run-nodes-by-id": "tsx src/nodes-by-id/index.ts",
+		"run-one-input-multiple-outputs": "tsx src/one-input-multiple-outputs/index.ts",
+		"run-specific-outputs": "tsx src/specific-outputs/index.ts",
 		"start": "npm-run-all --print-name --serial 'run-*'",
 		"watch": "npm-run-all --print-name --parallel 'watch-*'",
-		"run-arrow-directions": "tsx src/arrow-directions/index.ts",
+		"watch-adding-slot-to-a-board": "tsx watch src/adding-slot-to-a-board/index.ts",
+		"watch-adding-slot-to-a-board-with-url": "tsx watch src/adding-slot-to-a-board-with-url/index.ts",
 		"watch-arrow-directions": "tsx watch src/arrow-directions/index.ts",
-		"run-hello-world": "tsx src/hello-world/index.ts",
+		"watch-custom-kit-node-values-and-handlers": "tsx watch src/custom-kit-node-values-and-handlers/index.ts",
 		"watch-hello-world": "tsx watch src/hello-world/index.ts",
-		"run-multiple-inputs": "tsx src/multiple-inputs/index.ts",
+		"watch-include-board-as-a-node": "tsx watch src/include-board-as-a-node/index.ts",
+		"watch-include-board-as-a-node-with-url": "tsx watch src/include-board-as-a-node-with-url/index.ts",
 		"watch-multiple-inputs": "tsx watch src/multiple-inputs/index.ts",
-		"run-multiple-outputs": "tsx src/multiple-outputs/index.ts",
+		"watch-multiple-inputs-one-output": "tsx watch src/multiple-inputs-one-output/index.ts",
 		"watch-multiple-outputs": "tsx watch src/multiple-outputs/index.ts",
-		"run-specific-outputs": "tsx src/specific-outputs/index.ts",
-		"watch-specific-outputs": "tsx watch src/specific-outputs/index.ts",
-		"run-nodes-by-id": "tsx src/nodes-by-id/index.ts",
+		"watch-naming-wiring-parameters": "tsx watch src/naming-wiring-parameters/index.ts",
 		"watch-nodes-by-id": "tsx watch src/nodes-by-id/index.ts",
-		"run-one-input-multiple-outputs": "tsx src/one-input-multiple-outputs/index.ts",
 		"watch-one-input-multiple-outputs": "tsx watch src/one-input-multiple-outputs/index.ts",
-		"run-multiple-inputs-one-output": "tsx src/multiple-inputs-one-output/index.ts",
-		"watch-multiple-inputs-one-output": "tsx watch src/multiple-inputs-one-output/index.ts"
+		"watch-specific-outputs": "tsx watch src/specific-outputs/index.ts"
 	},
 	"type": "module"
 }
