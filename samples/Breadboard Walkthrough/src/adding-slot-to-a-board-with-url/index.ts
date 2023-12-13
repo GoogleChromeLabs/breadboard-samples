@@ -4,12 +4,13 @@ import writeMarkdown from "@exadev/breadboard-kits/util/files/writeMarkdown";
 import { asRuntimeKit, Board } from "@google-labs/breadboard";
 import { Core } from "@google-labs/core-kit";
 import * as url from "url";
+import fs from "fs";
 
 (async () => {
 	const BASE = "https://raw.githubusercontent.com";
 	const OWNER = "ExaDev-io";
 	const REPO = "breadboard-samples";
-	const BRANCH = "";
+	const BRANCH = ""; // will result in default branch
 	const PATH =
 		"samples/Breadboard%20Walkthrough/src/adding-slot-to-a-board-with-url";
 
@@ -55,4 +56,9 @@ import * as url from "url";
 			console.log(run.node.id, run.outputs);
 		}
 	}
+
+	fs.writeFileSync(
+		url.fileURLToPath(new URL("board.json", import.meta.url)),
+		JSON.stringify(board, null, "\t")
+	);
 })();
