@@ -1,101 +1,105 @@
-import { CourseCrafterKit, StringKit, XenovaKit, ConfigKit} from "@exadev/breadboard-kits";
+import {
+	CourseCrafterKit,
+	StringKit,
+	XenovaKit,
+	ConfigKit,
+} from "@exadev/breadboard-kits";
 import { Board } from "@google-labs/breadboard";
 import { ClaudeKit } from "@paulkinlan/claude-breadboard-kit";
 
+const board = new Board({
+	title: "CourseCrafter",
+});
 
-export function makeBoard(): Board{
-	const board = new Board({
-		title: "CourseCrafter",
-	});
-	
-	const courseCraftKit = board.addKit(CourseCrafterKit);
-	const xenovaKit = board.addKit(XenovaKit);
-	const claudeKit = board.addKit(ClaudeKit);
-	const stringKit = board.addKit(StringKit);
-	const config = board.addKit(ConfigKit);
+const courseCraftKit = board.addKit(CourseCrafterKit);
+const xenovaKit = board.addKit(XenovaKit);
+const claudeKit = board.addKit(ClaudeKit);
+const stringKit = board.addKit(StringKit);
+const config = board.addKit(ConfigKit);
 
-	
-	
-	const input = board.input({
-		$id: "blogDetails",
-		schema: {
-			type: "object",
-			properties: {
-				text: {
-					type: "string",
-					title: "Text",
-					description: "urls",
-				},
+const input = board.input({
+	$id: "blogDetails",
+	schema: {
+		type: "object",
+		properties: {
+			text: {
+				type: "string",
+				title: "Text",
+				description: "urls",
 			},
 		},
-	});
-	
-	const templateInput = board.input({
-		$id: "promptDetails",
-		schema: {
-			type: "object",
-			properties: {
-				text: {
-					type: "string",
-					title: "Text",
-					description: "urls",
-				},
+	},
+});
+
+const templateInput = board.input({
+	$id: "promptDetails",
+	schema: {
+		type: "object",
+		properties: {
+			text: {
+				type: "string",
+				title: "Text",
+				description: "urls",
 			},
 		},
-	});
-	
-	
-	const taskDetails = board.input({
-		$id: "taskDetails",
-		schema: {
-			type: "object",
-			properties: {
-				text: {
-					type: "string",
-					title: "Text",
-					description: "model and task",
-				},
+	},
+});
+
+const taskDetails = board.input({
+	$id: "taskDetails",
+	schema: {
+		type: "object",
+		properties: {
+			text: {
+				type: "string",
+				title: "Text",
+				description: "model and task",
 			},
 		},
-	});
+	},
+});
 
-	const getBlogContentForTask = courseCraftKit.getBlogContentForTask({ $id: "getBlogContents" });
-	const pipeline = xenovaKit.pipeline({ $id: "summaryLanguageModel" });
-	const instructionTemplate = stringKit.template({$id: "claudePromptConstructor"});	
-	
-	templateInput.wire("->template", instructionTemplate);
-	input.wire("->url", getBlogContentForTask);
-	taskDetails.wire("->model", getBlogContentForTask);
-	taskDetails.wire("->task", getBlogContentForTask);
-	
-	// wire blog content into xenova pipeline
-	getBlogContentForTask.wire("blogContent->input", pipeline);
-	getBlogContentForTask.wire("model->model", pipeline);
-	getBlogContentForTask.wire("task->task", pipeline);
+const getBlogContentForTask = courseCraftKit.getBlogContentForTask({
+	$id: "getBlogContents",
+});
+const pipeline = xenovaKit.pipeline({ $id: "summaryLanguageModel" });
+const instructionTemplate = stringKit.template({
+	$id: "claudePromptConstructor",
+});
 
-	getBlogContentForTask.wire("blogContent->blogContent", instructionTemplate);
-	pipeline.wire("output->summary", instructionTemplate);
+templateInput.wire("->template", instructionTemplate);
+input.wire("->url", getBlogContentForTask);
+taskDetails.wire("->model", getBlogContentForTask);
+taskDetails.wire("->task", getBlogContentForTask);
 
-	const serverUrl = "https://api.anthropic.com/v1/complete";
+// wire blog content into xenova pipeline
+getBlogContentForTask.wire("blogContent->input", pipeline);
+getBlogContentForTask.wire("model->model", pipeline);
+getBlogContentForTask.wire("task->task", pipeline);
 
-	const claudeParams = {
-		model: "claude-2",
-		url: `${serverUrl}`,
-	};
+getBlogContentForTask.wire("blogContent->blogContent", instructionTemplate);
+pipeline.wire("output->summary", instructionTemplate);
 
-	const claudeCompletion = claudeKit.generateCompletion({
-		$id: "claudeAPI",
-		...claudeParams,
-	});
+const serverUrl = "https://api.anthropic.com/v1/complete";
 
-	const claudeApiKey = config.readEnvVar({
-		key: "CLAUDE_API_KEY",
-	});
+const claudeParams = {
+	model: "claude-2",
+	url: `${serverUrl}`,
+};
 
-	claudeApiKey.wire("CLAUDE_API_KEY", claudeCompletion);
-	instructionTemplate.wire("string->text", claudeCompletion);
-	
-	claudeCompletion.wire("completion->", board.output());
+const claudeCompletion = claudeKit.generateCompletion({
+	$id: "claudeAPI",
+	...claudeParams,
+});
 
-	return board
-}
+const claudeApiKey = config.readEnvVar({
+	key: "CLAUDE_API_KEY",
+});
+
+claudeApiKey.wire("CLAUDE_API_KEY", claudeCompletion);
+instructionTemplate.wire("string->text", claudeCompletion);
+
+claudeCompletion.wire("completion->", board.output());
+
+export default board;
+export { board };
