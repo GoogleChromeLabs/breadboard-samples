@@ -9,7 +9,10 @@
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"run-board": "npx -y tsx src/breadboard/runBoard.ts",
-		"watch-board": "npx -y tsx watch src/breadboard/runBoard.ts"
+		"watch-board": "npx -y tsx watch src/breadboard/runBoard.ts",
+		"run-board-multiple":"npx -y tsx src/breadboard-multiple-url/runBoard.ts",
+		"watch-board-multiple":"npx -y tsx watch src/breadboard-multiple-url/runBoard.ts"
+		
 	},
 	"dependencies": {
 		"@exadev/breadboard-kits": "^0.9.0",
