@@ -10,7 +10,7 @@ import fs from "fs";
 	const BASE = "https://raw.githubusercontent.com";
 	const OWNER = "ExaDev-io";
 	const REPO = "breadboard-samples";
-	const BRANCH = ""; // will result in default branch
+	const BRANCH = "develop";
 	const PATH =
 		"samples/Breadboard%20Walkthrough/src/adding-slot-to-a-board-with-url";
 
