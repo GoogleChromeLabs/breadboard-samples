@@ -1,0 +1,32 @@
+{
+	"title": "Multiple Outputs",
+	"edges": [
+		{
+			"from": "input-1",
+			"to": "outputOne",
+			"out": "partOne",
+			"in": "partOne"
+		},
+		{
+			"from": "input-1",
+			"to": "outputTwo",
+			"out": "partTwo",
+			"in": "partTwo"
+		}
+	],
+	"nodes": [
+		{
+			"id": "outputOne",
+			"type": "output"
+		},
+		{
+			"id": "outputTwo",
+			"type": "output"
+		},
+		{
+			"id": "input-1",
+			"type": "input"
+		}
+	],
+	"kits": []
+}

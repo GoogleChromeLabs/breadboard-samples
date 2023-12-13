@@ -1,0 +1,39 @@
+{
+	"title": "Adding Slot to a Board",
+	"edges": [
+		{
+			"from": "slot-1",
+			"to": "mainOutputNode",
+			"out": "nestedOutput",
+			"in": "nestedOutput"
+		},
+		{
+			"from": "mainInputNode",
+			"to": "slot-1",
+			"out": "mainInput",
+			"in": "nestedInput"
+		}
+	],
+	"nodes": [
+		{
+			"id": "mainInputNode",
+			"type": "input"
+		},
+		{
+			"id": "slot-1",
+			"type": "slot",
+			"configuration": {
+				"slot": "nested"
+			}
+		},
+		{
+			"id": "mainOutputNode",
+			"type": "output"
+		}
+	],
+	"kits": [
+		{
+			"url": "npm:@google-labs/core-kit"
+		}
+	]
+}
