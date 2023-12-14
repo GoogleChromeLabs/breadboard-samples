@@ -22,7 +22,7 @@ board
 	.wire(
 		"mainInput->nestedInput",
 		core
-			.include({ path: NESTED_BOARD_URL })
+			.invoke({ path: NESTED_BOARD_URL })
 			.wire("nestedOutput", board.output({ $id: "mainOutputNode" }))
 	);
 
