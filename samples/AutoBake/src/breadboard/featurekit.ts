@@ -1,9 +1,10 @@
+/* eslint-disable no-constant-condition */
 import { KitBuilder } from "@google-labs/breadboard/kits";
 import { InputValues, NodeValue } from "@google-labs/breadboard";
 import { list } from "@exadev/breadboard-kits/types";
-import axios from "axios";
-import * as cheerio from "cheerio";
 import * as readline from 'readline/promises';
+import fs from "fs";
+import * as puppeteer from "puppeteer";
 
 type featureContents = {
     overview: NodeValue
@@ -13,28 +14,46 @@ type feature = {
     id: NodeValue,
     name: NodeValue,
     summary: NodeValue,
-    category: NodeValue
+    category: NodeValue,
+    docs: NodeValue[],
+    samples: NodeValue[]
 }
 
-type featureOutput = {
-    features: feature[]
-}
 
 export type getBlogsHTMLContentInput = list.List;
-// based on stuff selected by user, extract the feature page and display data...
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 async function extractFeatureContents(id: string): Promise<featureContents> {
+    const browser = await puppeteer.launch({args: ['--no-sandbox'],});
+    const page = await browser.newPage();
+
     const baseURL = "https://chromestatus.com/feature/"
     const featureURL = `${baseURL}${id}`
+    console.log("Extracting Feature Content: ", featureURL)
 
-    const axiosInstance = axios.create()
-    console.log(`Extracting Content from: ${featureURL}`)
-    const response = await axiosInstance.get(featureURL)
+    // Navigate the page to a URL
+    await page.goto(featureURL, {waitUntil: 'load'});
+    // sleep to wait for shadow DOM to render
+    await sleep(5000);
+    const element = await page.evaluateHandle(`document.querySelector("body > chromedash-app").shadowRoot.querySelector("#content-component-wrapper > chromedash-feature-page").shadowRoot.querySelector("sl-details")`)
+    
+    const contents = await page.evaluate(el => el.textContent, element);
 
-
-    const selector = cheerio.load(response.data)
-    const contents = selector("body").html()
+    await browser.close()
 
     return Promise.resolve({ overview: contents })
+}
+
+// experimental, will used be used to extract docs and samples 
+// maybe download the HTML and then ask LLM to infer what should be extracted
+async function extractPageHTML(url: string): Promise<void>{
+    const browser = await puppeteer.launch({args: ['--no-sandbox'],});
+    const page = await browser.newPage();
+
+    await page.goto(url, {waitUntil: 'load'});
+    // sleep to wait for shadow DOM to render
+    await sleep(5000);
 }
 
 export const FeatureKit = new KitBuilder({
@@ -49,48 +68,60 @@ export const FeatureKit = new KitBuilder({
             console.log(response)
         }
     },
-    // parse the dirty json stuff, so we can display it to the user and they can select which one they want
-    // by id
-    async parseFeatureJSON(input: InputValues): Promise<featureOutput> {
+    
+    /**
+     * getFeatureContent is a simple ui for the user to select from a list of features and extract the page content
+     * @param input list containing all the feature information 
+     */
+    async getFeatureContent(input: InputValues): Promise<void> {
         const { list }: list.List = input as list.List;
-        const features: Array<feature> = []
+        const featuresMap = new Map<string, feature>();
 
         for (const jsonString of list) {
             const json = JSON.parse(jsonString as string);
-            const feature = { id: json["id"], name: json["name"], summary: json["summary"], category: json["category"] }
-            features.push(feature)
-        }
+            const feature = { id: json["id"], name: json["name"], summary: json["summary"], category: json["category"], docs: json["resources"]["docs"], samples:json["resources"]["samples"] }
+        
+            featuresMap.set(`${json["id"]}`, feature)
 
+        }
         const rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout
         });
 
 
+        for (const feature of featuresMap) {
+            console.log("-".repeat(40))
+            console.log(feature[1])
+            console.log("-".repeat(40))
+        }
+
         try {
-            for (const feature of features) {
-                console.log(feature)
-            }
+            while (true) {
+                const answer = await rl.question('Please select a feature id to extract: ');
 
-            const answer = await rl.question('Please select an feature id to extract ', {
-                signal: AbortSignal.timeout(10_000) // 10s timeout
-            });
+                if(featuresMap.has(answer)) {
+                    const webContent = await extractFeatureContents(answer)
 
-            switch (answer.toLowerCase()) {
-                case 'y':
-                    console.log('Super!');
-                    break;
-                case 'n':
-                    console.log('Sorry! :(');
-                    break;
-                default:
-                    console.log('Invalid answer!');
+                    console.log("CONTENT", webContent)
+
+                    const outputBuffer = []
+                    const baseURL = "https://chromestatus.com/feature/"
+                    outputBuffer.push({url:`${baseURL}${answer}`, content: webContent})
+
+                    fs.writeFileSync(
+                        "./test.json",
+                        JSON.stringify(outputBuffer, null, 2)
+                    );
+
+                    break
+                } else {
+                    console.log("Id does not exist, please check input")
+                }
             }
         } finally {
             rl.close();
         }
-
-        return Promise.resolve({ features })
     },
 })
 
