@@ -1,0 +1,6 @@
+{
+    "prompts": [
+        "Based on these documents, Can you outline what is being discussed across the documents. Include code examples if possible, output in markdown format?: {{featureContents}}",
+        "Based on these documents, give me a script that can be used to teach a junior developer about the discussed topic in the document, output in markdown format: {{featureContents}} "
+    ]
+}

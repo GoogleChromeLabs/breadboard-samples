@@ -11,7 +11,7 @@
 		"preview": "vite preview",
 		"runBoard": "tsx src/breadboard/runBoard.ts",
 		"watchBoard": "tsx watch src/breadboard/runBoard.ts",
-		"runAutoBake": "tsx src/breadboard/test.ts"
+		"runAutoBake": "tsx src/breadboard/autobake.ts"
 	},
 	"dependencies": {
 		"@exadev/breadboard-kits": "^0.9.0",
