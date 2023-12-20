@@ -6,15 +6,15 @@ import fs from "fs"
 import * as url from 'url';
 import generateAndWriteCombinedMarkdown from "@exadev/breadboard-kits/util/files/generateAndWriteCombinedMarkdown";
 
-const board = new Board({ title: "AutoBake" })
-const featureKit = board.addKit(FeatureKit)
-const claudeKit = board.addKit(ClaudeKit)
-const stringKit = board.addKit(StringKit)
+const board = new Board({ title: "AutoBake" });
+const featureKit = board.addKit(FeatureKit);
+const claudeKit = board.addKit(ClaudeKit);
+const stringKit = board.addKit(StringKit);
 const config = board.addKit(ConfigKit);
 
 
-const getFeatureContent = featureKit.getFeatureResources({ $id: "featureResources" })
-const features = featureKit.chromeStatusApiFeatures({$id: "chromeApiFeatures"})
+const getFeatureContent = featureKit.getFeatureResources({ $id: "featureResources" });
+const features = featureKit.chromeStatusApiFeatures({$id: "chromeApiFeatures"});
 
 const serverUrl = "https://api.anthropic.com/v1/complete";
 const claudeParams = {
@@ -41,14 +41,14 @@ const claudeApiKey = config.readEnvVar({
     key: "CLAUDE_API_KEY"
 });
 
-features.wire("features->list", getFeatureContent)
+features.wire("features->list", getFeatureContent);
 
-getFeatureContent.wire("featureResources->featureResources", instructionTemplate)
+getFeatureContent.wire("featureResources->featureResources", instructionTemplate);
 claudeApiKey.wire("CLAUDE_API_KEY", claudeCompletion);
 instructionTemplate.wire("string->text", claudeCompletion);
 claudeCompletion.wire("completion->", board.output({$id:"claudeOutput"}));
 
-const result = await board.runOnce({})
+const result = await board.runOnce({});
 
 generateAndWriteCombinedMarkdown({
     board,

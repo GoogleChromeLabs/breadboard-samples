@@ -13,7 +13,7 @@ import { Tiktoken, TiktokenBPE } from "js-tiktoken";
 
 type pageContents = {
     contents: NodeValue
-}
+};
 
 type feature = {
     id: NodeValue,
@@ -22,7 +22,7 @@ type feature = {
     category: NodeValue,
     docs: NodeValue[],
     samples: NodeValue[]
-}
+};
 
 type featureDocuments = NodeValue
 
@@ -63,19 +63,19 @@ export async function extractContents(url: string): Promise<pageContents> {
     const browser = await puppeteer.launch({ args: ['--no-sandbox'], });
     const page = await browser.newPage();
 
-    console.log("Extracting Feature Resources: ", url)
+    console.log("Extracting Feature Resources: ", url);
 
     await page.goto(url, { waitUntil: 'load' });
     // sleep because some page elements might not immediately render
     await sleep(5000);
-    const element = await page.evaluateHandle(`document.querySelector("body")`)
+    const element = await page.evaluateHandle(`document.querySelector("body")`);
 
     let contents = await page.evaluate(el => el.textContent, element);
     contents = contents.replace(/\n|\r/g, "");
 
-    await browser.close()
+    await browser.close();
 
-    return Promise.resolve({ contents })
+    return Promise.resolve({ contents });
 }
 
 /**
@@ -89,21 +89,21 @@ async function extractFeatureResource(id: string): Promise<pageContents> {
     const page = await browser.newPage();
 
     const baseURL = "https://chromestatus.com/feature/"
-    const featureURL = `${baseURL}${id}`
-    console.log("Extracting Feature Content: ", featureURL)
+    const featureURL = `${baseURL}${id}`;
+    console.log("Extracting Feature Content: ", featureURL);
 
     await page.goto(featureURL, { waitUntil: 'load' });
     // sleep to wait for page to render
     await sleep(5000);
-    const element = await page.evaluateHandle(`document.querySelector("body > chromedash-app").shadowRoot.querySelector("#content-component-wrapper > chromedash-feature-page").shadowRoot.querySelector("sl-details")`)
+    const element = await page.evaluateHandle(`document.querySelector("body > chromedash-app").shadowRoot.querySelector("#content-component-wrapper > chromedash-feature-page").shadowRoot.querySelector("sl-details")`);
 
     let contents = await page.evaluate(el => el.textContent, element);
 
     contents = contents.replace(/\n|\r/g, "");
 
-    await browser.close()
+    await browser.close();
 
-    return Promise.resolve({ contents })
+    return Promise.resolve({ contents });
 }
 
 export const FeatureKit = new KitBuilder({
@@ -135,9 +135,9 @@ export const FeatureKit = new KitBuilder({
         const featuresMap = new Map<string, feature>();
 
         for (const json of list["features"]) {
-            const feature = { id: json["id"], name: json["name"], summary: json["summary"], category: json["category"], docs: json["resources"]["docs"], samples: json["resources"]["samples"] }
+            const feature = { id: json["id"], name: json["name"], summary: json["summary"], category: json["category"], docs: json["resources"]["docs"], samples: json["resources"]["samples"] };
 
-            featuresMap.set(`${json["id"]}`, feature)
+            featuresMap.set(`${json["id"]}`, feature);
         }
         const userInput = readline.createInterface({
             input: process.stdin,
@@ -145,32 +145,32 @@ export const FeatureKit = new KitBuilder({
         });
 
         for (const feature of featuresMap) {
-            console.log("-".repeat(40))
-            console.log(feature[1])
-            console.log("-".repeat(40))
+            console.log("-".repeat(40));
+            console.log(feature[1]);
+            console.log("-".repeat(40));
         }
 
-        const featureResources: featureDocuments[] = []
+        const featureResources: featureDocuments[] = [];
         try {
             while (true) {
                 const answer = await userInput.question('Please select a feature id to extract: ');
                 if (featuresMap.has(answer)) {
-                    const webContent = await extractFeatureResource(answer)
-                    featureResources.push(webContent["contents"])
+                    const webContent = await extractFeatureResource(answer);
+                    featureResources.push(webContent["contents"]);
 
-                    const feature = featuresMap.get(answer)
-                    const featureDocs = feature!["docs"]
-                    const featureSamples = feature!["samples"]
+                    const feature = featuresMap.get(answer);
+                    const featureDocs = feature!["docs"];
+                    const featureSamples = feature!["samples"];
 
                     // extract documentation contents
                     for (const doc of featureDocs) {
                         const webContent = await extractContents(doc as string)
-                        featureResources.push(webContent["contents"])
+                        featureResources.push(webContent["contents"]);
                     }
                     // extract samples content
                     for (const sample of featureSamples) {
                         const webContent = await extractContents(sample as string)
-                        featureResources.push(webContent["contents"])
+                        featureResources.push(webContent["contents"]);
                     }
 
                     // Claude has token limit, keep trimming each document until we are below the token limit
@@ -180,22 +180,22 @@ export const FeatureKit = new KitBuilder({
                     while (true) {
                         let tokenCount = 0
                         for (let i = 0; i < featureResources.length; i++) {
-                            tokenCount += countTokens(featureResources[i] as string)
+                            tokenCount += countTokens(featureResources[i] as string);
                         }
 
                         if (tokenCount >= 99000) {
                             for (let i = 0; i < featureResources.length; i++) {
                                 // only keep 80% of the current content 
                                 // there's probably a better way to do that, but it's difficult to know the structure of the HTML because it all comes from different sources
-                                featureResources[i] = (featureResources[i] as string).substring(0, (featureResources[i] as string).length * 0.8)
+                                featureResources[i] = (featureResources[i] as string).substring(0, (featureResources[i] as string).length * 0.8);
                             }
                         } else {
                             break;
                         }
                     }
-                    const outputBuffer = []
+                    const outputBuffer = [];
                     const baseURL = "https://chromestatus.com/feature/"
-                    outputBuffer.push({ url: `${baseURL}${answer}`, content: featureResources })
+                    outputBuffer.push({ url: `${baseURL}${answer}`, content: featureResources });
                     // write all extracted content to file
                     fs.writeFileSync(
                         "./featureContent.json",
@@ -209,7 +209,7 @@ export const FeatureKit = new KitBuilder({
         } finally {
             userInput.close();
         }
-        return Promise.resolve({ featureResources })
+        return Promise.resolve({ featureResources });
     },
 })
 
