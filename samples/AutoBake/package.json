@@ -6,7 +6,6 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
-		"installdeps": "sh deps.sh",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"runBoard": "tsx src/breadboard/runBoard.ts",
