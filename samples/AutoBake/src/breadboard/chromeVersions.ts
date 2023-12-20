@@ -1,12 +1,10 @@
 import fetchJson from "~/breadboard/fetchJson.ts";
 
 export const versionsUrl = "https://chromestatus.com/omaha_data";
-
 export type Channel = "stable" | "beta" | "dev";
 
 // text utility type for version number
 export type VersionNumber = `${number}.${number}.${number}.${number}`;
-
 export type Version = {
 	channel: Channel;
 	version: VersionNumber;
