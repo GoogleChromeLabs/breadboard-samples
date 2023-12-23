@@ -6,6 +6,9 @@ import { Core } from "@google-labs/core-kit";
 import fs from "fs";
 import * as url from "url";
 
+/*
+	Slot has now been deprecated.
+*/
 const board: Board = new Board({
 	title: "Adding Slot to a Board",
 });

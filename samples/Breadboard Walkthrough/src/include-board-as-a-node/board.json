@@ -2,14 +2,14 @@
 	"title": "Include Board as a Node",
 	"edges": [
 		{
-			"from": "include-1",
+			"from": "invoke-1",
 			"to": "mainOutputNode",
 			"out": "nestedOutput",
 			"in": "nestedOutput"
 		},
 		{
 			"from": "mainInputNode",
-			"to": "include-1",
+			"to": "invoke-1",
 			"out": "mainInput",
 			"in": "nestedInput"
 		}
@@ -20,8 +20,8 @@
 			"type": "input"
 		},
 		{
-			"id": "include-1",
-			"type": "include",
+			"id": "invoke-1",
+			"type": "invoke",
 			"configuration": {
 				"graph": {
 					"title": "Nested Board",
