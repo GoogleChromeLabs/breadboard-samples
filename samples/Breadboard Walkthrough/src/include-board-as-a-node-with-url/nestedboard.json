@@ -1,0 +1,22 @@
+{
+	"title": "Nested Board",
+	"edges": [
+		{
+			"from": "nestedInputNode",
+			"to": "nestedOutputNode",
+			"out": "nestedInput",
+			"in": "nestedOutput"
+		}
+	],
+	"nodes": [
+		{
+			"id": "nestedInputNode",
+			"type": "input"
+		},
+		{
+			"id": "nestedOutputNode",
+			"type": "output"
+		}
+	],
+	"kits": []
+}

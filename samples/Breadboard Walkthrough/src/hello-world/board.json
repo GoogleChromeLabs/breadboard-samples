@@ -1,0 +1,21 @@
+{
+	"title": "Hello World",
+	"edges": [
+		{
+			"from": "input-1",
+			"to": "output-2",
+			"out": "*"
+		}
+	],
+	"nodes": [
+		{
+			"id": "input-1",
+			"type": "input"
+		},
+		{
+			"id": "output-2",
+			"type": "output"
+		}
+	],
+	"kits": []
+}

@@ -1826,9 +1826,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@exadev/breadboard-kits@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "@exadev/breadboard-kits@npm:0.9.0"
+"@exadev/breadboard-kits@npm:^0.9.0, @exadev/breadboard-kits@npm:^0.9.1":
+  version: 0.9.1
+  resolution: "@exadev/breadboard-kits@npm:0.9.1"
   dependencies:
     "@anthropic-ai/sdk": "npm:^0.10.2"
     "@anthropic-ai/tokenizer": "npm:^0.0.4"
@@ -1841,7 +1841,7 @@ __metadata:
     dotenv: "npm:^16.3.1"
     js-tiktoken: "npm:^1.0.8"
     jsonschema: "npm:^1.4.1"
-  checksum: 1f577b7364fe202a8f7c1d970db5fb3a699859793f96992da9c5b7aa308cffe43b1badac2916035db19da9d5ddff86072b62b0083931b4614344704ec0533d90
+  checksum: 23cf4794fde8b8ce932db29c40a6eb56e9c57ed6738737e7efb18fa25d055e47b8d3ad03c571b2e2f0e5bdcb73c368e06c88927f6bedb15c3bfc5601a12de6cd
   languageName: node
   linkType: hard
 
@@ -2875,7 +2875,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xenova/transformers@npm:^2.10.1, @xenova/transformers@npm:^2.9.0":
+"@xenova/transformers@npm:^2.10.1":
+  version: 2.11.0
+  resolution: "@xenova/transformers@npm:2.11.0"
+  dependencies:
+    onnxruntime-node: "npm:1.14.0"
+    onnxruntime-web: "npm:1.14.0"
+    sharp: "npm:^0.32.0"
+  dependenciesMeta:
+    onnxruntime-node:
+      optional: true
+  checksum: d95d513f527ae673b78d8b4fae94b8f5a7ef4685f57008622f97d187433c685bd25b9b6e20ac9d4ae8b74e6ce8cc80d16b6fee6a06445056d7bb0790438ab8e0
+  languageName: node
+  linkType: hard
+
+"@xenova/transformers@npm:^2.9.0":
   version: 2.10.1
   resolution: "@xenova/transformers@npm:2.10.1"
   dependencies:
@@ -3308,12 +3322,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "breadboard-walkthrough@workspace:samples/Breadboard Walkthrough"
   dependencies:
-    "@exadev/breadboard-kits": "npm:^0.8.3"
-    "@google-labs/breadboard": "npm:^0.5.1"
-    "@types/node": "npm:^20.9.3"
+    "@exadev/breadboard-kits": "npm:^0.9.1"
+    "@google-labs/breadboard": "npm:^0.6.0"
+    "@types/node": "npm:^20.10.4"
     npm-run-all: "npm:^4.1.5"
-    tsx: "npm:^4.2.0"
-    typescript: "npm:^5.3.2"
+    tsx: "npm:^4.6.2"
+    typescript: "npm:^5.3.3"
   languageName: unknown
   linkType: soft
 
@@ -8090,7 +8104,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsx@npm:^4.2.0, tsx@npm:^4.4.0, tsx@npm:^4.6.2":
+"tsx@npm:^4.4.0, tsx@npm:^4.6.2":
   version: 4.6.2
   resolution: "tsx@npm:4.6.2"
   dependencies:

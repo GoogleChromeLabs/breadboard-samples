@@ -1,6 +1,6 @@
 # Breadboard Samples
 
-This repository contains sample code for the [Breadboard](https://github.com/google/labs-prototypes) project.
+This repository contains sample code for the [Breadboard](https://github.com/breadboard-ai/breadboard/) project.
 
 They will demonstrate how to build complex LLM applications that can be run in the browser and be used for a number of use cases such as:
 
