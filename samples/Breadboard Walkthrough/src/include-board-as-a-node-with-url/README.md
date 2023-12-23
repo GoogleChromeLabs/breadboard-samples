@@ -3,8 +3,8 @@
 ```mermaid
 %%{init: 'themeVariables': { 'fontFamily': 'Fira Code, monospace' }}%%
 graph TD;
-include1[["include <br> id='include-1'"]]:::include -- "nestedOutput->nestedOutput" --> mainOutputNode{{"output <br> id='mainOutputNode'"}}:::output
-mainInputNode[/"input <br> id='mainInputNode'"/]:::input -- "mainInput->nestedInput" --> include1[["include <br> id='include-1'"]]:::include
+invoke1["invoke <br> id='invoke-1'"] -- "nestedOutput->nestedOutput" --> mainOutputNode{{"output <br> id='mainOutputNode'"}}:::output
+mainInputNode[/"input <br> id='mainInputNode'"/]:::input -- "mainInput->nestedInput" --> invoke1["invoke <br> id='invoke-1'"]
 classDef default stroke:#ffab40,fill:#fff2ccff,color:#000
 classDef input stroke:#3c78d8,fill:#c9daf8ff,color:#000
 classDef output stroke:#38761d,fill:#b6d7a8ff,color:#000
@@ -20,14 +20,14 @@ classDef slotted stroke:#a64d79
 	"title": "Include Board as a Node with URL",
 	"edges": [
 		{
-			"from": "include-1",
+			"from": "invoke-1",
 			"to": "mainOutputNode",
 			"out": "nestedOutput",
 			"in": "nestedOutput"
 		},
 		{
 			"from": "mainInputNode",
-			"to": "include-1",
+			"to": "invoke-1",
 			"out": "mainInput",
 			"in": "nestedInput"
 		}
@@ -38,8 +38,8 @@ classDef slotted stroke:#a64d79
 			"type": "input"
 		},
 		{
-			"id": "include-1",
-			"type": "include",
+			"id": "invoke-1",
+			"type": "invoke",
 			"configuration": {
 				"path": "https://raw.githubusercontent.com/ExaDev-io/breadboard-samples/more-demos/samples/Breadboard%20Walkthrough/src/include-board-as-a-node-with-url/nestedboard.json"
 			}
