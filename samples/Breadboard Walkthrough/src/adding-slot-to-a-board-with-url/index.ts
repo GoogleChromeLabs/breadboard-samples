@@ -6,6 +6,9 @@ import { Core } from "@google-labs/core-kit";
 import * as url from "url";
 import fs from "fs";
 
+/*
+	Slot has now been deprecated.
+*/
 (async () => {
 	const BASE = "https://raw.githubusercontent.com";
 	const OWNER = "ExaDev-io";

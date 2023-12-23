@@ -23,7 +23,7 @@ const board = new Board({
 	title: "Include Board as a Node",
 });
 
-const coreKit = board.addKit(Core);
+const core = board.addKit(Core);
 
 board
 	.input({
@@ -31,8 +31,8 @@ board
 	})
 	.wire(
 		"mainInput->nestedInput",
-		coreKit
-			.include({ graph: nestedBoard as GraphDescriptor })
+		core
+			.invoke({ graph: nestedBoard as GraphDescriptor })
 			.wire("nestedOutput", board.output({ $id: "mainOutputNode" }))
 	);
 
