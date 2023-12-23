@@ -1,4 +1,7 @@
 {
+	"config": {
+		"WIREIT_LOGGER": "metrics"
+	},
 	"dependencies": {
 		"@exadev/breadboard-kits": "^0.9.1",
 		"@google-labs/breadboard": "^0.6.0"
@@ -7,29 +10,30 @@
 		"@types/node": "^20.10.4",
 		"npm-run-all": "^4.1.5",
 		"tsx": "^4.6.2",
-		"typescript": "^5.3.3"
+		"typescript": "^5.3.3",
+		"wireit": "^0.14.1"
 	},
+	"engineStrict": true,
 	"engines": {
 		"node": ">=19"
 	},
-	"engineStrict": true,
 	"name": "breadboard-walkthrough",
 	"scripts": {
-		"run-adding-slot-to-a-board": "tsx src/adding-slot-to-a-board/index.ts",
-		"run-adding-slot-to-a-board-with-url": "tsx src/adding-slot-to-a-board-with-url/index.ts",
-		"run-arrow-directions": "tsx src/arrow-directions/index.ts",
-		"run-custom-kit-node-values-and-handlers": "tsx src/custom-kit-node-values-and-handlers/index.ts",
-		"run-hello-world": "tsx src/hello-world/index.ts",
-		"run-include-board-as-a-node": "tsx src/include-board-as-a-node/index.ts",
-		"run-include-board-as-a-node-with-url": "tsx src/include-board-as-a-node-with-url/index.ts",
-		"run-multiple-inputs": "tsx src/multiple-inputs/index.ts",
-		"run-multiple-inputs-one-output": "tsx src/multiple-inputs-one-output/index.ts",
-		"run-multiple-outputs": "tsx src/multiple-outputs/index.ts",
-		"run-naming-wiring-parameters": "tsx src/naming-wiring-parameters/index.ts",
-		"run-nodes-by-id": "tsx src/nodes-by-id/index.ts",
-		"run-one-input-multiple-outputs": "tsx src/one-input-multiple-outputs/index.ts",
-		"run-specific-outputs": "tsx src/specific-outputs/index.ts",
-		"start": "npm-run-all --print-name --serial 'run-*'",
+		"adding-slot-to-a-board": "tsx src/adding-slot-to-a-board/index.ts",
+		"adding-slot-to-a-board-with-url": "tsx src/adding-slot-to-a-board-with-url/index.ts",
+		"arrow-directions": "tsx src/arrow-directions/index.ts",
+		"custom-kit-node-values-and-handlers": "tsx src/custom-kit-node-values-and-handlers/index.ts",
+		"hello-world": "tsx src/hello-world/index.ts",
+		"include-board-as-a-node": "tsx src/include-board-as-a-node/index.ts",
+		"include-board-as-a-node-with-url": "tsx src/include-board-as-a-node-with-url/index.ts",
+		"multiple-inputs": "tsx src/multiple-inputs/index.ts",
+		"multiple-inputs-one-output": "tsx src/multiple-inputs-one-output/index.ts",
+		"multiple-outputs": "tsx src/multiple-outputs/index.ts",
+		"naming-wiring-parameters": "tsx src/naming-wiring-parameters/index.ts",
+		"nodes-by-id": "tsx src/nodes-by-id/index.ts",
+		"one-input-multiple-outputs": "tsx src/one-input-multiple-outputs/index.ts",
+		"specific-outputs": "tsx src/specific-outputs/index.ts",
+		"start": "wireit",
 		"watch": "npm-run-all --print-name --parallel 'watch-*'",
 		"watch-adding-slot-to-a-board": "tsx watch src/adding-slot-to-a-board/index.ts",
 		"watch-adding-slot-to-a-board-with-url": "tsx watch src/adding-slot-to-a-board-with-url/index.ts",
@@ -46,5 +50,25 @@
 		"watch-one-input-multiple-outputs": "tsx watch src/one-input-multiple-outputs/index.ts",
 		"watch-specific-outputs": "tsx watch src/specific-outputs/index.ts"
 	},
-	"type": "module"
+	"type": "module",
+	"wireit": {
+		"start": {
+			"dependencies": [
+				"adding-slot-to-a-board",
+				"adding-slot-to-a-board-with-url",
+				"arrow-directions",
+				"custom-kit-node-values-and-handlers",
+				"hello-world",
+				"include-board-as-a-node",
+				"include-board-as-a-node-with-url",
+				"multiple-inputs",
+				"multiple-inputs-one-output",
+				"multiple-outputs",
+				"naming-wiring-parameters",
+				"nodes-by-id",
+				"one-input-multiple-outputs",
+				"specific-outputs"
+			]
+		}
+	}
 }
