@@ -1,0 +1,36 @@
+{
+	"url": "https://raw.githubusercontent.com/ExaDev-io/breadboard-samples/develop/samples/Breadboard%20Walkthrough/src/adding-slot-to-a-board-with-url/mainboard.json",
+	"title": "Adding Slot to a Board with URL",
+	"edges": [
+		{
+			"from": "slot-1",
+			"to": "mainOutputNode",
+			"out": "nestedOutput",
+			"in": "nestedOutput"
+		},
+		{
+			"from": "mainInputNode",
+			"to": "slot-1",
+			"out": "mainInput",
+			"in": "nestedInput"
+		}
+	],
+	"nodes": [
+		{
+			"id": "mainInputNode",
+			"type": "input"
+		},
+		{
+			"id": "slot-1",
+			"type": "slot",
+			"configuration": {
+				"slot": "nested"
+			}
+		},
+		{
+			"id": "mainOutputNode",
+			"type": "output"
+		}
+	],
+	"kits": []
+}

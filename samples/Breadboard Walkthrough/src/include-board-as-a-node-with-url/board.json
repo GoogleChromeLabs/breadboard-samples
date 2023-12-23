@@ -1,0 +1,39 @@
+{
+	"title": "Include Board as a Node with URL",
+	"edges": [
+		{
+			"from": "include-1",
+			"to": "mainOutputNode",
+			"out": "nestedOutput",
+			"in": "nestedOutput"
+		},
+		{
+			"from": "mainInputNode",
+			"to": "include-1",
+			"out": "mainInput",
+			"in": "nestedInput"
+		}
+	],
+	"nodes": [
+		{
+			"id": "mainInputNode",
+			"type": "input"
+		},
+		{
+			"id": "include-1",
+			"type": "include",
+			"configuration": {
+				"path": "https://raw.githubusercontent.com/ExaDev-io/breadboard-samples/more-demos/samples/Breadboard%20Walkthrough/src/include-board-as-a-node-with-url/nestedboard.json"
+			}
+		},
+		{
+			"id": "mainOutputNode",
+			"type": "output"
+		}
+	],
+	"kits": [
+		{
+			"url": "npm:@google-labs/core-kit"
+		}
+	]
+}
