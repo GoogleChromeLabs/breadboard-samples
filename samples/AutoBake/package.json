@@ -1,0 +1,36 @@
+{
+	"name": "autobake",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+		"preview": "vite preview",
+		"runBoard": "tsx src/breadboard/runBoard.ts",
+		"watchBoard": "tsx watch src/breadboard/runBoard.ts",
+		"runAutoBake": "tsx src/breadboard/autobake.ts"
+	},
+	"dependencies": {
+		"@exadev/breadboard-kits": "^0.9.0",
+		"@google-labs/breadboard": "^0.6.0",
+		"@types/puppeteer": "^7.0.4",
+		"puppeteer": "^21.6.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.45",
+		"@types/react-dom": "^18.2.17",
+		"@typescript-eslint/eslint-plugin": "^6.14.0",
+		"@typescript-eslint/parser": "^6.14.0",
+		"@vitejs/plugin-react-swc": "^3.5.0",
+		"eslint": "^8.55.0",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.5",
+		"tsx": "^4.6.2",
+		"typescript": "^5.3.3",
+		"vite": "^5.0.8"
+	}
+}
