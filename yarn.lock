@@ -3225,6 +3225,7 @@ __metadata:
     "@types/node": "npm:^20.10.5"
     tsx: "npm:^4.7.0"
     typescript: "npm:^5.3.3"
+    wireit: "npm:^0.14.1"
   languageName: unknown
   linkType: soft
 
