@@ -52,15 +52,19 @@
 	},
 	"type": "module",
 	"wireit": {
-		"start": {
+		"disabled": {
 			"dependencies": [
 				"adding-slot-to-a-board",
 				"adding-slot-to-a-board-with-url",
+				"include-board-as-a-node-with-url"
+			]
+		},
+		"start": {
+			"dependencies": [
 				"arrow-directions",
 				"custom-kit-node-values-and-handlers",
 				"hello-world",
 				"include-board-as-a-node",
-				"include-board-as-a-node-with-url",
 				"multiple-inputs",
 				"multiple-inputs-one-output",
 				"multiple-outputs",
