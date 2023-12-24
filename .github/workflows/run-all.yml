@@ -28,3 +28,4 @@ jobs:
           else
             npm run start --workspaces --if-present
           fi
+      - run: sh ./deps.sh
