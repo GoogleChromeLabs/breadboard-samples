@@ -54,14 +54,13 @@
 	"type": "module",
 	"wireit": {
 		"disabled": {
-			"dependencies": [
-				"adding-slot-to-a-board",
-				"adding-slot-to-a-board-with-url",
-				"include-board-as-a-node-with-url"
-			]
+			"command": "node -e \"console.log('Disabled tests)\""
 		},
 		"start": {
 			"dependencies": [
+				"adding-slot-to-a-board",
+				"adding-slot-to-a-board-with-url",
+				"include-board-as-a-node-with-url",
 				"arrow-directions",
 				"custom-kit-node-values-and-handlers",
 				"hello-world",
