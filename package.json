@@ -1,11 +1,11 @@
 {
 	"dependencies": {
-		"@exadev/breadboard-kits": "^0.9.0",
+		"@exadev/breadboard-kits": "^0.9.1",
 		"@google-labs/breadboard": "^0.6.0"
 	},
 	"devDependencies": {
-		"@types/node": "^20.10.4",
-		"tsx": "^4.6.2",
+		"@types/node": "^20.10.5",
+		"tsx": "^4.7.0",
 		"typescript": "^5.3.3"
 	},
 	"engines": {
