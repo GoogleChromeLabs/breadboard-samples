@@ -5,7 +5,8 @@
 	},
 	"dependencies": {
 		"@exadev/breadboard-kits": "^0.9.1",
-		"@google-labs/breadboard": "^0.6.0"
+		"@google-labs/breadboard": "^0.6.0",
+		"@google-labs/core-kit": "^0.1.0"
 	},
 	"devDependencies": {
 		"@types/node": "^20.10.5",
