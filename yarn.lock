@@ -3861,10 +3861,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^3.0.6":
-  version: 3.0.6
-  resolution: "dompurify@npm:3.0.6"
-  checksum: bf6e8a240673f60f5aafa46b598cfb66a18ab68f2801840005bc784b3fd3598a6bfac1eca1f80a98b197054d2329cd6edbc857aca34364abdee389a8fe6c027a
+"dompurify@npm:^3.1.3":
+  version: 3.1.6
+  resolution: "dompurify@npm:3.1.6"
+  checksum: 036844bc9b717b172ba27f5863b56f950289a05d8eebfb702d6953bbf80bd021e480ce4217bd084567186f2d0ada13358ce5556963492cfe402d774e8667f120
   languageName: node
   linkType: hard
 
@@ -8204,7 +8204,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^6.12.0"
     "@typescript-eslint/parser": "npm:^6.12.0"
     comlink: "npm:^4.4.1"
-    dompurify: "npm:^3.0.6"
+    dompurify: "npm:^3.1.3"
     dotenv: "npm:^16.3.1"
     marked: "npm:^11.0.0"
     tsx: "npm:^4.4.0"
